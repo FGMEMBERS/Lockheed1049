@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!-- By default, the external views look at the FDM movement point, which is by default a CG.
+     But the CG moves with time, while the view point is hard coded.
+
+     The solution is to hard code the movement point :
+     - sets the gear height and CG, and VRP to nose tip, inside the FDM.
+     - shifts the model at nose tip : one gets 14.3 m in length.
+-->
+
+<PropertyList>
+
+<!-- pilot in the cockpit -->
+
+  <view>
+   <internal archive="y">true</internal>
+   <config>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">-0.2</x-offset-m>
+     <y-offset-m archive="y">0.32</y-offset-m>
+     <z-offset-m archive="y">1.65</z-offset-m>
+     <pitch-offset-deg>-5</pitch-offset-deg>
+   </config>
+  </view>
+
+<!-- looks at the 3D model origin : determines the length of the real FDM movement -->
+
+  <view n="1">
+   <config>
+     <target-z-offset-m archive="y">14.3</target-z-offset-m>
+   </config>
+  </view>
+
+<!-- other views look at the nose tip -->
+
+</PropertyList>

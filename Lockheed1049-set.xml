@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 model 54.
+-->
+
+<PropertyList>
+
+ <sim include="Nasal/Lockheed1049-sim.xml">
+
+  <description>Lockheed 1049</description>
+  <status>early-production</status>
+  <version>1.0</version>
+
+  <startup>
+   <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
+  </startup>
+
+  <flight-model>jsb</flight-model>
+  <aero>Lockheed1049</aero>
+
+  <systems>
+   <autopilot>
+    <path>Aircraft/Lockheed1049/Systems/Lockheed1049-autopilot.xml</path>
+   </autopilot>
+   <electrical>
+    <path>Aircraft/Generic/generic-electrical.xml</path>
+   </electrical>
+  </systems> 
+
+  <instrumentation>
+   <path>Aircraft/Lockheed1049/Systems/Lockheed1049-instrumentation.xml</path>
+  </instrumentation>
+
+  <sound>
+   <audible>true</audible>
+   <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-sound.xml</path>
+   <!-- <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-mats-sound.xml</path> -->
+  </sound>
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-2D-captain.xml</path>
+   <visibility>true</visibility>
+  </panel>
+  <panel_2>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-2D-engineer.xml</path>
+  </panel_2>
+
+  <model>
+   <path>Aircraft/Lockheed1049/Models/Lockheed1049_twa.xml</path>
+  </model> 
+
+  <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
+
+  <presets include="Nasal/Lockheed1049-fuel.xml">
+
+<!-- Burbank: runways 33/15 and 08/26. -->
+
+<!--
+   <airport-id>KBUR</airport-id>
+   <runway>08</runway>
+-->
+  </presets>
+
+  <help include="help.xml"/>
+
+ </sim>
+
+ <nasal>
+  <Lockheed1049>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049.nas</file>
+  </Lockheed1049>
+ </nasal>
+
+ <input>
+  <keyboard include="Nasal/Lockheed1049-keyboard.xml">
+  </keyboard>
+ </input>
+
+ <systems include="Systems/Lockheed1049-init-systems.xml">
+ </systems>
+
+ <instrumentation include="Systems/Lockheed1049-init-instrumentation.xml">
+
+
+<!-- ============= -->
+<!-- customization -->
+<!-- ============= -->
+
+<!-- ADF 2 -->
+
+  <adf n="1">
+   <frequencies>
+    <selected-khz>352</selected-khz>
+   </frequencies>
+  </adf>
+
+ </instrumentation>
+
+<!-- engines on, low pitch (parking) -->
+
+ <controls>
+  <engines>
+   <engine n="0">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+   <engine n="1">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+   <engine n="2">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+   <engine n="3">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+  </engines>
+ </controls>
+
+<!-- above 700 RPM avoids the stop --> 
+ 
+ <engines include="Systems/Lockheed1049-init-engines.xml">
+  <engine n="0">
+   <rpm archive="y">1000</rpm>
+  </engine>
+  <engine n="1">
+   <rpm archive="y">1000</rpm>
+  </engine>
+  <engine n="2">
+   <rpm archive="y">1000</rpm>
+  </engine>
+  <engine n="3">
+   <rpm archive="y">1000</rpm>
+  </engine>
+ </engines>
+
+<!-- autopilot -->
+
+ <autopilot>
+  <settings>
+   <target-speed-kt>220</target-speed-kt>
+  </settings>
+ </autopilot>
+
+</PropertyList>

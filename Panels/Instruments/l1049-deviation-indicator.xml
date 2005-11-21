@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 deviation indicator :
+
+     for ILS or VOR.
+-->
+
+<PropertyList>
+
+ <name>Deviation Indicator</name>
+
+ <w-base>128</w-base>
+ <h-base>128</h-base>
+
+ <layers>
+
+<!-- VOR 1 -->
+
+  <layer>
+   <name>VOR 1 needle</name>
+   <condition>
+    <and>
+     <not-equals>
+      <property>/instrumentation/deviation-indicator/frequency</property>
+      <value>2</value>
+     </not-equals>
+     <property>/instrumentation/nav[0]/nav-loc</property>
+     <property>/instrumentation/nav[0]/in-range</property>
+    </and>
+   </condition>
+   <w>5</w>
+   <h>61</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/hsi2.rgb</path>
+    <x1>0.801875</x1>
+    <x2>0.8515625</x2>
+    <y1>0.359375</y1>
+    <y2>0.6796875</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-23</offset>
+    </transformation>
+    <transformation>
+     <type>x-shift</type>
+     <property>/instrumentation/nav[0]/heading-needle-deflection</property>
+     <min>-5.3</min>
+     <max>5.3</max>
+     <scale>1.4</scale>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- glide slope -->
+
+  <layer>
+   <name>GS 1 needle</name>
+   <condition>
+    <and>
+     <not-equals>
+      <property>/instrumentation/deviation-indicator/frequency</property>
+      <value>2</value>
+     </not-equals>
+     <property>/instrumentation/nav[0]/has-gs</property>
+     <property>/instrumentation/nav[0]/in-range</property>
+    </and>
+   </condition>
+   <w>5</w>
+   <h>61</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/hsi2.rgb</path>
+    <x1>0.801875</x1>
+    <x2>0.8515625</x2>
+    <y1>0.359375</y1>
+    <y2>0.6796875</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-23</offset>
+    </transformation>
+    <transformation>
+     <type>rotation</type>
+     <offset>90</offset>
+    </transformation>
+    <transformation>
+     <type>x-shift</type>
+     <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+     <min>-6.0</min>
+     <max>6.0</max>
+     <scale>-1.4</scale>
+     <offset>-1</offset>
+    </transformation>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- VOR é -->
+
+  <layer>
+   <name>VOR 2 needle</name>
+   <condition>
+    <and>
+     <equals>
+      <property>/instrumentation/deviation-indicator/frequency</property>
+      <value>2</value>
+     </equals>
+     <property>/instrumentation/nav[1]/nav-loc</property>
+     <property>/instrumentation/nav[1]/in-range</property>
+    </and>
+   </condition>
+   <w>5</w>
+   <h>61</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/hsi2.rgb</path>
+    <x1>0.801875</x1>
+    <x2>0.8515625</x2>
+    <y1>0.359375</y1>
+    <y2>0.6796875</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-23</offset>
+    </transformation>
+    <transformation>
+     <type>x-shift</type>
+     <property>/instrumentation/nav[0]/heading-needle-deflection</property>
+     <min>-5.3</min>
+     <max>5.3</max>
+     <scale>1.4</scale>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- glide slope -->
+
+  <layer>
+   <name>GS 1 needle</name>
+   <condition>
+    <and>
+     <equals>
+      <property>/instrumentation/deviation-indicator/frequency</property>
+      <value>2</value>
+     </equals>
+     <property>/instrumentation/nav[1]/has-gs</property>
+     <property>/instrumentation/nav[1]/in-range</property>
+    </and>
+   </condition>
+   <w>5</w>
+   <h>61</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/hsi2.rgb</path>
+    <x1>0.801875</x1>
+    <x2>0.8515625</x2>
+    <y1>0.359375</y1>
+    <y2>0.6796875</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-23</offset>
+    </transformation>
+    <transformation>
+     <type>rotation</type>
+     <offset>90</offset>
+    </transformation>
+    <transformation>
+     <type>x-shift</type>
+     <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+     <min>-6.0</min>
+     <max>6.0</max>
+     <scale>-1.4</scale>
+     <offset>-1</offset>
+    </transformation>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- Masks -->
+
+  <layer>
+   <name>clipping mask</name>
+   <texture>
+     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/bezel.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.0</y1>
+     <x2>1.0</x2>
+     <y2>1.0</y2>
+   </texture>
+   <w>70</w>
+   <h>70</h>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-8</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>internal glare shield</name>
+   <texture>
+     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/bezel1.rgb</path>
+     <x1>0.5</x1>
+     <y1>0.0</y1>
+     <x2>1.0</x2>
+     <y2>0.5</y2>
+   </texture>
+   <w>70</w>
+   <h>70</h>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-8</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- Out of range -->
+
+  <layer>
+   <name>NAV OFF</name>
+   <condition>
+    <or>
+     <and>
+      <not-equals>
+       <property>/instrumentation/deviation-indicator/frequency</property>
+       <value>2</value>
+      </not-equals>
+      <or>
+       <not>
+        <property>/instrumentation/nav[0]/nav-loc</property>
+       </not>
+       <not>
+        <property>/instrumentation/nav[0]/has-gs</property>
+       </not>
+       <not>
+        <property>/instrumentation/nav[0]/in-range</property>
+       </not>
+      </or>
+     </and>
+     <and>
+      <equals>
+       <property>/instrumentation/deviation-indicator/frequency</property>
+       <value>2</value>
+      </equals>
+      <or>
+       <not>
+        <property>/instrumentation/nav[1]/nav-loc</property>
+       </not>
+       <not>
+        <property>/instrumentation/nav[1]/has-gs</property>
+       </not>
+       <not>
+        <property>/instrumentation/nav[1]/in-range</property>
+       </not>
+      </or>
+     </and>
+    </or>
+   </condition>
+   <w>26</w>
+   <h>15</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/hsi2.rgb</path>
+    <x1>0.796875</x1>
+    <x2>1.0</x2>
+    <y1>0.765625</y1>
+    <y2>0.8828125</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>37</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>external glare shield</name>
+   <texture>
+     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/bezel1.rgb</path>
+     <x1>0.5</x1>
+     <y1>0.0</y1>
+     <x2>1.0</x2>
+     <y2>0.5</y2>
+   </texture>
+   <w>114</w>
+   <h>114</h>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>2</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-2</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+</PropertyList>

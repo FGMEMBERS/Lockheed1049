@@ -1,0 +1,689 @@
+<FDM_CONFIG NAME="Lockheed1049-54" VERSION="1.65" RELEASE="1.0">
+<!--
+  File:     Lockheed1049.xml
+  Author:   Aero-Matic v 0.71
+  Date:     14 August 2005
+
+  Inputs:
+    name:          Lockheed1049
+    type:          multi-engine prop transport
+    max weight:    120000.0 lb
+    wing span:     123.0 ft
+    length:        113.6 ft
+    wing area:     1650 sq-ft
+    gear type:     tricycle
+    retractable?:  yes
+    # engines:     4
+    engine type:   piston
+    engine layout: wings
+    yaw damper?    no
+
+  Outputs:
+    wing loading:  72.73 lb/sq-ft
+    CL-alpha:      4.9 per radian
+    CL-0:          0.24
+    CL-max:        1.4
+    CD-0:          0.025
+    K:             0.039
+
+
+  Summary : 
+  =======
+  - Super Constellation 1049-54 (first version).
+  - origin of metrics at nose tip.
+  - VRP at nose tip.
+
+
+  Known problems :
+  ==============
+  - emulation of fuel cross feed, tanks run out of fuel above X 3 speed-up.
+  - autopilot heading hold may lock to the right with roll.
+
+
+  References :
+  ==========
+  - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
+  (FAA certificate, 6a5 - 14 may 1952) :
+
+   MAC : 176 in., leading edge at station 628.8 in.
+
+   CG range : 21-32 % at takeoff.
+
+   Main surfaces (booster on)   : Elevator  40 deg up,     20 deg down.
+                                  Aileron   25 deg up,     10 deg down.
+                                  Rudder    30 deg right,  30 deg left.
+
+   Tabs (main surfaces neutral) : Elevator  22 deg up,     22 deg down.
+                                  Aileron   12 deg up,     12 deg down.
+                                  Rudder    25 deg right,  25 deg left.
+
+   Flaps : 41 deg.
+
+   Tanks 2 and 3 (inboard) : 790 gal each, 9480 lb.
+         1 and 4 (middle) : 1555 gal each, 18660 lb.
+         2a and 3a (outboard) : 565 gal each, 6780 lb.
+         5 (center section) : 730 gal, 4380 lb.
+
+   A total of 6550 US gal : note that is 1 US gal = 6 lb !
+
+   - http://www.hq.nasa.gov/office/pao/History/SP-468/app-a2.htm :
+
+   Drag CD0 (L-1049G) : 0.0211.
+
+   - http://naca.larc.nasa.gov/reports/1932/naca-tn-419/ :
+   Wind-tunnel tests of the Fowler variable-area wing,
+   Fred E. Weick and Robert C. Platt, May 1932.
+
+   - http://www.eflightmanual.com/
+   Lockheed flight manual.
+
+-->
+
+<!-- CG and Aero reference point are from nose tip origin (arbitrary origin).
+
+     VRP compensates the CG (VRP is an offset from CG), so that FDM computes the movement of the nose tip (0,0,0),
+
+     Eye point location is also an offset from CG, so that pilot is at 195 - 110.2 = 84.8 in. from nose tip.
+
+     Htailarm : distance from CG to horizontal tail tip.
+     Vtailarm : distance from CG to vertical tail tip.
+-->
+
+ <METRICS>
+
+   AC_WINGAREA  1650.00                                  <!-- ft2 -->
+   AC_WINGSPAN  123.00                                   <!-- ft -->
+   AC_CHORD     14.67                                    <!-- ft -->          <!-- aeromatic 13.41 -->
+   AC_HTAILAREA 436.58                                   <!-- ft2 -->         <!-- aeromatic 264.00 -->
+.  AC_HTAILARM  25.00                                    <!-- ft -->          <!-- aeromatic 56.80 -->
+   AC_VTAILAREA 403.20                                   <!-- ft2 -->         <!-- aeromatic 297.00 -->
+.  AC_VTAILARM  16.80                                    <!-- ft -->          <!-- added (turbulence) -->
+   AC_LV        56.80                                    <!-- ? -->
+   AC_IXX       2165044                                  <!-- slug ft2 -->
+   AC_IYY       2209273                                  <!-- slug ft2 -->
+   AC_IZZ       4320379                                  <!-- slug ft2 -->
+   AC_IXZ       0                                        <!-- slug ft2 -->
+   AC_EMPTYWT   80706                                    <!-- lb -->           <!-- aeromatic 72000 -->
+   AC_CGLOC     681.6 0.0 -34.1                          <!-- in -->
+   AC_AERORP    681.6 0.0 0.0                            <!-- in -->
+   AC_EYEPTLOC  596.8 -24.0 65.0                         <!-- in -->
+                                                         <!-- in (comment at the end hangs loading) -->
+   AC_VRP       681.6 0.0 -34.1
+
+ </METRICS>
+
+    <!--
+    the gear parameters that can be specified are as follows, IN ORDER OF APPEARANCE:
+
+    AC_GEAR
+    <name>                           name of gear entry - no spaces allowed
+    <X> <Y> <Z>                      Gear location in aircraft body coords in inches
+    <spring constant>                spring constant in lbs/ft
+    <damping coefficient>            damping coefficient in lbs/ft/sec
+    <dynamic friction coefficient>   Self-explanatory: sliding friction coefficient
+    <static friction coefficient>    Self-explanatory: "onset" friction coefficient
+    <rolling resistance coefficient> Self-explanatory: rolling resistance coefficient
+    <steerability attribute>         One of <STEERABLE | FIXED | CASTERED>
+    <brake group membership>         One of <LEFT | CENTER | RIGHT | NOSE | TAIL | NONE>
+    <max steer angle>                Maximum steerable angle in degrees
+    -->
+
+    <!-- additonal contact points for crash detection, when gear retracted. -->
+
+ <UNDERCARRIAGE>
+
+  AC_GEAR NOSE_LG    177.2    0.0 -163.6  36000.0 12000.0 0.5 0.8 0.02 STEERABLE NONE  5.0 RETRACT
+  AC_GEAR LEFT_MLG   708.9 -162.4 -163.6 120000.0 24000.0 0.5 0.8 0.02 FIXED     LEFT  0.0 RETRACT
+  AC_GEAR RIGHT_MLG  708.9  162.4 -163.6 120000.0 24000.0 0.5 0.8 0.02 FIXED     RIGHT 0.0 RETRACT
+  AC_GEAR NOSE_TIP     0.0    0.0    0.0  36000.0 12000.0 0.5 0.8 0.02 FIXED     NONE  0.0 FIXED
+  AC_GEAR LEFT_TIP   708.9 -738.0    0.0 120000.0 24000.0 0.5 0.8 0.02 FIXED     NONE  0.0 FIXED
+  AC_GEAR RIGHT_TIP  708.9  738.0    0.0 120000.0 24000.0 0.5 0.8 0.02 FIXED     NONE  0.0 FIXED
+  AC_GEAR TAIL_TIP  1362.2    0.0    0.0 120000.0 24000.0 0.5 0.8 0.02 FIXED     NONE  0.0 FIXED
+
+ </UNDERCARRIAGE>
+
+  <!--
+      TANKS SECTION
+
+      Tank locations and characteristics, empty weight, in aircraft's own coord system:
+      X, Y, Z, in inches
+      effective radius of tank, in inches (for fuel slosh, if/when modeled)
+      capacity in pounds
+      Current contents, in pounds
+
+      ENGINE[S] SECTION
+
+      Engine[s] is|are specified by giving engine name (which corresponds to an engine
+      definition file in the "engines" directory) followed by x, y, z placement and
+      pitch and yaw orientation. Coordinates are given in inches in the structural
+      coordinate frame. Angles for pitch and yaw are specified in radians.
+
+      AC_ENGINE name x y z pitch yaw
+
+      THRUSTER[S] SECTION
+
+      AC_THRUSTER name x y z pitch yaw
+  -->
+
+  <!-- Engines       1   2   3   4
+                     |   |   |   |
+                 +.......+   +.......+
+                 |   |   |   |   |   |
+       Tanks     2A  1   2   3   4   3A     
+                           5
+  -->
+
+ <PROPULSION>
+  <AC_ENGINE FILE="WrightCyclone-975C18CB1">
+    XLOC 681.6
+    YLOC -358                                                                <!-- aeromatic -246 -->
+    ZLOC -40
+    PITCH 0
+    YAW 0
+    FEED 0
+    FEED 4
+    FEED 7
+    <AC_THRUSTER FILE="HamiltonStd43E60-6901A">
+      XLOC 681.6
+      YLOC -358
+      ZLOC -40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+  <AC_ENGINE FILE="WrightCyclone-975C18CB1">
+    XLOC 681.6
+    YLOC -168                                                                <!-- aeromatic -246 -->
+    ZLOC -40
+    PITCH 0
+    YAW 0
+    FEED 1
+    FEED 4
+    FEED 5
+    FEED 8
+    <AC_THRUSTER FILE="HamiltonStd43E60-6901A">
+      XLOC 681.6
+      YLOC -168
+      ZLOC -40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+  <AC_ENGINE FILE="WrightCyclone-975C18CB1">
+    XLOC 681.6
+    YLOC 168
+    ZLOC -40
+    PITCH 0
+    YAW 0
+    FEED 2
+    FEED 4
+    FEED 6
+    FEED 9
+    <AC_THRUSTER FILE="HamiltonStd43E60-6901A">
+      XLOC 681.6
+      YLOC 168
+      ZLOC -40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+  <AC_ENGINE FILE="WrightCyclone-975C18CB1">
+    XLOC 681.6
+    YLOC 358
+    ZLOC -40
+    PITCH 0
+    YAW 0
+    FEED 3
+    FEED 4
+    FEED 10 
+    <AC_THRUSTER FILE="HamiltonStd43E60-6901A">
+      XLOC 681.6
+      YLOC 358
+      ZLOC -40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+
+<!-- full load at 30 % MAC, empty load at 30 % MAC (in range 21-32 %).
+-->
+
+<!-- 1 : middle tank between the engines. -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="0">
+    XLOC 681.60
+    YLOC -280
+    ZLOC -34.08 
+    RADIUS 1
+    CAPACITY  9330.0
+    CONTENTS  9330.0
+  </AC_TANK>
+
+<!-- 2 and 3 : inboard tanks, at wing root -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="1">
+    XLOC 681.60
+    YLOC -100
+    ZLOC -50
+    RADIUS 1
+    CAPACITY  4740.0
+    CONTENTS  4740.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="2">
+    XLOC 681.60
+    YLOC 100
+    ZLOC -50
+    RADIUS 1
+    CAPACITY  4740.0
+    CONTENTS  4740.0
+  </AC_TANK>
+
+<!-- 1 and 4 : middle tank between the engines. -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="3">
+    XLOC 681.60
+    YLOC 280
+    ZLOC -34.08 
+    RADIUS 1
+    CAPACITY  9330.0
+    CONTENTS  9330.0
+  </AC_TANK>
+
+<!-- 5 : center tank, under the floor -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="4">
+    XLOC 681.60
+    YLOC 0
+    ZLOC -90
+    RADIUS 1
+    CAPACITY  4380.0
+    CONTENTS  4380.0
+  </AC_TANK>
+
+<!-- 2a and 3a : outboard tanks, at wing tip. -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="5">
+    XLOC 681.60
+    YLOC -450
+    ZLOC -34.08 
+    RADIUS 1
+    CAPACITY  3390.0
+    CONTENTS  3390.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="6">
+    XLOC 681.60
+    YLOC 450
+    ZLOC -34.08 
+    RADIUS 1
+    CAPACITY  3390.0
+    CONTENTS  3390.0
+  </AC_TANK>
+
+<!-- emulates cross feed of engine supplies :
+     - position like the main engine tank.
+     - can feed 1200 gal/h per engine : 1200 x ( 2 / 3600 ) = 0.67 US gal content, if supplied every 2 s from other tanks.
+-->
+
+  <AC_TANK TYPE="FUEL" NUMBER="7">
+    XLOC 681.60
+    YLOC -280
+    ZLOC -34.08 
+    RADIUS 1
+    CAPACITY  4.4
+    CONTENTS  0.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="8">
+    XLOC 681.60
+    YLOC -100
+    ZLOC -50
+    RADIUS 1
+    CAPACITY  4.4
+    CONTENTS  0.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="9">
+    XLOC 681.60
+    YLOC 100
+    ZLOC -50
+    RADIUS 1
+    CAPACITY  4.4
+    CONTENTS  0.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="10">
+    XLOC 681.60
+    YLOC 280
+    ZLOC -34.08 
+    RADIUS 1
+    CAPACITY  4.4
+    CONTENTS  0.0
+  </AC_TANK>
+
+ </PROPULSION>
+ <FLIGHT_CONTROL NAME="Lockheed1049-54">
+   <COMPONENT NAME="Pitch Trim Sum" TYPE="SUMMER">
+      INPUT   fcs/elevator-cmd-norm
+      INPUT   fcs/pitch-trim-cmd-norm
+      CLIPTO  -1 1
+   </COMPONENT>
+   <COMPONENT NAME="Elevator Control" TYPE="AEROSURFACE_SCALE">
+
+      <!-- replaced -0.35/0.35 by -6/16 deg real. -->
+
+      INPUT   fcs/pitch-trim-sum
+      MIN     -6.00
+      MAX      16.00
+      GAIN    0.01745
+      OUTPUT  fcs/elevator-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Roll Trim Sum" TYPE="SUMMER">
+      INPUT   fcs/aileron-cmd-norm
+      INPUT   fcs/roll-trim-cmd-norm
+      CLIPTO  -1 1
+   </COMPONENT>
+   <COMPONENT NAME="Left Aileron Control" TYPE="AEROSURFACE_SCALE">
+
+      <!-- replaced -0.35/0.35 by -10/25 deg real. -->
+
+      INPUT   fcs/roll-trim-sum
+      MIN    -10.0
+      MAX     25.0
+      GAIN    0.01745
+      OUTPUT  fcs/left-aileron-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Right Aileron Control" TYPE="AEROSURFACE_SCALE">
+
+      <!-- replaced -0.35/0.35 by -10/25 deg real. -->
+
+      INPUT  -fcs/roll-trim-sum
+      MIN    -10.0
+      MAX     25.0
+      GAIN    0.01745
+      OUTPUT  fcs/right-aileron-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Rudder Command Sum" TYPE="SUMMER">
+      INPUT   fcs/rudder-cmd-norm
+      INPUT   fcs/yaw-trim-cmd-norm
+      CLIPTO  -1 1
+   </COMPONENT>
+   <COMPONENT NAME="Rudder Control" TYPE="AEROSURFACE_SCALE">
+
+      <!-- replaced -0.35/0.35 by -30/30 deg real. -->
+
+      INPUT   fcs/rudder-command-sum
+      MIN    -30.0
+      MAX     30.0
+      GAIN    0.01745
+      OUTPUT  fcs/rudder-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Flaps Control" TYPE="KINEMAT">
+
+     <!-- - replaced 30 deg by 41 deg real.
+          - add the 10 deg detent, because of the initial translation (Fowler flap).
+          - add the 35 deg detent, because 60 %, 66 %, 80 % and 100 %.
+     -->
+
+     INPUT   fcs/flap-cmd-norm
+     DETENTS 5
+             0   0
+             10  5
+             27  4
+             35  4
+             41  3
+     OUTPUT  fcs/flap-pos-deg
+   </COMPONENT>
+   <COMPONENT NAME="Gear Control" TYPE="KINEMAT">
+     INPUT   gear/gear-cmd-norm
+     DETENTS 2
+             0   0
+             1   5
+     OUTPUT  gear/gear-pos-norm
+   </COMPONENT>
+   <COMPONENT NAME="Speedbrake Control" TYPE="KINEMAT">
+     INPUT   fcs/speedbrake-cmd-norm
+     DETENTS 2
+             0   0
+             1   1
+     OUTPUT  fcs/speedbrake-pos-norm
+   </COMPONENT>
+ </FLIGHT_CONTROL>
+ <AERODYNAMICS>
+  <AXIS NAME="LIFT">
+
+   <GROUP NAME="CLb">
+     <!-- created to apply the ground effect multiplier -->
+
+     Basic_lift
+
+     <FACTOR NAME="kCLge" TYPE="VECTOR">
+
+       <!-- created to smooth takeoff roll -->
+
+        Change_in_lift_due_to_ground_effect
+        5
+        aero/h_b-mac-ft
+        none
+        0.0   1.200
+        0.1   1.150
+        0.15  1.090
+        0.2   1.020
+        1.1   1.000
+    </FACTOR>
+
+    <COEFFICIENT NAME="CLo" TYPE="VALUE">
+
+      <!-- created -->
+
+      Lift_at_zero_alpha
+      aero/qbar-psf | metrics/Sw-sqft
+      0.240
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="CLalpha" TYPE="VECTOR">
+
+      <!-- substracted 0.240. -->
+
+      Lift_due_to_alpha
+      4
+      aero/alpha-rad
+      aero/qbar-psf|metrics/Sw-sqft
+      -0.20   -0.500                                <!-- aeromatic -0.740 -->
+       0.00    0.000                                <!-- aeromatic  0.240 -->
+       0.24    1.160                                <!-- aeromatic  1.400 and 0.704 (XML refuses comment) -->
+       0.60    0.464
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="dCLflap" TYPE="VECTOR">
+
+       <!-- to respect the speed limits of gear and flaps, controls by flap angle,
+            to get more lift at takeoff setting.
+
+            old : aero/qbar-psf|metrics/Sw-sqft|fcs/components/flaps-control/output-norm
+        -->
+
+       Delta_Lift_due_to_flaps
+       5
+       fcs/flap-pos-deg
+       aero/qbar-psf | metrics/Sw-sqft
+       0   0
+       10  0.40
+       27  0.46
+       35  0.53
+       41  0.6
+    </COEFFICIENT>
+
+   </GROUP>
+
+    <COEFFICIENT NAME="dCLsb" TYPE="VALUE">
+       Delta_Lift_due_to_speedbrake
+       aero/qbar-psf|metrics/Sw-sqft|fcs/speedbrake-pos-norm
+       0
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CLde" TYPE="VALUE">
+       Lift_due_to_Elevator_Deflection
+       aero/qbar-psf|metrics/Sw-sqft|fcs/elevator-pos-rad
+       0.2
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="DRAG">
+
+    <COEFFICIENT NAME="CDo" TYPE="VALUE">
+
+       <!-- added -->
+
+       Drag_at_zero_lift
+       aero/qbar-psf | metrics/Sw-sqft
+       0.0211
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="CDalpha" TYPE="VECTOR">
+
+       <!-- - renamed from CDo.
+            - substracted Cdo 0.0211. -->
+
+       Drag_due_to_alpha
+       5
+       aero/alpha-rad
+       aero/qbar-psf|metrics/Sw-sqft
+       -1.57    1.4789
+       -0.26    0.0289
+        0.00    0.0039
+        0.26    0.0289
+        1.57    1.4789
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDi" TYPE="VALUE">
+       Induced_drag
+       aero/qbar-psf|metrics/Sw-sqft|aero/cl-squared-norm
+       0.039
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDmach" TYPE="VECTOR">
+       Drag_due_to_mach
+       4
+       velocities/mach-norm
+       aero/qbar-psf|metrics/Sw-sqft
+       0.0       0.000
+       0.7       0.000
+       1.1       0.023
+       1.8       0.015
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDflap" TYPE="VALUE">
+       Drag_due_to_flaps
+       aero/qbar-psf|metrics/Sw-sqft|fcs/components/flaps-control/output-norm
+       0.035
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDgear" TYPE="VALUE">
+       Drag_due_to_gear
+       aero/qbar-psf|metrics/Sw-sqft|gear/gear-pos-norm
+       0.023
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDsb" TYPE="VALUE">
+       Drag_due_to_speedbrakes
+       aero/qbar-psf|metrics/Sw-sqft|fcs/speedbrake-pos-norm
+       0.025
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDbeta" TYPE="VECTOR">
+       Drag_due_to_sideslip
+       5
+       aero/beta-rad
+       aero/qbar-psf|metrics/Sw-sqft
+       -1.5     1.230
+       -0.26    0.050
+        0.0     0.00
+        0.26    0.050
+        1.57    1.230
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDde" TYPE="VALUE">
+       Drag_due_to_Elevator_Deflection
+       aero/qbar-psf|metrics/Sw-sqft|fcs/elevator-pos-norm
+       0.035
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="SIDE">
+    <COEFFICIENT NAME="CYb" TYPE="VALUE">
+       Side_force_due_to_beta
+       aero/qbar-psf|metrics/Sw-sqft|aero/beta-rad
+       -1
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="ROLL">
+    <COEFFICIENT NAME="Clb" TYPE="VALUE">
+       Roll_moment_due_to_beta
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/beta-rad
+       -0.1
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Clp" TYPE="VALUE">
+       Roll_moment_due_to_roll_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/bi2vel|velocities/p-aero-rad_sec
+       -0.4
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Clr" TYPE="VALUE">
+       Roll_moment_due_to_yaw_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/bi2vel|velocities/r-aero-rad_sec
+       0.15
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Clda" TYPE="VECTOR">
+       Roll_moment_due_to_aileron
+       2
+       velocities/mach-norm
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/left-aileron-pos-rad
+       0.0       0.15
+       2.0    0.050
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cldr" TYPE="VALUE">
+       Roll_moment_due_to_rudder
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/rudder-pos-rad
+       0.01
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="PITCH">
+    <COEFFICIENT NAME="Cmalpha" TYPE="VALUE">
+       Pitch_moment_due_to_alpha
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/alpha-rad
+       -0.4
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cmde" TYPE="VECTOR">
+       Pitch_moment_due_to_elevator
+       2
+       velocities/mach-norm
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|fcs/elevator-pos-rad
+       0.0       -1
+       2.0     -0.250
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cmq" TYPE="VALUE">
+       Pitch_moment_due_to_pitch_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/ci2vel|velocities/q-aero-rad_sec
+       -22
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cmadot" TYPE="VALUE">
+       Pitch_moment_due_to_alpha_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/ci2vel|aero/alphadot-rad_sec
+       -8
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="YAW">
+    <COEFFICIENT NAME="Cnb" TYPE="VALUE">
+       Yaw_moment_due_to_beta
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/beta-rad
+       0.12
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cnr" TYPE="VALUE">
+       Yaw_moment_due_to_yaw_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/bi2vel|velocities/r-aero-rad_sec
+       -0.15
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cndr" TYPE="VALUE">
+       Yaw_moment_due_to_rudder
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/rudder-pos-rad
+       -0.1
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cnda" TYPE="VALUE">
+       Adverse_yaw
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/left-aileron-pos-rad
+       -0.008
+    </COEFFICIENT>
+  </AXIS>
+ </AERODYNAMICS>
+</FDM_CONFIG>

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 online help :
+
+     WARNING : real data are duplicated from Readme.
+-->
+
+<PropertyList>
+
+<!-- Specific keys -->
+
+   <key>
+    <name>up/down</name>
+    <desc>increase/decrease autopilot pitch</desc>
+   </key>
+   <key>
+    <name>home/end</name>
+    <desc>increase/decrease autopilot pitch (slow)</desc>
+   </key>
+   <key>
+    <name>left/right</name>
+    <desc>adjust autopilot heading</desc>
+   </key>
+   <key>
+    <name>a/A</name>
+    <desc>speed-up</desc>
+   </key>
+   <key>
+    <name>e/E</name>
+    <desc>increase/decrease propeller pitch</desc>
+   </key>
+   <key>
+    <name>q</name>
+    <desc>reset speed-up</desc>
+   </key>
+   <key>
+    <name>s</name>
+    <desc>swap 2D panels</desc>
+   </key>
+   <key>
+    <name>Ctrl-A</name>
+    <desc>Toggle altitude hold</desc>
+   </key>
+   <key>
+    <name>Ctrl-H</name>
+    <desc>Toggle autopilot (heading + pitch hold)</desc>
+   </key>
+   <key>
+    <name>Ctrl-P</name>
+    <desc>Toggle autopilot (heading + pitch hold)</desc>
+   </key>
+   <key>
+    <name>Ctrl-S</name>
+    <desc>Toggle autothrottle (speed-up only)</desc>
+   </key>
+
+<!-- FDM ops -->
+
+   <text>
+ ________________________Procedures_________________________
+ Takeoff :
+            flaps 1/4 2900 RPM,
+            rotation at 125 kt (full load), 115 kt (empty load);
+            retract gear below 165 k,
+            retract flaps below 184 kt.
+ Climb :
+            48.0 inhg, 2600 RPM.
+ Cruise :
+            220 kt at 20000 ft, 197 kt at 25000 ft.
+ Descent :
+            max pitch.
+ Approach :
+            flaps 1/4 below 184 kt;
+            gear below 165 kt, flaps 1/2 below 161 kt,
+            flaps 3/4 below 154 kt, full flaps below 148 kt. 
+ Landing :
+            maintain 120 kt (full load);
+            touch down 110 kt (full load), 100 kt (empty load).
+
+<!-- Real data -->
+ ________________________Limitations________________________
+ Vne (never exceed) : 293 kt until 11000 ft; then - 11 kt / 2000 ft
+ Vno (normal operation): 260 kt until 11000 ft, then - 9 kt / 2000 ft
+ Vne at 20000 ft : 244 kt
+ Vno at 20000 ft : 220 kt
+ Vne at 25000 ft : 216 kt
+ Vno at 25000 ft : 197 kt
+ Vf (takeoff flaps 60%) : 184 kt
+ Va (maneuvring) : 180 kt
+ Vlo (landing gear operation) : 165 kt
+ Vle (landing gear extension) : 165 kt
+ Vf (approach flaps 66%) : 161 kt
+ Vf (80%) : 153 kt
+ Vf (landing flaps 100%) : 148 kt
+   
+ ceiling : 25000 ft
+ cruise : 20000 ft
+ range : 3600 NM
+
+ take-off (2.75 minutes) at sea level : 54.5 inhg 2900 rpm
+ take-off (2.75 minutes) at 4500 ft : 52.5 inhg 2900 rpm
+ maximum at sea level : 48.0 inhg 2600 rpm
+ maximum at 5300 ft : 46.0 inhg 2600 rpm
+ maximum at 10800 ft : 47.5 inhg 2600 rpm
+ maximum at 16000 ft : 46.0 inhg 2600 rpm
+
+ max take-off : 120000 lb
+ max landing : 98500 lb
+   </text>
+
+</PropertyList>

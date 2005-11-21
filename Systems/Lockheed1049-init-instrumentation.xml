@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!-- Initialize instrumentation.
+-->
+
+<PropertyList>
+
+<!-- specific ADF -->
+
+  <adf n="1">
+   <mode>adf</mode>
+   <serviceable type="bool">true</serviceable>
+  </adf>
+
+<!-- specific -->
+
+  <terrain-warning>
+   <selector-ft>2000.0</selector-ft>
+  </terrain-warning>
+
+<!-- the kind of needle is not yet decided -->
+
+  <onmi-bearing-selector n="0">
+   <needles-pivot type="bool">false</needles-pivot>
+  </onmi-bearing-selector>
+
+  <onmi-bearing-selector n="1">
+   <needles-pivot type="bool">false</needles-pivot>
+  </onmi-bearing-selector>
+
+</PropertyList>

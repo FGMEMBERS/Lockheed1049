@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 autopilot clutch :
+
+     must disable altitude hold.
+-->
+
+<PropertyList>
+
+ <name>Autopilot clutch</name>
+ <w-base>52</w-base>
+ <h-base>52</h-base>
+
+ <layers>
+
+  <layer>
+   <name>autopilot switch</name>
+   <type>switch</type>
+
+   <layer>
+    <condition>
+     <and>
+      <not-equals>
+       <property>/autopilot/locks/altitude</property>
+       <value></value>
+      </not-equals>
+      <equals>
+       <property>/autopilot/locks/heading</property>
+       <value>dg-heading-hold</value>
+      </equals>
+     </and>
+    </condition>
+    <name>on</name>
+    <texture>
+     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/switches.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.74</y1>
+     <x2>0.25</x2>
+     <y2>1.0</y2>
+    </texture>
+    <w>40</w>
+    <h>40</h>
+    <transformations>
+     <transformation>
+     <type>y-shift</type>
+     <offset>3</offset>
+     </transformation>
+    </transformations>
+   </layer>
+
+   <layer>
+    <name>3rd state</name>
+    <condition>
+     <and>
+      <not-equals>
+       <property>/autopilot/locks/altitude</property>
+       <value></value>
+      </not-equals>
+      <equals>
+       <property>/autopilot/locks/heading</property>
+       <value>true-heading-hold</value>
+      </equals>
+     </and>
+    </condition>
+    <texture>
+     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/switches.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.47</y1>
+     <x2>0.25</x2>
+     <y2>0.745</y2>
+    </texture>
+    <w>40</w>
+    <h>42</h>
+    <transformations>
+     <transformation>
+      <type>y-shift</type>
+      <offset>1.5</offset>
+     </transformation>
+    </transformations>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <texture>
+     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/switches.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.0</y1>
+     <x2>0.25</x2>
+     <y2>0.31</y2>
+    </texture>
+    <w>40</w>
+    <h>47</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>0</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>0</offset>
+     </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Title abbreviation</name>
+   <type>text</type>
+   <point-size>16</point-size>
+   <color>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>AP ON</text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-30</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>35</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+ <actions>
+
+  <action>
+   <name>activate autopilot</name>
+   <button>0</button>
+   <x>-22</x>
+   <y>-19</y>
+   <w>44</w>
+   <h>44</h>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.apexport();</script>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/instrumentation/generic/click</property>
+   </binding>
+  </action>
+
+ </actions>
+ 
+</PropertyList>

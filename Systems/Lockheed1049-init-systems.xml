@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<!-- intialize systems :
+
+     cross feeed of engine feeding (not of tanks) is emulated.
+
+     Known problems : virtual cross feed tanks run out of fuel above X 3 speed-up.
+-->
+
+<PropertyList>
+
+<!-- Nasal -->
+
+  <fuel-pump>
+   <serviceable type="bool">true</serviceable>
+
+<!-- tanks participitating to cross feed -->
+
+   <tanks>
+    <tank n="0">
+     <cross></cross>
+    </tank>
+    <tank n="1">
+     <cross></cross>
+    </tank>
+    <tank n="2">
+     <cross></cross>
+    </tank>
+    <tank n="3">
+     <cross></cross>
+    </tank>
+    <tank n="4">
+     <cross></cross>
+    </tank>
+    <tank n="5">
+     <cross></cross>
+    </tank>
+    <tank n="6">
+     <cross></cross>
+
+<!-- virtual cross feed tanks -->
+
+    </tank>
+    <tank n="7">
+     <level-gal_us>0.0</level-gal_us>
+    </tank>
+    <tank n="8">
+     <level-gal_us>0.0</level-gal_us>
+    </tank>
+    <tank n="9">
+     <level-gal_us>0.0</level-gal_us>
+    </tank>
+    <tank n="10">
+     <level-gal_us>0.0</level-gal_us>
+    </tank>
+   </tanks>
+
+<!-- crossed engine feeding -->
+
+   <engines>
+    <engine n="0">
+     <cross></cross>
+    </engine>
+    <engine n="1">
+     <cross></cross>
+    </engine>
+    <engine n="2">
+     <cross></cross>
+    </engine>
+    <engine n="3">
+     <cross></cross>
+    </engine>
+   </engines>
+  </fuel-pump>
+
+</PropertyList>

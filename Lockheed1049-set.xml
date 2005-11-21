@@ -9,7 +9,7 @@
 
   <description>Lockheed 1049</description>
   <status>early-production</status>
-  <version>1.0</version>
+  <aircraft-version>1.0</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>

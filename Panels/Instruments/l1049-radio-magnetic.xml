@@ -336,7 +336,7 @@
       <property>/instrumentation/adf[0]/in-range</property>
      </condition>
      <texture>
-      <path>Aircraft/Concorde/Panels/Instruments/Textures/misc-1.rgb</path>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/misc-1.rgb</path>
       <x1>0.8671875</x1>
       <y1>0.25</y1>
       <x2>0.921875</x2>
@@ -361,7 +361,7 @@
     <layer>
      <name>Needle ADF 1 out of range</name>
      <texture>
-      <path>Aircraft/Concorde/Panels/Instruments/Textures/misc-1.rgb</path>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/misc-1.rgb</path>
       <x1>0.8671875</x1>
       <y1>0.25</y1>
       <x2>0.921875</x2>
@@ -491,7 +491,7 @@
       <property>/instrumentation/adf[1]/in-range</property>
      </condition>
      <texture>
-      <path>Aircraft/Concorde/Panels/Instruments/Textures/misc-1.rgb</path>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/misc-1.rgb</path>
       <x1>0.8671875</x1>
       <y1>0.25</y1>
       <x2>0.921875</x2>
@@ -516,7 +516,7 @@
     <layer>
      <name>Needle ADF 2 out of range</name>
      <texture>
-      <path>Aircraft/Concorde/Panels/Instruments/Textures/misc-1.rgb</path>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/misc-1.rgb</path>
       <x1>0.8671875</x1>
       <y1>0.25</y1>
       <x2>0.921875</x2>
@@ -763,4 +763,6 @@
  </layers>
 
 </PropertyList>
+
+
 

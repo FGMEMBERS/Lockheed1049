@@ -52,7 +52,7 @@
 <!-- If x-m = 14.3 : add 14.3 to get the horizontal GL position of an animation axis.  -->
 
 <!-- makes the wheels touch the ground, with the gear height fixed by the FDM. -->
-  <z-m>-0.50</z-m>
+  <z-m>-1.40</z-m>
 
 <!-- If z-m = -0.5 : add -0.5 to get the vertical GL position of an animation axis.  -->
  </offsets>

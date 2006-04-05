@@ -50,7 +50,7 @@
 
 
 --> 
-<FG_PISTON NAME="WrightCyclone-975C18CB1">
+<piston_engine name="Wright Cyclone 975C18CB1">
 
 <!-- fakes displacement (3350) to increase the consumption and match the range :
 
@@ -69,13 +69,13 @@
      And it can cross the Atlantic from the east (KJFK-EHAM 3156 NM direct), only with refueling at Gander or Shannon.
 -->
 
-   MINMP 6.0
-   MAXMP 54.5                                                   <!-- aeromatic 30.0 -->
-   DISPLACEMENT 16000.00                                        <!-- aeromatic 4480.00 -->
-   MAXHP 2800.00 
-   CYCLES 2.0 
-   IDLERPM 700.0 
-   MAXTHROTTLE 1.0 
-   MINTHROTTLE 0.2
+   <minmp unit="INHG">  6.0 </minmp>
+   <maxmp unit="INHG"> 54.5 </maxmp>                                         <!-- aeromatic 30.0 -->
+   <displacement unit="IN3"> 16000.00 </displacement>                        <!-- aeromatic 4480.00 -->
+   <maxhp>    2800.00 </maxhp>
+   <cycles>      2.0 </cycles>
+   <idlerpm>   700.0 </idlerpm>
+   <maxthrottle> 1.0 </maxthrottle>
+   <minthrottle> 0.2 </minthrottle>
 
-</FG_PISTON> 
+</piston_engine> 

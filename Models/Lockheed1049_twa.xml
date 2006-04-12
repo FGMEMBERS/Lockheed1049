@@ -1,14 +1,24 @@
 <?xml version="1.0"?>
 
-<!-- One shifts the model at the nose tip, where one wants the FDM to compute the movement :
+<!--
+     VRP :
+     ===
+      The model is shifts at the nose tip, where one wants the FDM to compute the movement :
      - that doesn't affect the animations.
      - that only requires a shift of panels.
      - IMPORTANT : the model is already align vertically from Blender.
 
 
+     Panels :
+     ======
+     All panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
+
+     One can use /sim/current-view to find the plan.
+
+
      Animations :
      ==========
-     Surfaces : proceed by comparison left/right.
+     1 Blender unit = 1 m.
 
      Propellers :
      - between 1800 and 2000 rpm, each propeller and its shaft are both visible.
@@ -47,15 +57,177 @@
  <offsets>
 
 <!-- shifts the model forwards : determines the horizontal position of the nose tip. -->
-  <x-m>14.3</x-m>
-
-<!-- If x-m = 14.3 : add 14.3 to get the horizontal GL position of an animation axis.  -->
+  <x-m>17.3</x-m>             <!-- half of length 113.6 ft. -->
 
 <!-- makes the wheels touch the ground, with the gear height fixed by the FDM. -->
-  <z-m>-1.40</z-m>
+  <z-m>-0.85</z-m>
 
-<!-- If z-m = -0.5 : add -0.5 to get the vertical GL position of an animation axis.  -->
  </offsets>
+
+ <!-- ======================================= -->
+ <!-- panel models (X/Y/Z depth/width/height) -->
+ <!-- ======================================= -->
+
+ <!-- PILOT -->
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-pilot.xml</path>
+   <bottom-left>
+    <x-m>-15.49</x-m>
+    <y-m>-0.600</y-m>
+    <z-m> 0.40</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-15.49</x-m>
+    <y-m> 0.580</y-m>
+    <z-m> 0.40</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-15.69</x-m>
+    <y-m>-0.600</y-m>
+    <z-m> 0.99</z-m> <!-- oval altimeter -->
+   </top-left>
+  </panel>
+
+ <!-- PEDESTAL -->
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-pedestal.xml</path>
+   <bottom-left>
+    <x-m>-14.74</x-m>
+    <y-m>-0.730</y-m>
+    <z-m> 0.50</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-14.74</x-m>
+    <y-m> 0.730</y-m>
+    <z-m> 0.50</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-15.47</x-m>
+    <y-m>-0.730</y-m>
+    <z-m> 0.50</z-m>
+   </top-left>
+  </panel>
+
+ <!-- OVERHEAD -->
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-overhead.xml</path>
+   <bottom-left>
+    <x-m>-15.57</x-m>
+    <y-m>-0.480</y-m>
+    <z-m> 1.28</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-15.57</x-m>
+    <y-m> 0.480</y-m>
+    <z-m> 1.28</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-15.09</x-m>
+    <y-m>-0.480</y-m>
+    <z-m> 1.40</z-m>
+   </top-left>
+  </panel>
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-overhead-middle.xml</path>
+   <bottom-left>
+    <x-m>-15.22</x-m>
+    <y-m>-0.480</y-m>
+    <z-m> 1.36</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-15.22</x-m>
+    <y-m> 0.480</y-m>
+    <z-m> 1.36</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-14.74</x-m>
+    <y-m>-0.480</y-m>
+    <z-m> 1.48</z-m>
+   </top-left>
+  </panel>
+
+ <!-- ENGINEER -->
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-center.xml</path>
+   <bottom-left>
+    <x-m>-14.50</x-m>
+    <y-m> 1.200</y-m>
+    <z-m> 1.02</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-13.90</x-m>
+    <y-m> 1.200</y-m>
+    <z-m> 1.02</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-14.50</x-m>
+    <y-m> 0.948</y-m> <!-- oval altimeter -->
+    <z-m> 1.16</z-m>
+   </top-left>
+  </panel>
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-lower.xml</path>
+   <bottom-left>
+    <x-m>-14.50</x-m>
+    <y-m> 1.008</y-m>
+    <z-m> 0.88</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-13.90</x-m>
+    <y-m> 1.008</y-m>
+    <z-m> 0.88</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-14.50</x-m>
+    <y-m> 1.008</y-m>
+    <z-m> 1.18</z-m>
+   </top-left>
+  </panel>
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-control.xml</path>
+   <bottom-left>
+    <x-m>-14.50</x-m>
+    <y-m> 1.128</y-m>
+    <z-m> 0.67</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-13.90</x-m>
+    <y-m> 1.128</y-m>
+    <z-m> 0.67</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-14.50</x-m>
+    <y-m> 1.428</y-m>
+    <z-m> 0.85</z-m>
+   </top-left>
+  </panel>
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-auxiliary.xml</path>
+   <bottom-left>
+    <x-m>-14.91</x-m>
+    <y-m> 1.0050</y-m>
+    <z-m> 0.17</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-13.93</x-m>
+    <y-m> 1.0050</y-m>
+    <z-m> 0.17</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-14.91</x-m>
+    <y-m> 1.4910</y-m>
+    <z-m> 0.17</z-m>
+   </top-left>
+  </panel>
+
 
 <!-- ================================== -->
 <!-- Animations (x/y/z = back/right/up) -->
@@ -69,17 +241,32 @@
    <max-m>16000</max-m>
   </animation>
 
+  <animation>
+   <type>noshadow</type>
+   <object-name>PropellerDisc1</object-name>
+   <object-name>PropellerDisc2</object-name>
+   <object-name>PropellerDisc3</object-name>
+   <object-name>PropellerDisc4</object-name>
+  </animation>
+
 <!-- OUTBOARDS PROPELLERS -->
 
  <animation>
-  <type>select</type>
+  <type>spin</type>
   <object-name>PropellerDisc1</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[0]/rpm</property>
-    <value>2000</value>
-   </greater-than-equals>
-  </condition>
+  <object-name>Propeller1</object-name>
+  <property>/engines/engine[0]/rpm</property>
+  <factor>0.4375</factor> <!-- real 16 : 7 -->
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>-9.740</y-m>
+   <z-m>-0.170</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
  </animation>
 
  <animation> 
@@ -93,20 +280,25 @@
  </animation>
 
  <animation>
-  <type>spin</type>
+  <type>select</type>
+  <object-name>Propeller1</object-name>
+  <condition>
+   <less-than>
+    <property>/engines/engine[0]/rpm</property>
+    <value>2000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
   <object-name>PropellerDisc1</object-name>
-  <property>/engines/engine[0]/rpm</property>
-  <factor>0.4375</factor> <!-- real 16 : 7 -->
-  <center>
-   <x-m>-4.5</x-m>
-   <y-m>-7.980</y-m>
-   <z-m>-0.15</z-m>
-  </center>
-  <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
-  </axis>
+  <condition>
+   <greater-than-equals>
+    <property>/engines/engine[0]/rpm</property>
+    <value>2000</value>
+   </greater-than-equals>
+  </condition>
  </animation>
 
  <animation>
@@ -120,45 +312,24 @@
   </condition>
  </animation>
 
- <animation>
-  <type>select</type>
-  <object-name>Propeller1</object-name>
-  <condition>
-   <less-than>
-    <property>/engines/engine[0]/rpm</property>
-    <value>2000</value>
-   </less-than>
-  </condition>
- </animation>
+<!-- 4 -->
 
  <animation>
   <type>spin</type>
-  <object-name>Propeller1</object-name>
-  <property>/engines/engine[0]/rpm</property>
+  <object-name>PropellerDisc4</object-name>
+  <object-name>Propeller4</object-name>
+  <property>/engines/engine[3]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
-   <x-m>-4.5</x-m>
-   <y-m>-7.980</y-m>
-   <z-m>-0.15</z-m>
+   <x-m>0.0</x-m>
+   <y-m>9.730</y-m>
+   <z-m>-0.170</z-m>
   </center>
   <axis>
    <x>1</x>
    <y>0</y>
    <z>0</z>
   </axis>
- </animation>
-
-<!-- 4 -->
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerDisc4</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[3]/rpm</property>
-    <value>2000</value>
-   </greater-than-equals>
-  </condition>
  </animation>
 
  <animation> 
@@ -172,20 +343,25 @@
  </animation>
 
  <animation>
-  <type>spin</type>
+  <type>select</type>
+  <object-name>Propeller4</object-name>
+  <condition>
+   <less-than>
+    <property>/engines/engine[3]/rpm</property>
+    <value>2000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
   <object-name>PropellerDisc4</object-name>
-  <property>/engines/engine[3]/rpm</property>
-  <factor>0.4375</factor> <!-- real 16 : 7 -->
-  <center>
-   <x-m>-4.5</x-m>
-   <y-m>7.980</y-m>
-   <z-m>-0.15</z-m>
-  </center>
-  <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
-  </axis>
+  <condition>
+   <greater-than-equals>
+    <property>/engines/engine[3]/rpm</property>
+    <value>2000</value>
+   </greater-than-equals>
+  </condition>
  </animation>
 
  <animation>
@@ -199,45 +375,24 @@
   </condition>
  </animation>
 
- <animation>
-  <type>select</type>
-  <object-name>Propeller4</object-name>
-  <condition>
-   <less-than>
-    <property>/engines/engine[3]/rpm</property>
-    <value>2000</value>
-   </less-than>
-  </condition>
- </animation>
+<!-- INBOARDS PROPELLERS -->
 
  <animation>
   <type>spin</type>
-  <object-name>Propeller4</object-name>
-  <property>/engines/engine[3]/rpm</property>
+  <object-name>PropellerDisc2</object-name>
+  <object-name>Propeller2</object-name>
+  <property>/engines/engine[1]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
-   <x-m>-4.5</x-m>
-   <y-m>7.980</y-m>
-   <z-m>-0.15</z-m>
+   <x-m>0.0</x-m>
+   <y-m>-4.700</y-m>
+   <z-m>-0.69</z-m>
   </center>
   <axis>
    <x>1</x>
    <y>0</y>
    <z>0</z>
   </axis>
- </animation>
-
-<!-- INBOARDS PROPELLERS -->
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerDisc2</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[1]/rpm</property>
-    <value>2000</value>
-   </greater-than-equals>
-  </condition>
  </animation>
 
  <animation> 
@@ -251,20 +406,25 @@
  </animation>
 
  <animation>
-  <type>spin</type>
+  <type>select</type>
+  <object-name>Propeller2</object-name>
+  <condition>
+   <less-than>
+    <property>/engines/engine[1]/rpm</property>
+    <value>2000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
   <object-name>PropellerDisc2</object-name>
-  <property>/engines/engine[1]/rpm</property>
-  <factor>0.4375</factor> <!-- real 16 : 7 -->
-  <center>
-   <x-m>-4.65</x-m>
-   <y-m>-3.855</y-m>
-   <z-m>-0.58</z-m>
-  </center>
-  <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
-  </axis>
+  <condition>
+   <greater-than-equals>
+    <property>/engines/engine[1]/rpm</property>
+    <value>2000</value>
+   </greater-than-equals>
+  </condition>
  </animation>
 
  <animation>
@@ -278,45 +438,24 @@
   </condition>
  </animation>
 
- <animation>
-  <type>select</type>
-  <object-name>Propeller2</object-name>
-  <condition>
-   <less-than>
-    <property>/engines/engine[1]/rpm</property>
-    <value>2000</value>
-   </less-than>
-  </condition>
- </animation>
+<!-- 3 -->
 
  <animation>
   <type>spin</type>
-  <object-name>Propeller2</object-name>
-  <property>/engines/engine[1]/rpm</property>
+  <object-name>PropellerDisc3</object-name>
+  <object-name>Propeller3</object-name>
+  <property>/engines/engine[2]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
-   <x-m>-4.65</x-m>
-   <y-m>-3.855</y-m>
-   <z-m>-0.58</z-m>
+   <x-m>0.0</x-m>
+   <y-m>4.670</y-m>
+   <z-m>-0.69</z-m>
   </center>
   <axis>
    <x>1</x>
    <y>0</y>
    <z>0</z>
   </axis>
- </animation>
-
-<!-- 3 -->
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerDisc3</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[2]/rpm</property>
-    <value>2000</value>
-   </greater-than-equals>
-  </condition>
  </animation>
 
  <animation> 
@@ -330,20 +469,25 @@
  </animation>
 
  <animation>
-  <type>spin</type>
+  <type>select</type>
+  <object-name>Propeller3</object-name>
+  <condition>
+   <less-than>
+    <property>/engines/engine[2]/rpm</property>
+    <value>2000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
   <object-name>PropellerDisc3</object-name>
-  <property>/engines/engine[2]/rpm</property>
-  <factor>0.4375</factor> <!-- real 16 : 7 -->
-  <center>
-   <x-m>-4.65</x-m>
-   <y-m>3.845</y-m>
-   <z-m>-0.58</z-m>
-  </center>
-  <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
-  </axis>
+  <condition>
+   <greater-than-equals>
+    <property>/engines/engine[2]/rpm</property>
+    <value>2000</value>
+   </greater-than-equals>
+  </condition>
  </animation>
 
  <animation>
@@ -357,42 +501,24 @@
   </condition>
  </animation>
 
- <animation>
-  <type>select</type>
-  <object-name>Propeller3</object-name>
-  <condition>
-   <less-than>
-    <property>/engines/engine[2]/rpm</property>
-    <value>2000</value>
-   </less-than>
-  </condition>
- </animation>
-
- <animation>
-  <type>spin</type>
-  <object-name>Propeller3</object-name>
-  <property>/engines/engine[2]/rpm</property>
-  <factor>0.4375</factor> <!-- real 16 : 7 -->
-  <center>
-   <x-m>-4.65</x-m>
-   <y-m>3.845</y-m>
-   <z-m>-0.58</z-m>
-  </center>
-  <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
-  </axis>
- </animation>
-
 <!-- FRONT GEAR -->
 
  <animation>
-  <type>select</type>
-  <object-name>FrontGear</object-name>
+  <name>NoseWheels</name>
   <object-name>FrontHub</object-name>
   <object-name>FrontTyre1</object-name>
   <object-name>FrontTyre2</object-name>
+ </animation>
+
+ <animation>
+  <name>Nose1Gear</name>
+  <object-name>FrontGear</object-name>
+  <object-name>NoseWheels</object-name>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Nose1Gear</object-name>
   <condition>
    <greater-than>
     <property>/gear/gear[0]/position-norm</property>
@@ -403,10 +529,7 @@
  
  <animation>
   <type>rotate</type>
-  <object-name>FrontGear</object-name>
-  <object-name>FrontHub</object-name>
-  <object-name>FrontTyre1</object-name>
-  <object-name>FrontTyre2</object-name>
+  <object-name>Nose1Gear</object-name>
   <property>gear/gear[0]/position-norm</property>
   <interpolation>
    <entry>
@@ -423,9 +546,9 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-11.99</x-m>
+   <x-m>-14.61</x-m>
    <y-m>0.0</y-m>
-   <z-m>-0.52</z-m>
+   <z-m>-0.62</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -436,21 +559,19 @@
 
  <animation>
   <type>rotate</type>
-  <object-name>FrontHub</object-name>
-  <object-name>FrontTyre1</object-name>
-  <object-name>FrontTyre2</object-name>
+  <object-name>NoseWheels</object-name>
   <condition>
    <less-than>
     <property>/position/altitude-agl-ft</property>
     <value>50.0</value>
    </less-than>
   </condition>
-  <property>controls/flight/rudder</property>
+  <property>/gear/gear[0]/steering-norm</property>
   <factor>-30</factor>
   <center>
-   <x-m>-12.65</x-m>
+   <x-m>-15.25</x-m>
    <y-m>0.0</y-m>
-   <z-m>-1.06</z-m>
+   <z-m>0.0</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -492,14 +613,14 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-12.27</x-m>
+   <x-m>-14.72</x-m>
    <y-m>0.0</y-m>
-   <z-m>-0.80</z-m>
+   <z-m>-0.96</z-m>
   </center>
   <axis>
    <x>1</x>
    <y>0</y>
-   <z>-0.03</z>
+   <z>-0.04</z>
   </axis>
  </animation>
 
@@ -522,9 +643,9 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-12.27</x-m>
+   <x-m>-14.94</x-m>
    <y-m>0.0</y-m>
-   <z-m>-0.80</z-m>
+   <z-m>-0.94</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -552,13 +673,13 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-10.50</x-m>
-   <y-m>-0.65</y-m>
-   <z-m>-0.77</z-m>
+   <x-m>-12.82</x-m>
+   <y-m>-0.78</y-m>
+   <z-m>-0.92</z-m>
   </center>
   <axis>
    <x>-1</x>
-   <y>0.04</y>
+   <y>0.05</y>
    <z>0</z>
   </axis>
  </animation>
@@ -582,13 +703,13 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-10.50</x-m>
-   <y-m>0.65</y-m>
-   <z-m>-0.77</z-m>
+   <x-m>-12.82</x-m>
+   <y-m>0.78</y-m>
+   <z-m>-0.92</z-m>
   </center>
   <axis>
    <x>-1</x>
-   <y>-0.04</y>
+   <y>-0.05</y>
    <z>0</z>
   </axis>
  </animation>
@@ -607,10 +728,15 @@
 <!-- LEFT GEAR -->
 
  <animation>
-  <type>select</type>
+  <name>WingLeftGear</name>
   <object-name>LeftGear</object-name>
   <object-name>LeftTyre1</object-name>
   <object-name>LeftTyre2</object-name>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>WingLeftGear</object-name>
   <condition>
    <greater-than>
     <property>/gear/gear[1]/position-norm</property>
@@ -621,9 +747,7 @@
  
  <animation>
   <type>rotate</type>
-  <object-name>LeftGear</object-name>
-  <object-name>LeftTyre1</object-name>
-  <object-name>LeftTyre2</object-name>
+  <object-name>WingLeftGear</object-name>
   <property>gear/gear[1]/position-norm</property>
   <interpolation>
    <entry>
@@ -640,9 +764,9 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-0.77</x-m>
-   <y-m>-3.85</y-m>
-   <z-m>-0.65</z-m>
+   <x-m>-0.92</x-m>
+   <y-m>-4.62</y-m>
+   <z-m>-0.79</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -670,7 +794,7 @@
   <interpolation>
    <entry>
      <ind>0.0</ind>
-     <dep>-65.0</dep>
+     <dep>64.0</dep>
    </entry>
    <entry>
      <ind>0.4</ind>
@@ -681,15 +805,13 @@
      <dep>0.0</dep>
    </entry>
   </interpolation>   
-  <center>
-   <x-m>-1.82</x-m>
-   <y-m>-4.40</y-m>
-   <z-m>-0.80</z-m>
-  </center>
   <axis>
-   <x>-1</x>
-   <y>-0.03</y>
-   <z>-0.04</z>
+   <x1-m>-3.60</x1-m>
+   <y1-m>-5.55</y1-m>
+   <z1-m>-0.97</z1-m>
+   <x2-m>-0.76</x2-m>
+   <y2-m>-5.40</y2-m>
+   <z2-m>-0.91</z2-m>
   </axis>
  </animation>
 
@@ -700,7 +822,7 @@
   <interpolation>
    <entry>
      <ind>0.0</ind>
-     <dep>-67.0</dep>
+     <dep>-64.0</dep>
    </entry>
    <entry>
      <ind>0.4</ind>
@@ -711,15 +833,13 @@
      <dep>0.0</dep>
    </entry>
   </interpolation>   
-  <center>
-   <x-m>-1.82</x-m>
-   <y-m>-3.29</y-m>
-   <z-m>-0.80</z-m>
-  </center>
   <axis>
-   <x>1</x>
-   <y>-0.06</y>
-   <z>0</z>
+   <x1-m>-3.60</x1-m>
+   <y1-m>-3.99</y1-m>
+   <z1-m>-0.97</z1-m>
+   <x2-m>-0.76</x2-m>
+   <y2-m>-4.11</y2-m>
+   <z2-m>-0.91</z2-m>
   </axis>
  </animation>
 
@@ -737,10 +857,15 @@
 <!-- RIGHT GEAR -->
 
  <animation>
-  <type>select</type>
+  <name>WingRightGear</name>
   <object-name>RightGear</object-name>
   <object-name>RightTyre1</object-name>
   <object-name>RightTyre2</object-name>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>WingRightGear</object-name>
   <condition>
    <greater-than>
     <property>/gear/gear[2]/position-norm</property>
@@ -751,9 +876,7 @@
  
  <animation>
   <type>rotate</type>
-  <object-name>RightGear</object-name>
-  <object-name>RightTyre1</object-name>
-  <object-name>RightTyre2</object-name>
+  <object-name>WingRightGear</object-name>
   <property>gear/gear[2]/position-norm</property>
   <interpolation>
    <entry>
@@ -770,9 +893,9 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-0.77</x-m>
-   <y-m>3.85</y-m>
-   <z-m>-0.65</z-m>
+   <x-m>-0.92</x-m>
+   <y-m>4.62</y-m>
+   <z-m>-0.79</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -800,7 +923,7 @@
   <interpolation>
    <entry>
      <ind>0.0</ind>
-     <dep>-65.0</dep>
+     <dep>64.0</dep>
    </entry>
    <entry>
      <ind>0.4</ind>
@@ -811,15 +934,13 @@
      <dep>0.0</dep>
    </entry>
   </interpolation>   
-  <center>
-   <x-m>-1.82</x-m>
-   <y-m>3.30</y-m>
-   <z-m>-0.80</z-m>
-  </center>
   <axis>
-   <x>-1</x>
-   <y>-0.03</y>
-   <z>-0.04</z>
+   <x1-m>-3.60</x1-m>
+   <y1-m>3.99</y1-m>
+   <z1-m>-0.97</z1-m>
+   <x2-m>-0.76</x2-m>
+   <y2-m>4.11</y2-m>
+   <z2-m>-0.91</z2-m>
   </axis>
  </animation>
 
@@ -830,7 +951,7 @@
   <interpolation>
    <entry>
      <ind>0.0</ind>
-     <dep>-67.0</dep>
+     <dep>-64.0</dep>
    </entry>
    <entry>
      <ind>0.4</ind>
@@ -841,15 +962,13 @@
      <dep>0.0</dep>
    </entry>
   </interpolation>   
-  <center>
-   <x-m>-1.82</x-m>
-   <y-m>4.41</y-m>
-   <z-m>-0.80</z-m>
-  </center>
   <axis>
-   <x>1</x>
-   <y>-0.06</y>
-   <z>0</z>
+   <x1-m>-3.60</x1-m>
+   <y1-m>5.55</y1-m>
+   <z1-m>-0.97</z1-m>
+   <x2-m>-0.76</x2-m>
+   <y2-m>5.40</y2-m>
+   <z2-m>-0.91</z2-m>
   </axis>
  </animation>
 
@@ -881,17 +1000,17 @@
     </entry>
     <entry>
      <ind>0.22</ind>
-     <dep>0.764</dep>
+     <dep>0.917</dep>
     </entry>
     <entry>
      <ind>1.0</ind>
-     <dep>0.764</dep>
+     <dep>0.917</dep>
     </entry>
   </interpolation>
   <center>
-   <x-m>0.40</x-m>
-   <y-m>-5.5</y-m>
-   <z-m>-0.12</z-m>
+   <x-m>0.48</x-m>
+   <y-m>-6.6</y-m>
+   <z-m>-0.14</z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -919,9 +1038,9 @@
     </entry>
   </interpolation>
   <center>
-   <x-m>0.40</x-m>
-   <y-m>-5.5</y-m>
-   <z-m>-0.07</z-m>
+   <x-m>0.48</x-m>
+   <y-m>-6.6</y-m>
+   <z-m>-0.08</z-m>
   </center>
   <axis>
    <x>-0.03</x>
@@ -949,9 +1068,9 @@
     </entry>
   </interpolation>
   <center>
-   <x-m>0.486</x-m>
-   <y-m>-5.5</y-m>
-   <z-m>-0.07</z-m>
+   <x-m>0.583</x-m>
+   <y-m>-6.6</y-m>
+   <z-m>-0.08</z-m>
   </center>
   <axis>
    <x>-0.03</x>
@@ -975,17 +1094,17 @@
     </entry>
     <entry>
      <ind>0.22</ind>
-     <dep>0.764</dep>
+     <dep>0.917</dep>
     </entry>
     <entry>
      <ind>1.0</ind>
-     <dep>0.764</dep>
+     <dep>0.917</dep>
     </entry>
   </interpolation>
   <center>
-   <x-m>0.40</x-m>
-   <y-m>5.5</y-m>
-   <z-m>-0.12</z-m>
+   <x-m>0.48</x-m>
+   <y-m>6.6</y-m>
+   <z-m>-0.14</z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -1015,9 +1134,9 @@
     </entry>
   </interpolation>
   <center>
-   <x-m>0.40</x-m>
-   <y-m>5.5</y-m>
-   <z-m>-0.07</z-m>
+   <x-m>0.48</x-m>
+   <y-m>6.6</y-m>
+   <z-m>-0.08</z-m>
   </center>
   <axis>
    <x>-0.03</x>
@@ -1045,9 +1164,9 @@
     </entry>
   </interpolation>
   <center>
-   <x-m>0.486</x-m> <!-- 1.25 minus 0.764 -->
-   <y-m>5.5</y-m>
-   <z-m>-0.07</z-m>
+   <x-m>0.583</x-m> <!-- 1.5 minus 0.917 -->
+   <y-m>6.6</y-m>
+   <z-m>-0.08</z-m>
   </center>
   <axis>
    <x>-0.03</x> <!-- height -->
@@ -1061,14 +1180,20 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftAileron</object-name>
+  <condition>
+   <less-than>
+    <property>/surface-positions/left-aileron-pos-norm</property>
+    <value>0.0</value>
+   </less-than>
+  </condition>
   <property>/surface-positions/left-aileron-pos-norm</property>
-  <factor>15.0</factor>
+  <factor>-10.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
   <center>
-   <x-m>0.45</x-m>
-   <y-m>-12.0</y-m>
-   <z-m>0.63</z-m>
+   <x-m>0.54</x-m>
+   <y-m>-14.4</y-m>
+   <z-m>0.76</z-m>
   </center>
   <axis>
    <x>0.030</x>
@@ -1080,13 +1205,20 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftAileron</object-name>
+  <condition>
+   <greater-than>
+    <property>/surface-positions/left-aileron-pos-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
   <property>/surface-positions/left-aileron-pos-norm</property>
-  <factor>10.0</factor>
+  <property>/surface-positions/left-aileron-pos-norm</property>
+  <factor>-25.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>0.45</x-m>
-   <y-m>-12.0</y-m>
-   <z-m>0.63</z-m>
+   <x-m>0.54</x-m>
+   <y-m>-14.4</y-m>
+   <z-m>0.76</z-m>
   </center>
   <axis>
    <x>0.030</x>
@@ -1098,14 +1230,20 @@
  <animation>
   <type>rotate</type>
   <object-name>RightAileron</object-name>
+  <condition>
+   <less-than>
+    <property>/surface-positions/right-aileron-pos-norm</property>
+    <value>0.0</value>
+   </less-than>
+  </condition>
   <property>/surface-positions/right-aileron-pos-norm</property>
-  <factor>-15.0</factor>
+  <factor>-10.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
   <center>
-   <x-m>0.45</x-m>
-   <y-m>12.0</y-m>
-   <z-m>0.63</z-m>
+   <x-m>0.54</x-m>
+   <y-m>14.4</y-m>
+   <z-m>0.76</z-m>
   </center>
   <axis>
    <x>0.030</x>
@@ -1117,13 +1255,19 @@
  <animation>
   <type>rotate</type>
   <object-name>RightAileron</object-name>
+  <condition>
+   <greater-than>
+    <property>/surface-positions/right-aileron-pos-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
   <property>/surface-positions/right-aileron-pos-norm</property>
-  <factor>-10.0</factor>
+  <factor>-25.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>0.45</x-m>
-   <y-m>12.0</y-m>
-   <z-m>0.63</z-m>
+   <x-m>0.54</x-m>
+   <y-m>14.4</y-m>
+   <z-m>0.76</z-m>
   </center>
   <axis>
    <x>0.030</x> <!-- height -->
@@ -1132,19 +1276,25 @@
   </axis>
  </animation>
 
-<!-- ELEVATOR (minus 20/40 deg real) -->
+<!-- ELEVATOR (minus 6/16 deg real) -->
 
  <animation>
   <type>rotate</type>
   <object-name>LeftElevator</object-name>
+  <condition>
+   <less-than>
+    <property>/surface-positions/elevator-pos-norm</property>
+    <value>0.0</value>
+   </less-than>
+  </condition>
   <property>/surface-positions/elevator-pos-norm</property>
-  <factor>20.0</factor>
+  <factor>6.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
   <center>
-   <x-m>13.55</x-m>
+   <x-m>16.76</x-m>
    <y-m>0.0</y-m>
-   <z-m>1.78</z-m>
+   <z-m>2.13</z-m>
   </center>
   <axis>
    <x>0.0</x>
@@ -1156,13 +1306,19 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftElevator</object-name>
+  <condition>
+   <greater-than>
+    <property>/surface-positions/elevator-pos-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
   <property>/surface-positions/elevator-pos-norm</property>
-  <factor>20.0</factor>
+  <factor>16.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>13.55</x-m>
+   <x-m>16.76</x-m>
    <y-m>0.0</y-m>
-   <z-m>1.78</z-m>
+   <z-m>2.13</z-m>
   </center>
   <axis>
    <x>0.0</x>
@@ -1174,14 +1330,20 @@
  <animation>
   <type>rotate</type>
   <object-name>RightElevator</object-name>
+  <condition>
+   <less-than>
+    <property>/surface-positions/elevator-pos-norm</property>
+    <value>0.0</value>
+   </less-than>
+  </condition>
   <property>/surface-positions/elevator-pos-norm</property>
-  <factor>-20.0</factor>
+  <factor>-6.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
   <center>
-   <x-m>13.55</x-m>
+   <x-m>16.76</x-m>
    <y-m>0.0</y-m>
-   <z-m>1.78</z-m>
+   <z-m>2.13</z-m>
   </center>
   <axis>
    <x>0.0</x>
@@ -1193,13 +1355,19 @@
  <animation>
   <type>rotate</type>
   <object-name>RightElevator</object-name>
+  <condition>
+   <greater-than>
+    <property>/surface-positions/elevator-pos-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
   <property>/surface-positions/elevator-pos-norm</property>
-  <factor>-20.0</factor>
+  <factor>-16.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>13.55</x-m>
+   <x-m>16.76</x-m>
    <y-m>0.0</y-m>
-   <z-m>1.78</z-m>
+   <z-m>2.13</z-m>
   </center>
   <axis>
    <x>0.0</x>
@@ -1217,8 +1385,8 @@
   <factor>30</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>13.2</x-m>
-   <y-m>-5.12</y-m>
+   <x-m>15.95</x-m>
+   <y-m>-6.3</y-m>
    <z-m>0.0</z-m>
   </center>
   <axis>
@@ -1235,7 +1403,7 @@
   <factor>30</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>13.1</x-m>
+   <x-m>15.95</x-m>
    <y-m>0.0</y-m>
    <z-m>0.0</z-m>
   </center>
@@ -1253,8 +1421,122 @@
   <factor>30</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>13.2</x-m>
-   <y-m>5.12</y-m>
+   <x-m>15.95</x-m>
+   <y-m>6.30</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+<!-- CAPTAIN YOKE -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CaptainYokePillar</object-name>
+  <object-name>CaptainYoke</object-name>
+  <property>/controls/flight/elevator</property>
+  <factor>-5</factor>
+  <offset-deg>-5</offset-deg>      <!-- avoids bump in seat --> 
+  <center>
+   <x-m>-14.5</x-m>
+   <y-m>-0.450</y-m>
+   <z-m>-0.24</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CaptainYoke</object-name>
+  <property>/controls/flight/aileron</property>
+  <factor>-90</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-14.5</x-m>
+   <y-m>-0.455</y-m>
+   <z-m>0.776</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotYokePillar</object-name>
+  <object-name>CopilotYoke</object-name>
+  <property>/controls/flight/elevator</property>
+  <factor>-5</factor>
+  <offset-deg>-5</offset-deg>      <!-- avoids bump in seat --> 
+  <center>
+   <x-m>-14.5</x-m>
+   <y-m>0.470</y-m>
+   <z-m>-0.24</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotYoke</object-name>
+  <property>/controls/flight/aileron</property>
+  <factor>-90</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-14.5</x-m>
+   <y-m>0.465</y-m>
+   <z-m>0.776</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- DOORS -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CrewDoor</object-name>
+  <property>/instrumentation/doors/crew/position-norm</property>
+  <factor>90</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-13.90</x-m>
+   <y-m>1.32</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassengerDoor</object-name>
+  <property>/instrumentation/doors/passenger/position-norm</property>
+  <factor>-90</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-12.55</x-m>
+   <y-m>-1.50</y-m>
    <z-m>0.0</z-m>
   </center>
   <axis>

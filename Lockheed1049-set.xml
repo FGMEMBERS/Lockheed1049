@@ -3,13 +3,21 @@
 <!-- Lockheed 1049 model 54.
 -->
 
+<!-- Version           CVS date                   Milestone
+     ==========================================================================================
+     1.0               November 2005              Aircraft, FDM, 2D panel.
+     1.1               not yet known              3D cockpit, with yokes and seats.
+     ==========================================================================================
+-->
+
+
 <PropertyList>
 
  <sim include="Nasal/Lockheed1049-sim.xml">
 
   <description>Lockheed 1049</description>
   <status>early-production</status>
-  <aircraft-version>1.0</aircraft-version>
+  <aircraft-version>1.1</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
@@ -34,12 +42,14 @@
   <sound>
    <audible>true</audible>
    <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-sound.xml</path>
-   <!-- <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-mats-sound.xml</path> -->
+<!--
+   <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-mats-sound.xml</path>
+-->
   </sound>
 
   <panel>
    <path>Aircraft/Lockheed1049/Panels/Lockheed1049-2D-captain.xml</path>
-   <visibility>true</visibility>
+   <visibility>false</visibility>
   </panel>
   <panel_2>
    <path>Aircraft/Lockheed1049/Panels/Lockheed1049-2D-engineer.xml</path>
@@ -49,7 +59,7 @@
    <path>Aircraft/Lockheed1049/Models/Lockheed1049_twa.xml</path>
   </model> 
 
-  <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
+  <chase-distance-m type="double" archive="y">-48.0</chase-distance-m>
 
   <presets include="Nasal/Lockheed1049-fuel.xml">
 

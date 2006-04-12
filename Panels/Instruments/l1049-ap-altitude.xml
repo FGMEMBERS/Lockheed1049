@@ -106,7 +106,7 @@
    <h>44</h>
    <binding>
     <command>nasal</command>
-    <script>globals.Lockheed1049.apaltitudeexport();</script>
+    <script>globals.Lockheed1049.autopilotsystem.apaltitudeexport();</script>
    </binding>
    <binding>
     <command>property-toggle</command>

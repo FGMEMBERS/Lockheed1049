@@ -2,6 +2,15 @@
 
 <PropertyList>
 
+   <key n="68">
+    <name>D</name>
+    <desc>Passenger door</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.doorsystem.passengerexport();</script>
+    </binding>
+   </key>
+
    <key n="69">
     <name>E</name>
     <desc>Decrease propeller pitch</desc>
@@ -25,6 +34,15 @@
      <command>property-adjust</command>
      <property>/controls/engines/engine[3]/propeller-pitch</property>
      <step type="double">-0.05</step>
+    </binding>
+   </key>
+
+   <key n="100">
+    <name>d</name>
+    <desc>Crew door</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.doorsystem.crewexport();</script>
     </binding>
    </key>
 
@@ -69,11 +87,33 @@
     <desc>Toggle autopilot altitude lock.</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.apaltitudeexport();</script>
+     <script>globals.Lockheed1049.autopilotsystem.apaltitudeexport();</script>
     </binding>
     <binding>
      <command>property-toggle</command>
      <property>/instrumentation/generic/click</property>
+    </binding>
+   </key>
+
+<!-- Door Seat -->
+
+   <key n="4">
+    <name>Ctrl-D</name>
+    <desc>Toggle door view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("door");</script>
+    </binding>
+   </key>
+
+<!-- Engineer Seat -->
+
+   <key n="5">
+    <name>Ctrl-E</name>
+    <desc>Toggle engineer/captain view</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("engineer");</script>
     </binding>
    </key>
 
@@ -82,11 +122,44 @@
     <desc>Toggle autopilot heading lock.</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.apexport();</script>
+     <script>globals.Lockheed1049.autopilotsystem.apexport();</script>
     </binding>
     <binding>
      <command>property-toggle</command>
      <property>/instrumentation/generic/click</property>
+    </binding>
+   </key>
+
+<!-- Copilot Seat -->
+
+   <key n="10">
+    <name>Ctrl-J</name>
+    <desc>Toggle copilot view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("copilot");</script>
+    </binding>
+   </key>
+
+<!-- Navigator Seat -->
+
+   <key n="11">
+    <name>Ctrl-K</name>
+    <desc>Toggle navigator view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("navigator");</script>
+    </binding>
+   </key>
+
+<!-- Radio Seat -->
+
+   <key n="15">
+    <name>Ctrl-O</name>
+    <desc>Toggle radio view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("radio");</script>
     </binding>
    </key>
 
@@ -95,7 +168,7 @@
     <desc>Toggle pitch hold.</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.apexport();</script>
+     <script>globals.Lockheed1049.autopilotsystem.apexport();</script>
     </binding>
     <binding>
      <command>property-toggle</command>
@@ -108,11 +181,41 @@
     <desc>Toggle auto-throttle lock.</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.atexport();</script>
+     <script>globals.Lockheed1049.autopilotsystem.atexport();</script>
     </binding>
     <binding>
      <command>property-toggle</command>
      <property>/instrumentation/generic/click</property>
+    </binding>
+   </key>
+
+<!-- Views -->
+
+   <key n="22">
+    <name>Ctrl-V</name>
+    <desc>Select initial view (view 0).</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("captain");</script>
+    </binding>
+   </key>
+
+   <key n="86">
+    <name>V</name>
+    <desc>Scroll in reverse through views.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.scrollreverseexport();</script>
+    </binding>
+   </key>
+
+   <key n="118">
+    <name>v</name>
+    <desc>Cycle view</desc>
+    <desc>Scroll through views.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.scrollexport();</script>
     </binding>
    </key>
 
@@ -125,12 +228,8 @@
     <binding>
      <command>nasal</command>
      <script>
-       altitudemode = getprop("/autopilot/locks/altitude");
-       if( altitudemode != nil and altitudemode != "" ) {
-           globals.Lockheed1049.pitchexport(5.0);
-       }
-       # default
-       else {
+       if( !globals.Lockheed1049.autopilotsystem.pitchexport(5.0) ) {
+           # default
            controls.incElevator(0.05, -100);
        }
      </script>
@@ -144,12 +243,8 @@
     <binding>
      <command>nasal</command>
      <script>
-       altitudemode = getprop("/autopilot/locks/altitude");
-       if( altitudemode != nil and altitudemode != "" ) {
-           globals.Lockheed1049.pitchexport(-5.0);
-       }
-       # default
-       else {
+       if( !globals.Lockheed1049.autopilotsystem.pitchexport(-5.0) ) {
+           # default
            controls.incElevator(-0.05, 100);
        }
      </script>
@@ -163,12 +258,8 @@
     <binding>
      <command>nasal</command>
      <script>
-       altitudemode = getprop("/autopilot/locks/altitude");
-       if( altitudemode != nil and altitudemode != "" ) {
-           globals.Lockheed1049.pitchexport(1.0);
-       }
-       # default
-       else {
+       if( !globals.Lockheed1049.autopilotsystem.pitchexport(1.0) ) {
+           # default
            trim = getprop("/controls/flight/elevator-trim");
            trim = trim + 0.001;
            setprop("/controls/flight/elevator-trim",trim);
@@ -184,12 +275,8 @@
     <binding>
      <command>nasal</command>
      <script>
-       altitudemode = getprop("/autopilot/locks/altitude");
-       if( altitudemode != nil and altitudemode != "" ) {
-           globals.Lockheed1049.pitchexport(-1.0);
-       }
-       # default
-       else {
+       if( !globals.Lockheed1049.autopilotsystem.pitchexport(-1.0) ) {
+           # default
            trim = getprop("/controls/flight/elevator-trim");
            trim = trim - 0.001;
            setprop("/controls/flight/elevator-trim",trim);

@@ -42,8 +42,8 @@
      <type>rotation</type>
       <property alias="../../../../../params/content-select"/>
       <min>0</min>
-      <max>730</max>
-      <scale>0.41</scale>
+      <max>4620</max>
+      <scale>0.06212</scale>
       <offset>216</offset>
     </transformation>
     <transformation>

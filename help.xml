@@ -26,28 +26,52 @@
     <desc>speed-up</desc>
    </key>
    <key>
+    <name>d</name>
+    <desc>crew door</desc>
+   </key>
+   <key>
+    <name>D</name>
+    <desc>passenger Door</desc>
+   </key>
+   <key>
     <name>e/E</name>
     <desc>increase/decrease propeller pitch</desc>
    </key>
    <key>
     <name>q</name>
-    <desc>reset speed-up</desc>
+    <desc>quit speed-up</desc>
    </key>
    <key>
     <name>s</name>
-    <desc>swap 2D panels</desc>
+    <desc>swaps 2D panel</desc>
    </key>
    <key>
     <name>Ctrl-A</name>
     <desc>Toggle altitude hold</desc>
    </key>
    <key>
-    <name>Ctrl-H</name>
-    <desc>Toggle autopilot (heading + pitch hold)</desc>
+    <name>Ctrl-H / Ctrl-P</name>
+    <desc>Toggle heading with pitch hold</desc>
    </key>
    <key>
-    <name>Ctrl-P</name>
-    <desc>Toggle autopilot (heading + pitch hold)</desc>
+    <name>Ctrl-D</name>
+    <desc>door view</desc>
+   </key>
+   <key>
+    <name>Ctrl-E</name>
+    <desc>engineer view</desc>
+   </key>
+   <key>
+    <name>Ctrl-J</name>
+    <desc>copilot view</desc>
+   </key>
+   <key>
+    <name>Ctrl-K</name>
+    <desc>navigator view</desc>
+   </key>
+   <key>
+    <name>Ctrl-O</name>
+    <desc>radio view</desc>
    </key>
    <key>
     <name>Ctrl-S</name>
@@ -60,7 +84,7 @@
  ________________________Procedures_________________________
  Takeoff :
             flaps 1/4 2900 RPM,
-            rotation at 125 kt (full load), 115 kt (empty load);
+            rotation at 135 kt (full load), 125 kt (landing load);
             retract gear below 165 k,
             retract flaps below 184 kt.
  Climb :
@@ -74,8 +98,8 @@
             gear below 165 kt, flaps 1/2 below 161 kt,
             flaps 3/4 below 154 kt, full flaps below 148 kt. 
  Landing :
-            maintain 120 kt (full load);
-            touch down 110 kt (full load), 100 kt (empty load).
+            maintain 120 kt (landing load);
+            touch down 110 kt (landing load), 100 kt (empty load).
 
 <!-- Real data -->
  ________________________Limitations________________________

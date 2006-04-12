@@ -2,7 +2,7 @@
 
 <!-- MATS Constellation real sounds from Bernd Drefahl, which seems to be the C-121A / L-749A N494TW.
 
-     Available at http://wwww.flightsim.com, as consound.zip (FS98 sound).
+     Available at http://wwww.flightsim.com, as consound.zip (FS98 sound, 1.5 MB).
 
      Since this file is not GPL, you must download and install yourself the sounds :
      - Con_1, Con_2, Con_3, Con_4 and Conidle.
@@ -1487,6 +1487,34 @@
    <reference-dist>10.0</reference-dist>
    <max-dist>20.0</max-dist>
   </stall>
+
+  <door>
+   <name>Crew door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/instrumentation/doors/crew/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
+
+  <door>
+   <name>Passenger door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/instrumentation/doors/passenger/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
 
 <!-- cannot disable click in external views, otherwise heard when ctrl-V -->
 

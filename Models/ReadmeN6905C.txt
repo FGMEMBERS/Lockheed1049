@@ -17,7 +17,7 @@ successors (which ?) (F), announcing the 1649.
 
 Model
 =====
-The following proportions are respected :
+The following proportions are respected (1 Blender unit = 1 m) :
 - overall length and width.
 - in length : wing 3/6, rudder 5/6.
 - in height : fuselage maximum / gear clearance 11.6/7.
@@ -29,14 +29,21 @@ The following proportions are respected :
 For the transparency, propeller discs must be the last of the file (all other objects belong to a
 fuselage group at the export).
 
+The door animation controls the 3D cockpit fitting.
+
+Inspired by N6937C (F) :
+- navigator station.
+
 VRP
-...
+---
 The model is aligned vertically along the nose axis, but is still centered horizontally on the center of gravity :
 - that is more handy with the Blender grid. 
 - the alignment of VRP to the nose tip is finished by XML (horizontal offset).
 
 Texturing
 ---------
+The flag on the right side is reversed (A).
+
 The double red line, the grey ellipse below the fuselage (except the rounded ends), are delimited by the mesh.
 
 Wings :
@@ -47,18 +54,26 @@ Wings :
 Colours inspired by N6937C (F) :
 - blade tips. (red and white)
 - interior (beige).
+- cockpit (green, black and beige).
+
+The cockpit texture without alpha makes the 2D instruments visible on a panel;
+the other texture with alpha is for clipping.
 
 
 TO DO
 =====
+- external lights.
+- spin tyres.
+- smoke at engine start.
+- door to the crew compartment.
+- radio and navigator seats.
+- rudder pedals
 
 
 Known problems
 ==============
-
-Known problems TWA livery
--------------------------
 - since the livery is not a skin, it would be difficult to repaint it.
+- doors too thick ?
 
 
 References
@@ -66,10 +81,10 @@ References
 (A) http://www.airliners.net/open.file/099490/L/ :
     L1049, Star of the Rhone, Los Angeles, 1957.
 
-(B) http://www.geocities.com/~aeromoe/fleets/tw.html/ :
+(B) http://www.geocities.com/~aeromoe/fleets/tw.html :
     TWA.
 
-(C) http://www.geocities.com/~aeromoe/fleets/calhaw.html/ :
+(C) http://www.geocities.com/~aeromoe/fleets/calhaw.html :
     sold to California Hawaiian.
 
 (D) http://www.aerotransport.org/php/go.php?q=regn+N6905C :
@@ -78,7 +93,7 @@ References
 (E) http://www.airliners.net/open.file/099489/L/ :
     L1049, Star of Sicily, Los Angeles, 1957.
 
-(F) http://www.conniesurvivors.com/N6937C.htm/ :
+(F) http://www.conniesurvivors.com/N6937C.htm :
     L1049H.
 
     http://www.eflightmanuals.com/ :
@@ -95,4 +110,4 @@ GPL licence
 Contact devel-list for the .blend file (Blender 2.36).
 
 
-10 August 2005.
+21 March 2006.

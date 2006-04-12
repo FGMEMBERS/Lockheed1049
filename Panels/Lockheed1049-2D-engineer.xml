@@ -132,8 +132,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-inboard.xml">
    <name>Tanks 2 and 3</name>
    <params>
-    <left-level-select>/consumables/fuel/tank[1]/level-gal_us</left-level-select>
-    <right-level-select>/consumables/fuel/tank[2]/level-gal_us</right-level-select>
+    <left-level-select>/consumables/fuel/tank[1]/level-lb</left-level-select>
+    <right-level-select>/consumables/fuel/tank[2]/level-lb</right-level-select>
    </params>
    <x>550</x>
    <y>440</y>
@@ -144,8 +144,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-middle.xml">
    <name>Tanks 1 and 4</name>
    <params>
-    <left-level-select>/consumables/fuel/tank[0]/level-gal_us</left-level-select>
-    <right-level-select>/consumables/fuel/tank[3]/level-gal_us</right-level-select>
+    <left-level-select>/consumables/fuel/tank[0]/level-lb</left-level-select>
+    <right-level-select>/consumables/fuel/tank[3]/level-lb</right-level-select>
    </params>
    <x>660</x>
    <y>440</y>
@@ -156,7 +156,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-center.xml">
    <name>Tank 5</name>
    <params>
-    <content-select>/consumables/fuel/tank[4]/level-gal_us</content-select>
+    <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
    </params>
    <x>550</x>
    <y>550</y>
@@ -167,8 +167,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-outboard.xml">
    <name>Tanks 2A and 3A</name>
    <params>
-    <left-level-select>/consumables/fuel/tank[5]/level-gal_us</left-level-select>
-    <right-level-select>/consumables/fuel/tank[6]/level-gal_us</right-level-select>
+    <left-level-select>/consumables/fuel/tank[5]/level-lb</left-level-select>
+    <right-level-select>/consumables/fuel/tank[6]/level-lb</right-level-select>
    </params>
    <x>660</x>
    <y>550</y>
@@ -227,6 +227,14 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   </instrument>
 
 <!-- Engineer panel bottom middle -->
+
+  <instrument include="Instruments/l1049-door-warning.xml">
+   <name>Door Warning Light</name>
+   <x>255</x>
+   <y>370</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
 
   <instrument include="../../Instruments/clock.xml">
    <name>Chronometer</name>

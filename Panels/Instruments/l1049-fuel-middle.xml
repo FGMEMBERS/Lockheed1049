@@ -11,8 +11,8 @@ Adapted from Martin Dressler dr@musicabona.cz
  <w-base>512</w-base>
  <h-base>512</h-base>
  <params>
-  <left-level-select>/consumables/fuel/tank[0]/level-gal_us</left-level-select>
-  <right-level-select>/consumables/fuel/tank[1]/level-gal_us</right-level-select>
+  <left-level-select>/consumables/fuel/tank[0]/level-lb</left-level-select>
+  <right-level-select>/consumables/fuel/tank[1]/level-lb</right-level-select>
  </params>
  
  <layers>
@@ -56,15 +56,15 @@ Adapted from Martin Dressler dr@musicabona.cz
      <type>rotation</type>
      <property alias="../../../../../params/left-level-select"/>
      <min>0.0</min>
-     <max>1600.0</max>
+     <max>10560.0</max>
      <scale>1.0</scale>
      <interpolation>
       <entry><ind>     0</ind><dep> 56.0</dep></entry>
-      <entry><ind>   320</ind><dep> 33.5</dep></entry>
-      <entry><ind>   640</ind><dep> 11.0</dep></entry>
-      <entry><ind>   960</ind><dep>-11.5</dep></entry>
-      <entry><ind>  1280</ind><dep>-32.5</dep></entry>
-      <entry><ind>  1600</ind><dep>-53.0</dep></entry>
+      <entry><ind>  2112</ind><dep> 33.5</dep></entry>
+      <entry><ind>  4224</ind><dep> 11.0</dep></entry>
+      <entry><ind>  6336</ind><dep>-11.5</dep></entry>
+      <entry><ind>  8448</ind><dep>-32.5</dep></entry>
+      <entry><ind> 10560</ind><dep>-53.0</dep></entry>
      </interpolation>
      <offset>0</offset>
     </transformation>
@@ -111,15 +111,15 @@ Adapted from Martin Dressler dr@musicabona.cz
      <type>rotation</type>
      <property alias="../../../../../params/right-level-select"/>
      <min>0.0</min>
-     <max>1600.0</max>
+     <max>10560.0</max>
      <scale>1.0</scale>
      <interpolation>
       <entry><ind>     0</ind><dep>124.0</dep></entry>
-      <entry><ind>   320</ind><dep>146.5</dep></entry>
-      <entry><ind>   640</ind><dep>169.0</dep></entry>
-      <entry><ind>   960</ind><dep>191.5</dep></entry>
-      <entry><ind>  1280</ind><dep>212.5</dep></entry>
-      <entry><ind>  1600</ind><dep>233.0</dep></entry>
+      <entry><ind>  2112</ind><dep>146.5</dep></entry>
+      <entry><ind>  4224</ind><dep>169.0</dep></entry>
+      <entry><ind>  6336</ind><dep>191.5</dep></entry>
+      <entry><ind>  8448</ind><dep>212.5</dep></entry>
+      <entry><ind> 10560</ind><dep>233.0</dep></entry>
      </interpolation>
      <offset>0</offset>
     </transformation>

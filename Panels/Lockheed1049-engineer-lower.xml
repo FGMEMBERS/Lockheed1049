@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049, engineer lower panel.
+
+
+_______________________________________________________________________
+
+This is a panel configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the panel's background texture and
+the location (and optionally, size) of the instruments that will
+appear on the panel.
+
+Each instrument is, itself, defined in an XML-encoded property list
+in a separate file.
+
+Co-ordinates are relative to the *bottom* left corner of the screen
+(as in OpenGL).  The total FlightGear window is always considered to
+be 1024x768, whatever its actual display size on the screen.  All
+paths are relative to $FG_ROOT.
+
+Note that the name of the element defining each instrument must be
+different, or else instrument definitions will be overwritten:
+that's not particularly XML-ish, but that's how property lists
+work in FlightGear right now.
+
+Each instrument has its own preferred width and height, but you can
+override those by providing <w>..</w> and <h>..</h> properties with the
+<x>...</x> and <y>...</y> properties.
+
+-->
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+ <name>Lockheed 1049 engineer lower Panel</name>
+ <background>Aircraft/Lockheed1049/Panels/Textures/transparent-bg.rgb</background>
+ <w>1024</w>
+ <h>512</h>
+ <y-offset>0</y-offset>
+ <view-height>500</view-height>
+
+ <instruments>
+
+<!-- Engineer panel bottom left -->
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 1 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[0]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>60</x>
+   <y>240</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 2 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[1]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>180</x>
+   <y>240</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 3 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[2]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>60</x>
+   <y>120</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 4 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[3]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>180</x>
+   <y>120</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+<!-- Engineer panel bottom middle -->
+
+  <instrument include="Instruments/l1049-tachometer.xml">
+   <name>Engine 1 and 2 tachometer</name>
+   <params>
+    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+    <rpm2-select>/engines/engine[1]/rpm</rpm2-select>
+   </params>
+   <x>320</x>
+   <y>150</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-tachometer.xml">
+   <name>Engine 3 and 4 tachometer</name>
+   <params>
+    <rpm-select>/engines/engine[2]/rpm</rpm-select>
+    <rpm2-select>/engines/engine[3]/rpm</rpm2-select>
+   </params>
+   <x>440</x>
+   <y>150</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-pitch-low-high.xml">
+   <name>Propeller 1 pitch indicator</name>
+   <params>
+    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+    <engine-select>/engines/engine[0]/engine-num</engine-select>
+   </params>
+   <x>295</x>
+   <y>80</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-pitch-low-high.xml">
+   <name>Propeller 2 pitch indicator</name>
+   <params>
+    <rpm-select>/engines/engine[1]/rpm</rpm-select>
+    <engine-select>/engines/engine[1]/engine-num</engine-select>
+   </params>
+   <x>345</x>
+   <y>80</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-pitch-low-high.xml">
+   <name>Propeller 3 pitch indicator</name>
+   <params>
+    <rpm-select>/engines/engine[2]/rpm</rpm-select>
+    <engine-select>/engines/engine[2]/engine-num</engine-select>
+   </params>
+   <x>415</x>
+   <y>80</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-pitch-low-high.xml">
+   <name>Propeller 4 pitch indicator</name>
+   <params>
+    <rpm-select>/engines/engine[3]/rpm</rpm-select>
+    <engine-select>/engines/engine[3]/engine-num</engine-select>
+   </params>
+   <x>465</x>
+   <y>80</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-manifold-pressure.xml">
+   <name>Engine 1 and 2 manifold</name>
+   <params>
+    <mp-select>/engines/engine[0]/mp-osi</mp-select>
+    <mp2-select>/engines/engine[1]/mp-osi</mp2-select>
+   </params>
+   <x>320</x>
+   <y>0</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-manifold-pressure.xml">
+   <name>Engine 3 and 4 manifold</name>
+   <params>
+    <mp-select>/engines/engine[2]/mp-osi</mp-select>
+    <mp2-select>/engines/engine[3]/mp-osi</mp2-select>
+   </params>
+   <x>440</x>
+   <y>0</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+<!-- Engineer panel bottom between -->
+
+  <instrument include="Instruments/l1049-door-warning.xml">
+   <name>Door Warning Light</name>
+   <x>300</x>
+   <y>365</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="../../Instruments/clock.xml">
+   <name>Chronometer</name>
+   <x>535</x>
+   <y>325</y>
+   <w>80</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-speed-up.xml">
+   <name>Speed up</name>
+   <x>550</x>
+   <y>120</y>
+   <w>10</w>
+   <h>40</h>
+  </instrument>
+
+<!-- Engineer panel bottom right -->
+
+  <instrument include="Instruments/l1049-oil-pressure.xml">
+   <name>Engine 1 and 2 oil pressure</name>
+   <params>
+    <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
+    <oil2-select>/engines/engine[1]/oil-pressure-psi</oil2-select>
+   </params>
+   <x>680</x>
+   <y>190</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-oil-pressure.xml">
+   <name>Engine 3 and 4 oil pressure</name>
+   <params>
+    <oil-select>/engines/engine[2]/oil-pressure-psi</oil-select>
+    <oil2-select>/engines/engine[3]/oil-pressure-psi</oil2-select>
+   </params>
+   <x>800</x>
+   <y>190</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-oil-pressure-low.xml">
+   <name>Oil pressure 1 low indicator</name>
+   <params>
+    <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
+   </params>
+   <x>655</x>
+   <y>120</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-oil-pressure-low.xml">
+   <name>Oil pressure 2 low indicator</name>
+   <params>
+    <oil-select>/engines/engine[1]/oil-pressure-psi</oil-select>
+   </params>
+   <x>705</x>
+   <y>120</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-oil-pressure-low.xml">
+   <name>Oil pressure 3 low indicator</name>
+   <params>
+    <oil-select>/engines/engine[2]/oil-pressure-psi</oil-select>
+   </params>
+   <x>775</x>
+   <y>120</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-oil-pressure-low.xml">
+   <name>Oil pressure 4 low indicator</name>
+   <params>
+    <oil-select>/engines/engine[3]/oil-pressure-psi</oil-select>
+   </params>
+   <x>825</x>
+   <y>120</y>
+   <w>45</w>
+   <h>17</h>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>

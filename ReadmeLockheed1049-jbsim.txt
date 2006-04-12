@@ -44,7 +44,7 @@ The range of 1049 should be 3580 NM = 4760 x (1890 / 2510).
 Lockheed 1049 ops
 =================
 - take-off : - flaps 1/4, 2900 RPM.
-             - rotation 125 kt (full load), 115 kt (empty load) : raise slowly the nose until the gear lefts the ground.
+             - rotation 135 kt (full load), 125 kt (landing load) : raise slowly the nose until the gear lefts the ground.
              - retract gear below 165 kt.
              - retract flaps below 184 kt.
 - climb    : - 48 inhg, below 2600 RPM.
@@ -57,25 +57,39 @@ Lockheed 1049 ops
              - flaps 1/2 below 161 kt.
              - flaps 3/4 below 153 kt.
              - full flaps below 148 kt.
-             - maintain 125 kt (full load). 
-- landing  : 110 kt (full load), 100 kt (empty load).
+             - maintain 125 kt (landing load). 
+- landing  : 110 kt (landing load), 100 kt (empty load).
 
 
 Customizing
 ===========
+If your preferences.xml doesn't have 6 views, update Nasal/Lockheed1049-views.xml.
+
+Fuel load
+---------
 Default is maximum landing weight, 98500 lb.
 For maximum takeoff weight, 120000 lb, set /sim/presets/fuel to 1.
-For other configurations, see Lockheed1049-fuel.xml.
+For other configurations, see Nasal/Lockheed1049-fuel.xml.
 
 Sounds
 ------
-See Lockheed1049-mats-sound.xml to install Constellation sounds (recommended).
+See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommended).
 
 
 Keyboard
 ========
+- "d"     : crew "d"oor.
+- "D"     : passenger "D"oor.
 - "e / E" : increases / decreases propeller pitch.
-- "q"     : resets speed up to 1.
+- "q"     : quit speed up.
+
+Views
+-----
+- "ctrl-D" : "D"oor view.
+- "ctrl-E" : "E"ngineer view.
+- "ctrl-J" : Copilot view.
+- "ctrl-K" : Navigator view.
+- "ctrl-O" : radi"O" view.
 
 Unchanged behaviour
 -------------------
@@ -145,7 +159,8 @@ JSBSim
 
 TO DO
 =====
-- 3D cockpit.
+- 2D textures and 3D instruments.
+- systems.
 
 TO DO JSBSim
 -------------
@@ -161,6 +176,8 @@ Known problems JSBSim
 - cross feed emulation until speed-up X 3, when empty tank.
 - fakes the displacement to get the real range.
 - at rest, idle engine (700 RPM) may yet stop by very low pressure (altimeter 29.49 inhg).
+- at rest, idle engine (700 RPM) may stop by normal pressure (altimeter 29.89 inhg),
+  when the RPM goes strongly below 700 RPM, by a curt throttle : visible by RPM oscillating around 700 RPM.
 
 Known problems 2D instrument 
 ----------------------------
@@ -189,4 +206,4 @@ References
 (F) http://aviatechno.free.fr/constellation/constellation.php :
 
 
-12 November 2005.
+24 December 2005.

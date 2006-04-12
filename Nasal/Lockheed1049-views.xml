@@ -1,36 +1,217 @@
 <?xml version="1.0"?>
 
-<!-- By default, the external views look at the FDM movement point, which is by default a CG.
+<!-- CAUTION, if preferences.xml isn't with 6 views, update below /sim/number-views.
+
+     IMPORTANT : the index of views is automatically created, and then retrieved by Nasal.
+
+
+     VRP :
+     ===
+     The external views look at the FDM movement point, which is by default a CG.
      But the CG moves with time, while the view point is hard coded.
 
      The solution is to hard code the movement point :
      - sets the gear height and CG, and VRP to nose tip, inside the FDM.
-     - shifts the model at nose tip : one gets 14.3 m in length.
+     - shifts the model at nose tip : one gets 17.3 m in length.
+
+
+      Known problem :
+      =============
+      The view points slightly above the nose, once the gear of the 3D model touches the ground.
 -->
 
 <PropertyList>
 
 <!-- pilot in the cockpit -->
 
-  <view>
+  <view n= "0">
    <internal archive="y">true</internal>
    <config>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">-0.2</x-offset-m>
-     <y-offset-m archive="y">-0.58</y-offset-m>
-     <z-offset-m archive="y">1.65</z-offset-m>
-     <pitch-offset-deg>-5</pitch-offset-deg>
+     <x-offset-m archive="y">-0.45</x-offset-m>
+     <y-offset-m archive="y">0.23</y-offset-m>
+     <z-offset-m archive="y">2.25</z-offset-m>  <!-- with VSI -->
+     <pitch-offset-deg>-17</pitch-offset-deg>   <!-- towards instruments -->
    </config>
   </view>
 
-<!-- looks at the 3D model origin : determines the length of the real FDM movement -->
+<!-- shift from nose to CG, to make the view natural :
+     put in comment to check that the view really points at the nose.
+-->
 
   <view n="1">
    <config>
-     <target-z-offset-m archive="y">14.3</target-z-offset-m>
+     <target-z-offset-m archive="y">17.3</target-z-offset-m>
+   </config>
+  </view>
+
+  <view n="2">
+   <config>
+     <target-z-offset-m archive="y">17.3</target-z-offset-m>
+   </config>
+  </view>
+
+  <view n="5">
+   <config>
+     <target-z-offset-m archive="y">17.3</target-z-offset-m>
    </config>
   </view>
 
 <!-- other views look at the nose tip -->
+
+  <!-- additional seats. -->
+
+  <current-view>
+   <seat>
+    <captain type="bool">true</captain>
+    <engineer type="bool">false</engineer>
+    <radio type="bool">false</radio>
+    <copilot type="bool">false</copilot>
+    <navigator type="bool">false</navigator>
+    <door type="bool">false</door>
+   </seat>
+  </current-view>
+
+  <number-views type="int">11</number-views>            <!-- MANDATORY, cannot be updated by nasal -->
+
+  <view>
+    <name>Engineer View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">0.48</x-offset-m>
+     <y-offset-m archive="y">0.07</y-offset-m> <!-- head below the window -->
+     <z-offset-m archive="y">3.06</z-offset-m> <!-- centered on table -->
+     <pitch-offset-deg>0</pitch-offset-deg>
+     <heading-offset-deg type="double">270</heading-offset-deg> <!-- parallel to the panel -->
+    </config>
+  </view>
+
+  <view>
+    <name>Radio View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">-0.48</x-offset-m>
+     <y-offset-m archive="y">0.07</y-offset-m> <!-- like engineer -->
+     <z-offset-m archive="y">3.11</z-offset-m> <!-- centered on table -->
+     <pitch-offset-deg>-7</pitch-offset-deg>
+     <heading-offset-deg type="double">90</heading-offset-deg> <!-- parallel to the panel -->
+    </config>
+  </view>
+
+  <view>
+    <name>Copilot View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">0.45</x-offset-m> <!-- symmetry with captain -->
+     <y-offset-m archive="y">0.23</y-offset-m>
+     <z-offset-m archive="y">2.25</z-offset-m>
+     <pitch-offset-deg>3</pitch-offset-deg>
+     <heading-offset-deg type="double">291</heading-offset-deg> <!-- inside its window -->
+    </config>
+  </view>
+
+  <view>
+    <name>Navigator View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">-0.86</x-offset-m>  <!-- centered on desk -->
+     <y-offset-m archive="y">0.12</y-offset-m>  <!-- higher -->
+     <z-offset-m archive="y">4.98</z-offset-m>   <!-- behind desk -->
+     <heading-offset-deg type="double">0</heading-offset-deg> <!-- parallel to the panel -->
+     <pitch-offset-deg>0</pitch-offset-deg>  <!-- looking at panel -->
+    </config>
+  </view>
+
+  <view>
+    <name>Door View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">0.0</x-offset-m>    <!-- outside the door -->
+     <y-offset-m archive="y">0.32</y-offset-m>  <!-- standing -->
+     <z-offset-m archive="y">4.98</z-offset-m>   <!-- behind the door -->
+     <heading-offset-deg type="double">0</heading-offset-deg> <!-- towards the cockpit -->
+     <pitch-offset-deg>0</pitch-offset-deg>
+    </config>
+  </view>
 
 </PropertyList>

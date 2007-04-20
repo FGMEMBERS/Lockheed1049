@@ -47,6 +47,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 1</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <params>
     <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[0]/starter</starter-select>
@@ -59,6 +71,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 2</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <params>
     <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[1]/starter</starter-select>
@@ -71,6 +95,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 3</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <params>
     <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[2]/starter</starter-select>
@@ -83,6 +119,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 4</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <params>
     <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[3]/starter</starter-select>

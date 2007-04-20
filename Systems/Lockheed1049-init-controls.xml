@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!-- - creates booleans (impossible with Nasal), which would otherwise be empty strings by default.
+     - makes more readable the initialization state.
+-->
+
+<PropertyList>
+
+  <autoflight>
+   <altitude-switch type="bool">false</altitude-switch>
+   <autopilot>
+    <engaged type="bool">false</engaged>
+   </autopilot>
+  </autoflight>
+
+  <crew>
+   <copilot type="bool">false</copilot>
+   <minimized-s>10.0</minimized-s>
+  </crew>
+
+  <fuel>
+   <engine n="0">
+    <cross-feed>0.0</cross-feed>
+   </engine>
+   <engine n="1">
+    <cross-feed>0.0</cross-feed>
+   </engine>
+   <engine n="2">
+    <cross-feed>0.0</cross-feed>
+   </engine>
+   <engine n="3">
+    <cross-feed>0.0</cross-feed>
+   </engine>
+  </fuel>
+
+  <seat>
+   <all type="bool">false</all>
+   <pedal>
+    <copilot-m>-0.05</copilot-m>                                   <!-- has longer legs -->
+   </pedal>
+   <recover type="bool">false</recover>
+  </seat>
+
+</PropertyList>

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!-- WARNING : The combo must correspond to the comment field in
+               Aircraft/Lockheed1049/Nasal/Lockheed1049-fuel.xml.
+-->
+
+<PropertyList>
+  <name>Lockheed1049-fuel</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Constellation fuel</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <label>Tanks filling  ~</label>
+      <halign>left</halign>
+    </text>
+    <combo>
+      <pref-width>200</pref-width>
+      <property>/systems/fuel/tanks/dialog</property>
+      <value>max landing</value>
+      <value>max takeoff</value>
+      <value>empty</value>
+      <value>cross feed</value>
+    </combo>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>OK</legend>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.fuelsystem.menuexport();</script>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+</PropertyList>

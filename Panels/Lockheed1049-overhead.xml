@@ -47,6 +47,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <x>360</x>
    <y>450</y>
    <w>200</w>
@@ -55,6 +67,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/navcom-kx155.xml">
    <name>NavCom 2 Radio</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <params>
     <comm-freq-selected-prop>/instrumentation/comm[1]/frequencies/selected-mhz</comm-freq-selected-prop>
     <comm-freq-standby-prop>/instrumentation/comm[1]/frequencies/standby-mhz</comm-freq-standby-prop>
@@ -71,6 +95,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/adf-radio.xml">
    <name>ADF Radio</name>
+   <condition>
+    <or>
+     <and>
+      <property>/sim/current-view/internal</property>
+      <or>
+       <property>/systems/seat/captain</property>
+       <property>/systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>/controls/seat/all</property>
+    </or>
+   </condition>
    <params>
     <adf-freq-selected-prop>/instrumentation/adf[0]/frequencies/selected-khz</adf-freq-selected-prop>
     <adf-freq-standby-prop>/instrumentation/adf[1]/frequencies/selected-khz</adf-freq-standby-prop>

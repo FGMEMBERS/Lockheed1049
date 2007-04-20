@@ -68,7 +68,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 2 throttle</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>
@@ -84,7 +84,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 3 throttle</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>
@@ -100,7 +100,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 4 throttle</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>
@@ -116,7 +116,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 1 mixture</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>
@@ -132,7 +132,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 2 mixture</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>
@@ -148,7 +148,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 3 mixture</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>
@@ -164,7 +164,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Engine 4 mixture</name>
    <condition>
     <not>
-     <property>/sim/current-view/seat/copilot</property>
+     <property>/systems/seat/copilot</property>
     </not>
    </condition>
    <params>

@@ -6,14 +6,15 @@
 
     <fileheader>
         <author> </author>
-        <filecreationdate> 30 March 2006 </filecreationdate>
-        <version> 1.01 </version>
+        <filecreationdate> 14 April 2006 </filecreationdate>
+        <version> 1.02 </version>
         <description> Lockheed1049-54 </description>
 
         <note>Super Constellation 1049-54 (first version).</note>
         <note>origin of metrics at nose tip.</note>
         <note>VRP at nose tip.</note>
 
+        <limitation>gear height determined by 3D model, supposed at scale.</limitation>
         <limitation>emulation of fuel cross feed, tanks run out of fuel above X 3 speed-up.</limitation>
         <limitation>autopilot heading hold may lock to the right with roll.</limitation>
 
@@ -75,12 +76,14 @@
           - http://www.hq.nasa.gov/office/pao/History/SP-468/app-a2.htm :
 
           Drag CD0 (L-1049G) : 0.0211.
-
+        </documentation>
+        <documentation>
           - http://naca.larc.nasa.gov/reports/1932/naca-tn-419/ :
           Wind-tunnel tests of the Fowler variable-area wing,
           Fred E. Weick and Robert C. Platt, May 1932.
-
-          - http://www.eflightmanual.com/
+        </documentation>
+        <documentation>
+          - http://www.eflightmanual.com/ :
           Lockheed flight manual.
         </documentation>
     </fileheader>
@@ -97,6 +100,8 @@
 
           Htailarm : distance from CG to horizontal tail tip.
           Vtailarm : distance from CG to vertical tail tip.
+
+          Wing incidence reduces roll speed.
         </documentation>
         <wingarea unit="FT2"> 1650 </wingarea>
         <wingspan unit="FT"> 123 </wingspan>
@@ -105,6 +110,7 @@
         <htailarm unit="FT"> 25 </htailarm>                                            <!-- aeromatic 56.80 -->
         <vtailarea unit="FT2"> 403.2 </vtailarea>                                      <!-- aeromatic 297.00 -->
         <vtailarm unit="FT"> 16.8 </vtailarm>                                          <!-- added (turbulence) -->
+        <wing_incidence unit="DEG"> 3.9 </wing_incidence>                              <!-- aeromatic none (0.0) -->
         <!-- AC_LV        56.80                               unit ? -->
         <location name="AERORP" unit="IN">
             <x> 681.6 </x>
@@ -143,13 +149,14 @@
 
     <ground_reactions>
         <documentation>
-           additonal contact points for crash detection, when gear retracted.
+           - gear height determined by 3D model, supposed at scale.
+           - additonal contact points for crash detection, when gear retracted.
         </documentation>
         <contact type="BOGEY" name="NOSE_LG">
             <location unit="IN">
                 <x> 177.2 </x>
                 <y> 0 </y>
-                <z> -163.6 </z>
+                <z> -131.2 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -164,7 +171,7 @@
             <location unit="IN">
                 <x> 708.9 </x>
                 <y> -162.4 </y>
-                <z> -163.6 </z>
+                <z> -131.2 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -179,7 +186,7 @@
             <location unit="IN">
                 <x> 708.9 </x>
                 <y> 162.4 </y>
-                <z> -163.6 </z>
+                <z> -131.2 </z>
             </location>
             <static_friction> 0.8 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
@@ -786,13 +793,16 @@
                     <value>0.0230</value>
                 </product>
             </function>
+            <documentation>
+              0.0250 becomes 0.0 : disable speedbrake.
+            </documentation>
             <function name="aero/coefficient/CDsb">
                 <description>Drag_due_to_speedbrakes</description>
                 <product>
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-                    <value>0.0250</value>
+                    <value>0.0</value>
                 </product>
             </function>
             <function name="aero/coefficient/CDbeta">

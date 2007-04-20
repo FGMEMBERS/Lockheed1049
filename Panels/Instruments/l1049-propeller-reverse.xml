@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 
-<!--  Lockheed 1049 oil pressure low light :
-
-      - orange in N73544.
+<!--  Lockheed 1049 propeller reverse pitch indicator.
 
 
 Adapted from John Check <j4strngs@usa.net>
@@ -29,29 +27,26 @@ properties' values.
 
 <PropertyList>
 
- <name>Oil pressure low</name>
+ <name>Propeller reverse pitch indicator</name>
  <w-base>30</w-base>
  <h-base>30</h-base>
 
  <params>
-  <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
+  <reverse-select>/controls/engines/engine[0]/reverser</reverse-select>
  </params>
 
 
  <layers>
 
   <layer>
-   <name>red light</name>
+   <name>orange light</name>
    <type>switch</type>
 
    <layer>
     <name>on</name>
     <type>group</type>
     <condition>
-     <less-than>
-      <property alias="../../../../../../params/oil-select"/>
-      <value>15.0</value>
-     </less-than>
+     <property alias="../../../../../params/reverse-select"/>
     </condition>
 
     <layer include="l1049-bulb-led-on.xml">

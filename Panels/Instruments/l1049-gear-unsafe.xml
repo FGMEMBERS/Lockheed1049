@@ -28,8 +28,8 @@ properties' values.
 <PropertyList>
 
  <name>Gear unsafe warning</name>
- <w-base>60</w-base>
- <h-base>22</h-base>
+ <w-base>30</w-base>
+ <h-base>30</h-base>
 
  <layers>
 
@@ -39,6 +39,7 @@ properties' values.
 
    <layer>
     <name>on</name>
+    <type>group</type>
     <condition>
      <and>
       <greater-than>
@@ -51,48 +52,53 @@ properties' values.
       </less-than>
      </and>
     </condition>
-    <texture>
-     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/led.rgb</path>
-     <x1>0.5</x1>
-     <y1>0.75</y1>
-     <x2>0.75</x2>
-     <y2>1.0</y2>
-    </texture>
-    <w>30</w>
-    <h>30</h>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens red</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
    </layer>
 
    <layer>
     <name>off</name>
-    <texture>
-     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/led.rgb</path>
-     <x1>0.25</x1>
-     <y1>0.75</y1>
-     <x2>0.5</x2>
-     <y2>1.0</y2>
-    </texture>
-    <w>30</w>
-    <h>30</h>
-   </layer>
-  </layer>
+    <type>group</type>
 
-  <layer>
-   <name>Lens red</name>
-   <texture>
-    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/led.rgb</path>
-    <x1>0.0</x1>
-    <y1>0.0</y1>
-    <x2>0.25</x2>
-    <y2>0.25</y2>
-   </texture>
-   <w>30</w>
-   <h>30</h>
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens red</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
   </layer>
 
   <layer>
    <name>Bezel</name>
    <texture>
-    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/led.rgb</path>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
     <x1>0.0</x1>
     <y1>0.75</y1>
     <x2>0.25</x2>

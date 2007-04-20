@@ -753,9 +753,15 @@
    <property>/gear/gear[0]/position-norm</property>
    <condition>
     <and>
-     <not>
-      <property>/sim/current-view/internal</property>
-     </not>
+     <or>
+      <not>
+       <property>/sim/current-view/internal</property>
+      </not>
+      <and>
+       <property>/systems/seat/gear-well</property>
+       <property>/sim/current-view/internal</property>
+      </and>
+     </or>
      <greater-than>
       <property>/gear/gear[0]/position-norm</property>
       <value>0.0</value>

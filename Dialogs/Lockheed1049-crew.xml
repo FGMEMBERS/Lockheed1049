@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Lockheed1049-crew</name>
+  <layout>vbox</layout>
+  <width>550</width>
+
+  <text>
+    <label>Constellation crew</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <text>
+      <halign>center</halign>
+      <label>Virtual crew</label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <checkbox>
+        <label>Copilot</label>
+        <halign>left</halign>
+        <property>/controls/crew/copilot</property>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.copilotcrew.toggleexport();</script>
+        </binding>
+      </checkbox>
+
+      <input>
+        <label>Throttle (kt)</label>
+        <halign>left</halign>
+        <property>/autopilot/settings/target-speed-kt</property>
+      </input>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Doors</label>
+      <halign>center</halign>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Crew</label>
+      <property>/instrumentation/doors/crew/position-norm</property>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Lockheed1049.doorsystem.crewexport();</script>
+      </binding>
+    </checkbox>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Passenger</label>
+      <property>/instrumentation/doors/passenger/position-norm</property>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Lockheed1049.doorsystem.passengerexport();</script>
+      </binding>
+    </checkbox>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Views</label>
+      <halign>center</halign>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Gear well (floating)</label>
+        <property>/systems/seat/gear-well</property>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.seatsystem.viewexport("gear-well");</script>
+        </binding>
+        <binding>
+         <command>dialog-update</command>
+        </binding>
+      </checkbox>
+
+      <checkbox>
+        <label>Recover position of last session  ~</label>
+        <property>/controls/seat/recover</property>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.seatsystem.recoverexport();</script>
+        </binding>
+      </checkbox>
+    </group>
+
+<!--
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Propeller (test)</label>
+      <halign>center</halign>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Feathering</label>
+      <property>controls/engines/engine[0]/propeller-feather</property>
+      <binding n= "0">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[0]/propeller-feather</property>
+      </binding>
+      <binding n= "1">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[1]/propeller-feather</property>
+      </binding>
+      <binding n= "2">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[2]/propeller-feather</property>
+      </binding>
+      <binding n= "3">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[3]/propeller-feather</property>
+      </binding>
+      <binding>
+       <command>property-toggle</command>
+       <property>/instrumentation/generic/click</property>
+      </binding>
+    </checkbox>
+-->
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+</PropertyList>

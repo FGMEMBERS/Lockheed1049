@@ -9,6 +9,7 @@
      - XCon_1, XCon_2, XCon_3, XCon_4 and XConidle.
      - Conflaps, Conflaph and Conflapt.
      - XContchc, XContchl and XContchr.
+     - in Lockheed1049-set.xml, substitute Lockheed1049-mats-sound.xml to Lockheed1049-sound.xml.
 
 
      The gear is not heard inside the real MATS Constellation.
@@ -1453,9 +1454,15 @@
    <property>/gear/gear[0]/position-norm</property>
    <condition>
     <and>
-     <not>
-      <property>/sim/current-view/internal</property>
-     </not>
+     <or>
+      <not>
+       <property>/sim/current-view/internal</property>
+      </not>
+      <and>
+       <property>/systems/seat/gear-well</property>
+       <property>/sim/current-view/internal</property>
+      </and>
+     </or>
      <greater-than>
       <property>/gear/gear[0]/position-norm</property>
       <value>0.0</value>

@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 
-<!--  Lockheed 1049 oil pressure low light :
-
-      - orange in N73544.
+<!--  Lockheed 1049 parking brake warning light
 
 
 Adapted from John Check <j4strngs@usa.net>
@@ -29,14 +27,9 @@ properties' values.
 
 <PropertyList>
 
- <name>Oil pressure low</name>
- <w-base>30</w-base>
- <h-base>30</h-base>
-
- <params>
-  <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
- </params>
-
+ <name>park warning</name>
+ <w-base>90</w-base>
+ <h-base>90</h-base>
 
  <layers>
 
@@ -45,53 +38,53 @@ properties' values.
    <type>switch</type>
 
    <layer>
-    <name>on</name>
-    <type>group</type>
-    <condition>
-     <less-than>
-      <property alias="../../../../../../params/oil-select"/>
-      <value>15.0</value>
-     </less-than>
-    </condition>
-
-    <layer include="l1049-bulb-led-on.xml">
-     <w>30</w>
-     <h>30</h>
-    </layer>
-    <layer>
-     <name>Lens orange</name>
-     <texture>
-      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.25</x1>
-      <y1>0.25</y1>
-      <x2>0.5</x2>
-      <y2>0.5</y2>
-     </texture>
-     <w>30</w>
-     <h>30</h>
-     <emissive>true</emissive>
-    </layer>
-   </layer>
-
-   <layer>
     <name>off</name>
     <type>group</type>
+    <condition>
+     <equals>
+      <property>controls/gear/brake-parking</property>
+      <value>0.0</value>
+     </equals>
+    </condition>
 
     <layer include="l1049-bulb-led-off.xml">
      <w>30</w>
      <h>30</h>
     </layer>
     <layer>
-     <name>Lens orange</name>
+     <name>Lens red</name>
      <texture>
       <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.25</x1>
-      <y1>0.25</y1>
-      <x2>0.5</x2>
-      <y2>0.5</y2>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
      </texture>
      <w>30</w>
      <h>30</h>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens red</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
     </layer>
    </layer>
   </layer>
@@ -107,6 +100,33 @@ properties' values.
    </texture>
    <w>30</w>
    <h>30</h>
+  </layer>
+
+  <layer>
+   <name>Title</name>
+   <type>text</type>
+   <point-size>15</point-size>
+   <color>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>PARK</text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-20</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-35</offset>
+    </transformation>
+   </transformations>
   </layer>
 
  </layers>

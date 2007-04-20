@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!--  Lockheed 1049 terrain warning.
+<!--  Lockheed 1049 gear position lights.
 
 
 Adapted from John Check <j4strngs@usa.net>
@@ -27,38 +27,26 @@ properties' values.
 
 <PropertyList>
 
- <name>Terrain warning</name>
- <w-base>30</w-base>
- <h-base>120</h-base>
+ <name>Gear position lights</name>
+ <w-base>120</w-base>
+ <h-base>30</h-base>
 
  <layers>
 
-<!-- 500 ft Indicator -->
+<!-- NOSE -->
 
   <layer>
-   <name>lamp 500</name>
+   <name>green light</name>
    <type>switch</type>
 
    <layer>
     <name>on</name>
     <type>group</type>
     <condition>
-     <or>
-      <equals>
-       <property>/instrumentation/terrain-warning/test-500</property>
-       <value>on</value>
-      </equals>
-      <and>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <value>500</value>
-       </less-than-equals>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <property n="1">/instrumentation/terrain-warning/selector-ft</property>
-       </less-than-equals>
-      </and>
-     </or>
+     <equals>
+      <property>gear/gear[0]/position-norm</property>
+      <value>1.0</value>
+     </equals>
     </condition>
 
     <layer include="l1049-bulb-led-on.xml">
@@ -66,199 +54,13 @@ properties' values.
      <h>30</h>
     </layer>
     <layer>
-     <name>Lens red</name>
-     <texture>
-      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.0</x1>
-      <y1>0.0</y1>
-      <x2>0.25</x2>
-      <y2>0.25</y2>
-     </texture>
-     <w>30</w>
-     <h>30</h>
-     <emissive>true</emissive>
-    </layer>
-   </layer>
-
-   <layer>
-    <name>off</name>
-    <type>group</type>
-
-    <layer include="l1049-bulb-led-off.xml">
-     <w>30</w>
-     <h>30</h>
-    </layer>
-    <layer>
-     <name>Lens red</name>
-     <texture>
-      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.0</x1>
-      <y1>0.0</y1>
-      <x2>0.25</x2>
-      <y2>0.25</y2>
-     </texture>
-     <w>30</w>
-     <h>30</h>
-    </layer>
-   </layer>
-   <transformations>
-    <transformation>
-    <type>y-shift</type>
-     <offset>-46</offset>
-    </transformation>
-   </transformations>
-  </layer>
-
-  <layer>
-   <name>Bezel 500</name>
-   <texture>
-    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-    <x1>0.0</x1>
-    <y1>0.75</y1>
-    <x2>0.25</x2>
-    <y2>1.0</y2>
-   </texture>
-   <w>30</w>
-   <h>30</h>
-   <transformations>
-    <transformation>
-    <type>y-shift</type>
-     <offset>-46</offset>
-    </transformation>
-   </transformations>
-  </layer>
-
-<!-- 1000 ft Indicator -->
-
-  <layer>
-   <name>lamp 1000</name>
-   <type>switch</type>
-
-   <layer>
-    <name>on</name>
-    <type>group</type>
-    <condition>
-     <or>
-      <equals>
-       <property>/instrumentation/terrain-warning/test-1000</property>
-       <value>on</value>
-      </equals>
-      <and>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <value>1000</value>
-       </less-than-equals>
-       <greater-than>
-        <property>/position/altitude-agl-ft</property>
-        <value>500</value>
-       </greater-than>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <property n="1">/instrumentation/terrain-warning/selector-ft</property>
-       </less-than-equals>
-      </and>
-     </or>
-    </condition>
-
-    <layer include="l1049-bulb-led-on.xml">
-     <w>30</w>
-     <h>30</h>
-    </layer>
-    <layer>
-     <name>Lens yellow</name>
-     <texture>
-      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.5</x1>
-      <y1>0.0</y1>
-      <x2>0.75</x2>
-      <y2>0.25</y2>
-     </texture>
-     <w>30</w>
-     <h>30</h>
-     <emissive>true</emissive>
-    </layer>
-   </layer>
-
-   <layer>
-    <name>off</name>
-    <type>group</type>
-
-    <layer include="l1049-bulb-led-off.xml">
-     <w>30</w>
-     <h>30</h>
-    </layer>
-    <layer>
-     <name>Lens yellow</name>
-     <texture>
-      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.5</x1>
-      <y1>0.0</y1>
-      <x2>0.75</x2>
-      <y2>0.25</y2>
-     </texture>
-     <w>30</w>
-     <h>30</h>
-    </layer>
-   </layer>
-  </layer>
- 
-  <layer>
-   <name>Bezel 1000</name>
-   <texture>
-    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-    <x1>0.0</x1>
-    <y1>0.75</y1>
-    <x2>0.25</x2>
-    <y2>1.0</y2>
-   </texture>
-   <w>30</w>
-   <h>30</h>
-  </layer>
-
-<!-- 2000 ft Indicator (orange by red + yellow) -->
-
-  <layer>
-   <name>lamp 2000</name>
-   <type>switch</type>
-
-   <layer>
-    <name>on</name>
-    <type>group</type>
-    <condition>
-     <or>
-      <equals>
-       <property>/instrumentation/terrain-warning/test-2000</property>
-       <value>on</value>
-      </equals>
-      <and>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <value>2000</value>
-       </less-than-equals>
-       <greater-than>
-        <property>/position/altitude-agl-ft</property>
-        <value>1000</value>
-       </greater-than>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <property n="1">/instrumentation/terrain-warning/selector-ft</property>
-       </less-than-equals>
-      </and>
-     </or>
-    </condition>
-
-    <layer include="l1049-bulb-led-on.xml">
-     <w>30</w>
-     <h>30</h>
-    </layer>
-    <layer>
-     <name>Lens orange</name>
+     <name>Lens green</name>
      <texture>
       <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
       <x1>0.25</x1>
-      <y1>0.25</y1>
+      <y1>0.0</y1>
       <x2>0.5</x2>
-      <y2>0.5</y2>
+      <y2>0.25</y2>
      </texture>
      <w>30</w>
      <h>30</h>
@@ -275,13 +77,84 @@ properties' values.
      <h>30</h>
     </layer>
     <layer>
-     <name>Lens orange</name>
+     <name>Lens green</name>
      <texture>
       <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
       <x1>0.25</x1>
-      <y1>0.25</y1>
+      <y1>0.0</y1>
       <x2>0.5</x2>
-      <y2>0.5</y2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
+  </layer>
+
+  <layer>
+   <name>Bezel</name>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.75</y1>
+    <x2>0.25</x2>
+    <y2>1.0</y2>
+   </texture>
+   <w>30</w>
+   <h>30</h>
+  </layer>
+
+<!-- LEFT -->
+
+  <layer>
+   <name>green left light</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <equals>
+      <property>gear/gear[1]/position-norm</property>
+      <value>1.0</value>
+     </equals>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens green</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.0</y1>
+      <x2>0.5</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens green</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.0</y1>
+      <x2>0.5</x2>
+      <y2>0.25</y2>
      </texture>
      <w>30</w>
      <h>30</h>
@@ -289,14 +162,14 @@ properties' values.
    </layer>
    <transformations>
     <transformation>
-     <type>y-shift</type>
-     <offset>46</offset>
+     <type>x-shift</type>
+     <offset>-40</offset>
     </transformation>
    </transformations>
   </layer>
 
   <layer>
-   <name>Bezel 2000</name>
+   <name>Bezel</name>
    <texture>
     <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
     <x1>0.0</x1>
@@ -308,8 +181,91 @@ properties' values.
    <h>30</h>
    <transformations>
     <transformation>
-     <type>y-shift</type>
-     <offset>46</offset>
+     <type>x-shift</type>
+     <offset>-40</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- RIGHT -->
+
+  <layer>
+   <name>green right light</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <equals>
+      <property>gear/gear[2]/position-norm</property>
+      <value>1.0</value>
+     </equals>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens green</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.0</y1>
+      <x2>0.5</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens green</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.0</y1>
+      <x2>0.5</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>40</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Bezel</name>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.75</y1>
+    <x2>0.25</x2>
+    <y2>1.0</y2>
+   </texture>
+   <w>30</w>
+   <h>30</h>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>40</offset>
     </transformation>
    </transformations>
   </layer>

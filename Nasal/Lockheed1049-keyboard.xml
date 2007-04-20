@@ -2,13 +2,156 @@
 
 <PropertyList>
 
-   <key n="68">
-    <name>D</name>
-    <desc>Passenger door</desc>
+   <key n="1">
+    <name>Ctrl-A</name>
+    <desc>Toggle autopilot altitude lock.</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.doorsystem.passengerexport();</script>
+     <script>globals.Lockheed1049.autopilotsystem.apaltitudeexport();</script>
     </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/instrumentation/generic/click</property>
+    </binding>
+   </key>
+
+   <key n="2">
+    <name>Ctrl-B</name>
+    <desc>Propeller reverse</desc>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/engines/engine[0]/reverser</property>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/engines/engine[1]/reverser</property>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/engines/engine[2]/reverser</property>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/engines/engine[3]/reverser</property>
+    </binding>
+   </key>
+
+   <key n="5">
+    <name>Ctrl-E</name>
+    <desc>Toggle engineer/captain view</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("engineer");</script>
+    </binding>
+   </key>
+
+   <key n="8">
+    <name>Ctrl-H</name>
+    <desc>Toggle autopilot heading lock.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.autopilotsystem.apexport();</script>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/instrumentation/generic/click</property>
+    </binding>
+   </key>
+
+   <key n="10">
+    <name>Ctrl-J</name>
+    <desc>Toggle copilot view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("copilot");</script>
+    </binding>
+   </key>
+
+   <key n="11">
+    <name>Ctrl-K</name>
+    <desc>Toggle observer view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("observer");</script>
+    </binding>
+   </key>
+
+   <key n="13">
+    <name>Ctrl-M</name>
+    <desc>Menu</desc>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-menu</dialog-name>
+    </binding>
+   </key>
+
+   <key n="14">
+    <name>Ctrl-N</name>
+    <desc>Toggle navigator view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("navigator");</script>
+    </binding>
+   </key>
+
+   <key n="15">
+    <name>Ctrl-O</name>
+    <desc>Toggle radio view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("radio");</script>
+    </binding>
+   </key>
+
+   <key n="16">
+    <name>Ctrl-P</name>
+    <desc>Toggle pitch hold.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.autopilotsystem.apexport();</script>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/instrumentation/generic/click</property>
+    </binding>
+   </key>
+
+   <key n="18">
+    <name>Ctrl-R</name>
+    <desc>Radio dialog.</desc>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-radios</dialog-name>
+    </binding>
+   </key>
+
+   <key n="19">
+    <name>Ctrl-S</name>
+    <desc>Toggle auto-throttle.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.copilotcrew.toggleexport();</script>
+    </binding>
+   </key>
+
+   <key n="22">
+    <name>Ctrl-V</name>
+    <desc>Select initial view (view 0).</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("captain");</script>
+    </binding>
+   </key>
+
+   <key n="24">
+    <name>Ctrl-X</name>
+    <mod-shift>
+     <desc>Restore floating view</desc>
+     <binding>
+      <command>nasal</command>
+      <script>globals.Lockheed1049.seatsystem.restoreexport();</script>
+     </binding>
+    </mod-shift>
    </key>
 
    <key n="69">
@@ -37,12 +180,12 @@
     </binding>
    </key>
 
-   <key n="100">
-    <name>d</name>
-    <desc>Crew door</desc>
+   <key n="86">
+    <name>V</name>
+    <desc>Scroll in reverse through views.</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.doorsystem.crewexport();</script>
+     <script>globals.Lockheed1049.seatsystem.scrollreverseexport();</script>
     </binding>
    </key>
 
@@ -72,6 +215,15 @@
     </binding>
    </key>
 
+   <key n="102">
+    <name>f</name>
+    <desc>full cockpit</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.fullexport();</script>
+    </binding>
+   </key>
+
    <key n="113">
     <name>q</name>
     <desc>reset speed-up.</desc>
@@ -79,133 +231,6 @@
      <command>property-assign</command>
      <property>/sim/speed-up</property>
      <value>1</value>
-    </binding>
-   </key>
-
-   <key n="1">
-    <name>Ctrl-A</name>
-    <desc>Toggle autopilot altitude lock.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.autopilotsystem.apaltitudeexport();</script>
-    </binding>
-    <binding>
-     <command>property-toggle</command>
-     <property>/instrumentation/generic/click</property>
-    </binding>
-   </key>
-
-<!-- Door Seat -->
-
-   <key n="4">
-    <name>Ctrl-D</name>
-    <desc>Toggle door view.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.viewexport("door");</script>
-    </binding>
-   </key>
-
-<!-- Engineer Seat -->
-
-   <key n="5">
-    <name>Ctrl-E</name>
-    <desc>Toggle engineer/captain view</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.viewexport("engineer");</script>
-    </binding>
-   </key>
-
-   <key n="8">
-    <name>Ctrl-H</name>
-    <desc>Toggle autopilot heading lock.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.autopilotsystem.apexport();</script>
-    </binding>
-    <binding>
-     <command>property-toggle</command>
-     <property>/instrumentation/generic/click</property>
-    </binding>
-   </key>
-
-<!-- Copilot Seat -->
-
-   <key n="10">
-    <name>Ctrl-J</name>
-    <desc>Toggle copilot view.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.viewexport("copilot");</script>
-    </binding>
-   </key>
-
-<!-- Navigator Seat -->
-
-   <key n="11">
-    <name>Ctrl-K</name>
-    <desc>Toggle navigator view.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.viewexport("navigator");</script>
-    </binding>
-   </key>
-
-<!-- Radio Seat -->
-
-   <key n="15">
-    <name>Ctrl-O</name>
-    <desc>Toggle radio view.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.viewexport("radio");</script>
-    </binding>
-   </key>
-
-   <key n="16">
-    <name>Ctrl-P</name>
-    <desc>Toggle pitch hold.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.autopilotsystem.apexport();</script>
-    </binding>
-    <binding>
-     <command>property-toggle</command>
-     <property>/instrumentation/generic/click</property>
-    </binding>
-   </key>
-
-   <key n="19">
-    <name>Ctrl-S</name>
-    <desc>Toggle auto-throttle lock.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.autopilotsystem.atexport();</script>
-    </binding>
-    <binding>
-     <command>property-toggle</command>
-     <property>/instrumentation/generic/click</property>
-    </binding>
-   </key>
-
-<!-- Views -->
-
-   <key n="22">
-    <name>Ctrl-V</name>
-    <desc>Select initial view (view 0).</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.viewexport("captain");</script>
-    </binding>
-   </key>
-
-   <key n="86">
-    <name>V</name>
-    <desc>Scroll in reverse through views.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.scrollreverseexport();</script>
     </binding>
    </key>
 
@@ -219,18 +244,48 @@
     </binding>
    </key>
 
-<!-- autopilot adjust (overrides default) -->
-
-   <key n="357">
-    <name>Up</name>
-    <desc>Increase elevator or autopilot pitch.</desc>
+   <key n="356">
+    <name>Left</name>
+    <desc>Move aileron left or adjust AP heading or move floating view left.</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
-       if( !globals.Lockheed1049.autopilotsystem.pitchexport(5.0) ) {
+       if( !globals.Lockheed1049.seatsystem.movewidthexport(-0.01) ) {
            # default
-           controls.incElevator(0.05, -100);
+           controls.incAileron(-0.05, -1.0)
+       }
+     </script>
+    </binding>
+   </key>
+
+   <key n="357">
+    <name>Up</name>
+    <desc>Increase elevator or autopilot pitch or move floating view front.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if( !globals.Lockheed1049.seatsystem.movelengthexport(-0.01) ) {
+           if( !globals.Lockheed1049.autopilotsystem.pitchexport(5.0) ) {
+               # default
+               controls.incElevator(0.05, -100);
+           }
+       }
+     </script>
+    </binding>
+   </key>
+
+   <key n="358">
+    <name>Right</name>
+    <desc>Move aileron right or adjust AP heading or move floating view right.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if( !globals.Lockheed1049.seatsystem.movewidthexport(0.01) ) {
+           # default
+           controls.incAileron(0.05, 1.0)
        }
      </script>
     </binding>
@@ -238,14 +293,46 @@
 
    <key n="359">
     <name>Down</name>
-    <desc>Decrease elevator or autopilot pitch.</desc>
+    <desc>Decrease elevator or autopilot pitch or move floating view aft.</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
-       if( !globals.Lockheed1049.autopilotsystem.pitchexport(-5.0) ) {
+       if( !globals.Lockheed1049.seatsystem.movelengthexport(0.01) ) {
+           if( !globals.Lockheed1049.autopilotsystem.pitchexport(-5.0) ) {
+               # default
+               controls.incElevator(-0.05, 100);
+           }
+       }
+     </script>
+    </binding>
+   </key>
+
+   <key n="360">
+    <name>PageUp</name>
+    <desc>Increase throttle or move floating view up.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if( !globals.Lockheed1049.seatsystem.moveheightexport(0.01) ) {
            # default
-           controls.incElevator(-0.05, 100);
+           controls.incThrottle(0.01, 1.0);
+       }
+     </script>
+    </binding>
+   </key>
+
+   <key n="361">
+    <name>PageDown</name>
+    <desc>Decrease throttle or move floating view down.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if( !globals.Lockheed1049.seatsystem.moveheightexport(-0.01) ) {
+           # default
+           controls.incThrottle(-0.01, -1.0);
        }
      </script>
     </binding>
@@ -253,16 +340,18 @@
 
    <key n="362">
     <name>Home</name>
-    <desc>Increase elevator trim or autopilot pitch (slow)</desc>
+    <desc>Increase elevator trim or autopilot pitch (slow) or move floating view front (fast)</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
-       if( !globals.Lockheed1049.autopilotsystem.pitchexport(1.0) ) {
-           # default
-           trim = getprop("/controls/flight/elevator-trim");
-           trim = trim + 0.001;
-           setprop("/controls/flight/elevator-trim",trim);
+       if( !globals.Lockheed1049.seatsystem.movelengthexport(-0.1) ) {
+           if( !globals.Lockheed1049.autopilotsystem.pitchexport(1.0) ) {
+               # default
+               trim = getprop("/controls/flight/elevator-trim");
+               trim = trim + 0.001;
+               setprop("/controls/flight/elevator-trim",trim);
+           }
        }
      </script>
     </binding>
@@ -270,16 +359,18 @@
 
    <key n="363">
     <name>End</name>
-    <desc>Decrease elevator trim or autopilot pitch (slow)</desc>
+    <desc>Decrease elevator trim or autopilot pitch (slow) or move floating view aft (fast)</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
-       if( !globals.Lockheed1049.autopilotsystem.pitchexport(-1.0) ) {
-           # default
-           trim = getprop("/controls/flight/elevator-trim");
-           trim = trim - 0.001;
-           setprop("/controls/flight/elevator-trim",trim);
+       if( !globals.Lockheed1049.seatsystem.movelengthexport(0.1) ) {
+           if( !globals.Lockheed1049.autopilotsystem.pitchexport(-1.0) ) {
+               # default
+               trim = getprop("/controls/flight/elevator-trim");
+               trim = trim - 0.001;
+               setprop("/controls/flight/elevator-trim",trim);
+           }
        }
      </script>
     </binding>

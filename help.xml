@@ -10,32 +10,44 @@
 <!-- Specific keys -->
 
    <key>
+    <name>left/right</name>
+    <desc>autopilot heading</desc>
+   </key>
+   <key>
+    <name></name>
+    <desc>floating view left/right</desc>
+   </key>
+   <key>
     <name>up/down</name>
-    <desc>increase/decrease autopilot pitch</desc>
+    <desc>autopilot pitch</desc>
+   </key>
+   <key>
+    <name></name>
+    <desc>floating view front/aft</desc>
    </key>
    <key>
     <name>home/end</name>
     <desc>increase/decrease autopilot pitch (slow)</desc>
    </key>
    <key>
-    <name>left/right</name>
-    <desc>adjust autopilot heading</desc>
+    <name></name>
+    <desc>floating view front/aft (fast)</desc>
+   </key>
+   <key>
+     <name>page up/down</name>
+     <desc>increase/decrease copilot speed</desc>
+   </key>
+   <key>
+     <name></name>
+     <desc>floating view up/down</desc>
    </key>
    <key>
     <name>a/A</name>
     <desc>speed-up</desc>
    </key>
    <key>
-    <name>d</name>
-    <desc>crew door</desc>
-   </key>
-   <key>
-    <name>D</name>
-    <desc>passenger Door</desc>
-   </key>
-   <key>
-    <name>e/E</name>
-    <desc>increase/decrease propeller pitch</desc>
+     <name>f</name>
+     <desc>full cockpit</desc>
    </key>
    <key>
     <name>q</name>
@@ -47,19 +59,15 @@
    </key>
    <key>
     <name>Ctrl-A</name>
-    <desc>Toggle altitude hold</desc>
-   </key>
-   <key>
-    <name>Ctrl-H / Ctrl-P</name>
-    <desc>Toggle heading with pitch hold</desc>
-   </key>
-   <key>
-    <name>Ctrl-D</name>
-    <desc>door view</desc>
+    <desc>toggle altitude hold</desc>
    </key>
    <key>
     <name>Ctrl-E</name>
     <desc>engineer view</desc>
+   </key>
+   <key>
+    <name>Ctrl-H / Ctrl-P</name>
+    <desc>toggle heading with pitch hold</desc>
    </key>
    <key>
     <name>Ctrl-J</name>
@@ -67,6 +75,14 @@
    </key>
    <key>
     <name>Ctrl-K</name>
+    <desc>observer (floating) view</desc>
+   </key>
+   <key>
+    <name>Ctrl-M</name>
+    <desc>menu</desc>
+   </key>
+   <key>
+    <name>Ctrl-N</name>
     <desc>navigator view</desc>
    </key>
    <key>
@@ -75,8 +91,13 @@
    </key>
    <key>
     <name>Ctrl-S</name>
-    <desc>Toggle autothrottle (speed-up only)</desc>
+    <desc>virtual copilot</desc>
    </key>
+   <key>
+    <name>shift-ctrl-X</name>
+    <desc>restore floating view</desc>
+   </key>
+
 
 <!-- FDM ops -->
 
@@ -84,7 +105,7 @@
  ________________________Procedures_________________________
  Takeoff :
             flaps 1/4 2900 RPM,
-            rotation at 135 kt (full load), 125 kt (landing load);
+            rotation at 130 kt (full load), 120 kt (landing load);
             retract gear below 165 k,
             retract flaps below 184 kt.
  Climb :

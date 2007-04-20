@@ -114,9 +114,9 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-speed-up.xml">
    <name>Speed up</name>
    <x>50</x>
-   <y>520</y>
-   <w>10</w>
-   <h>40</h>
+   <y>540</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/oat.xml">
@@ -232,12 +232,12 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Door Warning Light</name>
    <x>255</x>
    <y>370</y>
-   <w>45</w>
-   <h>17</h>
+   <w>65</w>
+   <h>65</h>
   </instrument>
 
-  <instrument include="../../Instruments/clock.xml">
-   <name>Chronometer</name>
+  <instrument include="Instruments/l1049-clock.xml">
+   <name>Clock</name>
    <x>455</x>
    <y>325</y>
    <w>80</w>
@@ -272,48 +272,48 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <name>Propeller 1 pitch indicator</name>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
-    <engine-select>/engines/engine[0]/engine-num</engine-select>
+    <engine-select>/systems/engines/engine[0]/engine-num</engine-select>
    </params>
    <x>245</x>
    <y>120</y>
-   <w>45</w>
-   <h>17</h>
+   <w>44</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 2 pitch indicator</name>
    <params>
     <rpm-select>/engines/engine[1]/rpm</rpm-select>
-    <engine-select>/engines/engine[1]/engine-num</engine-select>
+    <engine-select>/systems/engines/engine[1]/engine-num</engine-select>
    </params>
    <x>295</x>
    <y>120</y>
-   <w>45</w>
-   <h>17</h>
+   <w>44</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 3 pitch indicator</name>
    <params>
     <rpm-select>/engines/engine[2]/rpm</rpm-select>
-    <engine-select>/engines/engine[2]/engine-num</engine-select>
+    <engine-select>/systems/engines/engine[2]/engine-num</engine-select>
    </params>
    <x>355</x>
    <y>120</y>
-   <w>45</w>
-   <h>17</h>
+   <w>44</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 4 pitch indicator</name>
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
-    <engine-select>/engines/engine[3]/engine-num</engine-select>
+    <engine-select>/systems/engines/engine[3]/engine-num</engine-select>
    </params>
    <x>405</x>
    <y>120</y>
-   <w>45</w>
-   <h>17</h>
+   <w>44</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-manifold-pressure.xml">
@@ -373,8 +373,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    </params>
    <x>525</x>
    <y>160</y>
-   <w>45</w>
-   <h>17</h>
+   <w>22</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
@@ -384,8 +384,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    </params>
    <x>575</x>
    <y>160</y>
-   <w>45</w>
-   <h>17</h>
+   <w>22</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
@@ -395,8 +395,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    </params>
    <x>635</x>
    <y>160</y>
-   <w>45</w>
-   <h>17</h>
+   <w>22</w>
+   <h>22</h>
   </instrument>
 
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
@@ -406,8 +406,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    </params>
    <x>685</x>
    <y>160</y>
-   <w>45</w>
-   <h>17</h>
+   <w>22</w>
+   <h>22</h>
   </instrument>
 
 <!-- RADIO STACK -->
@@ -446,6 +446,16 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Engineer left -->
 
+<!-- label 1st, because of hotspots -->
+
+  <instrument include="Instruments/l1049-title-cross-feed.xml">
+   <name>Cross-feed label</name>
+   <x>817</x>
+   <y>200</y>
+   <w>14</w>
+   <h>210</h>
+  </instrument>
+
   <instrument include="Instruments/l1049-cross-feed-lever.xml">
    <name>Engine 1 cross-feed</name>
    <params>
@@ -466,14 +476,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <y>160</y>
    <w>20</w>
    <h>80</h>
-  </instrument>
-
-  <instrument include="Instruments/l1049-title-cross-feed.xml">
-   <name>Cross-feed label</name>
-   <x>820</x>
-   <y>200</y>
-   <w>20</w>
-   <h>20</h>
   </instrument>
 
   <instrument include="Instruments/l1049-cross-feed-lever.xml">

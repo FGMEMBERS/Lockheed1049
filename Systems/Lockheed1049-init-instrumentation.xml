@@ -12,6 +12,12 @@
    <serviceable type="bool">true</serviceable>
   </adf>
 
+<!-- Navigator ADF is larger -->
+
+  <adf n="2">
+   <scale type="double">1.2</scale>
+  </adf>
+
 <!-- specific -->
 
   <terrain-warning>

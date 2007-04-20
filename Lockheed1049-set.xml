@@ -6,7 +6,11 @@
 <!-- Version           CVS date                   Milestone
      ==========================================================================================
      1.0               November 2005              Aircraft, FDM, 2D panel.
-     1.1               not yet known              3D cockpit, with yokes and seats.
+     1.1               April 2006                 3D cockpit, with yokes and seats.
+     1.2               not yet known              3D pedestal and control quadrants.
+                                                  Observer view moves.
+                                                  Warning lights are emissive by night.
+                                                  Virtual copilot, menu.
      ==========================================================================================
 -->
 
@@ -15,9 +19,9 @@
 
  <sim include="Nasal/Lockheed1049-sim.xml">
 
-  <description>Lockheed 1049</description>
+  <description>Lockheed 1049 Super Constellation</description>
   <status>early-production</status>
-  <aircraft-version>1.1</aircraft-version>
+  <aircraft-version>1.2</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
@@ -42,7 +46,7 @@
   <sound>
    <audible>true</audible>
    <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-sound.xml</path>
-<!--
+<!-- select one of the sound files
    <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-mats-sound.xml</path>
 -->
   </sound>
@@ -61,7 +65,7 @@
 
   <chase-distance-m type="double" archive="y">-48.0</chase-distance-m>
 
-  <presets include="Nasal/Lockheed1049-fuel.xml">
+  <presets>
 
 <!-- Burbank: runways 33/15 and 08/26. -->
 
@@ -69,14 +73,28 @@
    <airport-id>KBUR</airport-id>
    <runway>08</runway>
 -->
+
+<!-- fuel load saved on exit -->
+
+   <fuel type="int">0</fuel>
   </presets>
 
   <help include="help.xml"/>
 
  </sim>
 
+ <consumables>
+  <fuel include="Systems/Lockheed1049-init-fuel.xml"/>                  <!-- required by nasal -->
+ </consumables>
+
  <nasal>
   <Lockheed1049>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-constants.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-instrument.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-fuel.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-autopilot.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-interface.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-crew.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049.nas</file>
   </Lockheed1049>
  </nasal>
@@ -86,29 +104,35 @@
   </keyboard>
  </input>
 
- <systems include="Systems/Lockheed1049-init-systems.xml">
- </systems>
-
- <instrumentation include="Systems/Lockheed1049-init-instrumentation.xml">
-
 
 <!-- ============= -->
 <!-- customization -->
 <!-- ============= -->
 
-<!-- ADF 2 -->
+ <systems include="Systems/Lockheed1049-init-systems.xml">
+ </systems>
+
+ <instrumentation include="Systems/Lockheed1049-init-instrumentation.xml">
+
+<!-- ADF 2 (not available by GUI) -->
 
   <adf n="1">
    <frequencies>
-    <selected-khz>352</selected-khz>
+    <selected-khz>370</selected-khz>                          <!-- Pacoima near KBUR -->
+    <standby-khz>373</standby-khz>                            <!-- Conda near KJFK -->
    </frequencies>
   </adf>
 
  </instrumentation>
 
+ <controls include="Systems/Lockheed1049-init-controls.xml">
+
+  <crew>
+   <minimized-s>10.0</minimized-s>
+  </crew>
+
 <!-- engines on, low pitch (parking) -->
 
- <controls>
   <engines>
    <engine n="0">
     <magnetos archive="y">3</magnetos>
@@ -127,11 +151,17 @@
     <propeller-pitch>0.0</propeller-pitch>
    </engine>
   </engines>
+
+<!-- all 3D instruments -->
+
+  <seat>
+   <all type="bool">true</all>
+  </seat>
  </controls>
 
 <!-- above 700 RPM avoids the stop --> 
  
- <engines include="Systems/Lockheed1049-init-engines.xml">
+ <engines>
   <engine n="0">
    <rpm archive="y">1000</rpm>
   </engine>

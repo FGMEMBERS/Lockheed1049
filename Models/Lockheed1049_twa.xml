@@ -2,43 +2,21 @@
 
 <!--
      VRP :
-     ===
-      The model is shifts at the nose tip, where one wants the FDM to compute the movement :
+     - the model is shifted at the nose tip, where one wants the FDM to compute the movement.
      - that doesn't affect the animations.
-     - that only requires a shift of panels.
+     - that only requires a shift of views.
      - IMPORTANT : the model is already align vertically from Blender.
 
 
      Panels :
-     ======
-     All panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
-
-     One can use /sim/current-view to find the plan.
+     all panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
 
 
-     Animations :
-     ==========
-     1 Blender unit = 1 m.
-
-     Propellers :
-     - between 1800 and 2000 rpm, each propeller and its shaft are both visible.
-     - both have the cone of the shaft, but only the propeller cone rotates.
-     - comparing with the static cone of the disc, one can align the rotating propeller cone.
-
-     Tyres position :
-
-            F1 F2
-
-     L1 L2           R1 R2
-
-     Fowler wing flaps :
-     - retract below the wing.
-     - increase the wing surface and curvature.
-
-
-     Known problems :
-     ==============
-     - drag struts of front gear retract through the fuselage.
+     Aninmation :
+     - WARNING : cockpit must be inside a distinct group (LOD).
+     - 1 Blender unit = 1 m.
+     - multiplayer requires property without leading slash.
+     - disabling 3D instruments in external view brings frame rate.
 
 
      References :
@@ -48,6 +26,17 @@
 
      Gear ratio 16 : 7.
 
+     - Tyres :                 F1 F2
+
+                       L1 L2           R1 R2
+
+     - Fowler wing flaps : retracts below the wing, increases the wing surface and curvature.
+
+
+     Known problems :
+     ==============
+     - drag struts of front gear retract through the fuselage.
+     - the shaft is visible behind the propeller disc, because they are not in a group.
 -->
 
 <PropertyList>
@@ -57,10 +46,10 @@
  <offsets>
 
 <!-- shifts the model forwards : determines the horizontal position of the nose tip. -->
-  <x-m>17.3</x-m>             <!-- half of length 113.6 ft. -->
+  <x-m>17.3</x-m>             <!-- VRP at nose : half of length 113.6 ft. -->
 
-<!-- makes the wheels touch the ground, with the gear height fixed by the FDM. -->
-  <z-m>-0.85</z-m>
+<!-- aligned by FDM gear, if the model is supposed at scale ! -->
+  <z-m>0.0</z-m>
 
  </offsets>
 
@@ -86,27 +75,6 @@
     <x-m>-15.69</x-m>
     <y-m>-0.600</y-m>
     <z-m> 0.99</z-m> <!-- oval altimeter -->
-   </top-left>
-  </panel>
-
- <!-- PEDESTAL -->
-
-  <panel>
-   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-pedestal.xml</path>
-   <bottom-left>
-    <x-m>-14.74</x-m>
-    <y-m>-0.730</y-m>
-    <z-m> 0.50</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-14.74</x-m>
-    <y-m> 0.730</y-m>
-    <z-m> 0.50</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-15.47</x-m>
-    <y-m>-0.730</y-m>
-    <z-m> 0.50</z-m>
    </top-left>
   </panel>
 
@@ -191,25 +159,6 @@
   </panel>
 
   <panel>
-   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-control.xml</path>
-   <bottom-left>
-    <x-m>-14.50</x-m>
-    <y-m> 1.128</y-m>
-    <z-m> 0.67</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-13.90</x-m>
-    <y-m> 1.128</y-m>
-    <z-m> 0.67</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-14.50</x-m>
-    <y-m> 1.428</y-m>
-    <z-m> 0.85</z-m>
-   </top-left>
-  </panel>
-
-  <panel>
    <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-auxiliary.xml</path>
    <bottom-left>
     <x-m>-14.91</x-m>
@@ -229,17 +178,262 @@
   </panel>
 
 
-<!-- ================================== -->
-<!-- Animations (x/y/z = back/right/up) -->
-<!-- ================================== -->
+<!-- =========== -->
+<!-- Instruments -->
+<!-- =========== -->
 
-<!-- LOD for the model as a whole -->
+<!-- overhead -->
+
+  <model>
+   <name>Standby Compass</name>
+   <path>Aircraft/Instruments-3d/comp/comp.xml</path>
+   <offsets>
+    <x-m>-15.41</x-m>
+    <y-m>0.00</y-m>
+    <z-m>1.345</z-m>
+   </offsets>
+  </model>
+
+<!-- navigator -->
+
+  <model>
+   <name>Navigator Asi</name>
+   <path>Aircraft/Instruments-3d/asi300/asi300-3d.xml</path>
+   <offsets>
+    <x-m>-13.12</x-m>
+    <y-m>-0.91</y-m>
+    <z-m> 1.15</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Navigator Altimeter</name>
+   <path>Aircraft/Instruments-3d/alt-2/alt2-3d.xml</path>
+   <offsets>
+    <x-m>-13.12</x-m>
+    <y-m>-0.80</y-m>
+    <z-m> 1.15</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Navigator Clock</name>
+   <path>Aircraft/Instruments-3d/clock/clock.xml</path>
+   <offsets>
+    <x-m>-13.12</x-m>
+    <y-m>-0.80</y-m>
+    <z-m> 1.04</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Navigator ADF</name>
+   <path>Aircraft/Instruments-3d/adf/adf.xml</path>
+   <offsets>
+    <x-m>-13.12</x-m>
+    <y-m>-0.91</y-m>
+    <z-m> 0.93</z-m>
+   </offsets>
+  </model>
+
+
+<!-- ============ -->
+<!-- Optimization -->
+<!-- ============ -->
 
   <animation>
    <type>range</type>
+   <object-name>Cockpit</object-name>
    <min-m>0</min-m>
-   <max-m>16000</max-m>
+   <max-m>50</max-m>
   </animation>
+
+<!-- CAPTAIN -->
+
+  <animation>
+   <name>captain</name>
+   <object-name>CaptainSeat</object-name>
+   <object-name>CaptainPedalRailL</object-name>
+   <object-name>CaptainPedalL</object-name>
+   <object-name>CaptainPedalRailR</object-name>
+   <object-name>CaptainPedalR</object-name>
+   <object-name>CaptainYoke</object-name>
+   <object-name>CaptainYokePillar</object-name>
+   <object-name>ParkingBrakeTubeL</object-name>
+   <object-name>ParkingBrakeLeverL</object-name>
+   <object-name>ElevatorBoosterTube</object-name>
+   <object-name>ElevatorBooster</object-name>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>captain</object-name>
+   <condition>
+    <or>
+     <and>
+      <property>sim/current-view/internal</property>
+      <property>systems/seat/captain</property>
+     </and>
+     <property>controls/seat/all</property>
+    </or>
+   </condition>
+  </animation>
+
+<!-- BOTH -->
+
+  <animation>
+   <name>both</name>
+   <object-name>Standby Compass</object-name>
+   <object-name>PropellerReverse1</object-name>
+   <object-name>PropellerReverse2</object-name>
+   <object-name>PropellerReverse3</object-name>
+   <object-name>PropellerReverse4</object-name>
+   <object-name>ElevatorTabLW</object-name>
+   <object-name>RudderBooster</object-name>
+   <object-name>AileronBooster</object-name>
+   <object-name>ReverseThrottle1</object-name>
+   <object-name>ReverseThrottle2</object-name>
+   <object-name>ReverseThrottle3</object-name>
+   <object-name>ReverseThrottle4</object-name>
+   <object-name>MainThrottle1</object-name>
+   <object-name>MainThrottle2</object-name>
+   <object-name>MainThrottle3</object-name>
+   <object-name>MainThrottle4</object-name>
+   <object-name>ReverseLock</object-name>
+   <object-name>ElectricElevatorTab</object-name>
+   <object-name>MasterPropeller</object-name>
+   <object-name>FlapLever</object-name>
+   <object-name>ElevatorTabRW</object-name>
+   <object-name>AltitudeSwitch</object-name>
+   <object-name>RudderTabCursor</object-name>
+   <object-name>RudderTab</object-name>
+   <object-name>AileronTabCursor</object-name>
+   <object-name>AileronTab</object-name>
+   <object-name>GyroBeacon</object-name>
+   <object-name>FluxGateCagedL</object-name>
+   <object-name>FluxGateCagedR</object-name>
+   <object-name>AutopilotClutch</object-name>
+   <object-name>AileronServo</object-name>
+   <object-name>RudderServo</object-name>
+   <object-name>ElevatorServo</object-name>
+   <object-name>BrakeSelectorCylind</object-name>
+   <object-name>LandingGearCylinder</object-name>
+   <object-name>LandingGearLever</object-name>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>both</object-name>
+   <condition>
+    <or>
+     <and>
+      <property>sim/current-view/internal</property>
+      <or>
+       <property>systems/seat/captain</property>
+       <property>systems/seat/copilot</property>
+      </or>
+     </and>
+     <property>controls/seat/all</property>
+    </or>
+   </condition>
+  </animation>
+
+<!-- COPILOT -->
+
+  <animation>
+   <name>copilot</name>
+   <object-name>CopilotSeat</object-name>
+   <object-name>CopilotPedalRailL</object-name>
+   <object-name>CopilotPedalL</object-name>
+   <object-name>CopilotPedalRailR</object-name>
+   <object-name>CopilotPedalR</object-name>
+   <object-name>CopilotYoke</object-name>
+   <object-name>CopilotYokePillar</object-name>
+   <object-name>ParkingBrakeTubeR</object-name>
+   <object-name>ParkingBrakeLeverR</object-name>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>copilot</object-name>
+   <condition>
+    <or>
+     <and>
+      <property>sim/current-view/internal</property>
+      <property>systems/seat/copilot</property>
+     </and>
+     <property>controls/seat/all</property>
+    </or>
+   </condition>
+  </animation>
+
+<!-- ENGINEER -->
+
+  <animation>
+   <name>engineer</name>
+   <object-name>EngineerSeat</object-name>
+   <object-name>EngineerSeatTube</object-name>
+   <object-name>PropellerEngineer</object-name>
+   <object-name>ThrottleEngineer1</object-name>
+   <object-name>ThrottleEngineer2</object-name>
+   <object-name>ThrottleEngineer3</object-name>
+   <object-name>ThrottleEngineer4</object-name>
+   <object-name>EngineBlower1</object-name>
+   <object-name>EngineBlower2</object-name>
+   <object-name>EngineBlower3</object-name>
+   <object-name>EngineBlower4</object-name>
+   <object-name>Mixture1</object-name>
+   <object-name>Mixture2</object-name>
+   <object-name>Mixture3</object-name>
+   <object-name>Mixture4</object-name>
+   <object-name>FuelTankSelector1</object-name>
+   <object-name>FuelTankSelector2</object-name>
+   <object-name>FuelTankSelector3</object-name>
+   <object-name>FuelTankSelector4</object-name>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>engineer</object-name>
+   <condition>
+    <or>
+     <and>
+      <property>sim/current-view/internal</property>
+      <property>systems/seat/engineer</property>
+     </and>
+     <property>controls/seat/all</property>
+    </or>
+   </condition>
+  </animation>
+
+<!-- NAVIGATOR -->
+
+  <animation>
+   <name>navigator</name>
+   <object-name>Navigator Asi</object-name>
+   <object-name>Navigator Altimeter</object-name>
+   <object-name>Navigator Clock</object-name>
+   <object-name>Navigator ADF</object-name>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>navigator</object-name>
+   <condition>
+    <or>
+     <and>
+      <property>sim/current-view/internal</property>
+      <property>systems/seat/navigator</property>
+     </and>
+     <property>controls/seat/all</property>
+    </or>
+   </condition>
+  </animation>
+
+
+<!-- ================================== -->
+<!-- Animations (x/y/z = back/right/up) -->
+<!-- ================================== -->
 
   <animation>
    <type>noshadow</type>
@@ -254,13 +448,14 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc1</object-name>
+  <object-name>PropellerShaft1</object-name>
   <object-name>Propeller1</object-name>
-  <property>/engines/engine[0]/rpm</property>
+  <property>engines/engine[0]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
    <x-m>0.0</x-m>
-   <y-m>-9.740</y-m>
-   <z-m>-0.170</z-m>
+   <y-m>-9.72</y-m>
+   <z-m>-0.16</z-m>
   </center>
   <axis>
    <x>1</x>
@@ -272,7 +467,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc1</object-name>
-  <property>/engines/engine[0]/rpm</property>
+  <property>engines/engine[0]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -284,7 +479,7 @@
   <object-name>Propeller1</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[0]/rpm</property>
+    <property>engines/engine[0]/rpm</property>
     <value>2000</value>
    </less-than>
   </condition>
@@ -292,22 +487,12 @@
 
  <animation>
   <type>select</type>
+  <object-name>PropellerShaft1</object-name>
   <object-name>PropellerDisc1</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[0]/rpm</property>
+    <property>engines/engine[0]/rpm</property>
     <value>2000</value>
-   </greater-than-equals>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerShaft1</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[0]/rpm</property>
-    <value>1800</value>
    </greater-than-equals>
   </condition>
  </animation>
@@ -317,13 +502,14 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc4</object-name>
+  <object-name>PropellerShaft4</object-name>
   <object-name>Propeller4</object-name>
-  <property>/engines/engine[3]/rpm</property>
+  <property>engines/engine[3]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
    <x-m>0.0</x-m>
-   <y-m>9.730</y-m>
-   <z-m>-0.170</z-m>
+   <y-m>9.72</y-m>
+   <z-m>-0.16</z-m>
   </center>
   <axis>
    <x>1</x>
@@ -335,7 +521,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc4</object-name>
-  <property>/engines/engine[3]/rpm</property>
+  <property>engines/engine[3]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -347,7 +533,7 @@
   <object-name>Propeller4</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[3]/rpm</property>
+    <property>engines/engine[3]/rpm</property>
     <value>2000</value>
    </less-than>
   </condition>
@@ -355,22 +541,12 @@
 
  <animation>
   <type>select</type>
+  <object-name>PropellerShaft4</object-name>
   <object-name>PropellerDisc4</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[3]/rpm</property>
+    <property>engines/engine[3]/rpm</property>
     <value>2000</value>
-   </greater-than-equals>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerShaft4</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[3]/rpm</property>
-    <value>1800</value>
    </greater-than-equals>
   </condition>
  </animation>
@@ -380,13 +556,14 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc2</object-name>
+  <object-name>PropellerShaft2</object-name>
   <object-name>Propeller2</object-name>
-  <property>/engines/engine[1]/rpm</property>
+  <property>engines/engine[1]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
    <x-m>0.0</x-m>
-   <y-m>-4.700</y-m>
-   <z-m>-0.69</z-m>
+   <y-m>-4.69</y-m>
+   <z-m>-0.685</z-m>
   </center>
   <axis>
    <x>1</x>
@@ -398,7 +575,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc2</object-name>
-  <property>/engines/engine[1]/rpm</property>
+  <property>engines/engine[1]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -410,7 +587,7 @@
   <object-name>Propeller2</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[1]/rpm</property>
+    <property>engines/engine[1]/rpm</property>
     <value>2000</value>
    </less-than>
   </condition>
@@ -418,22 +595,12 @@
 
  <animation>
   <type>select</type>
+  <object-name>PropellerShaft2</object-name>
   <object-name>PropellerDisc2</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[1]/rpm</property>
+    <property>engines/engine[1]/rpm</property>
     <value>2000</value>
-   </greater-than-equals>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerShaft2</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[1]/rpm</property>
-    <value>1800</value>
    </greater-than-equals>
   </condition>
  </animation>
@@ -443,13 +610,14 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc3</object-name>
+  <object-name>PropellerShaft3</object-name>
   <object-name>Propeller3</object-name>
-  <property>/engines/engine[2]/rpm</property>
+  <property>engines/engine[2]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
   <center>
    <x-m>0.0</x-m>
-   <y-m>4.670</y-m>
-   <z-m>-0.69</z-m>
+   <y-m>4.685</y-m>
+   <z-m>-0.685</z-m>
   </center>
   <axis>
    <x>1</x>
@@ -461,7 +629,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc3</object-name>
-  <property>/engines/engine[2]/rpm</property>
+  <property>engines/engine[2]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -473,7 +641,7 @@
   <object-name>Propeller3</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[2]/rpm</property>
+    <property>engines/engine[2]/rpm</property>
     <value>2000</value>
    </less-than>
   </condition>
@@ -481,22 +649,12 @@
 
  <animation>
   <type>select</type>
+  <object-name>PropellerShaft3</object-name>
   <object-name>PropellerDisc3</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[2]/rpm</property>
+    <property>engines/engine[2]/rpm</property>
     <value>2000</value>
-   </greater-than-equals>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>PropellerShaft3</object-name>
-  <condition>
-   <greater-than-equals>
-    <property>/engines/engine[2]/rpm</property>
-    <value>1800</value>
    </greater-than-equals>
   </condition>
  </animation>
@@ -511,21 +669,87 @@
  </animation>
 
  <animation>
+  <name>NoseLowerStruts</name>
+  <object-name>FGLowerDragStrutsL</object-name>
+  <object-name>FGLowerDragStrutsR</object-name>
+ </animation>
+
+ <animation>
   <name>Nose1Gear</name>
   <object-name>FrontGear</object-name>
   <object-name>NoseWheels</object-name>
+  <object-name>NoseLowerStruts</object-name>
+ </animation>
+
+ <animation>
+  <name>NosePiston</name>
+  <object-name>FGUpperDragStruts</object-name>
+  <object-name>FrontGearPiston</object-name>
  </animation>
 
  <animation>
   <type>select</type>
   <object-name>Nose1Gear</object-name>
+  <object-name>NosePiston</object-name>
+  <object-name>FrontGearCylinder</object-name>
   <condition>
-   <greater-than>
-    <property>/gear/gear[0]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
+   <or>
+    <greater-than>
+     <property>gear/gear[0]/position-norm</property>
+     <value>0.0</value>
+    </greater-than>
+    <property>systems/seat/gear-well</property>
+   </or>
   </condition>
  </animation>
+ 
+ <animation>
+  <type>spin</type>
+  <object-name>FrontTyre1</object-name>
+  <condition>
+   <and>
+    <less-than>
+     <property>position/altitude-agl-ft</property>
+     <value>50.0</value>
+    </less-than>
+    <property>gear/gear[0]/wow</property> <!-- ground contact -->
+   </and>
+  </condition>
+  <property>velocities/uBody-fps</property>
+  <factor>-2.0</factor>
+  <axis>
+   <x1-m>-15.453</x1-m>
+   <y1-m>-0.378</y1-m>
+   <z1-m>-2.972</z1-m>
+   <x2-m>-15.453</x2-m>
+   <y2-m>-0.159</y2-m>
+   <z2-m>-2.962</z2-m>
+  </axis>
+ </animation> 
+ 
+ <animation>
+  <type>spin</type>
+  <object-name>FrontTyre2</object-name>
+  <condition>
+   <and>
+    <less-than>
+     <property>position/altitude-agl-ft</property>
+     <value>50.0</value>
+    </less-than>
+    <property>gear/gear[0]/wow</property>
+   </and>
+  </condition>
+  <property>velocities/uBody-fps</property>
+  <factor>-2.0</factor>
+  <axis>
+   <x1-m>-15.454</x1-m>
+   <y1-m> 0.384</y1-m>
+   <z1-m>-2.972</z1-m>
+   <x2-m>-15.454</x2-m>
+   <y2-m> 0.166</y2-m>
+   <z2-m>-2.962</z2-m>
+  </axis>
+ </animation> 
  
  <animation>
   <type>rotate</type>
@@ -546,9 +770,112 @@
    </entry>
   </interpolation>   
   <center>
-   <x-m>-14.61</x-m>
+   <x-m>-14.637</x-m>
    <y-m>0.0</y-m>
-   <z-m>-0.62</z-m>
+   <z-m>-0.604</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation> 
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>NosePiston</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>0.17</dep>
+   </entry>
+   <entry>
+     <ind>0.3</ind>
+     <dep>0.17</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>   
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation> 
+
+<!-- articulation between upper and lower struts -->
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseLowerStruts</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>120.0</dep>
+   </entry>
+   <entry>
+     <ind>0.3</ind>
+     <dep>120.0</dep>
+   </entry>
+   <entry>
+     <ind>0.5</ind>
+     <dep>93.0</dep>
+   </entry>
+   <entry>
+     <ind>0.75</ind>
+     <dep>55.0</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>   
+  <center>
+   <x-m>-15.166</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-1.916</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation> 
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>FGUpperDragStruts</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>138.0</dep>
+   </entry>
+   <entry>
+     <ind>0.3</ind>
+     <dep>138.0</dep>
+   </entry>
+   <entry>
+     <ind>0.5</ind>
+     <dep>99.0</dep>
+   </entry>
+   <entry>
+     <ind>0.75</ind>
+     <dep>55.0</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>   
+  <center>              
+   <x-m>-13.879</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-0.330</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -562,14 +889,14 @@
   <object-name>NoseWheels</object-name>
   <condition>
    <less-than>
-    <property>/position/altitude-agl-ft</property>
+    <property>position/altitude-agl-ft</property>
     <value>50.0</value>
    </less-than>
   </condition>
-  <property>/gear/gear[0]/steering-norm</property>
+  <property>gear/gear[0]/steering-norm</property>
   <factor>-30</factor>
   <center>
-   <x-m>-15.25</x-m>
+   <x-m>-15.454</x-m>
    <y-m>0.0</y-m>
    <z-m>0.0</z-m>
   </center>
@@ -583,12 +910,12 @@
  <animation>
   <type>select</type>
   <object-name>FrontDoor</object-name>
-  <object-name>FrontDoorLeft</object-name>
-  <object-name>FrontDoorRight</object-name>
+  <object-name>FrontDoor1</object-name>
+  <object-name>FrontDoor2</object-name>
   <object-name>FrontPlate</object-name>
   <condition>
    <greater-than>
-    <property>/gear/gear[0]/position-norm</property>
+    <property>gear/gear[0]/position-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
@@ -656,7 +983,7 @@
 
  <animation>
   <type>rotate</type>
-  <object-name>FrontDoorLeft</object-name>
+  <object-name>FrontDoor1</object-name>
   <property>gear/gear[0]/position-norm</property>
   <interpolation>
    <entry>
@@ -686,7 +1013,7 @@
 
  <animation>
   <type>rotate</type>
-  <object-name>FrontDoorRight</object-name>
+  <object-name>FrontDoor2</object-name>
   <property>gear/gear[0]/position-norm</property>
   <interpolation>
    <entry>
@@ -719,7 +1046,7 @@
   <object-name>FrontDoorClosed</object-name>
   <condition>
    <equals>
-    <property>/gear/gear[0]/position-norm</property>
+    <property>gear/gear[0]/position-norm</property>
     <value>0.0</value>
    </equals>
   </condition>
@@ -728,10 +1055,15 @@
 <!-- LEFT GEAR -->
 
  <animation>
-  <name>WingLeftGear</name>
-  <object-name>LeftGear</object-name>
+  <name>LeftTyre</name>
   <object-name>LeftTyre1</object-name>
   <object-name>LeftTyre2</object-name>
+ </animation>
+
+ <animation>
+  <name>WingLeftGear</name>
+  <object-name>LeftGear</object-name>
+  <object-name>LeftTyre</object-name>
  </animation>
 
  <animation>
@@ -739,11 +1071,37 @@
   <object-name>WingLeftGear</object-name>
   <condition>
    <greater-than>
-    <property>/gear/gear[1]/position-norm</property>
+    <property>gear/gear[1]/position-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
  </animation>
+ 
+ <animation>
+  <type>spin</type>
+  <object-name>LeftTyre</object-name>
+  <condition>
+   <and>
+    <less-than>
+     <property>position/altitude-agl-ft</property>
+     <value>50.0</value>
+    </less-than>
+    <property>gear/gear[1]/wow</property>
+   </and>
+  </condition>
+  <property>velocities/uBody-fps</property>
+  <factor>-2.0</factor>
+  <center>
+   <x-m>-0.900</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-2.748</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation> 
  
  <animation>
   <type>rotate</type>
@@ -776,91 +1134,73 @@
  </animation> 
 
  <animation>
-  <type>select</type>
-  <object-name>LeftDoor1</object-name>
-  <object-name>LeftDoor2</object-name>
-  <condition>
-   <greater-than>
-    <property>/gear/gear[1]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-  </condition>
- </animation>
-
- <animation>
   <type>rotate</type>
   <object-name>LeftDoor1</object-name>
   <property>gear/gear[1]/position-norm</property>
   <interpolation>
    <entry>
      <ind>0.0</ind>
-     <dep>64.0</dep>
+     <dep>0.0</dep>
    </entry>
    <entry>
      <ind>0.4</ind>
-     <dep>0.0</dep>
-   </entry>
-   <entry>
-     <ind>1.0</ind>
-     <dep>0.0</dep>
-   </entry>
-  </interpolation>   
-  <axis>
-   <x1-m>-3.60</x1-m>
-   <y1-m>-5.55</y1-m>
-   <z1-m>-0.97</z1-m>
-   <x2-m>-0.76</x2-m>
-   <y2-m>-5.40</y2-m>
-   <z2-m>-0.91</z2-m>
-  </axis>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>LeftDoor2</object-name>
-  <property>gear/gear[1]/position-norm</property>
-  <interpolation>
-   <entry>
-     <ind>0.0</ind>
      <dep>-64.0</dep>
    </entry>
    <entry>
-     <ind>0.4</ind>
-     <dep>0.0</dep>
-   </entry>
-   <entry>
      <ind>1.0</ind>
-     <dep>0.0</dep>
+     <dep>-64.0</dep>
    </entry>
   </interpolation>   
   <axis>
-   <x1-m>-3.60</x1-m>
-   <y1-m>-3.99</y1-m>
-   <z1-m>-0.97</z1-m>
-   <x2-m>-0.76</x2-m>
-   <y2-m>-4.11</y2-m>
-   <z2-m>-0.91</z2-m>
+   <x1-m>-3.540</x1-m>
+   <y1-m>-5.425</y1-m>
+   <z1-m>-0.962</z1-m>
+   <x2-m>-0.767</x2-m>
+   <y2-m>-5.273</y2-m>
+   <z2-m>-0.918</z2-m>
   </axis>
  </animation>
 
  <animation>
-  <type>select</type>
-  <object-name>LeftDoorClosed</object-name>
-  <condition>
-   <equals>
-    <property>/gear/gear[1]/position-norm</property>
-    <value>0.0</value>
-   </equals>
-  </condition>
+  <type>rotate</type>
+  <object-name>LeftDoor2</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>0.0</dep>
+   </entry>
+   <entry>
+     <ind>0.4</ind>
+     <dep>64.0</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>64.0</dep>
+   </entry>
+  </interpolation>   
+  <axis>
+   <x1-m>-3.540</x1-m>
+   <y1-m>-3.977</y1-m>
+   <z1-m>-0.962</z1-m>
+   <x2-m>-0.767</x2-m>
+   <y2-m>-4.129</y2-m>
+   <z2-m>-0.918</z2-m>
+  </axis>
  </animation>
 
 <!-- RIGHT GEAR -->
 
  <animation>
-  <name>WingRightGear</name>
-  <object-name>RightGear</object-name>
+  <name>RightTyre</name>
   <object-name>RightTyre1</object-name>
   <object-name>RightTyre2</object-name>
+ </animation>
+
+ <animation>
+  <name>WingRightGear</name>
+  <object-name>RightGear</object-name>
+  <object-name>RightTyre</object-name>
  </animation>
 
  <animation>
@@ -868,11 +1208,37 @@
   <object-name>WingRightGear</object-name>
   <condition>
    <greater-than>
-    <property>/gear/gear[2]/position-norm</property>
+    <property>gear/gear[2]/position-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
  </animation>
+ 
+ <animation>
+  <type>spin</type>
+  <object-name>RightTyre</object-name>
+  <condition>
+   <and>
+    <less-than>
+     <property>position/altitude-agl-ft</property>
+     <value>50.0</value>
+    </less-than>
+    <property>gear/gear[2]/wow</property>
+   </and>
+  </condition>
+  <property>velocities/uBody-fps</property>
+  <factor>-2.0</factor>
+  <center>
+   <x-m>-0.900</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-2.748</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation> 
  
  <animation>
   <type>rotate</type>
@@ -905,82 +1271,59 @@
  </animation> 
 
  <animation>
-  <type>select</type>
-  <object-name>RightDoor1</object-name>
-  <object-name>RightDoor2</object-name>
-  <condition>
-   <greater-than>
-    <property>/gear/gear[2]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-  </condition>
- </animation>
-
- <animation>
   <type>rotate</type>
   <object-name>RightDoor1</object-name>
   <property>gear/gear[2]/position-norm</property>
   <interpolation>
    <entry>
      <ind>0.0</ind>
-     <dep>64.0</dep>
+     <dep>0.0</dep>
    </entry>
    <entry>
      <ind>0.4</ind>
-     <dep>0.0</dep>
-   </entry>
-   <entry>
-     <ind>1.0</ind>
-     <dep>0.0</dep>
-   </entry>
-  </interpolation>   
-  <axis>
-   <x1-m>-3.60</x1-m>
-   <y1-m>3.99</y1-m>
-   <z1-m>-0.97</z1-m>
-   <x2-m>-0.76</x2-m>
-   <y2-m>4.11</y2-m>
-   <z2-m>-0.91</z2-m>
-  </axis>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>RightDoor2</object-name>
-  <property>gear/gear[2]/position-norm</property>
-  <interpolation>
-   <entry>
-     <ind>0.0</ind>
      <dep>-64.0</dep>
    </entry>
    <entry>
-     <ind>0.4</ind>
-     <dep>0.0</dep>
-   </entry>
-   <entry>
      <ind>1.0</ind>
-     <dep>0.0</dep>
+     <dep>-64.0</dep>
    </entry>
   </interpolation>   
   <axis>
-   <x1-m>-3.60</x1-m>
-   <y1-m>5.55</y1-m>
-   <z1-m>-0.97</z1-m>
-   <x2-m>-0.76</x2-m>
-   <y2-m>5.40</y2-m>
-   <z2-m>-0.91</z2-m>
+   <x1-m>-3.540</x1-m>
+   <y1-m> 3.954</y1-m>
+   <z1-m>-0.962</z1-m>
+   <x2-m>-0.767</x2-m>
+   <y2-m> 4.105</y2-m>
+   <z2-m>-0.918</z2-m>
   </axis>
  </animation>
 
  <animation>
-  <type>select</type>
-  <object-name>RightDoorClosed</object-name>
-  <condition>
-   <equals>
-    <property>/gear/gear[2]/position-norm</property>
-    <value>0.0</value>
-   </equals>
-  </condition>
+  <type>rotate</type>
+  <object-name>RightDoor2</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>0.0</dep>
+   </entry>
+   <entry>
+     <ind>0.4</ind>
+     <dep>64.0</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>64.0</dep>
+   </entry>
+  </interpolation>   
+  <axis>
+   <x1-m>-3.540</x1-m>
+   <y1-m> 5.401</y1-m>
+   <z1-m>-0.962</z1-m>
+   <x2-m>-0.767</x2-m>
+   <y2-m> 5.250</y2-m>
+   <z2-m>-0.918</z2-m>
+  </axis>
  </animation>
 
 <!-- FLAPS (41 deg real) -->
@@ -988,7 +1331,7 @@
  <animation>
   <type>translate</type>
   <object-name>LeftFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1022,7 +1365,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1052,7 +1395,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1082,7 +1425,7 @@
  <animation>
   <type>translate</type>
   <object-name>RightFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1118,7 +1461,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1148,7 +1491,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1182,11 +1525,11 @@
   <object-name>LeftAileron</object-name>
   <condition>
    <less-than>
-    <property>/surface-positions/left-aileron-pos-norm</property>
+    <property>surface-positions/left-aileron-pos-norm</property>
     <value>0.0</value>
    </less-than>
   </condition>
-  <property>/surface-positions/left-aileron-pos-norm</property>
+  <property>surface-positions/left-aileron-pos-norm</property>
   <factor>-10.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
@@ -1207,12 +1550,12 @@
   <object-name>LeftAileron</object-name>
   <condition>
    <greater-than>
-    <property>/surface-positions/left-aileron-pos-norm</property>
+    <property>surface-positions/left-aileron-pos-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
-  <property>/surface-positions/left-aileron-pos-norm</property>
-  <property>/surface-positions/left-aileron-pos-norm</property>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <property>surface-positions/left-aileron-pos-norm</property>
   <factor>-25.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1232,11 +1575,11 @@
   <object-name>RightAileron</object-name>
   <condition>
    <less-than>
-    <property>/surface-positions/right-aileron-pos-norm</property>
+    <property>surface-positions/right-aileron-pos-norm</property>
     <value>0.0</value>
    </less-than>
   </condition>
-  <property>/surface-positions/right-aileron-pos-norm</property>
+  <property>surface-positions/right-aileron-pos-norm</property>
   <factor>-10.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
@@ -1257,11 +1600,11 @@
   <object-name>RightAileron</object-name>
   <condition>
    <greater-than>
-    <property>/surface-positions/right-aileron-pos-norm</property>
+    <property>surface-positions/right-aileron-pos-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
-  <property>/surface-positions/right-aileron-pos-norm</property>
+  <property>surface-positions/right-aileron-pos-norm</property>
   <factor>-25.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1283,11 +1626,11 @@
   <object-name>LeftElevator</object-name>
   <condition>
    <less-than>
-    <property>/surface-positions/elevator-pos-norm</property>
+    <property>surface-positions/elevator-pos-norm</property>
     <value>0.0</value>
    </less-than>
   </condition>
-  <property>/surface-positions/elevator-pos-norm</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>6.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
@@ -1308,11 +1651,11 @@
   <object-name>LeftElevator</object-name>
   <condition>
    <greater-than>
-    <property>/surface-positions/elevator-pos-norm</property>
+    <property>surface-positions/elevator-pos-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
-  <property>/surface-positions/elevator-pos-norm</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>16.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1332,11 +1675,11 @@
   <object-name>RightElevator</object-name>
   <condition>
    <less-than>
-    <property>/surface-positions/elevator-pos-norm</property>
+    <property>surface-positions/elevator-pos-norm</property>
     <value>0.0</value>
    </less-than>
   </condition>
-  <property>/surface-positions/elevator-pos-norm</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>-6.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
@@ -1357,11 +1700,11 @@
   <object-name>RightElevator</object-name>
   <condition>
    <greater-than>
-    <property>/surface-positions/elevator-pos-norm</property>
+    <property>surface-positions/elevator-pos-norm</property>
     <value>0.0</value>
    </greater-than>
   </condition>
-  <property>/surface-positions/elevator-pos-norm</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>-16.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1381,7 +1724,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftRudder</object-name>
-  <property>/surface-positions/rudder-pos-norm</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>30</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1399,7 +1742,7 @@
  <animation>
   <type>rotate</type>
   <object-name>Rudder</object-name>
-  <property>/surface-positions/rudder-pos-norm</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>30</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1417,7 +1760,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightRudder</object-name>
-  <property>/surface-positions/rudder-pos-norm</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>30</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1432,18 +1775,129 @@
   </axis>
  </animation>
 
-<!-- CAPTAIN YOKE -->
+
+<!-- ====== -->
+<!-- Inside -->
+<!-- ====== -->
+
+<!-- PEDALS -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CaptainPedalL</object-name>
+  <property>controls/flight/rudder</property>
+  <factor>15</factor>
+  <offset-deg>40</offset-deg>   
+  <center>
+   <x-m>-15.492</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.128</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CaptainPedalR</object-name>
+  <property>controls/flight/rudder</property>
+  <factor>-15</factor>
+  <offset-deg>40</offset-deg>   
+  <center>
+   <x-m>-15.492</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.128</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotPedalL</object-name>
+  <property>controls/flight/rudder</property>
+  <factor>15</factor>
+  <offset-deg>40</offset-deg>   
+  <center>
+   <x-m>-15.492</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.128</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotPedalR</object-name>
+  <property>controls/flight/rudder</property>
+  <factor>-15</factor>
+  <offset-deg>40</offset-deg>   
+  <center>
+   <x-m>-15.492</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.128</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>CopilotPedalL</object-name>
+  <property>controls/seat/pedal/copilot-m</property>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.128</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>CopilotPedalR</object-name>
+  <property>controls/seat/pedal/copilot-m</property>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.128</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- YOKES -->
 
  <animation>
   <type>rotate</type>
   <object-name>CaptainYokePillar</object-name>
   <object-name>CaptainYoke</object-name>
-  <property>/controls/flight/elevator</property>
+  <property>controls/flight/elevator</property>
   <factor>-5</factor>
   <offset-deg>-5</offset-deg>      <!-- avoids bump in seat --> 
   <center>
    <x-m>-14.5</x-m>
-   <y-m>-0.450</y-m>
+   <y-m>0.0</y-m>
    <z-m>-0.24</z-m>
   </center>
   <axis>
@@ -1456,13 +1910,13 @@
  <animation>
   <type>rotate</type>
   <object-name>CaptainYoke</object-name>
-  <property>/controls/flight/aileron</property>
+  <property>controls/flight/aileron</property>
   <factor>-90</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>-14.5</x-m>
-   <y-m>-0.455</y-m>
-   <z-m>0.776</z-m>
+   <x-m>0.0</x-m>
+   <y-m>-0.466</y-m>
+   <z-m>0.778</z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -1475,12 +1929,12 @@
   <type>rotate</type>
   <object-name>CopilotYokePillar</object-name>
   <object-name>CopilotYoke</object-name>
-  <property>/controls/flight/elevator</property>
+  <property>controls/flight/elevator</property>
   <factor>-5</factor>
   <offset-deg>-5</offset-deg>      <!-- avoids bump in seat --> 
   <center>
    <x-m>-14.5</x-m>
-   <y-m>0.470</y-m>
+   <y-m>0.0</y-m>
    <z-m>-0.24</z-m>
   </center>
   <axis>
@@ -1493,13 +1947,13 @@
  <animation>
   <type>rotate</type>
   <object-name>CopilotYoke</object-name>
-  <property>/controls/flight/aileron</property>
+  <property>controls/flight/aileron</property>
   <factor>-90</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>-14.5</x-m>
-   <y-m>0.465</y-m>
-   <z-m>0.776</z-m>
+   <x-m>0.0</x-m>
+   <y-m>0.462</y-m>
+   <z-m>0.778</z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -1511,11 +1965,23 @@
 <!-- DOORS -->
 
  <animation>
-  <type>rotate</type>
+  <type>translate</type>
   <object-name>CrewDoor</object-name>
-  <property>/instrumentation/doors/crew/position-norm</property>
-  <factor>90</factor>
-  <offset-deg>0</offset-deg>   
+  <property>instrumentation/doors/crew/position-norm</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>0.0</dep>
+    </entry>
+    <entry>
+     <ind>0.1</ind>
+     <dep>-0.1</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>-0.1</dep>
+    </entry>
+  </interpolation>
   <center>
    <x-m>-13.90</x-m>
    <y-m>1.32</y-m>
@@ -1523,15 +1989,45 @@
   </center>
   <axis>
    <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CrewDoor</object-name>
+  <property>instrumentation/doors/crew/position-norm</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>0.0</dep>
+    </entry>
+    <entry>
+     <ind>0.1</ind>
+     <dep>0.0</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>65.0</dep>
+    </entry>
+  </interpolation>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.45</y-m>
+   <z-m>0.45</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
    <y>0.0</y>
-   <z>1.0</z>
+   <z>0.0</z>
   </axis>
  </animation>
 
  <animation>
   <type>rotate</type>
   <object-name>PassengerDoor</object-name>
-  <property>/instrumentation/doors/passenger/position-norm</property>
+  <property>instrumentation/doors/passenger/position-norm</property>
   <factor>-90</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -1544,6 +2040,1359 @@
    <y>0.0</y>
    <z>1.0</z>
   </axis>
+ </animation>
+
+<!-- SEAT -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineerSeat</object-name>
+  <property>sim/current-view/goal-heading-offset-deg</property>
+  <offset-deg>90</offset-deg>   
+  <condition>
+   <property>systems/seat/engineer</property>
+  </condition>
+  <center>
+   <x-m>-14.24</x-m>
+   <y-m>0.48</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+<!-- CENTER -->
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse1</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>controls/engines/engine[0]/reverser</factor-prop>
+  </emission> 
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse2</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>controls/engines/engine[1]/reverser</factor-prop>
+  </emission> 
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse3</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>controls/engines/engine[2]/reverser</factor-prop>
+  </emission> 
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse4</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>controls/engines/engine[3]/reverser</factor-prop>
+  </emission> 
+ </animation> 
+
+<!-- PEDESTAL CYLINDER -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ElevatorTabLW</object-name>
+  <property>controls/flight/elevator-trim</property>
+  <factor>-1080</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ElevatorTabLW</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>-0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle1</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle2</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle3</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle4</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle1</object-name>
+  <property>controls/engines/engine[0]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>-15.21</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.69</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle2</object-name>
+  <property>controls/engines/engine[1]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>-15.21</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.69</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle3</object-name>
+  <property>controls/engines/engine[2]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>-15.21</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.69</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle4</object-name>
+  <property>controls/engines/engine[3]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>-15.21</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.69</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle1</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle2</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle3</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle4</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>-50</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseLock</object-name>
+  <property>controls/engines/engine[0]/reverser</property>
+  <factor>90</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MasterPropeller</object-name>
+  <property>controls/engines/engine[0]/propeller-pitch</property>
+  <factor>-75</factor>
+  <offset-deg>75</offset-deg>   
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MasterPropeller</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FlapLever</object-name>
+  <property>controls/flight/flaps</property>
+  <factor>75</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FlapLever</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/flaps</property>
+    <step>0.25</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/flaps</property>
+    <step>-0.25</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ElevatorTabRW</object-name>
+  <property>controls/flight/elevator-trim</property>
+  <factor>-1080</factor>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ElevatorTabRW</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>-0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+<!-- PEDESTAL -->
+
+ <animation>
+  <type>translate</type>
+  <object-name>ParkingBrakeLeverL</object-name>
+  <property>controls/gear/brake-parking</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>-0.08</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>0</dep>
+    </entry>
+  </interpolation>
+  <axis>
+<!--
+   <x1-m>-15.65</x1-m>
+   <y1-m>-0.15</y1-m>
+   <z1-m>0.37</z1-m>
+   <x2-m>-15.25</x2-m>
+   <y2-m>-0.16</y2-m>
+   <z2-m>0.36</z2-m>
+-->
+   <x>1.0</x>
+   <y>-0.025</y>
+   <z>-0.025</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ParkingBrakeLeverL</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/gear/brake-parking</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>ParkingBrakeLeverR</object-name>
+  <property>controls/gear/brake-parking</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>-0.08</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>0</dep>
+    </entry>
+  </interpolation>
+  <axis>
+   <x>1.0</x>
+   <y>0.025</y>
+   <z>-0.025</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ParkingBrakeLeverR</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/gear/brake-parking</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AltitudeSwitch</object-name>
+  <property>controls/autoflight/altitude-switch</property>
+  <factor>50</factor>
+  <center>
+   <x-m>-15.18</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.58</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AltitudeSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/autoflight/altitude-switch</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RudderTab</object-name>
+  <property>controls/flight/rudder-trim</property>
+  <factor>-4680</factor>
+  <center>
+   <x-m>-15.0</x-m>
+   <y-m>-0.05</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>RudderTab</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/rudder-trim</property>
+    <step>0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/rudder-trim</property>
+    <step>-0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AileronTab</object-name>
+  <property>controls/flight/aileron-trim</property>
+  <factor>-4680</factor>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>-0.05</y-m>
+   <z-m>0.45</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AileronTab</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/aileron-trim</property>
+    <step>0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/aileron-trim</property>
+    <step>-0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>GyroBeacon</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/autopilot/gyro-beacon/state</factor-prop>
+  </emission> 
+ </animation> 
+
+ <animation>
+  <type>translate</type>
+  <object-name>AutopilotClutch</object-name>
+  <property>controls/autoflight/autopilot[0]/engaged</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>0.0</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>-0.01</dep>
+    </entry>
+  </interpolation>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AutopilotClutch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/autoflight/autopilot[0]/engaged</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingGearLever</object-name>
+  <property>controls/gear/gear-down</property>
+  <factor>75</factor>
+  <offset-deg>-35</offset-deg>   
+  <center>
+   <x-m>-15.03</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.25</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingGearLever</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/gear/gear-down</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- CONTROLS QUADRANT -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PropellerEngineer</object-name>
+  <property>controls/engines/engine[0]/propeller-pitch</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PropellerEngineer</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer1</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer2</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer3</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer4</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture1</object-name>
+  <property>controls/engines/engine[0]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture2</object-name>
+  <property>controls/engines/engine[1]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture3</object-name>
+  <property>controls/engines/engine[2]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture4</object-name>
+  <property>controls/engines/engine[3]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
  </animation>
 
 </PropertyList>

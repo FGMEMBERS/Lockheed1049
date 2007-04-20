@@ -4,8 +4,8 @@
 
 <PropertyList>
  <name>Cross feed</name>
- <w-base>28</w-base>
- <h-base>28</h-base>
+ <w-base>20</w-base>
+ <h-base>300</h-base>
 
  <layers>
 
@@ -28,10 +28,6 @@
     <transformation>
      <type>rotation</type>
      <offset>90</offset>
-    </transformation>
-    <transformation>
-     <type>y-shift</type>
-     <offset>-4</offset>
     </transformation>
    </transformations>
   </layer>

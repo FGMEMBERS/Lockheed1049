@@ -44,7 +44,8 @@ The range of 1049 should be 3580 NM = 4760 x (1890 / 2510).
 Lockheed 1049 ops
 =================
 - take-off : - flaps 1/4, 2900 RPM.
-             - rotation 135 kt (full load), 125 kt (landing load) : raise slowly the nose until the gear lefts the ground.
+             - rotation 130 kt (full load), 120 kt (landing load) :
+             raise slowly the nose until the gear lefts the ground (a little nose heavy).
              - retract gear below 165 kt.
              - retract flaps below 184 kt.
 - climb    : - 48 inhg, below 2600 RPM.
@@ -61,66 +62,89 @@ Lockheed 1049 ops
 - landing  : 110 kt (landing load), 100 kt (empty load).
 
 
-Customizing
-===========
+Installation
+============
 If your preferences.xml doesn't have 6 views, update Nasal/Lockheed1049-views.xml.
 
 Fuel load
 ---------
-Default is maximum landing weight, 98500 lb.
-For maximum takeoff weight, 120000 lb, set /sim/presets/fuel to 1.
-For other configurations, see Nasal/Lockheed1049-fuel.xml.
+- default is maximum landing weight, 98500 lb.
+- for alternate load, press "ctrl-M f" (saved on exit in aircraft-data).
 
 Sounds
 ------
 See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommended).
 
+Known compatibility
+-------------------
+- 0.9.11 : minimum version.
+- 0.9.10 : can work with a few updates (menu loaded by gui, nasal aircraft.light).
+
 
 Keyboard
 ========
-- "d"     : crew "d"oor.
-- "D"     : passenger "D"oor.
-- "e / E" : increases / decreases propeller pitch.
-- "q"     : quit speed up.
+- "ctrl-M" : "M"enu.
+- "f"      : "f"ull cockpit (all instruments).
+- "q"      : quit speed up.
 
 Views
 -----
-- "ctrl-D" : "D"oor view.
 - "ctrl-E" : "E"ngineer view.
 - "ctrl-J" : Copilot view.
-- "ctrl-K" : Navigator view.
+- "ctrl-K" : Observer view (floating).
+- "ctrl-N" : "N"avigator view.
 - "ctrl-O" : radi"O" view.
+- "shift-ctrl-X" : restore floating view.
 
 Unchanged behaviour
 -------------------
-- "left / right" : turns the heading hold.
+- "x / X"  : zooms in the small fonts; reset with "ctrl-X".
 
 Same behaviour
 --------------
+- "ctrl-R" : radio frequencies.
 - "s" swaps between Captain and Engineer 2D panels.
  
 Improved behaviour
 ------------------
-When speed-up, autothrottle toggles automatically, and heading hold swaps to waypoint hold, if any.
-
 - "ctrl-A" : hold altitude.
 - "ctrl-H" : toggle autopilot (hold heading and pitch).
 - "ctrl-P" : toggle autopilot (hold heading and pitch).
-- "ctrl-S" : toggle autothrottle (speed-up only).
+- "ctrl-S" : virtual copilot (autothrottle).
 - "up / down"  : increases / decreases (fast) pitch hold.
 - "home / end" : increases / decreases (slow) pitch hold.
-- "a / A"  : speeds up BOTH speed and time : external view until X 20.
+- "page up / page down" : increases / decreases copilot speed.
+- "a / A"  : speeds up BOTH speed and time. Until X 10.
   Automatically resets to 1, when above 2000 ft/min.
+
+Alternate behaviour
+-------------------
+- "ctrl-B" : propeller reverse (not yet implemented by FDM).
+- "up / down"  : move floating view in length.
+- "home / end" : move floating view in length (fast).
+- "left / right" : move floating view in width.
+- "page up / page down" : move floating view in height.
+
+
+Mouse
+=====
 
 ADF
 ---
 To update the frequency of ADF 2 :
-- press "swap" at the bottom of the pedestal.
+- press "swap" on the overhead.
 - press "ctrl-R" to call the radio menu. 
 
 Cross-feed
 ----------
 To feed an engine with the tanks of another engine, set fully the lever at the bottom. 
+
+
+Virtual copilot
+===============
+- activ, the copilot is green; otherwise yellow.
+- is never the pilot in command.
+- above 1000 ft AGL, holds the speed (autothrottle), and follows the waypoints (if any).
 
 
 Consumption
@@ -141,7 +165,7 @@ KJFK - EHAM , 3200 NM (via CYQM Moncton, CYQX Gander, EINN Shannon) :
 - at 20h50 zulu (afternoon), takeoff at full load (5954 gallons), heading 85 deg.
 - tail wind 270 deg 20 kt.
 - cruise starts at 20000 ft, +1000 ft every 2h.
-- after 10h45, lands in the morning with 310 gallons or 0h30 (131 gallons/h).
+- after 10h15, lands in the morning with 400 gallons or 0h45 (135 gallons/h).
 
 EHAM - KJFK , 3200 NM (via EINN Shannon, CYQX Gander, CYQM Moncton) :
 - at 6h15 zulu (morning), takeoff at full load (5954 gallons), heading 285 deg.
@@ -159,33 +183,49 @@ JSBSim
 
 TO DO
 =====
+- 3D textures of text.
 - 2D textures and 3D instruments.
-- systems.
 
 TO DO JSBSim
 -------------
-- reversed propeller.
-- tank selection.
+- reversed propeller : ctrl-B only animates the lights and levers.
 
 
 Known problems
 ==============
+- with Plib, use keyboard shortcuts (no 2D hotspot on levers).
+
+Known problems OSG
+------------------
+The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
+- missing hotspots.
+- panels swaping too early.
+- instrument transparent through layer with alpha (engineer view).
 
 Known problems JSBSim
 ---------------------
 - cross feed emulation until speed-up X 3, when empty tank.
-- fakes the displacement to get the real range.
 - at rest, idle engine (700 RPM) may yet stop by very low pressure (altimeter 29.49 inhg).
 - at rest, idle engine (700 RPM) may stop by normal pressure (altimeter 29.89 inhg),
   when the RPM goes strongly below 700 RPM, by a curt throttle : visible by RPM oscillating around 700 RPM.
 
-Known problems 2D instrument 
-----------------------------
-- twinkling of deviation indicator.
-
 Known problems sound
 --------------------
-- exception through OpenAL errors (low hardware ?) means too many sounds : remove for example engine start/shutdown.
+- exception through OpenAL errors (low hardware ?) means too many sounds :
+  remove for example engine start/shutdown.
+
+
+Secondary problems
+==================
+
+Secondary problems JSBSim
+--------------------------
+- fakes the displacement to get the real range.
+
+Secondary problems 2D instrument 
+--------------------------------
+- cross feed has 1 hotspot disabled (4th lever), when in 3D cockpit.
+- twinkling of deviation indicator.
 
 
 References
@@ -206,4 +246,4 @@ References
 (F) http://aviatechno.free.fr/constellation/constellation.php :
 
 
-24 December 2005.
+8 April 2007.

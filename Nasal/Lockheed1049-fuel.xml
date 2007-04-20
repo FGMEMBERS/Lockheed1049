@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 
-<!-- Fuel configurations.
+<!-- Fuel configurations :
 
      Default is max landing weight.
 
      Center 4 is emptied first, then middle tanks 0 & 3; inboards 1 & 2 and outboards 5 & 6 feeds engines.
 
-
-     Warning : the nasal script doesn't work, if the tanks are not ordered in the FDM XML file !
+     Format :
+     - all tanks must have an entry.
+     - <tank n="6"></tank> means full tank (required by the tanks filling dialog).
+     - warning, the nasal script doesn't work, if the tanks are not ordered in the FDM XML file !
 -->
 
 <PropertyList>
-
-   <tanks>
 
 <!-- Max landing weight (98500 lb), -->
 
@@ -31,12 +31,43 @@
      </tank>
      <tank n="5"></tank>
      <tank n="6"></tank>
+     <tank n="7">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="8">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="9">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="10">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
     </filling>
 
 <!-- Max takeoff weight (120000 lb). -->
 
     <filling n="1">
      <comment>max takeoff</comment>
+     <tank n="0"></tank>
+     <tank n="1"></tank>
+     <tank n="2"></tank>
+     <tank n="3"></tank>
+     <tank n="4"></tank>
+     <tank n="5"></tank>
+     <tank n="6"></tank>
+     <tank n="7">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="8">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="9">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="10">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
     </filling>
 
 <!-- Empty tanks (center is emptied first) : for FDM test. -->
@@ -44,7 +75,7 @@
     <filling n="2">
      <comment>empty</comment>
      <tank n="0">
-      <level-gal_us>0.0</level-gal_us>
+      <level-gal_us>85.0</level-gal_us>
      </tank>
      <tank n="1">
       <level-gal_us>85.0</level-gal_us>
@@ -53,22 +84,71 @@
       <level-gal_us>85.0</level-gal_us>
      </tank>
      <tank n="3">
-      <level-gal_us>0.0</level-gal_us>
+      <level-gal_us>85.0</level-gal_us>
      </tank>
      <tank n="4">
       <level-gal_us>0.0</level-gal_us>
      </tank>
      <tank n="5">
-      <level-gal_us>85.0</level-gal_us>
+      <level-gal_us>0.0</level-gal_us>
      </tank>
      <tank n="6">
-      <level-gal_us>85.0</level-gal_us>
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="7">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="8">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="9">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="10">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+    </filling>
+
+<!-- Engine cross-feed : for FDM test. -->
+
+    <filling n="3">
+     <comment>cross feed</comment>
+     <tank n="0">
+      <level-gal_us>170.0</level-gal_us>
+     </tank>
+     <tank n="1">
+      <level-gal_us>1.0</level-gal_us>
+     </tank>
+     <tank n="2">
+      <level-gal_us>1.0</level-gal_us>
+     </tank>
+     <tank n="3">
+      <level-gal_us>170.0</level-gal_us>
+     </tank>
+     <tank n="4">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="5">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="6">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="7">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="8">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="9">
+      <level-gal_us>0.0</level-gal_us>
+     </tank>
+     <tank n="10">
+      <level-gal_us>0.0</level-gal_us>
      </tank>
     </filling>
 
 <!-- other -->
-
-   </tanks>
 
 </PropertyList>
 

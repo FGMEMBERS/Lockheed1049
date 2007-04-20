@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 tanks :
+
+     - density was 6 historically : but JSBSim is always 6.6 !
+-->
+
+
+<PropertyList>
+
+  <tank n="0">
+   <capacity-gal_us>1555.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>1</tank-num>
+  </tank>
+
+<!-- 2 inboard -->
+
+  <tank n="1">
+   <capacity-gal_us>790.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>2</tank-num>
+  </tank>
+  <tank n="2">
+   <capacity-gal_us>790.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>3</tank-num>
+  </tank>
+
+  <tank n="3">
+   <capacity-gal_us>1555.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>4</tank-num>
+  </tank>
+
+<!-- center -->
+
+  <tank n="4">
+   <capacity-gal_us>730.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>5</tank-num>
+  </tank>
+
+<!-- 2 outboard -->
+
+  <tank n="5">
+   <capacity-gal_us>565.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>2A</tank-num>
+  </tank>
+  <tank n="6">
+   <capacity-gal_us>565.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>3A</tank-num>
+  </tank>
+
+<!-- cross feed emulation -->
+
+  <tank n="7">
+   <capacity-gal_us>0.67</capacity-gal_us>
+   <density-ppg>6.6</density-ppg>
+   <tank-num>C1</tank-num>
+  </tank>
+  <tank n="8">
+   <capacity-gal_us>0.67</capacity-gal_us>
+   <density-ppg>6.6</density-ppg>
+   <tank-num>C2</tank-num>
+  </tank>
+  <tank n="9">
+   <capacity-gal_us>0.67</capacity-gal_us>
+   <density-ppg>6.6</density-ppg>
+   <tank-num>C3</tank-num>
+  </tank>
+  <tank n="10">
+   <capacity-gal_us>0.67</capacity-gal_us>
+   <density-ppg>6.6</density-ppg>
+   <tank-num>C4</tank-num>
+  </tank>
+
+</PropertyList>

@@ -58,8 +58,15 @@
    </config>
   </view>
 
+  <view n="6">
+   <config>
+     <target-z-offset-m archive="y">17.3</target-z-offset-m>
+   </config>
+  </view>
+
   <view n="100">                                          <!-- MANDATORY view number -->
     <name>Engineer View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -88,6 +95,7 @@
 
   <view>
     <name>Radio View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -116,6 +124,7 @@
 
   <view>
     <name>Copilot View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -144,6 +153,7 @@
 
   <view>
     <name>Navigator View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -172,6 +182,7 @@
 
   <view>
     <name>Observer View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -200,6 +211,7 @@
 
   <view>
     <name>Gear Well View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>

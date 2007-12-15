@@ -33,9 +33,11 @@
  
 <PropertyList>
 
+<!-- position x/y/z = depth/width/height, from nose (because of VRP) -->
+
  <fx>
  
-<!-- Engines 1 & 2 -->
+<!-- ENGINES 1 & 2 -->
 
   <crank>
    <name>engstart1</name>
@@ -47,9 +49,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.4</offset>
@@ -77,9 +79,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -96,9 +98,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -140,9 +142,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -193,9 +195,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -262,9 +264,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -307,9 +309,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -352,9 +354,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -427,9 +429,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -484,9 +486,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -541,9 +543,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -590,9 +592,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -639,9 +641,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>-5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -659,7 +661,7 @@
    </volume>
   </engine>
 
-<!-- Engines 3 & 4 -->
+<!-- ENGINES 3 & 4 -->
 
   <crank>
    <name>engstart2</name>
@@ -671,9 +673,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.4</offset>
@@ -701,9 +703,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -720,9 +722,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.0</offset>
@@ -764,9 +766,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -817,9 +819,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -886,9 +888,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -931,9 +933,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -976,9 +978,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1051,9 +1053,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1108,9 +1110,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1165,9 +1167,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1214,9 +1216,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1263,9 +1265,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>15.0</x>
+    <y>5.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1282,6 +1284,8 @@
     <offset>0.03</offset>
    </volume>
   </engine>
+
+<!-- COCKPIT -->
 
 <!-- touch down -->
 
@@ -1417,7 +1421,7 @@
    </volume>
   </wind>
 
-<!-- common sounds -->
+<!-- COMMON SOUNDS -->
 
   <rumble>
    <name>rumble</name>

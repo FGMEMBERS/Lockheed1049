@@ -69,7 +69,7 @@ If your preferences.xml doesn't have 6 views, update Nasal/Lockheed1049-views.xm
 Fuel load
 ---------
 - default is maximum landing weight, 98500 lb.
-- for alternate load, press "ctrl-M f" (saved on exit in aircraft-data).
+- for alternate load, press "ctrl-I f" (saved on exit in aircraft-data).
 
 Sounds
 ------
@@ -78,12 +78,10 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 Known compatibility
 -------------------
 - 0.9.11 : minimum version.
-- 0.9.10 : can work with a few updates (menu loaded by gui, nasal aircraft.light).
 
 
 Keyboard
 ========
-- "ctrl-M" : "M"enu.
 - "f"      : "f"ull cockpit (all instruments).
 - "q"      : quit speed up.
 
@@ -120,6 +118,7 @@ Improved behaviour
 Alternate behaviour
 -------------------
 - "ctrl-B" : propeller reverse (not yet implemented by FDM).
+- "ctrl-I" : menu.
 - "up / down"  : move floating view in length.
 - "home / end" : move floating view in length (fast).
 - "left / right" : move floating view in width.
@@ -195,13 +194,6 @@ Known problems
 ==============
 - with Plib, use keyboard shortcuts (no 2D hotspot on levers).
 
-Known problems OSG
-------------------
-The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
-- missing hotspots.
-- panels swaping too early.
-- instrument transparent through layer with alpha (engineer view).
-
 Known problems JSBSim
 ---------------------
 - cross feed emulation until speed-up X 3, when empty tank.
@@ -213,6 +205,18 @@ Known problems sound
 --------------------
 - exception through OpenAL errors (low hardware ?) means too many sounds :
   remove for example engine start/shutdown.
+
+Known problems keyboard
+-----------------------
+- because of ctrl-I overriding, TAB altimeter menu is not available with GLUT.
+
+Known problems OSG
+------------------
+The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
+- missing hotspots.
+- panels swaping too early.
+- instrument transparent through layer with alpha (engineer view).
+- transparency of propellers.
 
 
 Secondary problems
@@ -246,4 +250,4 @@ References
 (F) http://aviatechno.free.fr/constellation/constellation.php :
 
 
-8 April 2007.
+9 December 2007.

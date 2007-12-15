@@ -16,11 +16,14 @@ Seats.new = func {
            controls : nil,
            positions : nil,
            theseats : nil,
+           theviews : nil,
 
            lookup : { "engineer" : 0, "radio" : 0, "copilot" : 0, "navigator" : 0, "observer" : 0,
                       "gear-well" : 0 },
            names : [ "engineer", "radio", "copilot", "navigator", "observer", "gear-well" ],
            nb_seats : 6,
+
+           CAPTINDEX : 0,
 
            firstseat : constant.FALSE,
            firstseatview : 0,               
@@ -41,13 +44,13 @@ Seats.init = func {
    me.controls = props.globals.getNode("/controls/seat");
    me.positions = props.globals.getNode("/systems/seat/position");
    me.theseats = props.globals.getNode("/systems/seat");
+   me.theviews = props.globals.getNode("/sim").getChildren("view");
 
-   theviews = props.globals.getNode("/sim").getChildren("view");
-   last = size(theviews);
+   last = size(me.theviews);
 
    # retrieve the index as created by FG
    for( i = 0; i < last; i=i+1 ) {
-        child = theviews[i].getChild("name");
+        child = me.theviews[i].getChild("name");
 
         # nasal doesn't see yet the views of preferences.xml
         if( child != nil ) {
@@ -66,11 +69,11 @@ Seats.init = func {
            }
            elsif( name == "Observer View" ) {
                 me.lookup["observer"] = i;
-                me.save_initial( "observer", theviews[i] );
+                me.save_initial( "observer", me.theviews[i] );
            }
            elsif( name == "Gear Well View" ) {
                 me.lookup["gear-well"] = i;
-                me.save_initial( "gear-well", theviews[i] );
+                me.save_initial( "gear-well", me.theviews[i] );
            }
 
            if( !me.firstseat ) {
@@ -103,13 +106,15 @@ Seats.fullexport = func {
 
 Seats.viewexport = func( name ) {
    if( name != "captain" ) {
+       index = me.lookup[name];
 
        # swap to view
        if( !me.theseats.getChild(name).getValue() ) {
-           index = me.lookup[name];
            setprop("/sim/current-view/view-number", index);
            me.theseats.getChild(name).setValue(constant.TRUE);
            me.theseats.getChild("captain").setValue(constant.FALSE);
+
+           me.theviews[index].getChild("enabled").setValue(constant.TRUE);
        }
 
        # return to captain view
@@ -117,12 +122,17 @@ Seats.viewexport = func( name ) {
            setprop("/sim/current-view/view-number", 0);
            me.theseats.getChild(name).setValue(constant.FALSE);
            me.theseats.getChild("captain").setValue(constant.TRUE);
+
+           me.theviews[index].getChild("enabled").setValue(constant.FALSE);
        }
 
        # disable all other views
        for( i = 0; i < me.nb_seats; i=i+1 ) {
             if( name != me.names[i] ) {
                 me.theseats.getChild(me.names[i]).setValue(constant.FALSE);
+
+                index = me.lookup[me.names[i]];
+                me.theviews[index].getChild("enabled").setValue(constant.FALSE);
             }
        }
 
@@ -134,68 +144,31 @@ Seats.viewexport = func( name ) {
        setprop("/sim/current-view/view-number",0);
        me.theseats.getChild("captain").setValue(constant.TRUE);
 
-        # disable all other views
-        for( i = 0; i < me.nb_seats; i=i+1 ) {
-             me.theseats.getChild(me.names[i]).setValue(constant.FALSE);
-        }
+       # disable all other views
+       for( i = 0; i < me.nb_seats; i=i+1 ) {
+            me.theseats.getChild(me.names[i]).setValue(constant.FALSE);
+
+            index = me.lookup[me.names[i]];
+            me.theviews[index].getChild("enabled").setValue(constant.FALSE);
+       }
    }
 
    me.controls.getChild("all").setValue( me.fullcockpit );
 }
 
 Seats.scrollexport = func{
-   # number of views = 11
-   nbviews = size(props.globals.getNode("/sim").getChildren("view"));
-
-   # by default, returns to captain view
-   targetview = nbviews;
-
-   # if specific view, step once more to ignore captain view 
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
-        name = me.names[i];
-        if( me.theseats.getChild(name).getValue() ) {
-            targetview = me.lookup[name];
-            break;
-        }
-   }
-
-   # number of default views (preferences.xml) = 6
-   nbdefaultviews = nbviews - me.nb_seats;
-
-   # last default view (preferences.xml) = 5
-   lastview = nbdefaultviews - 1;
-
-   # moves to seat
-   if( getprop("/sim/current-view/view-number") == lastview ) {
-       step = targetview - nbdefaultviews;
-       view.stepView(step);
-       view.stepView(1);
-   }
-
-   # returns to captain
-   elsif( getprop("/sim/current-view/view-number") == targetview ) {
-       step = nbviews - targetview;
-       view.stepView(step);
-       view.stepView(1);
-   }
-
-   # default
-   else {
-       view.stepView(1);
-   }
-
-   me.restorefull();
+   me.stepView(1);
 }
 
 Seats.scrollreverseexport = func{
-   # number of views = 11
-   nbviews = size(props.globals.getNode("/sim").getChildren("view"));
+   me.stepView(-1);
+}
 
-   # by default, returns to captain view
-   targetview = 0;
+Seats.stepView = func( step ) {
+   var targetview = 0;
+   var name = "";
 
-   # if specific view, step once more to ignore captain view 
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
+   for( var i = 0; i < me.nb_seats; i=i+1 ) {
         name = me.names[i];
         if( me.theseats.getChild(name).getValue() ) {
             targetview = me.lookup[name];
@@ -203,33 +176,17 @@ Seats.scrollreverseexport = func{
         }
    }
 
-   # number of default views (preferences.xml) = 6
-   nbdefaultviews = nbviews - me.nb_seats;
+   # ignores captain view
+   if( targetview > me.CAPTINDEX ) {
+       me.theviews[me.CAPTINDEX].getChild("enabled").setValue(constant.FALSE);
+   }
 
-   # last view = 10
-   lastview = nbviews - 1;
+   view.stepView(step);
 
-   # moves to seat
-   if( getprop("/sim/current-view/view-number") == 1 ) {
-       # to 0
-       view.stepView(-1);
-       # to last
-       view.stepView(-1);
-       step = targetview - lastview;
-       view.stepView(step);
-    }
-
-   # returns to captain
-    elsif( getprop("/sim/current-view/view-number") == targetview ) {
-        step = nbdefaultviews - targetview;
-        view.stepView(step);
-        view.stepView(-1);
-    }
-
-    # default
-    else {
-        view.stepView(-1);
-    }
+   # restores of userarchive
+   if( targetview > me.CAPTINDEX ) {
+       me.theviews[me.CAPTINDEX].getChild("enabled").setValue(constant.TRUE);
+   }
 
    me.restorefull();
 }

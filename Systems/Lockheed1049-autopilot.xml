@@ -4,6 +4,8 @@
 
      Autothrottle and true heading hold are test modes (speed-up).
 
+     Autothrottle simulates slower human behaviour (virtual copilot).
+
 
      Known problems:
      - roll on heading hold near max speed (260 kt) : might be the FDM (?).
@@ -328,14 +330,14 @@
  <!-- Auto throttle --> 
  <!-- ............. -->
  <pid-controller>
-    <name>Auto Throttle (5 sec lookahead)</name>
+    <name>Auto Throttle</name>
     <debug>false</debug>
     <enable>
       <prop>/autopilot/locks/speed</prop>
       <value>speed-with-throttle</value>
     </enable>
     <input>
-      <prop>/autopilot/internal/lookahead-5-sec-airspeed-kt</prop>
+      <prop>/instrumentation/airspeed-indicator/indicated-speed-kt</prop>
     </input>
     <reference>
       <prop>/autopilot/settings/target-speed-kt</prop>

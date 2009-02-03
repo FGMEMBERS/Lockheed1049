@@ -1,10 +1,14 @@
 <?xml version="1.0"?>
 
 <!--
-     - IMPORTANT : the index of views is automatically created, and then retrieved by Nasal.
+     IMPORTANT : the index of views is automatically created, and then retrieved by Nasal.
+
+
+     Because of rotation with seat, the engineer view must match the seat axis.
 
 
      The gear well view is for 3D debug.
+
 
 
      VRP :
@@ -15,11 +19,6 @@
      The solution is to hard code the movement point :
      - sets the gear height and CG, and VRP to nose tip, inside the FDM.
      - shifts the model at nose tip : one gets 17.3 m in length.
-
-
-     Known problem :
-     =============
-     - if rotation with seat, the engineer view must match the seat axis.
 -->
 
 <PropertyList>
@@ -32,7 +31,7 @@
      <!-- x/y/z == right/up/back -->
      <x-offset-m archive="y">-0.45</x-offset-m>
      <y-offset-m archive="y">1.08</y-offset-m>
-     <z-offset-m archive="y">2.25</z-offset-m>  <!-- with VSI -->
+     <z-offset-m archive="y">2.23</z-offset-m>  <!-- with VSI -->
      <pitch-offset-deg>-17</pitch-offset-deg>   <!-- towards instruments -->
    </config>
   </view>
@@ -145,7 +144,7 @@
      <!-- x/y/z == right/up/back -->
      <x-offset-m archive="y">0.45</x-offset-m> <!-- symmetry with captain -->
      <y-offset-m archive="y">1.08</y-offset-m>
-     <z-offset-m archive="y">2.25</z-offset-m>
+     <z-offset-m archive="y">2.23</z-offset-m>
      <pitch-offset-deg>3</pitch-offset-deg>
      <heading-offset-deg type="double">291</heading-offset-deg> <!-- inside its window -->
     </config>
@@ -201,11 +200,40 @@
      <right-direction-deg type="double">270</right-direction-deg>
      <front-right-direction-deg type="double">315</front-right-direction-deg>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">0.0</x-offset-m>    <!-- outside the door -->
-     <y-offset-m archive="y">1.17</y-offset-m>  <!-- standing -->
-     <z-offset-m archive="y">4.98</z-offset-m>   <!-- behind the door -->
-     <heading-offset-deg type="double">0</heading-offset-deg> <!-- towards the cockpit -->
-     <pitch-offset-deg>0</pitch-offset-deg>
+     <x-offset-m archive="y">0.48</x-offset-m>
+     <y-offset-m archive="y">0.95</y-offset-m>
+     <z-offset-m archive="y">5.47</z-offset-m>
+     <heading-offset-deg type="double">0</heading-offset-deg>
+     <pitch-offset-deg>-5</pitch-offset-deg>
+    </config>
+  </view>
+
+  <view>
+    <name>Observer 2 View</name>
+    <enabled type="bool">false</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">1.25</x-offset-m>
+     <y-offset-m archive="y">0.95</y-offset-m>
+     <z-offset-m archive="y">4.37</z-offset-m>
+     <heading-offset-deg type="double">235</heading-offset-deg>
+     <pitch-offset-deg>-9</pitch-offset-deg>
     </config>
   </view>
 

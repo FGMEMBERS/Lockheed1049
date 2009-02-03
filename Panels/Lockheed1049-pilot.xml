@@ -58,7 +58,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
      <property>/controls/seat/all</property>
     </or>
    </condition>
-   <x>0</x>
+   <x>30</x>
    <y>320</y>
    <w>50</w>
    <h>50</h>
@@ -379,7 +379,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <mp2-select>/engines/engine[1]/mp-osi</mp2-select>
    </params>
    <x>420</x>
-   <y>370</y>
+   <y>365</y>
    <w>60</w>
    <h>60</h>
   </instrument>
@@ -403,7 +403,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <mp2-select>/engines/engine[3]/mp-osi</mp2-select>
    </params>
    <x>490</x>
-   <y>370</y>
+   <y>365</y>
    <w>60</w>
    <h>60</h>
   </instrument>
@@ -427,7 +427,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <rpm2-select>/engines/engine[1]/rpm</rpm2-select>
    </params>
    <x>560</x>
-   <y>370</y>
+   <y>365</y>
    <w>60</w>
    <h>60</h>
   </instrument>
@@ -451,7 +451,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <rpm2-select>/engines/engine[3]/rpm</rpm2-select>
    </params>
    <x>630</x>
-   <y>370</y>
+   <y>365</y>
    <w>60</w>
    <h>60</h>
   </instrument>
@@ -537,26 +537,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <y>295</y>
    <w>50</w>
    <h>50</h>
-  </instrument>
-
-  <instrument include="Instruments/l1049-brake-warning.xml">
-   <name>Parking Brake Warning</name>
-   <condition>
-    <or>
-     <and>
-      <property>/sim/current-view/internal</property>
-      <or>
-       <property>/systems/seat/captain</property>
-       <property>/systems/seat/copilot</property>
-      </or>
-     </and>
-     <property>/controls/seat/all</property>
-    </or>
-   </condition>
-   <x>420</x>
-   <y>120</y>
-   <w>40</w>
-   <h>40</h>
   </instrument>
 
 <!-- Copilot -->

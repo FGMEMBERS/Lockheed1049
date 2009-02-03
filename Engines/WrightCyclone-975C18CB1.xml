@@ -2,8 +2,8 @@
 <!-- 
   File:     WrightCyclone-975C18CB1.xml
   Author:   Aero-Matic v 0.7
-  Date:     26 June 2005
-  Version:  1.0
+  Date:     31 December 2008
+  Version:  2.0
 
   Inputs:
     name:           WrightCyclone-975C18CB1
@@ -52,9 +52,7 @@
 --> 
 <piston_engine name="Wright Cyclone 975C18CB1">
 
-<!-- fakes displacement (3350) to increase the consumption and match the range :
-
-     - one cannot change the volumetric efficiency.
+<!-- Range is adjusted with volumetric efficiency :
 
      - estimation of the 1049 range : 3580 NM = 4760 * 1890 / 2510.
      Which matches VH-EAG and N73544 with both the same content in US gal.
@@ -67,15 +65,36 @@
 
      For westerly front wind 10 kt (optimistic), average ground speed is 289 kt (optimistic), or 3580 / 289 = 12 h.
      And it can cross the Atlantic from the east (KJFK-EHAM 3156 NM direct), only with refueling at Gander or Shannon.
+
+
+     Blower :
+     - 12 PSI for 54.5 inhg max at 2900 RPM, sea level (low blower) : takeoff, full throttle.
+     -  8 PSI for 46.0 inhg max at 2600 RPM, sea level (low blower).
+     -  8 PSI for 46.0 inhg max at 2600 RPM, cruise (high blower).
+     - should be adjusted manually by a lever (override).
 -->
 
    <minmp unit="INHG">  6.0 </minmp>
    <maxmp unit="INHG"> 54.5 </maxmp>                                         <!-- aeromatic 30.0 -->
-   <displacement unit="IN3"> 16000.00 </displacement>                        <!-- aeromatic 4480.00 -->
+   <displacement unit="IN3"> 3350.00 </displacement>
+   <volumetric-efficiency>2.4</volumetric-efficiency>
    <maxhp>    2800.00 </maxhp>
    <cycles>      2.0 </cycles>
    <idlerpm>   700.0 </idlerpm>
+   <maxrpm>   2900.00 </maxrpm>
    <maxthrottle> 1.0 </maxthrottle>
    <minthrottle> 0.2 </minthrottle>
+   <sparkfaildrop>      0.0 </sparkfaildrop>
+   <numboostspeeds>     2 </numboostspeeds>
+   <boostoverride>      0 </boostoverride>
+   <takeoffboost>      12 </takeoffboost>
+   <ratedboost1>        8 </ratedboost1>
+   <ratedpower1>     2400 </ratedpower1>
+   <ratedrpm1>       2600 </ratedrpm1>
+   <ratedaltitude1 >    0 </ratedaltitude1>
+   <ratedboost2>        8 </ratedboost2>
+   <ratedpower2>     2000 </ratedpower2>
+   <ratedrpm2>       2600 </ratedrpm2>
+   <ratedaltitude2> 10800 </ratedaltitude2>
 
 </piston_engine> 

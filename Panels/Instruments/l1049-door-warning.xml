@@ -43,10 +43,9 @@ properties' values.
     <name>off</name>
     <type>group</type>
     <condition>
-     <equals>
-      <property>instrumentation/doors/passenger/position-norm</property>
-      <value>0.0</value>
-     </equals>
+     <not>
+      <property>/systems/doors/passenger</property>
+     </not>
     </condition>
 
     <layer include="l1049-bulb-led-off.xml">

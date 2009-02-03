@@ -17,36 +17,153 @@
    <gyro-beacon>
     <enabled type="bool">true</enabled>
    </gyro-beacon>
+
+   <relations>
+    <dependency>
+     <altimeter>/instrumentation/altimeter/indicated-altitude-ft</altimeter>
+    </dependency>
+
+    <itself>
+     <autopilot>/autopilot/locks</autopilot>
+     <autopilot-ctrl>/controls/autoflight</autopilot-ctrl>
+     <autopilot-set>/autopilot/settings</autopilot-set>
+    </itself>
+
+    <noinstrument>
+     <heading>/orientation/heading-magnetic-deg</heading>
+     <pitch>/orientation/pitch-deg</pitch>
+    </noinstrument>
+   </relations>
   </autopilot>
+
+  <copilot>
+   <activ type="bool">false</activ>                                                    <!-- yellow -->
+
+   <relations>
+    <dependency>
+     <autopilot>/autopilot/locks</autopilot>
+     <crew>/systems/crew</crew>
+     <crew-ctrl>/controls/crew</crew-ctrl>
+     <waypoint>
+      <component>/autopilot/route-manager</component>
+      <subcomponent>wp</subcomponent>
+     </waypoint>
+    </dependency>
+
+    <itself>
+     <copilot>/controls/copilot</copilot>
+     <state>/systems/copilot/state</state>
+     <waypoint>
+      <component>/autopilot/route-manager</component>
+      <subcomponent>wp</subcomponent>
+     </waypoint>
+    </itself>
+
+    <noinstrument>
+     <roll>/orientation/roll-deg</roll>
+     <speed-up>/sim/speed-up</speed-up>
+    </noinstrument>
+   </relations>
+
+   <state></state>
+   <state-last></state-last>                                                           <!-- last action -->
+   <throttle type="bool">false</throttle>                                              <!-- doesn't hold throttle -->
+   <time></time>
+   <waypoint type="bool">false</waypoint>                                              <!-- doesn't follow waypoint -->
+   <waypoint-nm type="double">0.0</waypoint-nm>
+  </copilot>
 
   <crew>
    <serviceable type="bool">true</serviceable>
 
-   <copilot>
-    <activ type="bool">false</activ>                                                   <!-- yellow -->
-    <state></state>
-    <time></time>
-   </copilot>
-
    <minimized type="bool">true</minimized>
   </crew>
+
+  <doors>
+   <passenger type="bool">false</passenger>
+
+   <relations>
+    <itself>
+     <doors>/controls/doors</doors>
+    </itself>
+   </relations>
+  </doors>
+
+  <electrical>
+   <serviceable type="bool" archive="y">true</serviceable>
+
+   <power>
+    <specific type="bool">true</specific>                                              <!-- not implemented : always voltage -->
+   </power>
+  </electrical>
+
+  <engineer>
+   <activ type="bool">false</activ>                                                    <!-- yellow -->
+
+   <relations>
+    <dependency>
+     <crew>/systems/crew</crew>
+     <crew-ctrl>/controls/crew</crew-ctrl>
+     <engine>
+      <component>/controls/engines</component>
+      <subcomponent>engine</subcomponent>
+     </engine>
+    </dependency>
+
+    <itself>
+     <engineer>/controls/engineer</engineer>
+    </itself>
+
+    <noinstrument>
+     <altitude>/position/altitude-ft</altitude>
+     <speed-up>/sim/speed-up</speed-up>
+    </noinstrument>
+   </relations>
+
+   <state></state>
+   <state-last></state-last>                                                           <!-- last action -->
+   <time></time>
+  </engineer>
 
   <engines>
    <engine n="0">
     <engine-num>1</engine-num>
+    <oil-low type="bool">false</oil-low>
+    <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
    <engine n="1">
     <engine-num>2</engine-num>
+    <oil-low type="bool">false</oil-low>
+    <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
    <engine n="2">
     <engine-num>3</engine-num>
+    <oil-low type="bool">false</oil-low>
+    <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
    <engine n="3">
     <engine-num>4</engine-num>
+    <oil-low type="bool">false</oil-low>
+    <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
+
+   <relations>
+    <itself>
+     <engine>
+      <component>/engines</component>
+      <subcomponent>engine</subcomponent>
+     </engine>
+     <engine-sys>
+      <component>/systems/engines</component>
+      <subcomponent>engine</subcomponent>
+     </engine-sys>
+    </itself>
+   </relations>
   </engines>
 
   <fuel>
+   <presets type="int">0</presets>                                                     <!-- max landing load -->
+
    <tanks include="../Nasal/Lockheed1049-fuel.xml"/>
   </fuel>
 
@@ -112,6 +229,82 @@
    </engines>
   </fuel-pump>
 
+  <gear>
+   <relations>
+    <dependency>
+     <steering>/controls/crew/steering</steering>
+    </dependency>
+
+    <noinstrument>
+     <airspeed>/velocities/airspeed-kt</airspeed>
+    </noinstrument>
+   </relations>
+  </gear>
+
+  <human>
+   <captain>
+    <stowe-norm type="double">0.0</stowe-norm>
+   </captain>
+   <copilot>
+    <stowe-norm type="double">0.0</stowe-norm>
+   </copilot>
+
+   <relations>
+    <dependency>
+     <crew>/controls/crew</crew>
+     <lighting>/controls/lighting/internal</lighting>
+     <lighting-copilot>/controls/lighting/internal/copilot</lighting-copilot>
+     <lighting-engineer>/controls/lighting/internal/engineer</lighting-engineer>
+     <lighting-overhead>/controls/lighting/internal/overhead</lighting-overhead>
+     <lighting-pilot>/controls/lighting/internal/pilot</lighting-pilot>
+    </dependency>
+
+    <itself>
+     <lighting>/controls/human/lighting</lighting>
+    </itself>
+
+    <noinstrument>
+     <sun>/sim/time/sun-angle-rad</sun>
+    </noinstrument>
+   </relations>
+  </human>
+
+  <lighting>
+   <serviceable type="bool" archive="y">true</serviceable>
+
+   <internal>
+    <copilot>
+     <chart-light>0.0</chart-light>
+     <panel-light>0.0</panel-light>
+     <side-light>0.0</side-light>
+    </copilot>
+    <engineer>
+     <flood-light>0.0</flood-light>
+    </engineer>
+    <panel-light>0.0</panel-light>
+    <pilot>
+     <chart-light>0.0</chart-light>
+     <panel-light>0.0</panel-light>
+     <side-light>0.0</side-light>
+    </pilot>
+   </internal>
+
+   <relations>
+    <dependency>
+     <electric>/systems/electrical/power</electric>
+    </dependency>
+
+    <itself>
+     <internal>/systems/lighting/internal</internal>
+     <internal-ctrl>/controls/lighting/internal</internal-ctrl>
+     <landing>
+      <component>/controls/lighting/external</component>
+      <subcomponent>landing</subcomponent>
+     </landing>
+    </itself>
+   </relations>
+  </lighting>
+
   <seat>
    <captain type="bool">true</captain>
    <copilot type="bool">false</copilot>
@@ -119,6 +312,7 @@
    <gear-well type="bool">false</gear-well>
    <navigator type="bool">false</navigator>
    <observer type="bool">false</observer>
+   <observer2 type="bool">false</observer2>
    <position>
     <gear-well>
      <x-m type="double">0.0</x-m>
@@ -130,8 +324,20 @@
      <y-m type="double">0.0</y-m>
      <z-m type="double">0.0</z-m>
     </observer>
+    <observer2>
+     <x-m type="double">0.0</x-m>
+     <y-m type="double">0.0</y-m>
+     <z-m type="double">0.0</z-m>
+    </observer2>
    </position>
    <radio type="bool">false</radio>
   </seat>
+
+  <voice>
+   <callout></callout>
+   <checklist></checklist>
+   <real type="bool">false</real>                                                      <!-- not a real checklist -->
+   <text></text>
+  </voice>
 
 </PropertyList>

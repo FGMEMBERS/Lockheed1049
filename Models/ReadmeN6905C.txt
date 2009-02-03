@@ -10,7 +10,8 @@ and 1049C (civilian) :
 New-York - Amsterdam, 15 August 1953 (D)).
 - with the 1049C, TWA entered regular service between New York and Los Angeles
 (max payload, 19 October 1953 (E)).
-- with the 1049G, slightly longer, with optional fuel tanks at wing tip, TWA entered transatlantic service.
+- with the 1049G, slightly longer, and with optional fuel tanks at wing tip,
+TWA entered transatlantic service.
 Only the DC-7 and 1649 (Starliner) could fly non-stop the Atlantic by all weather.
 
 
@@ -61,17 +62,14 @@ on the center of gravity :
 
 Texturing
 ---------
-The flag on the right side is reversed (A).
-
-Cockpit objects have a Blender material, to improve the solid view :
-swap back to the default white, when a clear texture is lost.
-
 Colours inspired by N6937C (H) :
 - blade tips (red and white).
 - cockpit (green, black, beige and metallic).
 - seat (metallic, grey and beige).
 - yoke (black and blue).
 - levers (metallic, red and yellow).
+
+The flag on the right side is reversed (A).
 
 The double red line, the grey ellipse below the fuselage (except the rounded ends),
 are delimited by the mesh.
@@ -84,21 +82,25 @@ Wings :
 The cockpit texture without alpha makes the 2D instruments visible on a panel;
 the other texture with alpha is for clipping.
 
+The black rotative switches are visible only if the cockpit black is lighter.
+
+Cockpit objects have a Blender material, to improve the solid view :
+swap back to the default white, when a clear texture is lost.
+
 
 TO DO
 =====
-- external lights.
 - gear compression.
 - smoke at engine start.
-- door to the crew compartment.
 - radio and navigator seats.
+- release the metapost files (panel textures).
 
 
 Known problems
 ==============
 - front gear inner struts crosses the fuselage.
 - the livery is difficult to repaint (not a skin).
-- doors too thick ?
+- passenger door too thick ?
 
 
 References
@@ -130,16 +132,21 @@ References
 
 (J) http://www.airliners.net/discussions/general_aviation/read.main/1738757/4/ :
 
+    http://www.airliners.net/photo/Breitling-(Super-Constellation/Lockheed-C-121C-Super/0568924/L/ :
+    overhead panel.
+
     http://www.eflightmanuals.com/ :
     Lockheed Flight manual.
 
 
 Credits
 -------
+Metapost template by M. Franz.
+
 http://www.usflag.org/ : the 49 stars flag (1957 livery).
 
 
-Made with Blender 2.43.
+Made with Blender 2.48a.
 
 
-16 March 2007.
+31 January 2009.

@@ -18,6 +18,20 @@
    <scale type="double">1.2</scale>
   </adf>
 
+  <clock>
+   <relations>
+    <noinstrument>
+     <altitude>/position/altitude-ft</altitude>
+     <speed-up>/sim/speed-up</speed-up>
+     <warp>/sim/time/warp</warp>
+    </noinstrument>
+   </relations>
+  </clock>
+
+  <generic>
+   <factor type="double">1.0</factor>                                      <!-- otherwise material doesn't work with OSG -->
+  </generic>
+
 <!-- specific -->
 
   <terrain-warning>

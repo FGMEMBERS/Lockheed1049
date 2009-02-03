@@ -1504,7 +1504,21 @@
    <path>Sounds/door_close.wav</path>
    <condition>
     <equals>
-     <property>/instrumentation/doors/crew/position-norm</property>
+     <property>/controls/doors/crew/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
+
+  <door>
+   <name>Flight station door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/flight-station/position-norm</property>
      <value>0.0</value>
     </equals>
    </condition>
@@ -1518,7 +1532,7 @@
    <path>Sounds/door_close.wav</path>
    <condition>
     <equals>
-     <property>/instrumentation/doors/passenger/position-norm</property>
+     <property>/controls/doors/passenger/position-norm</property>
      <value>0.0</value>
     </equals>
    </condition>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<!-- copilot warnings -->
+
+  <max-gear-extension-speed>165</max-gear-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>0.0</flaps>
+   <speed>184</speed>
+  </max-flap-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>0.25</flaps>
+   <speed>161</speed>
+  </max-flap-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>0.5</flaps>
+   <speed>154</speed>
+  </max-flap-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>0.75</flaps>
+   <speed>148</speed>
+  </max-flap-extension-speed>
+  <max-positive-g>2.5</max-positive-g>
+  <max-negative-g>-1.5</max-negative-g>
+  <vne>293</vne>
+
+</PropertyList>

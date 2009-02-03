@@ -16,6 +16,18 @@
     <empty><stretch>true</stretch></empty>
 
     <button>
+      <legend>Autopilot</legend>
+      <key>a</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-autopilot</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
       <legend>Crew</legend>
       <key>c</key>
       <binding>
@@ -33,6 +45,30 @@
       <binding>
        <command>dialog-show</command>
        <dialog-name>Lockheed1049-fuel</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Ground</legend>
+      <key>g</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-ground</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Procedures</legend>
+      <key>p</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-procedures</dialog-name>
       </binding>
       <binding>
         <command>dialog-close</command>

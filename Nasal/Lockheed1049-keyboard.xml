@@ -45,6 +45,23 @@
     </binding>
    </key>
 
+   <key n="6">
+    <name>Ctrl-F</name>
+    <desc>Surface control boost</desc>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/flight/elevator-boost</property>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/flight/aileron-boost</property>
+    </binding>
+    <binding>
+     <command>property-toggle</command>
+     <property>/controls/flight/rudder-boost</property>
+    </binding>
+   </key>
+
    <key n="8">
     <name>Ctrl-H</name>
     <desc>Toggle autopilot heading lock.</desc>
@@ -82,6 +99,15 @@
     <binding>
      <command>nasal</command>
      <script>globals.Lockheed1049.seatsystem.viewexport("observer");</script>
+    </binding>
+   </key>
+
+   <key n="12">
+    <name>Ctrl-L</name>
+    <desc>Toggle observer 2 view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.viewexport("observer2");</script>
     </binding>
    </key>
 
@@ -127,10 +153,10 @@
 
    <key n="19">
     <name>Ctrl-S</name>
-    <desc>Toggle auto-throttle.</desc>
+    <desc>Toggle autothrottle</desc>
     <binding>
      <command>nasal</command>
-     <script>globals.Lockheed1049.copilotcrew.toggleexport();</script>
+     <script>globals.Lockheed1049.copilotcrew.throttleexport();</script>
     </binding>
    </key>
 
@@ -154,29 +180,12 @@
     </mod-shift>
    </key>
 
-   <key n="69">
-    <name>E</name>
-    <desc>Decrease propeller pitch</desc>
-    <repeatable type="bool">true</repeatable>
+   <key n="26">
+    <name>Ctrl-Z</name>
+    <desc>Toggle virtual crew</desc>
     <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[0]/propeller-pitch</property>
-     <step type="double">-0.05</step>
-    </binding>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[1]/propeller-pitch</property>
-     <step type="double">-0.05</step>
-    </binding>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[2]/propeller-pitch</property>
-     <step type="double">-0.05</step>
-    </binding>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[3]/propeller-pitch</property>
-     <step type="double">-0.05</step>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.copilotcrew.togglecrewexport();</script>
     </binding>
    </key>
 
@@ -186,32 +195,6 @@
     <binding>
      <command>nasal</command>
      <script>globals.Lockheed1049.seatsystem.scrollreverseexport();</script>
-    </binding>
-   </key>
-
-   <key n="101">
-    <name>e</name>
-    <desc>Increase propeller pitch</desc>
-    <repeatable type="bool">true</repeatable>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[0]/propeller-pitch</property>
-     <step type="double">0.05</step>
-    </binding>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[1]/propeller-pitch</property>
-     <step type="double">0.05</step>
-    </binding>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[2]/propeller-pitch</property>
-     <step type="double">0.05</step>
-    </binding>
-    <binding>
-     <command>property-adjust</command>
-     <property>/controls/engines/engine[3]/propeller-pitch</property>
-     <step type="double">0.05</step>
     </binding>
    </key>
 

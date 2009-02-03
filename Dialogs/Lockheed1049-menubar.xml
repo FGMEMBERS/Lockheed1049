@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <default>
+   <menu n="10">
+     <label>Constellation</label>
+      <enabled type="bool">true</enabled>
+      <item>
+       <label>Autopilot</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-autopilot</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Crew</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-crew</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Ground</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-ground</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Fuel</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-fuel</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Select Livery</label>
+       <binding>
+        <command>nasal</command>
+        <script>aircraft.livery.dialog.toggle()</script>
+       </binding>
+      </item>
+      <item>
+       <label>Procedures</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-procedures</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Radio</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-radios</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Help</label>
+       <binding>
+        <command>nasal</command>
+        <script>gui.showHelpDialog("/sim/help")</script>
+       </binding>
+      </item>
+   </menu>
+  </default>
+
+</PropertyList>

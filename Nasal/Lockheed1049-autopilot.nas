@@ -11,9 +11,9 @@
 Autopilot = {};
 
 Autopilot.new = func {
-   obj = { parents : [Autopilot],
+   var obj = { parents : [Autopilot,System],
 
-           AUTOPILOTSEC : 2.0
+               AUTOPILOTSEC : 2.0
          };
 
    obj.init();
@@ -22,75 +22,79 @@ Autopilot.new = func {
 };
 
 Autopilot.init = func {
+   me.inherit_system("/systems/autopilot");
+
    # glows 35 to 45 times per minute
-#   aircraft.light.new("/systems/autopilot/gyro-beacon", 0.03, 1.30 + rand()*0.38);
    aircraft.light.new("/systems/autopilot/gyro-beacon", [0.03, 1.30 + rand()*0.38]);
 }
 
 # autopilot hold
 Autopilot.apexport = func {
-    modev = getprop("/autopilot/locks/altitude");
+    var modeh = "";
+    var modev = me.itself["autopilot"].getChild("altitude").getValue();
+    var clutch = constant.FALSE;
 
     # if not altitude on
     if( modev != "altitude-hold" ) {
-        modeh = getprop("/autopilot/locks/heading");
+        modeh = me.itself["autopilot"].getChild("heading").getValue();
         if( modev != "pitch-hold" or ( modeh != "dg-heading-hold" and modeh != "true-heading-hold" ) ) {
             clutch = constant.TRUE;
 
             modev = "pitch-hold";
-            pitchdeg = getprop("/orientation/pitch-deg");
-            setprop("/autopilot/settings/target-pitch-deg",pitchdeg);
+            var pitchdeg = me.noinstrument["pitch"].getValue();
+            me.itself["autopilot-set"].getChild("target-pitch-deg").setValue(pitchdeg);
 
             modeh = "dg-heading-hold";
-            headingdeg = getprop("/orientation/heading-magnetic-deg");
-            setprop("/autopilot/settings/heading-bug-deg",headingdeg);
+            var headingdeg = me.noinstrument["heading"].getValue();
+            me.itself["autopilot-set"].getChild("heading-bug-deg").setValue(headingdeg);
         }
         else {
-            clutch = constant.FALSE;
-
-            modev = "";
             modeh = "";
+            modev = "";
         }
 
-        setprop("/autopilot/locks/altitude",modev);
-        setprop("/autopilot/locks/heading",modeh);
-        setprop("/controls/autoflight/autopilot[0]/engaged",clutch);
+        me.itself["autopilot"].getChild("altitude").setValue(modev);
+        me.itself["autopilot"].getChild("heading").setValue(modeh);
+        me.itself["autopilot-ctrl"].getNode("autopilot").getChild("engaged").setValue(clutch);
     }
 }
 
 # altitude hold
 Autopilot.apaltitudeexport = func {
-    modeh = getprop("/autopilot/locks/heading");
+    var modev = "";
+    var modeh = me.itself["autopilot"].getChild("heading").getValue();
+    var switch = constant.FALSE;
 
     # only if autopilot on
     if( modeh == "dg-heading-hold" or modeh == "true-heading-hold" ) {
-        modev = getprop("/autopilot/locks/altitude");
+        modev = me.itself["autopilot"].getChild("altitude").getValue();
         if( modev != "altitude-hold" ) {
             switch = constant.TRUE;
 
             modev = "altitude-hold";
-            altitudeft = getprop("/instrumentation/altimeter/indicated-altitude-ft");
-            setprop("/autopilot/settings/target-altitude-ft",altitudeft);
+            var altitudeft = me.dependency["altimeter"].getValue();
+            me.itself["autopilot-set"].getChild("target-altitude-ft").setValue(altitudeft);
         }
         else {
-            switch = constant.FALSE;
-
             modev = "pitch-hold";
-            pitchdeg = getprop("/orientation/pitch-deg");
-            setprop("/autopilot/settings/target-pitch-deg",pitchdeg);
+            var pitchdeg = me.noinstrument["pitch"].getValue();
+            me.itself["autopilot-set"].getChild("target-pitch-deg").setValue(pitchdeg);
         }
 
-        setprop("/autopilot/locks/altitude",modev);
-        setprop("/controls/autoflight/altitude-switch",switch);
+        me.itself["autopilot"].getChild("altitude").setValue(modev);
+        me.itself["autopilot-ctrl"].getChild("altitude-switch").setValue(switch);
     }
 }
 
 # pitch autopilot :
 # - coefficient
 Autopilot.pitchexport = func( coef ) {
-    altitudemode = getprop("/autopilot/locks/altitude");
+    var altitudemode = me.itself["autopilot"].getChild("altitude").getValue();
+    var result = constant.FALSE;
+
     if( altitudemode != nil and altitudemode != "" ) {
-        pitchdeg = getprop("/autopilot/settings/target-pitch-deg");
+        var pitchdeg = me.itself["autopilot-set"].getChild("target-pitch-deg").getValue();
+
         if( coef >= 0 ) {
             pitchdeg = pitchdeg + 0.15 * coef;
             if( pitchdeg > 12 ) {
@@ -103,39 +107,24 @@ Autopilot.pitchexport = func( coef ) {
                 pitchdeg = -12;
             }
         }
-        setprop("/autopilot/settings/target-pitch-deg",pitchdeg);
+        me.itself["autopilot-set"].getChild("target-pitch-deg").setValue(pitchdeg);
 
         result = constant.TRUE;
-    }
-    else {
-        result = constant.FALSE;
     }
 
     return result;
 }
 
 Autopilot.real = func {
-   mode = getprop("/autopilot/locks/altitude");
+   var mode = me.itself["autopilot"].getChild("altitude").getValue();
+
    if( mode != nil and mode != "" ) {
-       headingdeg = getprop("/orientation/heading-magnetic-deg");
-       setprop("/autopilot/settings/heading-bug-deg",headingdeg);
+       var headingdeg = me.noinstrument["heading"].getValue();
+       me.itself["autopilot-set"].getChild("heading-bug-deg").setValue(headingdeg);
        mode = "dg-heading-hold";
    }
    else {
        mode = "";
    }
-   setprop("/autopilot/locks/heading",mode);
-}
-
-# autopilot help testing during speed-up
-Autopilot.schedule = func {
-   # adding a waypoint swaps to true heading hold
-   mode = getprop("/autopilot/locks/heading");
-   if( mode == "true-heading-hold" ) {
-
-       # keeps autopilot
-       if( !getprop("/systems/crew/copilot/activ") ) { 
-           me.real();
-       }
-   }
+   me.itself["autopilot"].getChild("heading").setValue(mode);
 }

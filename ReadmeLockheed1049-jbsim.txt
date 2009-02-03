@@ -20,6 +20,7 @@ Engine limits : - takeoff (2.75 minutes) : sea level,   54.5 inhg 2900 rpm;
                                            at 16000 ft, 46.0 inhg 2600 rpm (A).
 
 
+Climb rate : 1125 ft/min (F).
 Ceiling : 25000 ft (A).
 Range (max payload) : 1049 : 1890 NM (E).
 
@@ -45,26 +46,30 @@ Lockheed 1049 ops
 =================
 - take-off : - flaps 1/4, 2900 RPM.
              - rotation 130 kt (full load), 120 kt (landing load) :
-             raise slowly the nose until the gear lefts the ground (a little nose heavy).
+               raise slowly the nose until the gear lefts the ground (a little nose heavy).
              - retract gear below 165 kt.
              - retract flaps below 184 kt.
-- climb    : - 48 inhg, below 2600 RPM.
-             - min mixture, min pitch (with stable RPM).
+- climb    : - always above 180 kt (drag).
+             - below 48 inhg and 2600 RPM (engine temperature).
+             - reduce pitch to the lowest RPM (if not enough, reduce throttle),
+               then reduce mixture to the highest RPM (and torque) (G).
+             - decrease mixture (highest EGT) with altitude, otherwise engine stops.
 - cruise   : - 220 kt at 20000 ft, 197 kt at 25000 ft (2600 RPM).
              - min mixture, min pitch (with stable RPM).
-- descent  : max pitch.
-- approach : - max pitch, level to reduce speed, then flaps 1/4 below 184 kt.
+- descent  : - max pitch (i.e. lowest thrust of propeller curve).
+- approach : - max pitch, level to reduce speed.
+             - 10 NM at 1500 ft.
+             - flaps 1/4 below 184 kt.
              - gear below 165 kt.
              - flaps 1/2 below 161 kt.
              - flaps 3/4 below 153 kt.
              - full flaps below 148 kt.
              - maintain 125 kt (landing load). 
-- landing  : 110 kt (landing load), 100 kt (empty load).
+- landing  : - 110 kt (landing load), 100 kt (empty load).
 
 
 Installation
 ============
-If your preferences.xml doesn't have 6 views, update Nasal/Lockheed1049-views.xml.
 
 Fuel load
 ---------
@@ -77,11 +82,12 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-- 0.9.11 : minimum version.
+- 1.9.1 : minimum version.
 
 
 Keyboard
 ========
+- "ctrl-F" : surface control boost.
 - "f"      : "f"ull cockpit (all instruments).
 - "q"      : quit speed up.
 
@@ -90,9 +96,14 @@ Views
 - "ctrl-E" : "E"ngineer view.
 - "ctrl-J" : Copilot view.
 - "ctrl-K" : Observer view (floating).
+- "ctrl-L" : Observer 2 view (floating).
 - "ctrl-N" : "N"avigator view.
 - "ctrl-O" : radi"O" view.
 - "shift-ctrl-X" : restore floating view.
+
+Virtual crew
+------------
+- "ctrl-Z" : virtual crew.
 
 Unchanged behaviour
 -------------------
@@ -108,7 +119,7 @@ Improved behaviour
 - "ctrl-A" : hold altitude.
 - "ctrl-H" : toggle autopilot (hold heading and pitch).
 - "ctrl-P" : toggle autopilot (hold heading and pitch).
-- "ctrl-S" : virtual copilot (autothrottle).
+- "ctrl-S" : autothrottle (virtual copilot).
 - "up / down"  : increases / decreases (fast) pitch hold.
 - "home / end" : increases / decreases (slow) pitch hold.
 - "page up / page down" : increases / decreases copilot speed.
@@ -141,9 +152,8 @@ To feed an engine with the tanks of another engine, set fully the lever at the b
 
 Virtual copilot
 ===============
-- activ, the copilot is green; otherwise yellow.
+- can hold throttle and follow waypoints.
 - is never the pilot in command.
-- above 1000 ft AGL, holds the speed (autothrottle), and follows the waypoints (if any).
 
 
 Consumption
@@ -182,20 +192,20 @@ JSBSim
 
 TO DO
 =====
-- 3D textures of text.
+- 3D textures.
 - 2D textures and 3D instruments.
 
-TO DO JSBSim
--------------
+TO DO FDM
+---------
+- fix negativ elevator drag.
 - reversed propeller : ctrl-B only animates the lights and levers.
 
 
 Known problems
 ==============
-- with Plib, use keyboard shortcuts (no 2D hotspot on levers).
 
-Known problems JSBSim
----------------------
+Known problems FDM
+------------------
 - cross feed emulation until speed-up X 3, when empty tank.
 - at rest, idle engine (700 RPM) may yet stop by very low pressure (altimeter 29.49 inhg).
 - at rest, idle engine (700 RPM) may stop by normal pressure (altimeter 29.89 inhg),
@@ -206,30 +216,29 @@ Known problems sound
 - exception through OpenAL errors (low hardware ?) means too many sounds :
   remove for example engine start/shutdown.
 
-Known problems keyboard
------------------------
-- because of ctrl-I overriding, TAB altimeter menu is not available with GLUT.
-
 Known problems OSG
 ------------------
-The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
+The following artefacts are supposed to be solved by OSG :
 - missing hotspots.
 - panels swaping too early.
 - instrument transparent through layer with alpha (engineer view).
-- transparency of propellers.
+- blending of propellers.
+
+Known problems CVS (works with 1.9.1)
+------------------
+- if not enough power, try to put <maxmp> in comment, in engine file.
 
 
 Secondary problems
 ==================
 
-Secondary problems JSBSim
---------------------------
-- fakes the displacement to get the real range.
+Secondary problems FDM
+----------------------
+- negativ oil pressure.
 
 Secondary problems 2D instrument 
 --------------------------------
 - cross feed has 1 hotspot disabled (4th lever), when in 3D cockpit.
-- twinkling of deviation indicator.
 
 
 References
@@ -247,7 +256,10 @@ References
 
 (E) http://www.airliners.net/discussions/general_aviation/read.main/1738757/4/ :
 
-(F) http://aviatechno.free.fr/constellation/constellation.php :
+(F) http://aviatechno.free.fr/constellation/ :
+
+(G) http://www.factorypipe.com/t_brake.php :
+    Power is proportional to RPM and BMEP.
 
 
-9 December 2007.
+31 January 2009.

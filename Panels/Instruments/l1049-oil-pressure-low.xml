@@ -2,7 +2,7 @@
 
 <!--  Lockheed 1049 oil pressure low light :
 
-      - orange in N73544.
+      - red in N6937C.
 
 
 Adapted from John Check <j4strngs@usa.net>
@@ -34,7 +34,7 @@ properties' values.
  <h-base>30</h-base>
 
  <params>
-  <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
+  <oil-select>/systems/engines/engine[0]/oil-low</oil-select>
  </params>
 
 
@@ -48,10 +48,7 @@ properties' values.
     <name>on</name>
     <type>group</type>
     <condition>
-     <less-than>
-      <property alias="../../../../../../params/oil-select"/>
-      <value>15.0</value>
-     </less-than>
+     <property alias="../../../../../params/oil-select"/>
     </condition>
 
     <layer include="l1049-bulb-led-on.xml">
@@ -62,10 +59,10 @@ properties' values.
      <name>Lens orange</name>
      <texture>
       <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.25</x1>
-      <y1>0.25</y1>
-      <x2>0.5</x2>
-      <y2>0.5</y2>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
      </texture>
      <w>30</w>
      <h>30</h>
@@ -85,10 +82,10 @@ properties' values.
      <name>Lens orange</name>
      <texture>
       <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
-      <x1>0.25</x1>
-      <y1>0.25</y1>
-      <x2>0.5</x2>
-      <y2>0.5</y2>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
      </texture>
      <w>30</w>
      <h>30</h>

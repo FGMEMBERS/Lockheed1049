@@ -4,25 +4,57 @@
 
 
 
+# =======
+# GENERIC
+# =======
+
+Generic = {};
+
+Generic.new = func {
+   var obj = { parents : [Generic],
+
+           click : nil,
+
+           generic : aircraft.light.new("/instrumentation/generic",[ 1.5,0.2 ])
+         };
+
+   obj.init();
+
+   return obj;
+};
+
+Generic.init = func {
+   me.click = props.globals.getNode("/instrumentation/generic/click");
+
+   me.generic.toggle();
+}
+
+Generic.toggleclick = func {
+   var sound = constant.TRUE;
+
+   if( me.click.getValue() ) {
+       sound = constant.FALSE;
+   }
+
+   me.click.setValue( sound );
+}
+
+
 # =============
 # SPEED UP TIME
 # =============
 
-DayTime = {};
+Daytime = {};
 
-DayTime.new = func {
-   obj = { parents : [DayTime],
+Daytime.new = func {
+   var obj = { parents : [Daytime,System],
 
-           altitudenode : nil,
-           thesim : nil,
-           warpnode : nil,
+               SPEEDUPSEC : 1.0,
 
-           SPEEDUPSEC : 1.0,
+               CLIMBFTPMIN : 2500,                                           # max climb rate
+               MAXSTEPFT : 0.0,                                              # altitude change for step
 
-           CLIMBFTPMIN : 1200,                                       # average climb rate
-           MAXSTEPFT : 0.0,                                          # altitude change for step
-
-           lastft : 0.0
+               lastft : 0.0
          };
 
    obj.init();
@@ -30,25 +62,31 @@ DayTime.new = func {
    return obj;
 }
 
-DayTime.init = func {
-    climbftpsec = me.CLIMBFTPMIN / constant.MINUTETOSECOND;
-    me.MAXSTEPFT = climbftpsec * me.SPEEDUPSEC;
+Daytime.init = func {
+    me.inherit_system("/instrumentation/clock");
 
-    me.altitudenode = props.globals.getNode("/position/altitude-ft");
-    me.thesim = props.globals.getNode("/sim");
-    me.warpnode = props.globals.getNode("/sim/time/warp");
+    var climbftpsec = me.CLIMBFTPMIN / constant.MINUTETOSECOND;
+
+    me.MAXSTEPFT = climbftpsec * me.SPEEDUPSEC;
 }
 
-DayTime.schedule = func {
-   altitudeft = me.altitudenode.getValue();
+Daytime.schedule = func {
+   var altitudeft = me.noinstrument["altitude"].getValue();
+   var speedup = me.noinstrument["speed-up"].getValue();
 
-   speedup = me.thesim.getChild("speed-up").getValue();
    if( speedup > 1 ) {
+       var multiplier = 0.0;
+       var offsetsec = 0.0;
+       var warp = 0.0;
+       var stepft = 0.0;
+       var maxft = 0.0;
+       var minft = 0.0;
+
        # accelerate day time
        multiplier = speedup - 1;
        offsetsec = me.SPEEDUPSEC * multiplier;
-       warp = me.warpnode.getValue() + offsetsec; 
-       me.warpnode.setValue(warp);
+       warp = me.noinstrument["warp"].getValue() + offsetsec; 
+       me.noinstrument["warp"].setValue(warp);
 
        # safety
        stepft = me.MAXSTEPFT * speedup;
@@ -57,7 +95,7 @@ DayTime.schedule = func {
 
        # too fast
        if( altitudeft > maxft or altitudeft < minft ) {
-           me.thesim.getChild("speed-up").setValue(1);
+           me.noinstrument["speed-up"].setValue(1);
        }
    }
 

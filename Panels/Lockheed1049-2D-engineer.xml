@@ -135,7 +135,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <left-level-select>/consumables/fuel/tank[1]/level-lb</left-level-select>
     <right-level-select>/consumables/fuel/tank[2]/level-lb</right-level-select>
    </params>
-   <x>550</x>
+   <x>575</x>
    <y>440</y>
    <w>100</w>
    <h>100</h>
@@ -147,7 +147,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <left-level-select>/consumables/fuel/tank[0]/level-lb</left-level-select>
     <right-level-select>/consumables/fuel/tank[3]/level-lb</right-level-select>
    </params>
-   <x>660</x>
+   <x>685</x>
    <y>440</y>
    <w>100</w>
    <h>100</h>
@@ -158,7 +158,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
    </params>
-   <x>550</x>
+   <x>575</x>
    <y>550</y>
    <w>100</w>
    <h>100</h>
@@ -170,7 +170,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <left-level-select>/consumables/fuel/tank[5]/level-lb</left-level-select>
     <right-level-select>/consumables/fuel/tank[6]/level-lb</right-level-select>
    </params>
-   <x>660</x>
+   <x>685</x>
    <y>550</y>
    <w>100</w>
    <h>100</h>
@@ -231,17 +231,41 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-door-warning.xml">
    <name>Door Warning Light</name>
    <x>255</x>
-   <y>370</y>
+   <y>390</y>
    <w>65</w>
    <h>65</h>
   </instrument>
 
   <instrument include="Instruments/l1049-clock.xml">
    <name>Clock</name>
-   <x>455</x>
-   <y>325</y>
+   <x>480</x>
+   <y>335</y>
    <w>80</w>
    <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-torque-pressure.xml">
+   <name>Engine 1 and 2 torque</name>
+   <params>
+    <torque-select>/engines/engine[0]/thruster/torque</torque-select>
+    <torque2-select>/engines/engine[1]/thruster/torque</torque2-select>
+   </params>
+   <x>270</x>
+   <y>300</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-torque-pressure.xml">
+   <name>Engine 3 and 4 torque</name>
+   <params>
+    <torque-select>/engines/engine[2]/thruster/torque</torque-select>
+    <torque2-select>/engines/engine[3]/thruster/torque</torque2-select>
+   </params>
+   <x>380</x>
+   <y>300</y>
+   <w>95</w>
+   <h>95</h>
   </instrument>
 
   <instrument include="Instruments/l1049-tachometer.xml">
@@ -271,7 +295,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 1 pitch indicator</name>
    <params>
-    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+    <rpm-select>/systems/engines/engine[0]/propeller-low-high</rpm-select>
     <engine-select>/systems/engines/engine[0]/engine-num</engine-select>
    </params>
    <x>245</x>
@@ -283,7 +307,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 2 pitch indicator</name>
    <params>
-    <rpm-select>/engines/engine[1]/rpm</rpm-select>
+    <rpm-select>/systems/engines/engine[1]/propeller-low-high</rpm-select>
     <engine-select>/systems/engines/engine[1]/engine-num</engine-select>
    </params>
    <x>295</x>
@@ -295,7 +319,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 3 pitch indicator</name>
    <params>
-    <rpm-select>/engines/engine[2]/rpm</rpm-select>
+    <rpm-select>/systems/engines/engine[2]/propeller-low-high</rpm-select>
     <engine-select>/systems/engines/engine[2]/engine-num</engine-select>
    </params>
    <x>355</x>
@@ -307,7 +331,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-pitch-low-high.xml">
    <name>Propeller 4 pitch indicator</name>
    <params>
-    <rpm-select>/engines/engine[3]/rpm</rpm-select>
+    <rpm-select>/systems/engines/engine[3]/propeller-low-high</rpm-select>
     <engine-select>/systems/engines/engine[3]/engine-num</engine-select>
    </params>
    <x>405</x>
@@ -348,7 +372,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
     <oil2-select>/engines/engine[1]/oil-pressure-psi</oil2-select>
    </params>
-   <x>550</x>
+   <x>575</x>
    <y>230</y>
    <w>100</w>
    <h>100</h>
@@ -360,7 +384,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <oil-select>/engines/engine[2]/oil-pressure-psi</oil-select>
     <oil2-select>/engines/engine[3]/oil-pressure-psi</oil2-select>
    </params>
-   <x>660</x>
+   <x>685</x>
    <y>230</y>
    <w>100</w>
    <h>100</h>
@@ -369,9 +393,9 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
    <name>Oil pressure 1 low indicator</name>
    <params>
-    <oil-select>/engines/engine[0]/oil-pressure-psi</oil-select>
+    <oil-select>/systems/engines/engine[0]/oil-low</oil-select>
    </params>
-   <x>525</x>
+   <x>550</x>
    <y>160</y>
    <w>22</w>
    <h>22</h>
@@ -380,9 +404,9 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
    <name>Oil pressure 2 low indicator</name>
    <params>
-    <oil-select>/engines/engine[1]/oil-pressure-psi</oil-select>
+    <oil-select>/systems/engines/engine[1]/oil-low</oil-select>
    </params>
-   <x>575</x>
+   <x>600</x>
    <y>160</y>
    <w>22</w>
    <h>22</h>
@@ -391,9 +415,9 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
    <name>Oil pressure 3 low indicator</name>
    <params>
-    <oil-select>/engines/engine[2]/oil-pressure-psi</oil-select>
+    <oil-select>/systems/engines/engine[2]/oil-low</oil-select>
    </params>
-   <x>635</x>
+   <x>660</x>
    <y>160</y>
    <w>22</w>
    <h>22</h>
@@ -402,9 +426,9 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-oil-pressure-low.xml">
    <name>Oil pressure 4 low indicator</name>
    <params>
-    <oil-select>/engines/engine[3]/oil-pressure-psi</oil-select>
+    <oil-select>/systems/engines/engine[3]/oil-low</oil-select>
    </params>
-   <x>685</x>
+   <x>710</x>
    <y>160</y>
    <w>22</w>
    <h>22</h>

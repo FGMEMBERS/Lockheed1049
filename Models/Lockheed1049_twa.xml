@@ -13,7 +13,9 @@
 
 
      Aninmation :
-     - WARNING : cockpit must be inside a distinct group (LOD).
+     - WARNING, group used for LOD : cockpit, yokes, side panels, brakes, elevator boost, pedestal,
+       pedestal cylinder, seats, overhead and control quadrant, light with its plate.
+       Because of panels red lighting, warning lights must belong to the cockpit group.
      - 1 Blender unit = 1 m.
      - multiplayer requires property without leading slash.
      - disabling 3D instruments in external view brings frame rate.
@@ -37,6 +39,8 @@
      ==============
      - drag struts of front gear retract through the fuselage.
      - the shaft is visible behind the propeller disc, because they are not in a group.
+     - as Nasal interpolate is not always round, 0.1 offset on landing light position :
+       0.0 1.0 becomes 0.1 0.9.
 -->
 
 <PropertyList>
@@ -53,6 +57,20 @@
 
  </offsets>
 
+<!-- livery support -->
+  <nasal>
+   <load>
+    var livery_update = aircraft.livery_update.new(
+    "Aircraft/Lockheed1049/Models/Liveries", 10,
+    func { print("Lockheed1049 livery update") });
+   </load>
+
+   <unload>
+    livery_update.stop();
+   </unload>
+  </nasal>
+
+
  <!-- ======================================= -->
  <!-- panel models (X/Y/Z depth/width/height) -->
  <!-- ======================================= -->
@@ -62,17 +80,17 @@
   <panel>
    <path>Aircraft/Lockheed1049/Panels/Lockheed1049-pilot.xml</path>
    <bottom-left>
-    <x-m>-15.49</x-m>
+    <x-m>-15.510</x-m>
     <y-m>-0.600</y-m>
     <z-m> 0.40</z-m>
    </bottom-left>
    <bottom-right>
-    <x-m>-15.49</x-m>
+    <x-m>-15.510</x-m>
     <y-m> 0.580</y-m>
     <z-m> 0.40</z-m>
    </bottom-right>
    <top-left>
-    <x-m>-15.69</x-m>
+    <x-m>-15.710</x-m>
     <y-m>-0.600</y-m>
     <z-m> 0.99</z-m> <!-- oval altimeter -->
    </top-left>
@@ -99,6 +117,7 @@
    </top-left>
   </panel>
 
+<!--
   <panel>
    <path>Aircraft/Lockheed1049/Panels/Lockheed1049-overhead-middle.xml</path>
    <bottom-left>
@@ -117,6 +136,8 @@
     <z-m> 1.48</z-m>
    </top-left>
   </panel>
+-->
+-->
 
  <!-- ENGINEER -->
 
@@ -248,21 +269,50 @@
    <max-m>50</max-m>
   </animation>
 
+  <animation>
+   <name>OutsideLOD</name>
+   <object-name>VorLocAntenna</object-name>
+   <object-name>HFAntenna</object-name>
+   <object-name>VHFAntenna</object-name>
+   <object-name>ADFLoopAntenna</object-name>
+   <object-name>RadioAltAntenna</object-name>
+   <object-name>ADFSenseAntenna</object-name>
+   <object-name>LeftStabilizer</object-name>
+   <object-name>RightStabilizer</object-name>
+   <object-name>LeftElevator</object-name>
+   <object-name>RightElevator</object-name>
+   <object-name>LeftFin</object-name>
+   <object-name>Stabilizer</object-name>
+   <object-name>RightFin</object-name>
+   <object-name>LeftRudder</object-name>
+   <object-name>Rudder</object-name>
+   <object-name>RightRudder</object-name>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>OutsideLOD</object-name>
+   <condition>
+    <not>
+     <property>sim/current-view/internal</property>
+    </not>
+   </condition>
+  </animation>
+
 <!-- CAPTAIN -->
 
   <animation>
    <name>captain</name>
-   <object-name>CaptainSeat</object-name>
+   <object-name>PilotSidePanel</object-name>
+   <object-name>SteeringWheel</object-name>
    <object-name>CaptainPedalRailL</object-name>
    <object-name>CaptainPedalL</object-name>
    <object-name>CaptainPedalRailR</object-name>
    <object-name>CaptainPedalR</object-name>
-   <object-name>CaptainYoke</object-name>
-   <object-name>CaptainYokePillar</object-name>
+   <object-name>CaptainYokeCase</object-name>
    <object-name>ParkingBrakeTubeL</object-name>
-   <object-name>ParkingBrakeLeverL</object-name>
    <object-name>ElevatorBoosterTube</object-name>
-   <object-name>ElevatorBooster</object-name>
+   <object-name>CaptainRail</object-name>
   </animation>
 
   <animation>
@@ -284,41 +334,15 @@
   <animation>
    <name>both</name>
    <object-name>Standby Compass</object-name>
-   <object-name>PropellerReverse1</object-name>
-   <object-name>PropellerReverse2</object-name>
-   <object-name>PropellerReverse3</object-name>
-   <object-name>PropellerReverse4</object-name>
-   <object-name>ElevatorTabLW</object-name>
-   <object-name>RudderBooster</object-name>
-   <object-name>AileronBooster</object-name>
-   <object-name>ReverseThrottle1</object-name>
-   <object-name>ReverseThrottle2</object-name>
-   <object-name>ReverseThrottle3</object-name>
-   <object-name>ReverseThrottle4</object-name>
-   <object-name>MainThrottle1</object-name>
-   <object-name>MainThrottle2</object-name>
-   <object-name>MainThrottle3</object-name>
-   <object-name>MainThrottle4</object-name>
-   <object-name>ReverseLock</object-name>
-   <object-name>ElectricElevatorTab</object-name>
-   <object-name>MasterPropeller</object-name>
-   <object-name>FlapLever</object-name>
-   <object-name>ElevatorTabRW</object-name>
-   <object-name>AltitudeSwitch</object-name>
-   <object-name>RudderTabCursor</object-name>
-   <object-name>RudderTab</object-name>
-   <object-name>AileronTabCursor</object-name>
-   <object-name>AileronTab</object-name>
-   <object-name>GyroBeacon</object-name>
-   <object-name>FluxGateCagedL</object-name>
-   <object-name>FluxGateCagedR</object-name>
-   <object-name>AutopilotClutch</object-name>
-   <object-name>AileronServo</object-name>
-   <object-name>RudderServo</object-name>
-   <object-name>ElevatorServo</object-name>
-   <object-name>BrakeSelectorCylind</object-name>
-   <object-name>LandingGearCylinder</object-name>
-   <object-name>LandingGearLever</object-name>
+   <object-name>Overhead</object-name>
+   <object-name>OverheadMiddlePlate</object-name>
+   <object-name>PropellerReversePlate</object-name>
+   <object-name>PilotMasterFirePlate</object-name>
+   <object-name>ParkingBrakePlate</object-name>
+   <object-name>GlareshieldPanel</object-name>
+   <object-name>Panel</object-name>
+   <object-name>Cylinder</object-name>
+   <object-name>Pedestal</object-name>
   </animation>
 
   <animation>
@@ -342,15 +366,14 @@
 
   <animation>
    <name>copilot</name>
-   <object-name>CopilotSeat</object-name>
+   <object-name>CopilotSidePanel</object-name>
    <object-name>CopilotPedalRailL</object-name>
    <object-name>CopilotPedalL</object-name>
    <object-name>CopilotPedalRailR</object-name>
    <object-name>CopilotPedalR</object-name>
-   <object-name>CopilotYoke</object-name>
-   <object-name>CopilotYokePillar</object-name>
+   <object-name>CopilotYokeCase</object-name>
    <object-name>ParkingBrakeTubeR</object-name>
-   <object-name>ParkingBrakeLeverR</object-name>
+   <object-name>CopilotRail</object-name>
   </animation>
 
   <animation>
@@ -371,25 +394,16 @@
 
   <animation>
    <name>engineer</name>
-   <object-name>EngineerSeat</object-name>
+   <object-name>EngineerPanel</object-name>
+   <object-name>ControlQuadrant</object-name>
    <object-name>EngineerSeatTube</object-name>
-   <object-name>PropellerEngineer</object-name>
-   <object-name>ThrottleEngineer1</object-name>
-   <object-name>ThrottleEngineer2</object-name>
-   <object-name>ThrottleEngineer3</object-name>
-   <object-name>ThrottleEngineer4</object-name>
-   <object-name>EngineBlower1</object-name>
-   <object-name>EngineBlower2</object-name>
-   <object-name>EngineBlower3</object-name>
-   <object-name>EngineBlower4</object-name>
-   <object-name>Mixture1</object-name>
-   <object-name>Mixture2</object-name>
-   <object-name>Mixture3</object-name>
-   <object-name>Mixture4</object-name>
-   <object-name>FuelTankSelector1</object-name>
-   <object-name>FuelTankSelector2</object-name>
-   <object-name>FuelTankSelector3</object-name>
-   <object-name>FuelTankSelector4</object-name>
+   <object-name>HydraulicPumpPlate</object-name>
+   <object-name>DeIcerPumpPlate</object-name>
+   <object-name>DoorWarningPlate</object-name>
+   <object-name>MasterFirePlate</object-name>
+   <object-name>PropellerPitchPlate</object-name>
+   <object-name>OilPressurePlate</object-name>
+   <object-name>FuelPressurePlate</object-name>
   </animation>
 
   <animation>
@@ -435,20 +449,22 @@
 <!-- Animations (x/y/z = back/right/up) -->
 <!-- ================================== -->
 
+<!-- OUTBOARDS PROPELLERS -->
+
   <animation>
    <type>noshadow</type>
    <object-name>PropellerDisc1</object-name>
-   <object-name>PropellerDisc2</object-name>
-   <object-name>PropellerDisc3</object-name>
-   <object-name>PropellerDisc4</object-name>
   </animation>
 
-<!-- OUTBOARDS PROPELLERS -->
+  <animation>
+   <name>Disc1</name>
+   <object-name>PropellerDisc1</object-name>
+   <object-name>PropellerShaft1</object-name>
+  </animation>
 
  <animation>
   <type>spin</type>
-  <object-name>PropellerDisc1</object-name>
-  <object-name>PropellerShaft1</object-name>
+  <object-name>Disc1</object-name>
   <object-name>Propeller1</object-name>
   <property>engines/engine[0]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
@@ -487,8 +503,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft1</object-name>
-  <object-name>PropellerDisc1</object-name>
+  <object-name>Disc1</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[0]/rpm</property>
@@ -499,10 +514,20 @@
 
 <!-- 4 -->
 
+  <animation>
+   <type>noshadow</type>
+   <object-name>PropellerDisc4</object-name>
+  </animation>
+
+  <animation>
+   <name>Disc4</name>
+   <object-name>PropellerDisc4</object-name>
+   <object-name>PropellerShaft4</object-name>
+  </animation>
+
  <animation>
   <type>spin</type>
-  <object-name>PropellerDisc4</object-name>
-  <object-name>PropellerShaft4</object-name>
+  <object-name>Disc4</object-name>
   <object-name>Propeller4</object-name>
   <property>engines/engine[3]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
@@ -541,8 +566,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft4</object-name>
-  <object-name>PropellerDisc4</object-name>
+  <object-name>Disc4</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[3]/rpm</property>
@@ -553,10 +577,20 @@
 
 <!-- INBOARDS PROPELLERS -->
 
+  <animation>
+   <type>noshadow</type>
+   <object-name>PropellerDisc2</object-name>
+  </animation>
+
+  <animation>
+   <name>Disc2</name>
+   <object-name>PropellerDisc2</object-name>
+   <object-name>PropellerShaft2</object-name>
+  </animation>
+
  <animation>
   <type>spin</type>
-  <object-name>PropellerDisc2</object-name>
-  <object-name>PropellerShaft2</object-name>
+  <object-name>Disc2</object-name>
   <object-name>Propeller2</object-name>
   <property>engines/engine[1]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
@@ -595,8 +629,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft2</object-name>
-  <object-name>PropellerDisc2</object-name>
+  <object-name>Disc2</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[1]/rpm</property>
@@ -607,10 +640,20 @@
 
 <!-- 3 -->
 
+  <animation>
+   <type>noshadow</type>
+   <object-name>PropellerDisc3</object-name>
+  </animation>
+
+  <animation>
+   <name>Disc3</name>
+   <object-name>PropellerDisc3</object-name>
+   <object-name>PropellerShaft3</object-name>
+  </animation>
+
  <animation>
   <type>spin</type>
-  <object-name>PropellerDisc3</object-name>
-  <object-name>PropellerShaft3</object-name>
+  <object-name>Disc3</object-name>
   <object-name>Propeller3</object-name>
   <property>engines/engine[2]/rpm</property>
   <factor>0.4375</factor> <!-- real 16 : 7 -->
@@ -649,8 +692,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft3</object-name>
-  <object-name>PropellerDisc3</object-name>
+  <object-name>Disc3</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[2]/rpm</property>
@@ -694,10 +736,15 @@
   <object-name>FrontGearCylinder</object-name>
   <condition>
    <or>
-    <greater-than>
-     <property>gear/gear[0]/position-norm</property>
-     <value>0.0</value>
-    </greater-than>
+    <and>
+     <greater-than>
+      <property>gear/gear[0]/position-norm</property>
+      <value>0.0</value>
+     </greater-than>
+     <not>
+      <property>sim/current-view/internal</property>
+     </not>
+    </and>
     <property>systems/seat/gear-well</property>
    </or>
   </condition>
@@ -888,13 +935,10 @@
   <type>rotate</type>
   <object-name>NoseWheels</object-name>
   <condition>
-   <less-than>
-    <property>position/altitude-agl-ft</property>
-    <value>50.0</value>
-   </less-than>
+   <property>controls/crew/steering/wheel</property>
   </condition>
   <property>gear/gear[0]/steering-norm</property>
-  <factor>-30</factor>
+  <factor>-58.5</factor>
   <center>
    <x-m>-15.454</x-m>
    <y-m>0.0</y-m>
@@ -914,10 +958,18 @@
   <object-name>FrontDoor2</object-name>
   <object-name>FrontPlate</object-name>
   <condition>
-   <greater-than>
-    <property>gear/gear[0]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
+   <or>
+    <and>
+     <greater-than>
+      <property>gear/gear[0]/position-norm</property>
+      <value>0.0</value>
+     </greater-than>
+     <not>
+      <property>sim/current-view/internal</property>
+     </not>
+    </and>
+    <property>systems/seat/gear-well</property>
+   </or>
   </condition>
  </animation>
 
@@ -1045,10 +1097,18 @@
   <type>select</type>
   <object-name>FrontDoorClosed</object-name>
   <condition>
-   <equals>
-    <property>gear/gear[0]/position-norm</property>
-    <value>0.0</value>
-   </equals>
+   <and>
+    <equals>
+     <property>gear/gear[0]/position-norm</property>
+     <value>0.0</value>
+    </equals>
+    <or>
+     <not>
+      <property>sim/current-view/internal</property>
+     </not>
+     <property>systems/seat/gear-well</property>
+    </or>
+   </and>
   </condition>
  </animation>
 
@@ -1070,10 +1130,19 @@
   <type>select</type>
   <object-name>WingLeftGear</object-name>
   <condition>
-   <greater-than>
-    <property>gear/gear[1]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
+   <or>
+    <and>
+     <greater-than>
+      <property>gear/gear[1]/position-norm</property>
+      <value>0.0</value>
+     </greater-than>
+     <not>
+      <property>sim/current-view/internal</property>
+     </not>
+    </and>
+    <property>systems/seat/observer</property>
+    <property>systems/seat/observer2</property>
+   </or>
   </condition>
  </animation>
  
@@ -1207,10 +1276,19 @@
   <type>select</type>
   <object-name>WingRightGear</object-name>
   <condition>
-   <greater-than>
-    <property>gear/gear[2]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
+   <or>
+    <and>
+     <greater-than>
+      <property>gear/gear[2]/position-norm</property>
+      <value>0.0</value>
+     </greater-than>
+     <not>
+      <property>sim/current-view/internal</property>
+     </not>
+    </and>
+    <property>systems/seat/observer</property>
+    <property>systems/seat/observer2</property>
+   </or>
   </condition>
  </animation>
  
@@ -1619,7 +1697,7 @@
   </axis>
  </animation>
 
-<!-- ELEVATOR (minus 6/16 deg real) -->
+<!-- ELEVATOR (real) -->
 
  <animation>
   <type>rotate</type>
@@ -1631,11 +1709,11 @@
    </less-than>
   </condition>
   <property>surface-positions/elevator-pos-norm</property>
-  <factor>6.0</factor>
+  <factor>40.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
   <center>
-   <x-m>16.76</x-m>
+   <x-m>16.512</x-m>
    <y-m>0.0</y-m>
    <z-m>2.13</z-m>
   </center>
@@ -1656,10 +1734,10 @@
    </greater-than>
   </condition>
   <property>surface-positions/elevator-pos-norm</property>
-  <factor>16.0</factor>
+  <factor>20.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>16.76</x-m>
+   <x-m>16.512</x-m>
    <y-m>0.0</y-m>
    <z-m>2.13</z-m>
   </center>
@@ -1680,11 +1758,11 @@
    </less-than>
   </condition>
   <property>surface-positions/elevator-pos-norm</property>
-  <factor>-6.0</factor>
+  <factor>-40.0</factor>
   <offset-deg>0</offset-deg>   
   <min>0.0</min>
   <center>
-   <x-m>16.76</x-m>
+   <x-m>16.512</x-m>
    <y-m>0.0</y-m>
    <z-m>2.13</z-m>
   </center>
@@ -1705,10 +1783,10 @@
    </greater-than>
   </condition>
   <property>surface-positions/elevator-pos-norm</property>
-  <factor>-16.0</factor>
+  <factor>-20.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
-   <x-m>16.76</x-m>
+   <x-m>16.512</x-m>
    <y-m>0.0</y-m>
    <z-m>2.13</z-m>
   </center>
@@ -1775,6 +1853,996 @@
   </axis>
  </animation>
 
+<!-- NAVIGATION LIGHTS -->
+
+ <animation>
+  <name>Navigation2Lights</name>
+  <object-name>NavigationLeft</object-name>
+  <object-name>NavigationRight</object-name>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>Navigation2Lights</object-name>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>NavigationTail</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Navigation2Lights</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>NavigationTail</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Navigation2Lights</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/navigation/on</property>
+    <or>
+     <and>
+      <not>
+       <property>controls/lighting/external/navigation/ground-loading</property>
+      </not>
+      <not>
+       <property>controls/lighting/external/navigation/steady</property>
+      </not>
+      <not>
+       <property>controls/lighting/flash/state</property>
+      </not>
+     </and>
+     <and>
+      <not>
+       <property>controls/lighting/external/navigation/ground-loading</property>
+      </not>
+      <property>controls/lighting/external/navigation/steady</property>
+     </and>
+     <property>controls/lighting/external/navigation/ground-loading</property>
+    </or>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>NavigationTail</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/navigation/on</property>
+    <not>
+     <property>controls/lighting/external/navigation/ground-loading</property>
+    </not>
+    <or>
+     <and>
+      <not>
+       <property>controls/lighting/external/navigation/steady</property>
+      </not>
+      <not>
+       <property>controls/lighting/flash/state</property>
+      </not>
+     </and>
+     <property>controls/lighting/external/navigation/steady</property>
+    </or>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationTail</object-name>
+  <offset-m>17.343</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationTail</object-name>
+  <offset-m>2.201</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>NavigationTail</object-name>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>NavigationTail</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationLeft</object-name>
+  <offset-m>0.0</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationLeft</object-name>
+  <offset-m>-18.984</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationLeft</object-name>
+  <offset-m>1.280</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>NavigationLeft</object-name>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>NavigationLeft</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationRight</object-name>
+  <offset-m>0.0</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationRight</object-name>
+  <offset-m>18.984</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>NavigationRight</object-name>
+  <offset-m>1.280</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>NavigationRight</object-name>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>NavigationRight</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+<!-- GEAR WELL DOME LIGHTS -->
+
+ <animation>
+  <name>GearWellLights</name>
+  <object-name>FrontGearLight</object-name>
+  <object-name>LeftGearLight</object-name>
+  <object-name>RightGearLight</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>GearWellLights</object-name>
+  <emission>
+   <red>0.6</red>
+   <green>0.6</green>
+   <blue>0.6</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>GearWellLights</object-name>
+  <condition>
+   <property>controls/lighting/external/navigation/on</property>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>FrontGearLight</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LeftGearLight</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[1]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>RightGearLight</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[2]/position-norm</property>
+    <value>0.0</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+<!-- FUSELAGE LIGHTS -->
+
+ <animation>
+  <name>Fuselage2Lights</name>
+  <object-name>FuselageTop</object-name>
+  <object-name>FuselageTail</object-name>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>Fuselage2Lights</object-name>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>FuselageBottom</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Fuselage2Lights</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>FuselageBottom</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Fuselage2Lights</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/navigation/fuselage-lights</property>
+    <not>
+     <property>controls/lighting/external/navigation/ground-loading</property>
+    </not>
+    <not>
+     <property>controls/lighting/external/navigation/steady</property>
+    </not>
+    <property>controls/lighting/flash/state</property>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>FuselageBottom</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/navigation/fuselage-lights</property>
+    <or>
+     <and>
+      <not>
+       <property>controls/lighting/external/navigation/ground-loading</property>
+      </not>
+      <not>
+       <property>controls/lighting/external/navigation/steady</property>
+      </not>
+      <property>controls/lighting/flash/state</property>
+     </and>
+     <property>controls/lighting/external/navigation/ground-loading</property>
+    </or>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>FuselageTail</object-name>
+  <offset-m>17.343</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>FuselageTail</object-name>
+  <offset-m>2.201</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>FuselageTail</object-name>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>FuselageTail</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+ <animation>
+  <type>dist-scale</type>
+  <object-name>FuselageTail</object-name>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>20</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>1500</ind>
+    <dep>5</dep>
+   </entry>
+  </interpolation>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>FuselageTop</object-name>
+  <offset-m>-8.307</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>FuselageTop</object-name>
+  <offset-m>2.330</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>FuselageTop</object-name>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>FuselageTop</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+ <animation>
+  <type>dist-scale</type>
+  <object-name>FuselageTop</object-name>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>20</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>1500</ind>
+    <dep>5</dep>
+   </entry>
+  </interpolation>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>FuselageBottom</object-name>
+  <offset-m>-8.307</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>FuselageBottom</object-name>
+  <offset-m>-1.135</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>FuselageBottom</object-name>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>FuselageBottom</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+ <animation>
+  <type>dist-scale</type>
+  <object-name>FuselageBottom</object-name>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>20</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>1500</ind>
+    <dep>5</dep>
+   </entry>
+  </interpolation>
+ </animation>
+
+<!-- LANDING LIGHTS -->
+
+ <animation>
+  <name>LandingLights</name>
+  <object-name>LandingLightLeft</object-name>
+  <object-name>LandingLightRight</object-name>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>LandingLights</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>LandingLights</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LandingLightLeft</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/landing[0]/on</property>
+    <equals>
+     <property>controls/lighting/external/landing[0]/position</property>
+     <value>1.0</value>
+    </equals>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLightLeft</object-name>
+  <offset-m>-1.78</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLightLeft</object-name>
+  <offset-m>-14.685</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLightLeft</object-name>
+  <offset-m>0.478</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>LandingLightLeft</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>1.3</x-factor>                       <!-- avoids to cut wing -->
+  <y-factor>1.3</y-factor>
+  <z-factor>1.3</z-factor>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LandingLightRight</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/landing[1]/on</property>
+    <equals>
+     <property>controls/lighting/external/landing[1]/position</property>
+     <value>1.0</value>
+    </equals>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLightRight</object-name>
+  <offset-m>-1.78</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLightRight</object-name>
+  <offset-m>14.608</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLightRight</object-name>
+  <offset-m>0.478</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>LandingLightRight</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>1.3</x-factor>                       <!-- avoids to cut wing -->
+  <y-factor>1.3</y-factor>
+  <z-factor>1.3</z-factor>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LandingConeLeft</object-name>
+  <condition>
+   <greater-than>
+    <property>controls/lighting/external/landing[0]/position</property>
+    <property n="1">/controls/lighting/external/interpolate/off</property>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingConeLeft</object-name>
+  <property>controls/lighting/external/landing[0]/position</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>0.55</dep>
+   </entry>
+   <entry>
+     <ind>0.4</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingConeLeft</object-name>
+  <property>controls/lighting/external/landing[0]/position</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>-90.0</dep>
+   </entry>
+   <entry>
+     <ind>0.4</ind>
+     <dep>-90.0</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>   
+  <center>
+   <x-m>-1.663</x-m>
+   <y-m>0</y-m>
+   <z-m>0.478</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LandingConeRight</object-name>
+  <condition>
+   <greater-than>
+    <property>controls/lighting/external/landing[1]/position</property>
+    <property n="1">/controls/lighting/external/interpolate/off</property>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingConeRight</object-name>
+  <property>controls/lighting/external/landing[1]/position</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>0.55</dep>
+   </entry>
+   <entry>
+     <ind>0.4</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingConeRight</object-name>
+  <property>controls/lighting/external/landing[1]/position</property>
+  <interpolation>
+   <entry>
+     <ind>0.0</ind>
+     <dep>-90.0</dep>
+   </entry>
+   <entry>
+     <ind>0.4</ind>
+     <dep>-90.0</dep>
+   </entry>
+   <entry>
+     <ind>1.0</ind>
+     <dep>0.0</dep>
+   </entry>
+  </interpolation>   
+  <center>
+   <x-m>-1.663</x-m>
+   <y-m>0</y-m>
+   <z-m>0.478</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+<!-- TAXI LIGHT -->
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>TaxiLight</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>TaxiLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>TaxiLight</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/taxi/on</property>
+    <not>
+     <property>controls/lighting/external/taxi/passing</property>
+    </not>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>TaxiLight</object-name>
+  <factor>0.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m>-17.07</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-0.510</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>TaxiLight</object-name>
+  <offset-m>-17.07</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>TaxiLight</object-name>
+  <offset-m>-0.510</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+<!-- PASSING LIGHT -->
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PassingLight</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PassingLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>PassingLight</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/taxi/on</property>
+    <property>controls/lighting/external/taxi/passing</property>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassingLight</object-name>
+  <factor>0.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m>-17.07</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-0.510</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>PassingLight</object-name>
+  <offset-m>-17.07</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>PassingLight</object-name>
+  <offset-m>-0.510</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>PassingLight</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
 
 <!-- ====== -->
 <!-- Inside -->
@@ -1784,10 +2852,37 @@
 
  <animation>
   <type>rotate</type>
+  <object-name>SteeringWheel</object-name>
+  <condition>
+   <property>controls/crew/steering/wheel</property>
+  </condition>
+  <property>controls/flight/rudder</property>
+  <factor>-540</factor>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>-0.858</y-m>
+   <z-m>0.700</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
   <object-name>CaptainPedalL</object-name>
+  <condition>
+   <or>
+    <property>controls/gear/brake-steering</property>
+    <not>
+     <property>controls/crew/steering/wheel</property>
+    </not>
+   </or>
+  </condition>
   <property>controls/flight/rudder</property>
   <factor>15</factor>
-  <offset-deg>40</offset-deg>   
   <center>
    <x-m>-15.492</x-m>
    <y-m>0.0</y-m>
@@ -1803,9 +2898,16 @@
  <animation>
   <type>rotate</type>
   <object-name>CaptainPedalR</object-name>
+  <condition>
+   <or>
+    <property>controls/gear/brake-steering</property>
+    <not>
+     <property>controls/crew/steering/wheel</property>
+    </not>
+   </or>
+  </condition>
   <property>controls/flight/rudder</property>
   <factor>-15</factor>
-  <offset-deg>40</offset-deg>   
   <center>
    <x-m>-15.492</x-m>
    <y-m>0.0</y-m>
@@ -1821,9 +2923,16 @@
  <animation>
   <type>rotate</type>
   <object-name>CopilotPedalL</object-name>
+  <condition>
+   <or>
+    <property>controls/gear/brake-steering</property>
+    <not>
+     <property>controls/crew/steering/wheel</property>
+    </not>
+   </or>
+  </condition>
   <property>controls/flight/rudder</property>
   <factor>15</factor>
-  <offset-deg>40</offset-deg>   
   <center>
    <x-m>-15.492</x-m>
    <y-m>0.0</y-m>
@@ -1839,9 +2948,16 @@
  <animation>
   <type>rotate</type>
   <object-name>CopilotPedalR</object-name>
+  <condition>
+   <or>
+    <property>controls/gear/brake-steering</property>
+    <not>
+     <property>controls/crew/steering/wheel</property>
+    </not>
+   </or>
+  </condition>
   <property>controls/flight/rudder</property>
   <factor>-15</factor>
-  <offset-deg>40</offset-deg>   
   <center>
    <x-m>-15.492</x-m>
    <y-m>0.0</y-m>
@@ -1894,7 +3010,7 @@
   <object-name>CaptainYoke</object-name>
   <property>controls/flight/elevator</property>
   <factor>-5</factor>
-  <offset-deg>-5</offset-deg>      <!-- avoids bump in seat --> 
+  <offset-deg>-5</offset-deg>      <!-- avoids bump into seat --> 
   <center>
    <x-m>-14.5</x-m>
    <y-m>0.0</y-m>
@@ -1931,7 +3047,7 @@
   <object-name>CopilotYoke</object-name>
   <property>controls/flight/elevator</property>
   <factor>-5</factor>
-  <offset-deg>-5</offset-deg>      <!-- avoids bump in seat --> 
+  <offset-deg>-5</offset-deg>      <!-- avoids bump into seat --> 
   <center>
    <x-m>-14.5</x-m>
    <y-m>0.0</y-m>
@@ -1967,7 +3083,7 @@
  <animation>
   <type>translate</type>
   <object-name>CrewDoor</object-name>
-  <property>instrumentation/doors/crew/position-norm</property>
+  <property>controls/doors/crew/position-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -1997,7 +3113,7 @@
  <animation>
   <type>rotate</type>
   <object-name>CrewDoor</object-name>
-  <property>instrumentation/doors/crew/position-norm</property>
+  <property>controls/doors/crew/position-norm</property>
   <interpolation>
     <entry>
      <ind>0.0</ind>
@@ -2025,11 +3141,51 @@
  </animation>
 
  <animation>
+  <type>pick</type>
+  <object-name>CrewDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.doorsystem.crewexport();</script>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FlightStationDoor</object-name>
+  <property>controls/doors/flight-station/position-norm</property>
+  <factor>90</factor>
+  <center>
+   <x-m>-13.451</x-m>
+   <y-m>-0.182</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FlightStationDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.doorsystem.flightstationexport();</script>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
   <type>rotate</type>
   <object-name>PassengerDoor</object-name>
-  <property>instrumentation/doors/passenger/position-norm</property>
+  <property>controls/doors/passenger/position-norm</property>
   <factor>-90</factor>
-  <offset-deg>0</offset-deg>   
   <center>
    <x-m>-12.55</x-m>
    <y-m>-1.50</y-m>
@@ -2042,7 +3198,43 @@
   </axis>
  </animation>
 
+ <animation>
+  <type>pick</type>
+  <object-name>PassengerDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.doorsystem.passengerexport();</script>
+   </binding>
+  </action>
+ </animation>
+
 <!-- SEAT -->
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>CaptainSeat</object-name>
+  <property>systems/human/captain/stowe-norm</property>
+  <factor>0.25</factor>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>CopilotSeat</object-name>
+  <property>systems/human/copilot/stowe-norm</property>
+  <factor>0.17</factor>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
 
  <animation>
   <type>rotate</type>
@@ -2064,15 +3256,124 @@
   </axis>
  </animation>
 
-<!-- CENTER -->
+
+<!-- =========== -->
+<!-- Instruments -->
+<!-- =========== -->
+
+<!-- GLARESHIELD -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotRedLightRheo</object-name>
+  <property>controls/lighting/internal/pilot/panel</property>
+  <factor>-240</factor>
+  <offset-deg>30</offset-deg>
+  <center>
+   <x-m>-15.591</x-m>
+   <y-m>-0.071</y-m>
+   <z-m>0.927</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.4375</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotRedLightRheo</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/panel</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/panel</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotRedLightRheo</object-name>
+  <property>controls/lighting/internal/copilot/panel</property>
+  <factor>-240</factor>
+  <offset-deg>30</offset-deg>
+  <center>
+   <x-m>-15.591</x-m>
+   <y-m>0.071</y-m>
+   <z-m>0.927</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.4375</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CopilotRedLightRheo</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/panel</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/panel</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
 
  <animation>
   <type>material</type>
   <object-name>PropellerReverse1</object-name>
   <emission>
-   <red>0.8</red>
-   <green>0.8</green>
-   <blue>0.8</blue>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
    <factor-prop>controls/engines/engine[0]/reverser</factor-prop>
   </emission> 
  </animation> 
@@ -2081,9 +3382,9 @@
   <type>material</type>
   <object-name>PropellerReverse2</object-name>
   <emission>
-   <red>0.8</red>
-   <green>0.8</green>
-   <blue>0.8</blue>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
    <factor-prop>controls/engines/engine[1]/reverser</factor-prop>
   </emission> 
  </animation> 
@@ -2092,9 +3393,9 @@
   <type>material</type>
   <object-name>PropellerReverse3</object-name>
   <emission>
-   <red>0.8</red>
-   <green>0.8</green>
-   <blue>0.8</blue>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
    <factor-prop>controls/engines/engine[2]/reverser</factor-prop>
   </emission> 
  </animation> 
@@ -2103,14 +3404,814 @@
   <type>material</type>
   <object-name>PropellerReverse4</object-name>
   <emission>
-   <red>0.8</red>
-   <green>0.8</green>
-   <blue>0.8</blue>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
    <factor-prop>controls/engines/engine[3]/reverser</factor-prop>
   </emission> 
  </animation> 
 
+<!-- PILOT SIDE -->
+
+<!-- navigation lights -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NavLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/on</property>
+  <factor>30</factor>
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-15.014</x-m>
+   <y-m>-1.057</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NavLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/steady</property>
+  <factor>-60</factor>               <!-- compensates ON -->
+  <center>
+   <x-m>-15.014</x-m>
+   <y-m>-1.057</y-m>
+   <y-m>-1.050</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>NavLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/on</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/steady</property>
+    <value>false</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/steady</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/on</property>
+    <value>true</value>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- ground lights -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>GroundLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/fuselage-lights</property>
+  <factor>30</factor>
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-15.038</x-m>
+   <y-m>-1.050</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>GroundLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/ground-loading</property>
+  <factor>-60</factor>               <!-- compensates ON -->
+  <center>
+   <x-m>-15.038</x-m>
+   <y-m>-1.050</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>GroundLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/fuselage-lights</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/ground-loading</property>
+    <value>false</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/ground-loading</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/fuselage-lights</property>
+    <value>true</value>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>GroundLoading</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>controls/lighting/external/navigation/ground-loading</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- passing light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassingLightSwitch</object-name>
+  <property>controls/lighting/external/taxi/on</property>
+  <factor>30</factor>
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-15.073</x-m>
+   <y-m>-1.038</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassingLightSwitch</object-name>
+  <property>controls/lighting/external/taxi/passing</property>
+  <factor>-60</factor>               <!-- compensates ON -->
+  <center>
+   <x-m>-15.073</x-m>
+   <y-m>-1.038</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PassingLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/taxi/on</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/taxi/passing</property>
+    <value>false</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/taxi/passing</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/taxi/on</property>
+    <value>true</value>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>PilotSidePlate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/pilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotPanelSwitch</object-name>
+  <property>controls/lighting/internal/pilot/side-on</property>
+  <factor>65</factor>
+  <offset-deg>-65</offset-deg>
+  <center>
+   <x-m>-15.103</x-m>
+   <y-m>-1.028</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotPanelSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/pilot/side-on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotPanelRheostat</object-name>
+  <property>controls/lighting/internal/pilot/side</property>
+  <factor>-270</factor>   
+  <offset-deg>115</offset-deg>
+  <center>
+   <x-m>-15.083</x-m>
+   <y-m>-1.017</y-m>
+   <z-m> 0.708</z-m>
+  </center>
+  <axis>
+   <x> 0.005</x>
+   <y> 0.018</y>
+   <z> 0.009</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotPanelRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/side</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/side</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- chart light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>CaptainSeat</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/pilot/chart-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotChartSwitch</object-name>
+  <property>controls/lighting/internal/pilot/chart-on</property>
+  <factor>65</factor>
+  <offset-deg>-65</offset-deg>
+  <center>
+   <x-m>-15.091</x-m>
+   <y-m>-1.033</y-m>
+   <z-m>0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>-0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotChartSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/pilot/chart-on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotChartRheostat</object-name>
+  <property>controls/lighting/internal/pilot/chart</property>
+  <factor>-270</factor>   
+  <offset-deg>115</offset-deg>
+  <center>
+   <x-m>-15.044</x-m>
+   <y-m>-1.028</y-m>
+   <z-m> 0.709</z-m>
+  </center>
+  <axis>
+   <x> 0.005</x>
+   <y> 0.018</y>
+   <z> 0.008</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotChartRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/chart</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/chart</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- COPILOT SIDE -->
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>CopilotSidePlate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/copilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotPanelSwitch</object-name>
+  <property>controls/lighting/internal/copilot/side-on</property>
+  <factor>-65</factor>
+  <offset-deg>65</offset-deg>
+  <center>
+   <x-m>-15.106</x-m>
+   <y-m> 1.039</y-m>
+   <z-m> 0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CopilotPanelSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/copilot/side-on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotPanelRheostat</object-name>
+  <property>controls/lighting/internal/copilot/side</property>
+  <factor>-270</factor>   
+  <offset-deg>135</offset-deg>
+  <center>
+   <x-m>-15.087</x-m>
+   <y-m> 1.026</y-m>
+   <z-m> 0.707</z-m>
+  </center>
+  <axis>
+   <x> 0.007</x>
+   <y>-0.018</y>
+   <z> 0.009</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CopilotPanelRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/side</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/side</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- chart light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>CopilotSeat</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/copilot/chart-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotChartSwitch</object-name>
+  <property>controls/lighting/internal/copilot/chart-on</property>
+  <factor>-65</factor>
+  <offset-deg>65</offset-deg>
+  <center>
+   <x-m>-15.093</x-m>
+   <y-m> 1.043</y-m>
+   <z-m> 0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CopilotChartSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/copilot/chart-on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CopilotChartRheostat</object-name>
+  <property>controls/lighting/internal/copilot/chart</property>
+  <factor>-270</factor>   
+  <offset-deg>135</offset-deg>
+  <center>
+   <x-m>-15.052</x-m>
+   <y-m> 1.037</y-m>
+   <z-m> 0.707</z-m>
+  </center>
+  <axis>
+   <x> 0.006</x>
+   <y>-0.018</y>
+   <z> 0.009</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CopilotChartRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/chart</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/chart</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- pedestal light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Pedestal</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/pedestal/on</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PedestalLightSwitch</object-name>
+  <property>controls/lighting/internal/pedestal/on</property>
+  <factor>-65</factor>
+  <offset-deg>65</offset-deg>
+  <center>
+   <x-m>-15.049</x-m>
+   <y-m> 1.057</y-m>
+   <z-m> 0.778</z-m>
+  </center>
+  <axis>
+   <x>0.6</x>
+   <y>0.4</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PedestalLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/pedestal/on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- compass light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CompassLightRheostat</object-name>
+  <property>controls/lighting/internal/copilot/compass</property>
+  <factor>-270</factor>   
+  <offset-deg>135</offset-deg>
+  <center>
+   <x-m>-15.020</x-m>
+   <y-m> 1.047</y-m>
+   <z-m> 0.707</z-m>
+  </center>
+  <axis>
+   <x> 0.006</x>
+   <y>-0.018</y>
+   <z> 0.009</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CompassLightRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/compass</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/compass</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- PILOT PANEL -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Panel</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/panel-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>ParkingBrake</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>controls/gear/brake-parking</factor-prop>
+  </emission> 
+ </animation>
+
 <!-- PEDESTAL CYLINDER -->
+
+<!-- elevator -->
 
  <animation>
   <type>rotate</type>
@@ -2157,6 +4258,72 @@
    </binding>
   </action>
  </animation>
+
+<!-- boosters -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AileronBooster</object-name>
+  <property>controls/flight/aileron-boost</property>
+  <factor>-90</factor>
+  <offset-deg>90</offset-deg>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AileronBooster</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/flight/aileron-boost</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RudderBooster</object-name>
+  <property>controls/flight/rudder-boost</property>
+  <factor>-90</factor>
+  <offset-deg>90</offset-deg>
+  <center>
+   <x-m>-15.348</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.573</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>RudderBooster</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/flight/rudder-boost</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- throttle -->
 
  <animation>
   <type>rotate</type>
@@ -2495,6 +4662,8 @@
   </axis>
  </animation>
 
+<!-- propeller -->
+
  <animation>
   <type>rotate</type>
   <object-name>MasterPropeller</object-name>
@@ -2572,6 +4741,8 @@
   </action>
  </animation>
 
+<!-- flaps -->
+
  <animation>
   <type>rotate</type>
   <object-name>FlapLever</object-name>
@@ -2617,6 +4788,8 @@
    </binding>
   </action>
  </animation>
+
+<!-- elevator -->
 
  <animation>
   <type>rotate</type>
@@ -2666,6 +4839,8 @@
 
 <!-- PEDESTAL -->
 
+<!-- parking brakes -->
+
  <animation>
   <type>translate</type>
   <object-name>ParkingBrakeLeverL</object-name>
@@ -2681,14 +4856,6 @@
     </entry>
   </interpolation>
   <axis>
-<!--
-   <x1-m>-15.65</x1-m>
-   <y1-m>-0.15</y1-m>
-   <z1-m>0.37</z1-m>
-   <x2-m>-15.25</x2-m>
-   <y2-m>-0.16</y2-m>
-   <z2-m>0.36</z2-m>
--->
    <x>1.0</x>
    <y>-0.025</y>
    <z>-0.025</z>
@@ -2742,6 +4909,44 @@
   </action>
  </animation>
 
+<!-- booster -->
+
+ <animation>
+  <type>translate</type>
+  <object-name>ElevatorBooster</object-name>
+  <property>controls/flight/elevator-boost</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>0</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>-0.10</dep>
+    </entry>
+  </interpolation>
+  <axis>
+   <x>0.44</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ElevatorBooster</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/flight/elevator-boost</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- altitude hold -->
+
  <animation>
   <type>rotate</type>
   <object-name>AltitudeSwitch</object-name>
@@ -2771,6 +4976,65 @@
    </binding>
   </action>
  </animation>
+
+<!-- overhead light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Overhead</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/overhead/on</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>OverheadLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/overhead/on</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>OverheadLightSwitch</object-name>
+  <property>controls/lighting/internal/overhead/on</property>
+  <factor>-60</factor>
+  <offset-deg>30</offset-deg>
+  <center>
+   <x-m>-15.223</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.601</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- must manage red + white
+ <animation>
+  <type>pick</type>
+  <object-name>OverheadLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/overhead/on</property>
+   </binding>
+  </action>
+ </animation>
+-->
+
+<!-- tabs -->
 
  <animation>
   <type>rotate</type>
@@ -2864,6 +5128,8 @@
   </action>
  </animation>
 
+<!-- autopilot -->
+
  <animation>
   <type>material</type>
   <object-name>GyroBeacon</object-name>
@@ -2909,6 +5175,8 @@
   </action>
  </animation>
 
+<!-- gear -->
+
  <animation>
   <type>rotate</type>
   <object-name>LandingGearLever</object-name>
@@ -2940,7 +5208,790 @@
   </action>
  </animation>
 
+<!-- OVERHEAD -->
+
+<!-- ignition -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition1</object-name>
+  <property>controls/engines/engine[0]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m>-0.094</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition1</object-name>
+  <property>controls/engines/engine[0]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m>-0.094</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition2</object-name>
+  <property>controls/engines/engine[1]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m>-0.031</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition2</object-name>
+  <property>controls/engines/engine[1]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m>-0.031</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition3</object-name>
+  <property>controls/engines/engine[2]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m> 0.031</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition3</object-name>
+  <property>controls/engines/engine[2]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m> 0.031</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition4</object-name>
+  <property>controls/engines/engine[3]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m> 0.096</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition4</object-name>
+  <property>controls/engines/engine[3]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m>-14.938</x-m>
+   <y-m> 0.096</y-m>
+   <z-m> 1.432</z-m>
+  </center>
+  <axis>
+   <x>-0.005</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition1</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[0]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition1</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition2</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[1]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition2</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition3</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[2]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[2]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition3</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition4</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[3]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[3]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition4</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- landing lights -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingExtendLeft</object-name>
+  <property>controls/lighting/external/landing[0]/extend</property>
+  <factor>60</factor>   
+  <offset-deg>-45</offset-deg>
+  <center>
+   <x-m>-15.004</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 1.417</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingExtendRight</object-name>
+  <property>controls/lighting/external/landing[1]/extend</property>
+  <factor>60</factor>   
+  <offset-deg>-45</offset-deg>
+  <center>
+   <x-m>-15.004</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 1.417</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingLampLeft</object-name>
+  <property>controls/lighting/external/landing[0]/on</property>
+  <factor>60</factor>   
+  <offset-deg>-45</offset-deg>
+  <center>
+   <x-m>-15.004</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 1.417</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingLampRight</object-name>
+  <property>controls/lighting/external/landing[1]/on</property>
+  <factor>60</factor>   
+  <offset-deg>-45</offset-deg>
+  <center>
+   <x-m>-15.004</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 1.417</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingExtendLeft</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[0]/extend</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingExtendRight</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[1]/extend</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingLampLeft</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[0]/on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingLampRight</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[1]/on</property>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>OverheadMiddlePlate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>controls/lighting/internal/overhead/panel</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>OverheadPanelSwitch</object-name>
+  <property>controls/lighting/internal/overhead/panel</property>
+  <factor>270</factor>   
+  <center>
+   <x-m>-14.936</x-m>
+   <y-m> 0.214</y-m>
+   <z-m> 1.412</z-m>
+  </center>
+  <axis>
+   <x>-0.004</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>OverheadPanelSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/overhead/panel</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/overhead/panel</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- ENGINEER UPPER PANEL -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineerFloodSwitch</object-name>
+  <property>controls/lighting/internal/engineer/flood</property>
+  <factor>240</factor>
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-14.434</x-m>
+   <y-m>0.730</y-m>
+   <z-m>1.337</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.333</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>EngineerFloodSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/engineer/flood</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/engineer/flood</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- ENGINEER CENTER PANEL -->
+
+ <animation>
+  <type>material</type>
+  <object-name>EngineerPanel</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/engineer/flood-light</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- ENGINEER LOWER PANEL -->
+
+ <animation>
+  <type>material</type>
+  <object-name>DoorWarning</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/doors/passenger</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- propeller pitch -->
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch1</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[0]/propeller-low-high</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch2</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[1]/propeller-low-high</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch3</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[2]/propeller-low-high</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch4</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[3]/propeller-low-high</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- oil pressure -->
+
+ <animation>
+  <type>material</type>
+  <object-name>OilPressure1</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[0]/oil-low</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>OilPressure2</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[1]/oil-low</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>OilPressure3</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[2]/oil-low</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>OilPressure4</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[3]/oil-low</factor-prop>
+  </emission> 
+ </animation>
+
 <!-- CONTROLS QUADRANT -->
+
+ <animation>
+  <type>material</type>
+  <object-name>ControlQuadrant</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/engineer/flood-light</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- propeller pitch -->
 
  <animation>
   <type>rotate</type>
@@ -3018,6 +6069,8 @@
    </binding>
   </action>
  </animation>
+
+<!-- throttle -->
 
  <animation>
   <type>rotate</type>
@@ -3207,6 +6260,82 @@
   </action>
  </animation>
 
+<!-- blower -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower1</object-name>
+  <property>controls/engines/engine[0]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower2</object-name>
+  <property>controls/engines/engine[1]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower3</object-name>
+  <property>controls/engines/engine[2]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower4</object-name>
+  <property>controls/engines/engine[3]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>1.16</y-m>
+   <z-m>0.64</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- mixture -->
+
  <animation>
   <type>rotate</type>
   <object-name>Mixture1</object-name>
@@ -3394,5 +6523,33 @@
    </binding>
   </action>
  </animation>
+
+<!-- ENGINEER SWITCH PANEL -->
+
+ <animation>
+  <type>material</type>
+  <object-name>SwitchPanel</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/engineer/flood-light</factor-prop>
+  </emission> 
+ </animation>
+
+
+ <!-- ============== -->
+ <!-- livery support -->
+ <!-- ============== -->
+
+<!--
+  <animation>
+   <type>material</type>
+   <object-name>Fuselage</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture</texture-prop>
+  </animation>
+-->
+
 
 </PropertyList>

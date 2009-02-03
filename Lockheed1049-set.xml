@@ -1,16 +1,20 @@
 <?xml version="1.0"?>
 
-<!-- Lockheed 1049 model 54.
--->
-
 <!-- Version           CVS date                   Milestone
      ==========================================================================================
      1.0               November 2005              Aircraft, FDM, 2D panel.
      1.1               April 2006                 3D cockpit, with yokes and seats.
-     1.2               not yet known              3D pedestal and control quadrants.
-                                                  Observer view moves.
+                                                  Observer view.
+     1.2               April 2007                 3D pedestal and control quadrants.
                                                   Warning lights are emissive by night.
-                                                  Virtual copilot, menu.
+                                                  Observer view moves.
+                                                  Virtual copilot holds throttle and follows
+                                                  waypoints, menu.
+     1.3               February 2009              External and internal (red only) lighting.
+                                                  2nd observer view.
+                                                  Elevator boost, engine blower,
+                                                  nose wheel steering.
+                                                  Virtual engineer (blower only).
      ==========================================================================================
 -->
 
@@ -21,7 +25,7 @@
 
   <description>Lockheed 1049 Super Constellation</description>
   <status>early-production</status>
-  <aircraft-version>1.2</aircraft-version>
+  <aircraft-version>1.3</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
@@ -63,38 +67,45 @@
    <path>Aircraft/Lockheed1049/Models/Lockheed1049_twa.xml</path>
   </model> 
 
+<!-- compensates the shift of VRP at nose -->
+
+  <airport>
+   <runways>
+    <start-offset-m>17.3</start-offset-m>
+   </runways>
+  </airport>
+
   <chase-distance-m type="double" archive="y">-48.0</chase-distance-m>
 
-  <presets>
-
-<!-- Burbank: runways 33/15 and 08/26. -->
-
-<!--
-   <airport-id>KBUR</airport-id>
-   <runway>08</runway>
--->
-
-<!-- fuel load saved on exit -->
-
-   <fuel type="int">0</fuel>
-  </presets>
+  <menubar include="Dialogs/Lockheed1049-menubar.xml"/>
 
   <help include="help.xml"/>
+
+<!-- Burbank: runways 33/15 and 08/26. -->
 
  </sim>
 
  <consumables>
   <fuel include="Systems/Lockheed1049-init-fuel.xml"/>                  <!-- required by nasal -->
  </consumables>
+ 
+ <limits include="Nasal/Lockheed1049-limits.xml"/>
 
  <nasal>
   <Lockheed1049>
+   <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-constants.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-electric.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-hydraulic.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engine.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-instrument.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-fuel.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-autopilot.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-interface.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-crew.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-copilot.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engineer.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-human.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049.nas</file>
   </Lockheed1049>
  </nasal>
@@ -127,10 +138,6 @@
 
  <controls include="Systems/Lockheed1049-init-controls.xml">
 
-  <crew>
-   <minimized-s>10.0</minimized-s>
-  </crew>
-
 <!-- engines on, low pitch (parking) -->
 
   <engines>
@@ -151,6 +158,17 @@
     <propeller-pitch>0.0</propeller-pitch>
    </engine>
   </engines>
+
+  <lighting>
+   <external>
+    <navigation>
+     <flash type="bool">true</flash>
+     <fuselage-lights type="bool">true</fuselage-lights>
+     <ground-loading type="bool">false</ground-loading>
+     <on type="bool">true</on>
+    </navigation>
+   </external>
+  </lighting>
 
 <!-- all 3D instruments -->
 

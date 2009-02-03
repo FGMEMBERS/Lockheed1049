@@ -13,10 +13,53 @@
    </autopilot>
   </autoflight>
 
+  <copilot>
+   <activ type="bool">false</activ>
+   <fg-waypoint type="bool">true</fg-waypoint>                     <!-- default FG behaviour (toggles autopilot) -->
+   <waypoint type="bool">true</waypoint>                           <!-- default FG behaviour (follows waypoint) -->
+  </copilot>
+
   <crew>
-   <copilot type="bool">false</copilot>
-   <minimized-s>10.0</minimized-s>
+   <captain-busy type="bool">true</captain-busy>                   <!-- crew performs Captain checks -->
+   <night-lighting type="bool">true</night-lighting>
+   <steering>
+    <pedal type="bool">false</pedal>
+    <wheel alias="/fdm/jsbsim/systems/NWS/engaged"/>
+   </steering>
+   <timeout type="bool">true</timeout>                             <!-- of 10 seconds -->
+   <timeout-s type="double">10.0</timeout-s>
   </crew>
+
+  <doors>
+   <flight-station>
+    <opened type="bool">true</opened>
+   </flight-station>
+  </doors>
+
+  <engineer>
+   <activ type="bool">false</activ>
+  </engineer>
+
+  <engines>
+   <engine n="0">
+    <blower>0.0</blower>
+   </engine>
+   <engine n="1">
+    <blower>0.0</blower>
+   </engine>
+   <engine n="2">
+    <blower>0.0</blower>
+   </engine>
+   <engine n="3">
+    <blower>0.0</blower>
+   </engine>
+  </engines>
+
+  <flight>
+   <aileron-boost alias="/fdm/jsbsim/fcs/aileron-boost"/>
+   <elevator-boost alias="/fdm/jsbsim/fcs/elevator-boost"/>
+   <rudder-boost alias="/fdm/jsbsim/fcs/rudder-boost"/>
+  </flight>
 
   <fuel>
    <engine n="0">
@@ -33,8 +76,78 @@
    </engine>
   </fuel>
 
+  <gear>
+   <brake-steering type="bool">false</brake-steering>
+  </gear>
+
+  <human>
+   <lighting>                                                      <!-- night lighting -->
+    <copilot type="double">0.4</copilot>
+    <engineer type="double">0.4</engineer>
+    <pilot type="double">0.4</pilot>
+   </lighting>
+  </human>
+
+  <lighting>
+   <internal>
+    <copilot>
+     <chart>0.4</chart>
+     <chart-on type="bool">false</chart-on>
+     <compass alias="/sim/model/material/instruments/factor"/>
+     <panel>0.0</panel>
+     <side>0.4</side>
+     <side-on type="bool">false</side-on>
+    </copilot>
+    <engineer>
+     <flood>0.0</flood>
+    </engineer>
+    <overhead>
+     <on type="bool">false</on>
+     <panel>0.0</panel>
+    </overhead>
+    <pedestal>
+     <on type="bool">false</on>
+    </pedestal>
+    <pilot>
+     <chart>0.4</chart>
+     <chart-on type="bool">false</chart-on>
+     <panel>0.0</panel>
+     <side>0.4</side>
+     <side-on type="bool">false</side-on>
+    </pilot>
+   </internal>
+   <external>
+    <interpolate>                                                  <!-- Nasal interpolate may not stop at 1.0 (bug ?) -->
+     <off type="double">0.1</off>
+     <on type="double">0.9</on>
+    </interpolate>
+    <landing n="0">
+     <on type="bool">false</on>
+     <extend type="bool">false</extend>
+     <position>0.0</position>
+    </landing>
+    <landing n="1">
+     <on type="bool">false</on>
+     <extend type="bool">false</extend>
+     <position>0.0</position>
+    </landing>
+    <navigation>
+     <steady type="bool">false</steady>
+     <fuselage-lights type="bool">true</fuselage-lights>
+     <ground-loading type="bool">false</ground-loading>
+     <on type="bool">false</on>
+    </navigation>
+    <taxi>
+     <passing type="bool">false</passing>
+     <on type="bool">false</on>
+    </taxi>
+   </external>
+  </lighting>
+
   <seat>
    <all type="bool">false</all>
+   <observer type="bool">false</observer>
+   <observer2 type="bool">false</observer2>
    <pedal>
     <copilot-m>-0.05</copilot-m>                                   <!-- has longer legs -->
    </pedal>

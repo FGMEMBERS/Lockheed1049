@@ -21,8 +21,12 @@
      <tank n="0">
       <level-gal_us>120.0</level-gal_us>
      </tank>
-     <tank n="1"></tank>
-     <tank n="2"></tank>
+     <tank n="1">
+      <level-gal_us>500.0</level-gal_us>
+     </tank>
+     <tank n="2">
+      <level-gal_us>500.0</level-gal_us>
+     </tank>
      <tank n="3">
       <level-gal_us>120.0</level-gal_us>
      </tank>
@@ -112,7 +116,7 @@
 <!-- Engine cross-feed : for FDM test. -->
 
     <filling n="3">
-     <comment>cross feed</comment>
+     <comment>inboard tanks empty (cross feed)</comment>
      <tank n="0">
       <level-gal_us>170.0</level-gal_us>
      </tank>

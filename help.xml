@@ -54,7 +54,7 @@
     <desc>quit speed-up</desc>
    </key>
    <key>
-    <name>s</name>
+    <name>S</name>
     <desc>swaps 2D panel</desc>
    </key>
    <key>
@@ -64,6 +64,10 @@
    <key>
     <name>Ctrl-E</name>
     <desc>engineer view</desc>
+   </key>
+   <key>
+    <name>Ctrl-F</name>
+    <desc>toggle surface control boost</desc>
    </key>
    <key>
     <name>Ctrl-H / Ctrl-P</name>
@@ -82,6 +86,10 @@
     <desc>observer (floating) view</desc>
    </key>
    <key>
+    <name>Ctrl-L</name>
+    <desc>observer 2 (floating) view</desc>
+   </key>
+   <key>
     <name>Ctrl-N</name>
     <desc>navigator view</desc>
    </key>
@@ -91,11 +99,15 @@
    </key>
    <key>
     <name>Ctrl-S</name>
-    <desc>virtual copilot</desc>
+    <desc>autothrottle (virtual copilot)</desc>
    </key>
    <key>
     <name>shift-ctrl-X</name>
     <desc>restore floating view</desc>
+   </key>
+   <key>
+    <name>Ctrl-Z</name>
+    <desc>virtual crew</desc>
    </key>
 
 
@@ -109,17 +121,22 @@
             retract gear below 165 k,
             retract flaps below 184 kt.
  Climb :
-            48.0 inhg, 2600 RPM.
+            always above 180 kt (drag).
+            below 48.0 inhg and 2600 RPM (engine temperature).
+            reduce pitch to the lowest RPM (if not enough, reduce throttle),
+            then reduce mixture to the highest RPM (and torque).
+            decrease mixture (highest EGT) with altitude, otherwise engine stops.
  Cruise :
             220 kt at 20000 ft, 197 kt at 25000 ft.
  Descent :
-            max pitch.
+            max pitch (i.e. lowest thrust of propeller curve).
  Approach :
+            10 NM at 1500 ft.
             flaps 1/4 below 184 kt;
             gear below 165 kt, flaps 1/2 below 161 kt,
             flaps 3/4 below 154 kt, full flaps below 148 kt. 
  Landing :
-            maintain 120 kt (landing load);
+            maintain 125 kt (landing load);
             touch down 110 kt (landing load), 100 kt (empty load).
 
 <!-- Real data -->

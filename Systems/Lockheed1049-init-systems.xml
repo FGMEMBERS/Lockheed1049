@@ -198,16 +198,16 @@
 <!-- virtual cross feed tanks -->
 
     <tank n="7">
-     <level-lb>0.0</level-lb>
+     <level-lbs>0.0</level-lbs>
     </tank>
     <tank n="8">
-     <level-lb>0.0</level-lb>
+     <level-lbs>0.0</level-lbs>
     </tank>
     <tank n="9">
-     <level-lb>0.0</level-lb>
+     <level-lbs>0.0</level-lbs>
     </tank>
     <tank n="10">
-     <level-lb>0.0</level-lb>
+     <level-lbs>0.0</level-lbs>
     </tank>
    </tanks>
 

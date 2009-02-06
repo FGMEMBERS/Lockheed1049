@@ -132,8 +132,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-inboard.xml">
    <name>Tanks 2 and 3</name>
    <params>
-    <left-level-select>/consumables/fuel/tank[1]/level-lb</left-level-select>
-    <right-level-select>/consumables/fuel/tank[2]/level-lb</right-level-select>
+    <left-level-select>/consumables/fuel/tank[1]/level-lbs</left-level-select>
+    <right-level-select>/consumables/fuel/tank[2]/level-lbs</right-level-select>
    </params>
    <x>575</x>
    <y>440</y>
@@ -144,8 +144,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-middle.xml">
    <name>Tanks 1 and 4</name>
    <params>
-    <left-level-select>/consumables/fuel/tank[0]/level-lb</left-level-select>
-    <right-level-select>/consumables/fuel/tank[3]/level-lb</right-level-select>
+    <left-level-select>/consumables/fuel/tank[0]/level-lbs</left-level-select>
+    <right-level-select>/consumables/fuel/tank[3]/level-lbs</right-level-select>
    </params>
    <x>685</x>
    <y>440</y>
@@ -156,7 +156,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-center.xml">
    <name>Tank 5</name>
    <params>
-    <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[4]/level-lbs</content-select>
    </params>
    <x>575</x>
    <y>550</y>
@@ -167,8 +167,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/l1049-fuel-outboard.xml">
    <name>Tanks 2A and 3A</name>
    <params>
-    <left-level-select>/consumables/fuel/tank[5]/level-lb</left-level-select>
-    <right-level-select>/consumables/fuel/tank[6]/level-lb</right-level-select>
+    <left-level-select>/consumables/fuel/tank[5]/level-lbs</left-level-select>
+    <right-level-select>/consumables/fuel/tank[6]/level-lbs</right-level-select>
    </params>
    <x>685</x>
    <y>550</y>

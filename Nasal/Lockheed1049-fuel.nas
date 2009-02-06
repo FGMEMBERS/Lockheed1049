@@ -5,7 +5,7 @@
 
 
 # IMPORTANT :
-# always uses /consumables/fuel/tank[0]/level-gal_us, because /level-lb seems not synchronized
+# always uses /consumables/fuel/tank[0]/level-gal_us, because /level-lbs seems not synchronized
 # with level-gal_us, during the time of a procedure.
 
 
@@ -98,7 +98,7 @@ Fuel.crossfeed = func {
        for( var i=0; i < me.NB_ENGINES; i=i+1 ) {
             icross = me.NB_TANKS + i;
             levellb = me.tanksystem.getlevellb( icross );
-            me.crosstanks[icross].getChild("level-lb").setValue(levellb);
+            me.crosstanks[icross].getChild("level-lbs").setValue(levellb);
        }
 
        # completes the cross feed tanks
@@ -108,7 +108,7 @@ Fuel.crossfeed = func {
                      if( me.crossengines[j].getChild("cross").getValue() ) {
                          icross = me.NB_TANKS + j;
                          contentlb = me.tanksystem.getcontentlb( icross );
-                         offsetlb = contentlb - me.crosstanks[icross].getChild("level-lb").getValue();
+                         offsetlb = contentlb - me.crosstanks[icross].getChild("level-lbs").getValue();
                          pumplb = offsetlb / nbtanks;
                          me.tanksystem.transfertanks( icross, i, pumplb );
                      }

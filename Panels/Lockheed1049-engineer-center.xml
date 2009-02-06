@@ -113,8 +113,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     </or>
    </condition>
    <params>
-    <left-level-select>/consumables/fuel/tank[1]/level-lb</left-level-select>
-    <right-level-select>/consumables/fuel/tank[2]/level-lb</right-level-select>
+    <left-level-select>/consumables/fuel/tank[1]/level-lbs</left-level-select>
+    <right-level-select>/consumables/fuel/tank[2]/level-lbs</right-level-select>
    </params>
    <x>650</x>
    <y>690</y>
@@ -134,8 +134,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     </or>
    </condition>
    <params>
-    <left-level-select>/consumables/fuel/tank[0]/level-lb</left-level-select>
-    <right-level-select>/consumables/fuel/tank[3]/level-lb</right-level-select>
+    <left-level-select>/consumables/fuel/tank[0]/level-lbs</left-level-select>
+    <right-level-select>/consumables/fuel/tank[3]/level-lbs</right-level-select>
    </params>
    <x>780</x>
    <y>690</y>
@@ -155,7 +155,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     </or>
    </condition>
    <params>
-    <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[4]/level-lbs</content-select>
    </params>
    <x>650</x>
    <y>810</y>
@@ -175,8 +175,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     </or>
    </condition>
    <params>
-    <left-level-select>/consumables/fuel/tank[5]/level-lb</left-level-select>
-    <right-level-select>/consumables/fuel/tank[6]/level-lb</right-level-select>
+    <left-level-select>/consumables/fuel/tank[5]/level-lbs</left-level-select>
+    <right-level-select>/consumables/fuel/tank[6]/level-lbs</right-level-select>
    </params>
    <x>780</x>
    <y>810</y>

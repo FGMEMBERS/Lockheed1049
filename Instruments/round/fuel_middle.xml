@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 middle tanks dual gauge.
+
+     Credits :
+     =======
+     - adapted (scale x 0.7) from G. Neely's Lockheed 1049-H (with only 1 needle).
+-->
+
+<PropertyList>
+
+<path>fuel100_engineer.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>Fuel100.Face</object-name>
+  <object-name>Fuel100.Needle</object-name>
+  <object-name>Fuel100.Needle2</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Fuel100.Needle</object-name>
+  <property>consumables/fuel/tank[0]/level-lbs</property>
+  <interpolation>
+    <entry><ind>   0</ind><dep>  0</dep></entry>
+    <entry><ind>10200</ind><dep>306</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>0.574</y>
+    <z>0.819</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Fuel100.Needle2</object-name>
+  <property>consumables/fuel/tank[3]/level-lbs</property>
+  <interpolation>
+    <entry><ind>    0</ind><dep>  0</dep></entry>
+    <entry><ind>10200</ind><dep>306</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>0.574</y>
+    <z>0.819</z>
+  </axis>
+
+</animation>
+
+</PropertyList>

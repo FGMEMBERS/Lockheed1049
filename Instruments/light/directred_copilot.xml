@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>directred.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>Light</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>controls/lighting/internal/copilot/panel</factor-prop>
+  </emission> 
+ </animation>
+
+</PropertyList>
+

@@ -173,19 +173,31 @@ LightLevel.schedule = func {
 LightLevel.pilot = func {
    var value = me.NOLIGHT;
    var result = me.NOLIGHT;
+   var pilotlight = me.NOLIGHT;
+   var copilotlight = me.NOLIGHT;
 
    # cannot add pilot and copilot red lights
    value = me.itself["internal-ctrl"].getNode("pilot").getChild("panel").getValue();
    if( value > result ) {
        result = value;
    }
+   if( value > me.NOLIGHT ) {
+       pilotlight = value + me.dependency["instrument"].getValue();
+   }
 
    value = me.itself["internal-ctrl"].getNode("copilot").getChild("panel").getValue();
    if( value > result ) {
        result = value;
    }
+   if( value > me.NOLIGHT ) {
+       copilotlight = value + me.dependency["instrument"].getValue();
+   }
 
    me.itself["internal"].getChild("panel-light").setValue( result );
+
+   # user customization of instrument lighting
+   me.itself["internal"].getNode("pilot").getChild("instrument-light").setValue( pilotlight );
+   me.itself["internal"].getNode("copilot").getChild("instrument-light").setValue( copilotlight );
 }
 
 LightLevel.side = func( seat, panel ) {
@@ -200,11 +212,18 @@ LightLevel.side = func( seat, panel ) {
 
 LightLevel.engineer = func {
    var result = me.NOLIGHT;
+   var engineerlight = me.NOLIGHT;
 
    value = me.itself["internal-ctrl"].getNode("engineer").getChild("flood").getValue();
    if( value > result ) {
        result = value;
    }
+   if( value > me.NOLIGHT ) {
+       engineerlight = value + me.dependency["instrument"].getValue();
+   }
 
    me.itself["internal"].getNode("engineer").getChild("flood-light").setValue( result );
+
+   # user customization of instrument lighting
+   me.itself["internal"].getNode("engineer").getChild("instrument-light").setValue( engineerlight );
 }

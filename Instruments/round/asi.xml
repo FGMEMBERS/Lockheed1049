@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<!--
+     TO DO :
+     =====
+     - contemporary instrument could be limited to 300 kt.
+     - coloured arcs.
+
+
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>asi.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>ASI.Face</object-name>
+  <object-name>ASI.Needle</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/pilot/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>ASI.Needle</object-name>
+  <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+  <interpolation>
+    <entry><ind>  0</ind><dep>    0</dep></entry>
+    <entry><ind> 25</ind><dep>   16</dep></entry>
+    <entry><ind> 50</ind><dep> 24.5</dep></entry>
+    <entry><ind>100</ind><dep> 93.5</dep></entry>
+    <entry><ind>150</ind><dep>139.5</dep></entry>
+    <entry><ind>200</ind><dep>185.5</dep></entry>
+    <entry><ind>250</ind><dep>224.5</dep></entry>
+    <entry><ind>300</ind><dep>263.5</dep></entry>
+    <entry><ind>350</ind><dep>301.5</dep></entry>
+    <entry><ind>400</ind><dep>339.5</dep></entry>
+  </interpolation>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>

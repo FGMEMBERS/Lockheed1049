@@ -14,7 +14,8 @@ ConstantAero = {};
 ConstantAero.new = func {
    var obj = { parents : [ConstantAero],
 
-               NBINSTRUMENTS : 2                       # and any system in double
+               NBINSTRUMENTS : 2,                       # and any system in double
+               NBGEARS : 3                              # and any system in triple
          };
 
    obj.init();
@@ -86,6 +87,7 @@ System.new = func {
 
 System.inherit_system = func( path, subpath = "" ) {
    var fullpath = path;
+   var ctrlpath = string.replace(path,"systems","controls");
 
    var obj = System.new();
 
@@ -101,14 +103,24 @@ System.inherit_system = func( path, subpath = "" ) {
    if( subpath == "" ) {
        # instrumentation/fuel
        me.itself["root"] = props.globals.getNode(path);
+
+       # controls/fuel
+       me.itself["root-ctrl"] = props.globals.getNode(ctrlpath);
    }
    else {
-       fullpath = fullpath ~ "/" ~ subpath;
-
        # instrumentation/fuel-consumed[0]
        # instrumentation/fuel-consumed[1]
        # instrumentation/fuel-consumed[2]
+       if( find("instrumentation/", fullpath) < 0 and
+           find("systems/", fullpath ) < 0 ) {
+           fullpath = fullpath ~ "/" ~ subpath;
+       }
+
+       # systems/engines/engine
        me.itself["root"] = props.globals.getNode(path).getChildren(subpath);
+
+       # controls/engines/engine
+       me.itself["root-ctrl"] = props.globals.getNode(ctrlpath).getChildren(subpath);
    }
 
    fullpath = fullpath ~ "/relations";

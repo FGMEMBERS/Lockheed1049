@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>middle.ac</path>
+
+<!-- chart light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ChartRheostat</object-name>
+  <property>controls/lighting/internal/pilot/chart</property>
+  <factor>-270</factor>   
+  <offset-deg>45</offset-deg>
+  <center>
+   <x-m>-0.055</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.001</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ChartRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/chart</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/chart</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Plate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/pilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PanelRheostat</object-name>
+  <property>controls/lighting/internal/pilot/side</property>
+  <factor>-270</factor>   
+  <offset-deg>45</offset-deg>
+  <center>
+   <x-m>-0.096</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.001</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PanelRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/side</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/side</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

@@ -29,7 +29,7 @@ Doors.init = func {
    me.inherit_system( "/systems/doors" );
 
    # user customization
-   if( me.itself["doors"].getNode("flight-station").getChild("opened").getValue() ) {
+   if( me.itself["root-ctrl"].getNode("flight-station").getChild("opened").getValue() ) {
        me.flightstation.toggle();
    }
 }
@@ -43,11 +43,11 @@ Doors.flightstationexport = func {
 
    me.flightstation.toggle();
 
-   if( me.itself["doors"].getNode("flight-station").getChild("opened").getValue() ) {
+   if( me.itself["root-ctrl"].getNode("flight-station").getChild("opened").getValue() ) {
        state = constant.FALSE;
    }
 
-   me.itself["doors"].getNode("flight-station").getChild("opened").setValue(state);
+   me.itself["root-ctrl"].getNode("flight-station").getChild("opened").setValue(state);
 }
 
 Doors.passengerexport = func {
@@ -61,7 +61,7 @@ Doors.seatexport = func( seat ) {
 Doors.schedule = func {
    var warning = constant.FALSE;
 
-   if( me.itself["doors"].getNode("passenger").getChild("position-norm").getValue() > 0.0 ) {
+   if( me.itself["root-ctrl"].getNode("passenger").getChild("position-norm").getValue() > 0.0 ) {
        warning = constant.TRUE;
    }
 
@@ -80,6 +80,9 @@ Gear.new = func {
    var obj = { parents : [Gear,System],
 
                FLIGHTSEC : 2.0,
+
+               GEARDOWN : 1.0,
+               GEARUP : 0.0,
 
                STEERINGKT : 40
          };
@@ -112,4 +115,29 @@ Gear.steeringexport = func {
 
 Gear.schedule = func {
    me.steeringexport();
+   me.indicator();
+}
+
+Gear.indicator = func {
+   var pos = 0.0;
+   var safe = constant.TRUE;
+   var unsafe = constant.FALSE;
+
+   for( var i = 0; i < constantaero.NBGEARS; i = i+1 ) {
+        pos = me.itself["gear"][i].getChild("position-norm").getValue();
+        if( pos == me.GEARDOWN ) {
+            safe = constant.TRUE;
+        }
+        else {
+            if( pos != me.GEARUP ) {
+                unsafe = constant.TRUE;
+            }
+
+            safe = constant.FALSE;
+        }
+
+        me.itself["gear-sys"][i].getChild("safe").setValue( safe );
+   }
+
+   me.itself["root"].getChild("unsafe").setValue( unsafe );
 }

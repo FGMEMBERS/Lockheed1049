@@ -34,7 +34,7 @@
 
      <checkbox>
        <halign>left</halign>
-       <label>AI is holding throttle</label>
+       <label>Virtual copilot is holding throttle</label>
        <property>/systems/copilot/throttle</property>
         <live>true</live>
        <binding>
@@ -58,7 +58,7 @@
 
      <checkbox>
        <halign>left</halign>
-       <label>Waypoint input toggles AI (FG default)  ~</label>
+       <label>Route activation toggles virtual crew  ~</label>
        <property>/controls/copilot/fg-waypoint</property>
        <binding>
         <command>property-toggle</command>
@@ -68,7 +68,7 @@
 
      <checkbox>
        <halign>left</halign>
-       <label>AI is following waypoints</label>
+       <label>Virtual copilot follows waypoints</label>
        <property>/controls/copilot/waypoint</property>
        <binding>
         <command>property-toggle</command>

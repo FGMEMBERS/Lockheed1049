@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>masterfire.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>Light</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+</PropertyList>
+

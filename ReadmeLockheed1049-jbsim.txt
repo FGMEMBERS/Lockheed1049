@@ -70,6 +70,7 @@ Lockheed 1049 ops
 
 Installation
 ============
+A mouse with 3rd (middle) button, or its emulation (left + right button), is required.
 
 Fuel load
 ---------
@@ -82,7 +83,7 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-- 1.9.1 : minimum version.
+- 2.0.0 : minimum version.
 
 
 Keyboard
@@ -99,6 +100,7 @@ Views
 - "ctrl-L" : Observer 2 view (floating).
 - "ctrl-N" : "N"avigator view.
 - "ctrl-O" : radi"O" view.
+- "shift-ctrl-V" : restore view pitch.
 - "shift-ctrl-X" : restore floating view.
 
 Virtual crew
@@ -111,8 +113,8 @@ Unchanged behaviour
 
 Same behaviour
 --------------
-- "ctrl-R" : radio frequencies.
-- "s" swaps between Captain and Engineer 2D panels.
+- "s"   : swaps between Captain and Engineer 2D panels.
+- "F12" : radio frequencies.
  
 Improved behaviour
 ------------------
@@ -142,16 +144,23 @@ Mouse
 ADF
 ---
 To update the frequency of ADF 2 :
-- press "swap" on the overhead.
+- press "XFR" on the overhead.
 - press "ctrl-R" to call the radio menu. 
+
+When out of range, ADF needle parks at 90 degrees.
 
 Cross-feed
 ----------
 To feed an engine with the tanks of another engine, set fully the lever at the bottom. 
 
+VOR
+---
+When out of range, VOR needle is steady (use light of deviation indicator).
+
 
 Virtual copilot
 ===============
+Virtual copilot :
 - can hold throttle and follow waypoints.
 - is never the pilot in command.
 
@@ -192,17 +201,26 @@ JSBSim
 
 TO DO
 =====
-- 3D textures.
-- 2D textures and 3D instruments.
+- 3D instruments.
 
 TO DO FDM
 ---------
-- fix negativ elevator drag.
 - reversed propeller : ctrl-B only animates the lights and levers.
 
 
 Known problems
 ==============
+
+Known problems autopilot
+------------------------
+- toggle INS mode, only AFTER activation of route, or use "ctrl-I a".
+- heading modes may be unable to damp rolling, once turbulences are off.
+
+Known problems 2.0.0 autopilot
+------------------------------
+- the first waypoint is always ignored : insert a double waypoint.
+- to update waypoints, once route is activated, clear completely the route.
+- during descent, route manager may update the target altitude (press F11).
 
 Known problems FDM
 ------------------
@@ -211,23 +229,6 @@ Known problems FDM
 - at rest, idle engine (700 RPM) may stop by normal pressure (altimeter 29.89 inhg),
   when the RPM goes strongly below 700 RPM, by a curt throttle : visible by RPM oscillating around 700 RPM.
 
-Known problems sound
---------------------
-- exception through OpenAL errors (low hardware ?) means too many sounds :
-  remove for example engine start/shutdown.
-
-Known problems OSG
-------------------
-The following artefacts are supposed to be solved by OSG :
-- missing hotspots.
-- panels swaping too early.
-- instrument transparent through layer with alpha (engineer view).
-- blending of propellers.
-
-Known problems CVS (works with 1.9.1)
-------------------
-- if not enough power, try to put <maxmp> in comment, in engine file.
-
 
 Secondary problems
 ==================
@@ -235,10 +236,7 @@ Secondary problems
 Secondary problems FDM
 ----------------------
 - negativ oil pressure.
-
-Secondary problems 2D instrument 
---------------------------------
-- cross feed has 1 hotspot disabled (4th lever), when in 3D cockpit.
+- cylinder head temperature too high (replaced by EGT).
 
 
 References
@@ -262,4 +260,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-31 January 2009.
+20 March 2010.

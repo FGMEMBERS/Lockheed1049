@@ -145,10 +145,7 @@
    <condition>
     <or>
      <and>
-      <not-equals>
-       <property>/instrumentation/radio-magnetic-indicator/frequency[0]</property>
-       <value>adf</value>
-      </not-equals>
+      <property>/instrumentation/radio-magnetic-indicator/vor[0]</property>
       <or>
        <not>
         <property>/instrumentation/nav[0]/in-range</property>
@@ -157,10 +154,9 @@
       </or>
      </and>
      <and>
-      <equals>
-       <property>/instrumentation/radio-magnetic-indicator/frequency[0]</property>
-       <value>adf</value>
-      </equals>
+      <not>
+       <property>/instrumentation/radio-magnetic-indicator/vor[0]</property>
+      </not>
       <not>
        <property>/instrumentation/adf[0]/in-range</property>
       </not>
@@ -193,10 +189,7 @@
    <condition>
     <or>
      <and>
-      <not-equals>
-       <property>/instrumentation/radio-magnetic-indicator/frequency[1]</property>
-       <value>adf</value>
-      </not-equals>
+      <property>/instrumentation/radio-magnetic-indicator/vor[1]</property>
       <or>
        <not>
         <property>/instrumentation/nav[1]/in-range</property>
@@ -205,10 +198,9 @@
       </or>
      </and>
      <and>
-      <equals>
-       <property>/instrumentation/radio-magnetic-indicator/frequency[1]</property>
-       <value>adf</value>
-      </equals>
+      <not>
+       <property>/instrumentation/radio-magnetic-indicator/vor[1]</property>
+      </not>
       <not>
        <property>/instrumentation/adf[1]/in-range</property>
       </not>
@@ -246,10 +238,7 @@
     <name>VOR 1</name>
     <type>switch</type>
     <condition>
-     <not-equals>
-      <property>/instrumentation/radio-magnetic-indicator/frequency[0]</property>
-      <value>adf</value>
-     </not-equals>
+     <property>/instrumentation/radio-magnetic-indicator/vor[0]</property>
     </condition>
 
     <layer>
@@ -401,10 +390,7 @@
     <name>VOR 2</name>
     <type>switch</type>
     <condition>
-     <not-equals>
-      <property>/instrumentation/radio-magnetic-indicator/frequency[1]</property>
-      <value>adf</value>
-     </not-equals>
+     <property>/instrumentation/radio-magnetic-indicator/vor[1]</property>
     </condition>
  
     <layer>
@@ -557,10 +543,7 @@
     <name>VOR 2 tip</name>
     <type>switch</type>
     <condition>
-     <not-equals>
-      <property>/instrumentation/radio-magnetic-indicator/frequency[1]</property>
-      <value>adf</value>
-     </not-equals>
+     <property>/instrumentation/radio-magnetic-indicator/vor[1]</property>
     </condition>
 
     <layer>

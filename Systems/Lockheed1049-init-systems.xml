@@ -44,6 +44,8 @@
      <autopilot>/autopilot/locks</autopilot>
      <crew>/systems/crew</crew>
      <crew-ctrl>/controls/crew</crew-ctrl>
+     <route>/autopilot/route-manager/route</route>
+     <route-manager>/autopilot/route-manager</route-manager>
      <waypoint>
       <component>/autopilot/route-manager</component>
       <subcomponent>wp</subcomponent>
@@ -51,7 +53,6 @@
     </dependency>
 
     <itself>
-     <copilot>/controls/copilot</copilot>
      <state>/systems/copilot/state</state>
      <waypoint>
       <component>/autopilot/route-manager</component>
@@ -81,12 +82,6 @@
 
   <doors>
    <passenger type="bool">false</passenger>
-
-   <relations>
-    <itself>
-     <doors>/controls/doors</doors>
-    </itself>
-   </relations>
   </doors>
 
   <electrical>
@@ -109,10 +104,6 @@
       <subcomponent>engine</subcomponent>
      </engine>
     </dependency>
-
-    <itself>
-     <engineer>/controls/engineer</engineer>
-    </itself>
 
     <noinstrument>
      <altitude>/position/altitude-ft</altitude>
@@ -198,16 +189,16 @@
 <!-- virtual cross feed tanks -->
 
     <tank n="7">
-     <level-lbs>0.0</level-lbs>
+     <level-lb>0.0</level-lb>
     </tank>
     <tank n="8">
-     <level-lbs>0.0</level-lbs>
+     <level-lb>0.0</level-lb>
     </tank>
     <tank n="9">
-     <level-lbs>0.0</level-lbs>
+     <level-lb>0.0</level-lb>
     </tank>
     <tank n="10">
-     <level-lbs>0.0</level-lbs>
+     <level-lb>0.0</level-lb>
     </tank>
    </tanks>
 
@@ -230,15 +221,38 @@
   </fuel-pump>
 
   <gear>
+   <gear n="0">
+    <safe type="bool">true</safe>
+   </gear>
+   <gear n="1">
+    <safe type="bool">true</safe>
+   </gear>
+   <gear n="2">
+    <safe type="bool">true</safe>
+   </gear>
+
    <relations>
     <dependency>
      <steering>/controls/crew/steering</steering>
     </dependency>
 
+    <itself>
+     <gear>
+      <component>/gear</component>
+      <subcomponent>gear</subcomponent>
+     </gear>
+     <gear-sys>
+      <component>/systems/gear</component>
+      <subcomponent>gear</subcomponent>
+     </gear-sys>
+    </itself>
+
     <noinstrument>
      <airspeed>/velocities/airspeed-kt</airspeed>
     </noinstrument>
    </relations>
+
+   <unsafe type="bool">false</unsafe>
   </gear>
 
   <human>
@@ -273,17 +287,21 @@
    <serviceable type="bool" archive="y">true</serviceable>
 
    <internal>
+    <ambient-light>1.0</ambient-light>                                                 <!-- day light -->
     <copilot>
      <chart-light>0.0</chart-light>
+     <instrument-light>0.0</instrument-light>
      <panel-light>0.0</panel-light>
      <side-light>0.0</side-light>
     </copilot>
     <engineer>
      <flood-light>0.0</flood-light>
+     <instrument-light>0.0</instrument-light>
     </engineer>
     <panel-light>0.0</panel-light>
     <pilot>
      <chart-light>0.0</chart-light>
+     <instrument-light>0.0</instrument-light>
      <panel-light>0.0</panel-light>
      <side-light>0.0</side-light>
     </pilot>
@@ -292,6 +310,7 @@
    <relations>
     <dependency>
      <electric>/systems/electrical/power</electric>
+     <instrument>/controls/human/lighting/instrument</instrument>
     </dependency>
 
     <itself>

@@ -19,8 +19,8 @@
     <name>on</name>
     <condition>
      <equals>
-      <property>/instrumentation/terrain-warning/selector-ft</property>
-      <value>2000.0</value>
+      <property>/instrumentation/terrain-warning/selector</property>
+      <value>2</value>
      </equals>
     </condition>
     <texture>
@@ -44,8 +44,8 @@
     <name>3rd state</name>
     <condition>
      <equals>
-      <property>/instrumentation/terrain-warning/selector-ft</property>
-      <value>1000.0</value>
+      <property>/instrumentation/terrain-warning/selector</property>
+      <value>1</value>
      </equals>
     </condition>
     <texture>
@@ -179,22 +179,19 @@
  <actions>
 
   <action>
-   <name>Toggle 500 ft</name>
-   <condition>
-    <not-equals>
-     <property>/instrumentation/terrain-warning/selector-ft</property>
-     <value>500.0</value>
-    </not-equals>
-   </condition>
+   <name>Increment</name>
    <button>0</button>
    <x>-55</x>
    <y>-21</y>
    <w>42</w>
    <h>42</h>
    <binding>
-    <command>property-assign</command>
-    <property>/instrumentation/terrain-warning/selector-ft</property>
-    <value>500.0</value>
+    <command>property-adjust</command>
+    <property>/instrumentation/terrain-warning/selector</property>
+    <step>1</step>
+    <min>0</min>
+    <max>2</max>
+    <wrap>false</wrap>
    </binding>
    <binding>
     <command>property-toggle</command>
@@ -203,22 +200,19 @@
   </action>
 
   <action>
-   <name>Toggle 2000 ft</name>
-   <condition>
-    <not-equals>
-     <property>/instrumentation/terrain-warning/selector-ft</property>
-     <value>2000.0</value>
-    </not-equals>
-   </condition>
-   <button>0</button>
+   <name>Decrement</name>
+   <button>1</button>
    <x>-55</x>
    <y>-21</y>
    <w>42</w>
    <h>42</h>
    <binding>
-    <command>property-assign</command>
-    <property>/instrumentation/terrain-warning/selector-ft</property>
-    <value>2000.0</value>
+    <command>property-adjust</command>
+    <property>/instrumentation/terrain-warning/selector</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>2</max>
+    <wrap>false</wrap>
    </binding>
    <binding>
     <command>property-toggle</command>
@@ -226,6 +220,7 @@
    </binding>
   </action>
 
+<!--
   <action>
    <name>Select 1000 ft</name>
    <button>0</button>
@@ -243,6 +238,7 @@
     <property>/instrumentation/generic/click</property>
    </binding>
   </action>
+-->
 
  </actions>
  

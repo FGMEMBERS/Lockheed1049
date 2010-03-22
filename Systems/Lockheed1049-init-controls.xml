@@ -15,8 +15,8 @@
 
   <copilot>
    <activ type="bool">false</activ>
-   <fg-waypoint type="bool">true</fg-waypoint>                     <!-- default FG behaviour (toggles autopilot) -->
-   <waypoint type="bool">true</waypoint>                           <!-- default FG behaviour (follows waypoint) -->
+   <fg-waypoint type="bool">true</fg-waypoint>                     <!-- default FG behaviour (waypoint input toggles autopilot) -->
+   <waypoint type="bool">true</waypoint>                           <!-- default FG behaviour (AI follows waypoint) -->
   </copilot>
 
   <crew>
@@ -62,6 +62,9 @@
   </flight>
 
   <fuel>
+   <center>
+    <shut-off>0.0</shut-off>
+   </center>
    <engine n="0">
     <cross-feed>0.0</cross-feed>
    </engine>
@@ -84,6 +87,7 @@
    <lighting>                                                      <!-- night lighting -->
     <copilot type="double">0.4</copilot>
     <engineer type="double">0.4</engineer>
+    <instrument type="double">0.0</instrument>                     <!-- not real -->
     <pilot type="double">0.4</pilot>
    </lighting>
   </human>
@@ -146,11 +150,9 @@
 
   <seat>
    <all type="bool">false</all>
+   <all-outside type="bool">false</all-outside>
    <observer type="bool">false</observer>
    <observer2 type="bool">false</observer2>
-   <pedal>
-    <copilot-m>-0.05</copilot-m>                                   <!-- has longer legs -->
-   </pedal>
    <recover type="bool">false</recover>
   </seat>
 

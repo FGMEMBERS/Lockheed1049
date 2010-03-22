@@ -18,16 +18,16 @@ Fuel = {};
 Fuel.new = func {
    var obj = { parents : [Fuel],
 
-           tanksystem : Tanks.new(),
+               tanksystem : Tanks.new(),
 
-           crosstanks : nil,
-           crossengines : nil,
-           engines : nil,
+               crosstanks : nil,
+               crossengines : nil,
+               engines : nil,
 
-           SPEEDUPSEC : 2,             # refresh rate
+               SPEEDUPSEC : 2,             # refresh rate
 
-           NB_ENGINES : 4,
-           NB_TANKS : 7
+               NB_ENGINES : 4,
+               NB_TANKS : 7
          };
 
    obj.init();
@@ -98,7 +98,7 @@ Fuel.crossfeed = func {
        for( var i=0; i < me.NB_ENGINES; i=i+1 ) {
             icross = me.NB_TANKS + i;
             levellb = me.tanksystem.getlevellb( icross );
-            me.crosstanks[icross].getChild("level-lbs").setValue(levellb);
+            me.crosstanks[icross].getChild("level-lb").setValue(levellb);
        }
 
        # completes the cross feed tanks
@@ -108,7 +108,7 @@ Fuel.crossfeed = func {
                      if( me.crossengines[j].getChild("cross").getValue() ) {
                          icross = me.NB_TANKS + j;
                          contentlb = me.tanksystem.getcontentlb( icross );
-                         offsetlb = contentlb - me.crosstanks[icross].getChild("level-lbs").getValue();
+                         offsetlb = contentlb - me.crosstanks[icross].getChild("level-lb").getValue();
                          pumplb = offsetlb / nbtanks;
                          me.tanksystem.transfertanks( icross, i, pumplb );
                      }
@@ -131,18 +131,18 @@ Tanks.new = func {
 # tank contents, to be initialised from XML
    var obj = { parents : [Tanks], 
 
-           pumpsystem : Pump.new(),
+               pumpsystem : Pump.new(),
 
-           CONTENTLB : { "1" : 0.0, "2" : 0.0, "3" : 0.0, "4" : 0.0, "5" : 0.0, "2A" : 0.0, "3A" : 0.0,
-                         "C1" : 0.0, "C2" : 0.0, "C3" : 0.0, "C4" : 0.0 },
-           TANKINDEX : { "1" : 0, "2" : 1, "3" : 2, "4" : 3, "5" : 4, "2A" : 5, "3A" : 6,
-                         "C1" : 7, "C2" : 8, "C3" : 9, "C4" : 10 },
-           TANKNAME : [ "1", "2", "3", "4", "5", "2A", "3A", "C1", "C2", "C3", "C4" ],
-           nb_tanks : 0,
+               CONTENTLB : { "1" : 0.0, "2" : 0.0, "3" : 0.0, "4" : 0.0, "5" : 0.0, "2A" : 0.0, "3A" : 0.0,
+                             "C1" : 0.0, "C2" : 0.0, "C3" : 0.0, "C4" : 0.0 },
+               TANKINDEX : { "1" : 0, "2" : 1, "3" : 2, "4" : 3, "5" : 4, "2A" : 5, "3A" : 6,
+                             "C1" : 7, "C2" : 8, "C3" : 9, "C4" : 10 },
+               TANKNAME : [ "1", "2", "3", "4", "5", "2A", "3A", "C1", "C2", "C3", "C4" ],
+               nb_tanks : 0,
 
-           fillings : nil,
-           tanks : nil
-         };
+               fillings : nil,
+               tanks : nil
+             };
 
     obj.init();
 
@@ -254,7 +254,7 @@ Pump = {};
 Pump.new = func {
    var obj = { parents : [Pump],
 
-           tanks : nil 
+               tanks : nil 
          };
 
    obj.init();

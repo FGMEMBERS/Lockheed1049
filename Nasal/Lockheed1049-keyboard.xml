@@ -142,15 +142,6 @@
     </binding>
    </key>
 
-   <key n="18">
-    <name>Ctrl-R</name>
-    <desc>Radio dialog.</desc>
-    <binding>
-     <command>dialog-show</command>
-     <dialog-name>Lockheed1049-radios</dialog-name>
-    </binding>
-   </key>
-
    <key n="19">
     <name>Ctrl-S</name>
     <desc>Toggle autothrottle</desc>
@@ -167,6 +158,13 @@
      <command>nasal</command>
      <script>globals.Lockheed1049.seatsystem.viewexport("captain");</script>
     </binding>
+    <mod-shift>
+     <desc>Restore view pitch</desc>
+     <binding>
+      <command>nasal</command>
+      <script>globals.Lockheed1049.seatsystem.restorepitchexport();</script>
+     </binding>
+    </mod-shift>
    </key>
 
    <key n="24">
@@ -186,6 +184,15 @@
     <binding>
      <command>nasal</command>
      <script>globals.Lockheed1049.copilotcrew.togglecrewexport();</script>
+    </binding>
+   </key>
+
+   <key n="70">
+    <name>F</name>
+    <desc>full model</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Lockheed1049.seatsystem.fulloutsideexport();</script>
     </binding>
    </key>
 
@@ -224,6 +231,15 @@
     <binding>
      <command>nasal</command>
      <script>globals.Lockheed1049.seatsystem.scrollexport();</script>
+    </binding>
+   </key>
+
+   <key n="268">
+    <name>F12</name>
+    <desc>Radio dialog.</desc>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-radios</dialog-name>
     </binding>
    </key>
 

@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>middle_copilot.ac</path>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Plate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/copilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PanelRheostat</object-name>
+  <property>controls/lighting/internal/copilot/side</property>
+  <factor>270</factor>   
+  <offset-deg>-135</offset-deg>
+  <center>
+   <x-m>-0.093</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PanelRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/side</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/side</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- chart light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ChartRheostat</object-name>
+  <property>controls/lighting/internal/copilot/chart</property>
+  <factor>270</factor>   
+  <offset-deg>-135</offset-deg>
+  <center>
+   <x-m>-0.057</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ChartRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/chart</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/chart</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- compass light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CompassLightRheostat</object-name>
+  <property>controls/lighting/internal/copilot/compass</property>
+  <factor>270</factor>   
+  <offset-deg>-135</offset-deg>
+  <center>
+   <x-m>-0.022</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CompassLightRheostat</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/compass</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/copilot/compass</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

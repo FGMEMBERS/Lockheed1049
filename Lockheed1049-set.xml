@@ -9,12 +9,16 @@
                                                   Warning lights are emissive by night.
                                                   Observer view moves.
                                                   Virtual copilot holds throttle and follows
-                                                  waypoints, menu.
+                                                  waypoints.
+                                                  Menu.
      1.3               February 2009              External and internal (red only) lighting.
                                                   2nd observer view.
                                                   Elevator boost, engine blower,
                                                   nose wheel steering.
                                                   Virtual engineer (blower only).
+     1.4               March 2010                 Conversion of 2D instruments to 3D
+                                                  (most borrowed to G. Neely's GPL 1049-H).
+						  Pushback.
      ==========================================================================================
 -->
 
@@ -25,7 +29,7 @@
 
   <description>Lockheed 1049 Super Constellation</description>
   <status>early-production</status>
-  <aircraft-version>1.3</aircraft-version>
+  <aircraft-version>1.4</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
@@ -65,6 +69,14 @@
 
   <model>
    <path>Aircraft/Lockheed1049/Models/Lockheed1049_twa.xml</path>
+   <pushback>
+    <enabled type="bool">false</enabled>
+    <kp type="double">1500</kp>
+    <ki type="double">50</ki>
+    <kd type="double">0</kd>
+    <position-norm type="double">0</position-norm>
+    <target-speed-fps type="double">0</target-speed-fps>
+   </pushback>
   </model> 
 
 <!-- compensates the shift of VRP at nose -->

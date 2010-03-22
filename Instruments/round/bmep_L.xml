@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 double torque pressure instrument :
+
+     At sea level, for 2900 RPM :
+     - power is 2800 hp : BMEP should be 228 = 2800 x 236 / 2900.
+     - as indicated torque is -23178, conversion factor should be 220 / -23178 = -0.009837.
+
+
+     Reference :
+     =========
+     http://aviatechno.free.fr/constellation/moteurs.php :
+
+     HP = RPM x BMEP / 236, where 236 is the constant for 3350 in. cube displacement.
+
+
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>bmep_engineer.ac</path>
+
+<animation>
+ <name>unused</name>
+ <object-name>BMEPeng.Needle3</object-name>
+ <object-name>BMEPeng.Needle4</object-name>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>unused</object-name>
+  <condition>
+    <equals><value>1</value><value>0</value></equals>
+  </condition>
+</animation>
+
+<animation>
+  <type>material</type>
+  <object-name>BMEPeng.Face</object-name>
+  <object-name>BMEPeng.Needle1</object-name>
+  <object-name>BMEPeng.Needle2</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>BMEPeng.Needle1</object-name>
+  <property>engines/engine[0]/thruster/torque</property>
+  <factor>-0.009837</factor>
+  <offset-deg>-62</offset-deg>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>BMEPeng.Needle2</object-name>
+  <property>engines/engine[1]/thruster/torque</property>
+  <factor>-0.009837</factor>
+  <offset-deg>-62</offset-deg>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>
+

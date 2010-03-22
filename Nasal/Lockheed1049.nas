@@ -32,6 +32,7 @@ LockheedMain.putinrelation = func {
 LockheedMain.sec1cron = func {
    lightingsystem.schedule();
    enginesystem.schedule();
+   terraininstrument.schedule();
    daytimeinstrument.schedule();
 
    # schedule the next call
@@ -58,12 +59,17 @@ LockheedMain.sec3cron = func {
 }
 
 LockheedMain.savedata = func {
-   var saved_props = [ "/controls/copilot/fg-waypoint",
+   var saved_props = [ "/controls/copilot/fg-autopilot",
+                       "/controls/copilot/fg-waypoint",
                        "/controls/crew/captain-busy",
                        "/controls/crew/night-lighting",
                        "/controls/crew/timeout",
                        "/controls/crew/timeout-s",
                        "/controls/doors/flight-station/opened",
+                       "/controls/human/lighting/copilot",
+                       "/controls/human/lighting/engineer",
+                       "/controls/human/lighting/instrument",
+                       "/controls/human/lighting/pilot",
                        "/controls/seat/recover",
                        "/systems/fuel/presets",
                        "/systems/seat/position/gear-well/x-m",
@@ -92,6 +98,7 @@ LockheedMain.instantiate = func {
    globals.Lockheed1049.enginesystem = Engine.new();
    globals.Lockheed1049.autopilotsystem = Autopilot.new();
 
+   globals.Lockheed1049.terraininstrument = TerrainWarning.new();
    globals.Lockheed1049.daytimeinstrument = Daytime.new();
 
    globals.Lockheed1049.doorsystem = Doors.new();
@@ -114,6 +121,9 @@ LockheedMain.init = func {
    settimer(func { me.sec1cron(); },0);
    settimer(func { me.sec2cron(); },0);
    settimer(func { me.sec3cron(); },0);
+
+   # fix JSBSim bug
+   setprop( "controls/flight/elevator-boost", constant.TRUE );
 
    # saved on exit, restored at launch
    me.savedata();

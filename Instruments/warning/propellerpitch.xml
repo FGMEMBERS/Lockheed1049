@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>propellerpitch.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch1</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[0]/propeller-low-high</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch2</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[1]/propeller-low-high</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch3</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[2]/propeller-low-high</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerPitch4</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>systems/engines/engine[3]/propeller-low-high</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+</PropertyList>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>seat.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>Seat</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/pilot/chart-light</factor-prop>
+  </emission> 
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>Seat</object-name>
+  <property>systems/human/captain/stowe-norm</property>
+  <factor>0.25</factor>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+</PropertyList>
+

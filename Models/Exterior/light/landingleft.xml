@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>landing.ac</path>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>LandingLight</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>LandingLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LandingLight</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/landing[0]/on</property>
+    <equals>
+     <property>controls/lighting/external/landing[0]/position</property>
+     <value>1.0</value>
+    </equals>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLight</object-name>
+  <offset-m>-1.78</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLight</object-name>
+  <offset-m>-14.685</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>LandingLight</object-name>
+  <offset-m>0.478</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>LandingLight</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>1.3</x-factor>                       <!-- avoids to cut wing -->
+  <y-factor>1.3</y-factor>
+  <z-factor>1.3</z-factor>
+ </animation>
+
+</PropertyList>
+

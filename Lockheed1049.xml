@@ -6,8 +6,8 @@
 
     <fileheader>
         <author> </author>
-        <filecreationdate> 12 January 2009 </filecreationdate>
-        <version> 1.03 </version>
+        <filecreationdate> 14 March 2010 </filecreationdate>
+        <version> 1.04 </version>
         <description> Lockheed1049-54 </description>
 
         <note>Super Constellation 1049-54 (first version).</note>
@@ -15,6 +15,7 @@
         <note>VRP at nose tip.</note>
         <note>surface boost is on.</note>
         <note>nose wheel steering is off.</note>
+        <note>pushback.</note>
 
         <limitation>gear height determined by 3D model, supposed at scale.</limitation>
         <limitation>emulation of fuel cross feed, tanks run out of fuel above X 3 speed-up.</limitation>
@@ -551,6 +552,44 @@
       </scheduled_gain>
      </channel>
     </system>
+    
+    <system name="Tractor">
+     <property>/sim/model/pushback/target-speed-fps</property>
+     <channel name="Tractor">
+
+      <switch name="systems/pushback/linked">
+        <default value="-1"/>
+        <test value="0">
+          /sim/model/pushback/position-norm gt 0.95
+          /gear/gear/wow == 1
+          gear/unit[0]/wheel-speed-fps lt 50
+        </test>
+      </switch>
+
+      <summer name="systems/pushback/speed-error">
+        <input>/sim/model/pushback/target-speed-fps</input>
+        <input>-gear/unit[0]/wheel-speed-fps</input>
+      </summer>
+
+      <pid name="systems/pushback/force">
+        <input>systems/pushback/speed-error</input>
+        <kp>/sim/model/pushback/kp</kp>
+        <ki>/sim/model/pushback/ki</ki>
+        <kd>/sim/model/pushback/kd</kd>
+        <trigger>systems/pushback/linked</trigger>
+        <output>/sim/model/pushback/force</output>
+      </pid>
+
+      <switch name="systems/pushback/force-output">
+        <default value="0"/>
+        <test value="systems/pushback/force">
+          systems/pushback/linked == 0
+        </test>
+        <output>external_reactions/tractor/magnitude</output>
+      </switch>
+
+    </channel>
+   </system>
 
     <flight_control name="Lockheed1049-54">
 
@@ -929,15 +968,18 @@
                 </product>
             </function>
             <documentation>
-              cannot be negativ.
+              - drag is always positiv.
+              - divide by 10.
             </documentation>
             <function name="aero/coefficient/CDde">
                 <description>Drag_due_to_Elevator_Deflection</description>
                 <product>
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
-                    <property>fcs/elevator-pos-norm</property>
-                    <value>0.0350</value>
+                    <abs>
+                     <property>fcs/elevator-pos-norm</property>
+                    </abs>
+                    <value>0.0035</value>
                 </product>
             </function>
         </axis>
@@ -1187,4 +1229,19 @@
             </function>
         </axis>
     </aerodynamics>
+
+   <external_reactions>
+       <force name="tractor" frame="BODY">
+         <location unit="IN">
+           <x> 177.2000 </x>
+           <y> 0.0000 </y>
+           <z> -100.0000 </z>
+         </location>
+         <direction>
+           <x>1</x>
+           <y>0</y>
+           <z>0</z>
+         </direction>
+       </force>
+   </external_reactions>
 </fdm_config>

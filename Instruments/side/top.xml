@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>top.ac</path>
+
+<!-- navigation lights -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NavLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/on</property>
+  <factor>30</factor>
+  <center>
+   <x-m>-0.008</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NavLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/steady</property>
+  <factor>-60</factor>               <!-- compensates ON -->
+  <center>
+   <x-m>-0.008</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>NavLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/on</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/steady</property>
+    <value>false</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/steady</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/on</property>
+    <value>true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- ground lights -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>GroundLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/fuselage-lights</property>
+  <factor>30</factor>
+  <center>
+   <x-m>-0.033</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>GroundLightSwitch</object-name>
+  <property>controls/lighting/external/navigation/ground-loading</property>
+  <factor>-60</factor>               <!-- compensates ON -->
+  <center>
+   <x-m>-0.033</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>GroundLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/fuselage-lights</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/ground-loading</property>
+    <value>false</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/navigation/ground-loading</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/navigation/fuselage-lights</property>
+    <value>true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>GroundLoading</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>controls/lighting/external/navigation/ground-loading</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient> 
+ </animation>
+
+<!-- passing light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassingLightSwitch</object-name>
+  <property>controls/lighting/external/taxi/on</property>
+  <factor>30</factor>
+  <center>
+   <x-m>-0.070</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassingLightSwitch</object-name>
+  <property>controls/lighting/external/taxi/passing</property>
+  <factor>-60</factor>               <!-- compensates ON -->
+  <center>
+   <x-m>-0.070</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PassingLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/taxi/on</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/taxi/passing</property>
+    <value>false</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/taxi/passing</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/lighting/external/taxi/on</property>
+    <value>true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Plate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/pilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotPanelSwitch</object-name>
+  <property>controls/lighting/internal/pilot/side-on</property>
+  <factor>65</factor>
+  <offset-deg>-32.5</offset-deg>
+  <center>
+   <x-m>-0.089</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotPanelSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/pilot/side-on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- chart light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PilotChartSwitch</object-name>
+  <property>controls/lighting/internal/pilot/chart-on</property>
+  <factor>65</factor>
+  <offset-deg>-32.5</offset-deg>
+  <center>
+   <x-m>-0.102</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.004</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PilotChartSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/pilot/chart-on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

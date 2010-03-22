@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>passing.ac</path>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PassingLight</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>PassingLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>PassingLight</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/taxi/on</property>
+    <property>controls/lighting/external/taxi/passing</property>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PassingLight</object-name>
+  <factor>0.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m>-17.07</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-0.510</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>PassingLight</object-name>
+  <offset-m>-17.07</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>PassingLight</object-name>
+  <offset-m>-0.510</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>PassingLight</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
+
+</PropertyList>
+

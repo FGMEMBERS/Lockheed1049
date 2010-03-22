@@ -45,11 +45,11 @@ VirtualEngineer.init = func {
 VirtualEngineer.toggleexport = func {
    var launch = constant.FALSE;
 
-   if( !me.itself["engineer"].getChild("activ").getValue() ) {
+   if( !me.itself["root-ctrl"].getChild("activ").getValue() ) {
        launch = constant.TRUE;
    }
 
-   me.itself["engineer"].getChild("activ").setValue(launch);
+   me.itself["root-ctrl"].getChild("activ").setValue(launch);
        
    if( launch and !me.is_running() ) {
        # must switch lights again
@@ -58,6 +58,14 @@ VirtualEngineer.toggleexport = func {
 
        me.schedule();
    }
+}
+
+VirtualEngineer.lightingexport = func {
+   me.nightlighting.engineerexport();
+}
+
+VirtualEngineer.pilotlightingexport = func {
+   me.nightlighting2.pilotexport();
 }
 
 VirtualEngineer.schedule = func {
@@ -73,7 +81,7 @@ VirtualEngineer.schedule = func {
 VirtualEngineer.run = func {
    me.state = "";
 
-   if( me.itself["engineer"].getChild("activ").getValue() ) {
+   if( me.itself["root-ctrl"].getChild("activ").getValue() ) {
        me.set_running();
 
        me.rates = me.speed_ratesec( me.rates );
@@ -84,7 +92,7 @@ VirtualEngineer.run = func {
 VirtualEngineer.supervisor = func {
    me.rates = me.ENGINEERSEC;
 
-   if( me.itself["engineer"].getChild("activ").getValue() ) {
+   if( me.itself["root-ctrl"].getChild("activ").getValue() ) {
        me.set_activ();
 
        me.blower();

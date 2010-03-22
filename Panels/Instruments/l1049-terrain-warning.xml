@@ -43,22 +43,7 @@ properties' values.
     <name>on</name>
     <type>group</type>
     <condition>
-     <or>
-      <equals>
-       <property>/instrumentation/terrain-warning/test-500</property>
-       <value>on</value>
-      </equals>
-      <and>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <value>500</value>
-       </less-than-equals>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <property n="1">/instrumentation/terrain-warning/selector-ft</property>
-       </less-than-equals>
-      </and>
-     </or>
+     <property>/instrumentation/terrain-warning/light/on[0]</property>
     </condition>
 
     <layer include="l1049-bulb-led-on.xml">
@@ -138,26 +123,7 @@ properties' values.
     <name>on</name>
     <type>group</type>
     <condition>
-     <or>
-      <equals>
-       <property>/instrumentation/terrain-warning/test-1000</property>
-       <value>on</value>
-      </equals>
-      <and>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <value>1000</value>
-       </less-than-equals>
-       <greater-than>
-        <property>/position/altitude-agl-ft</property>
-        <value>500</value>
-       </greater-than>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <property n="1">/instrumentation/terrain-warning/selector-ft</property>
-       </less-than-equals>
-      </and>
-     </or>
+     <property>/instrumentation/terrain-warning/light/on[1]</property>
     </condition>
 
     <layer include="l1049-bulb-led-on.xml">
@@ -215,7 +181,7 @@ properties' values.
    <h>30</h>
   </layer>
 
-<!-- 2000 ft Indicator (orange by red + yellow) -->
+<!-- 2000 ft Indicator -->
 
   <layer>
    <name>lamp 2000</name>
@@ -225,26 +191,7 @@ properties' values.
     <name>on</name>
     <type>group</type>
     <condition>
-     <or>
-      <equals>
-       <property>/instrumentation/terrain-warning/test-2000</property>
-       <value>on</value>
-      </equals>
-      <and>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <value>2000</value>
-       </less-than-equals>
-       <greater-than>
-        <property>/position/altitude-agl-ft</property>
-        <value>1000</value>
-       </greater-than>
-       <less-than-equals>
-        <property>/position/altitude-agl-ft</property>
-        <property n="1">/instrumentation/terrain-warning/selector-ft</property>
-       </less-than-equals>
-      </and>
-     </or>
+     <property>/instrumentation/terrain-warning/light/on[2]</property>
     </condition>
 
     <layer include="l1049-bulb-led-on.xml">

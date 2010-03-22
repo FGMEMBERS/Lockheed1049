@@ -12,7 +12,7 @@
  <h-base>52</h-base>
 
  <params>
-  <pointer-select>/instrumentation/radio-magnetic-indicator/frequency[0]</pointer-select>
+  <pointer-select>/instrumentation/radio-magnetic-indicator/vor[0]</pointer-select>
  </params>
 
 
@@ -24,10 +24,9 @@
 
    <layer>
     <condition>
-     <equals>
+     <not>
       <property alias="../../../../../../params/pointer-select"/>
-      <value>adf</value>
-     </equals>
+     </not>
     </condition>
     <name>on</name>
     <texture>
@@ -142,46 +141,15 @@
  <actions>
 
   <action>
-   <name>vor pointer</name>
+   <name>toggle</name>
    <button>0</button>
-   <condition>
-    <equals>
-     <property alias="../../../../../params/pointer-select"/>
-     <value>adf</value>
-    </equals>
-   </condition>
    <x>-25</x>
    <y>-23</y>
    <w>44</w>
    <h>44</h>
-   <binding>
-    <command>property-assign</command>
-    <property alias="../../../../params/pointer-select"/>
-    <value>vor</value>
-   </binding>
    <binding>
     <command>property-toggle</command>
-    <property>/instrumentation/generic/click</property>
-   </binding>
-  </action>
-
-  <action>
-   <name>adf pointer</name>
-   <button>0</button>
-   <condition>
-    <not-equals>
-     <property alias="../../../../../params/pointer-select"/>
-     <value>adf</value>
-    </not-equals>
-   </condition>
-   <x>-25</x>
-   <y>-23</y>
-   <w>44</w>
-   <h>44</h>
-   <binding>
-    <command>property-assign</command>
     <property alias="../../../../params/pointer-select"/>
-    <value>adf</value>
    </binding>
    <binding>
     <command>property-toggle</command>

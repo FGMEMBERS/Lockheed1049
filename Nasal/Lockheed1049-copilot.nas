@@ -58,11 +58,13 @@ VirtualCopilot.set_relation = func( autopilot, crew, engineer ) {
 VirtualCopilot.toggleexport = func {
    var launch = constant.FALSE;
 
-   if( !me.itself["copilot"].getChild("activ").getValue() ) {
+   me.context();
+
+   if( !me.itself["root-ctrl"].getChild("activ").getValue() ) {
        launch = constant.TRUE;
    }
 
-   me.itself["copilot"].getChild("activ").setValue(launch);
+   me.itself["root-ctrl"].getChild("activ").setValue(launch);
        
    if( launch and !me.is_running() ) {
        # must switch again lights
@@ -77,33 +79,28 @@ VirtualCopilot.toggleexport = func {
    }
 }
 
+VirtualCopilot.lightingexport = func {
+   me.nightlighting.copilotexport();
+}
+
 VirtualCopilot.throttleexport = func {
    var throttle = constant.FALSE;
-   var mode = "speed-with-throttle";
+   var mode = "";
 
-   me.state = "";
+   me.context();
 
    # ctrl-S toggles virtual copilot
-   if( me.dependency["autopilot"].getChild("speed").getValue() != mode ) {
-       if( !me.itself["copilot"].getChild("activ").getValue() ) {
-           me.togglecrewexport();
-       }
+   if( !me.is_autothrottle() ) {
+       me.activatecrew();
+
+       mode = "speed-with-throttle";
 
        throttle = constant.TRUE;
-
-       me.log("throttle");
-   }
-
-   else {
-       mode = "";
-
-       me.log("no-throttle");
    }
 
 
    # feedback
-   me.itself["root"].getChild("throttle").setValue(throttle);
-   me.itself["root"].getChild("state").setValue(me.state);
+   me.holdthrottle( throttle );
 
    me.dependency["autopilot"].getChild("speed").setValue( mode );
 }
@@ -119,10 +116,28 @@ VirtualCopilot.schedule = func {
 }
 
 VirtualCopilot.fastschedule = func {
-   me.state = "";
+   var id = "";
 
-   me.waypointtoggle = me.itself["copilot"].getChild("fg-waypoint").getValue();
-   me.followswaypoint = me.itself["copilot"].getChild("waypoint").getValue();
+
+   # TEMPORARY work around for 2.0.0
+   if( me.route_active() ) {
+       # each time, because the route can change
+       var wp = me.dependency["route"].getChildren("wp");
+       var nb_wp = size(wp);
+
+       # route manager doesn't update these fields
+       if( nb_wp >= 1 ) {
+           id = wp[0].getChild("id").getValue();
+       }
+   }
+
+   me.dependency["waypoint"][0].getChild("id").setValue( id );
+
+
+   me.context();
+
+   me.waypointtoggle = me.itself["root-ctrl"].getChild("fg-waypoint").getValue();
+   me.followswaypoint = me.itself["root-ctrl"].getChild("waypoint").getValue();
    me.headingmode = me.dependency["autopilot"].getChild("heading").getValue();
 
    me.waypointexist = me.has_waypoint();
@@ -142,7 +157,7 @@ VirtualCopilot.fastschedule = func {
 }
 
 VirtualCopilot.run = func {
-   if( me.itself["copilot"].getChild("activ").getValue() ) {
+   if( me.itself["root-ctrl"].getChild("activ").getValue() ) {
        me.set_running();
 
        me.rates = me.speed_ratesec( me.rates );
@@ -153,7 +168,7 @@ VirtualCopilot.run = func {
 VirtualCopilot.supervisor = func {
    me.rates = me.COPILOTSEC;
 
-   if( me.itself["copilot"].getChild("activ").getValue() ) {
+   if( me.itself["root-ctrl"].getChild("activ").getValue() ) {
        me.set_activ();
 
        me.nightlighting.copilot( me );
@@ -170,9 +185,9 @@ VirtualCopilot.followplan = func {
    if( me.headingmode == "dg-heading-hold" ) {
        if( me.waypointexist ) {
            # waypoint input toggles virtual copilot, which follows waypoint.
-           if( !me.itself["copilot"].getChild("activ").getValue() ) {
+           if( !me.itself["root-ctrl"].getChild("activ").getValue() ) {
                if( me.waypointtoggle and me.followswaypoint ) {
-                   me.togglecrewexport();
+                   me.activatecrew();
                }
            }
 
@@ -193,9 +208,7 @@ VirtualCopilot.followplan = func {
 
        # waypoint input toggles virtual copilot
        elsif( me.waypointtoggle ) {
-           if( !me.itself["copilot"].getChild("activ").getValue() ) {
-               me.togglecrewexport();
-           }
+           me.activatecrew();
        }
    }
 }
@@ -231,11 +244,31 @@ VirtualCopilot.togglecrewexport = func {
    me.crewscreen.toggleexport();
 }
 
+VirtualCopilot.activatecrew = func {
+   if( !me.itself["root-ctrl"].getChild("activ").getValue() ) {
+       me.toggleexport();
+       me.engineercrew.toggleexport();
+       me.crewscreen.toggleexport();
+   }
+}
+
 VirtualCopilot.holdheading = func {
    # keep the current heading
    if( me.headingmode == "true-heading-hold" ) {
        me.autopilotsystem.real();
    }
+}
+
+VirtualCopilot.holdthrottle = func( throttle ) {
+   if( throttle ) {
+       me.log("throttle");
+   }
+   else {
+       me.log("no-throttle");
+   }
+
+   me.itself["root"].getChild("throttle").setValue(throttle);
+   me.itself["root"].getChild("state").setValue(me.state);
 }
 
 VirtualCopilot.nothrottle = func {
@@ -250,13 +283,42 @@ VirtualCopilot.none = func {
 
 VirtualCopilot.has_waypoint = func {
    var result = constant.FALSE;
-   var ident = me.dependency["waypoint"][0].getChild("id").getValue();
 
-   if( ident != nil ) {
-       if( ident != "" ) {
-           result = constant.TRUE;
+   if( me.route_active() ) {
+       var ident = me.dependency["waypoint"][0].getChild("id").getValue();
+
+       if( ident != nil ) {
+           if( ident != "" ) {
+               result = constant.TRUE;
+           }
        }
    }
 
    return result;
+}
+
+VirtualCopilot.route_active = func {
+   var result = constant.FALSE;
+
+   # autopilot/route-manager/wp is updated only once airborne
+   if( me.dependency["route-manager"].getChild("active").getValue() and
+       me.dependency["route-manager"].getChild("airborne").getValue() ) {
+       result = constant.TRUE;
+   }
+
+   return result;
+}
+
+VirtualCopilot.is_autothrottle = func {
+   var result = constant.FALSE;
+
+   if( me.dependency["autopilot"].getChild("speed").getValue() == "speed-with-throttle" ) {
+       result = constant.TRUE;
+   }
+
+   return result;
+}
+
+VirtualCopilot.context = func {
+   me.state = "";
 }

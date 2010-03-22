@@ -13,25 +13,26 @@ Seats = {};
 Seats.new = func {
    var obj = { parents : [Seats],
 
-           controls : nil,
-           positions : nil,
-           theseats : nil,
-           theviews : nil,
+               controls : nil,
+               positions : nil,
+               theseats : nil,
+               theviews : nil,
 
-           lookup : {},
-           names : {},
-           nb_seats : 0,
+               lookup : {},
+               names : {},
+               nb_seats : 0,
 
-           CAPTINDEX : 0,
+               CAPTINDEX : 0,
 
-           firstseat : constant.FALSE,
-           firstseatview : 0,               
-           fullcokpit : constant.FALSE,   
+               firstseat : constant.FALSE,
+               firstseatview : 0,               
+               fullcokpit : constant.FALSE,   
+               fulloutside : constant.FALSE,
 
-           floating : {},
-           recoverfloating : constant.FALSE,
-           last_recover : {},
-           initial : {}
+               floating : {},
+               recoverfloating : constant.FALSE,
+               last_recover : {},
+               initial : {}
          };
 
    obj.init();
@@ -63,28 +64,29 @@ Seats.init = func {
             }
             elsif( name == "Copilot View" ) {
                 me.save_lookup("copilot", i);
-           }
-           elsif( name == "Navigator View" ) {
-                me.save_lookup("navigator", i);
-           }
-           elsif( name == "Observer View" ) {
-                me.save_lookup("observer", i);
-                me.save_initial( "observer", me.theviews[i] );
-           }
-           elsif( name == "Observer 2 View" ) {
-                me.save_lookup("observer2", i);
-                me.save_initial( "observer2", me.theviews[i] );
-           }
-           elsif( name == "Gear Well View" ) {
-                me.save_lookup("gear-well", i);
-                me.save_initial( "gear-well", me.theviews[i] );
-           }
+            }
+            elsif( name == "Navigator View" ) {
+                 me.save_lookup("navigator", i);
+            }
+            elsif( name == "Observer View" ) {
+                 me.save_lookup("observer", i);
+                 me.save_initial( "observer", me.theviews[i] );
+            }
+            elsif( name == "Observer 2 View" ) {
+                 me.save_lookup("observer2", i);
+                 me.save_initial( "observer2", me.theviews[i] );
+            }
+            elsif( name == "Gear Well View" ) {
+                 me.save_lookup("gear-well", i);
+                 me.save_initial( "gear-well", me.theviews[i] );
+            }
         }
    }
 
    # default
    me.recoverfloating = me.controls.getChild("recover").getValue();
    me.fullcockpit = me.controls.getChild("all").getValue();
+   me.fulloutside = me.controls.getChild("all-outside").getValue();
 }
 
 Seats.recoverexport = func {
@@ -101,6 +103,17 @@ Seats.fullexport = func {
    }
 
    me.controls.getChild("all").setValue( me.fullcockpit );
+}
+
+Seats.fulloutsideexport = func {
+   if( me.fulloutside ) {
+       me.fulloutside = constant.FALSE;
+   }
+   else {
+       me.fulloutside = constant.TRUE;
+   }
+
+   me.controls.getChild("all-outside").setValue( me.fulloutside );
 }
 
 Seats.viewexport = func( name ) {
@@ -155,6 +168,7 @@ Seats.viewexport = func( name ) {
    }
 
    me.controls.getChild("all").setValue( me.fullcockpit );
+   me.controls.getChild("all-outside").setValue( constant.FALSE );
 }
 
 Seats.scrollexport = func{
@@ -430,6 +444,36 @@ Seats.restoreexport = func {
                 me.initial_position( name );
             }
             break;
+        }
+   }
+}
+
+# restore view pitch
+Seats.restorepitchexport = func {
+   var index = getprop("/sim/current-view/view-number");
+
+   if( index == me.CAPTINDEX ) {
+       var headingdeg = me.theviews[index].getNode("config").getChild("heading-offset-deg").getValue();
+       var pitchdeg = me.theviews[index].getNode("config").getChild("pitch-offset-deg").getValue();
+
+       setprop("/sim/current-view/heading-offset-deg", headingdeg );
+       setprop("/sim/current-view/pitch-offset-deg", pitchdeg );
+   }
+
+   # only cockpit views
+   else {
+       var name = "";
+
+       for( var i = 0; i < me.nb_seats; i=i+1 ) {
+            name = me.names[i];
+            if( me.theseats.getChild(name).getValue() ) {
+                var headingdeg = me.theviews[index].getNode("config").getChild("heading-offset-deg").getValue();
+                var pitchdeg = me.theviews[index].getNode("config").getChild("pitch-offset-deg").getValue();
+
+                setprop("/sim/current-view/heading-offset-deg", headingdeg );
+                setprop("/sim/current-view/pitch-offset-deg", pitchdeg );
+                break;
+            }
         }
    }
 }

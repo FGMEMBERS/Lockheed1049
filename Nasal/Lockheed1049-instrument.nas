@@ -40,6 +40,54 @@ Generic.toggleclick = func {
 }
 
 
+# ===============
+# TERRAIN WARNING
+# ===============
+
+TerrainWarning = {};
+
+TerrainWarning.new = func {
+   var obj = { parents : [TerrainWarning,System],
+
+               TERRAINSEC : 1.0,
+
+               AGLM : [ 0, 500, 1000, 2000 ]
+         };
+
+   obj.init();
+
+   return obj;
+}
+
+TerrainWarning.init = func {
+    me.inherit_system("/instrumentation/terrain-warning");
+}
+
+TerrainWarning.schedule = func {
+    var light = constant.FALSE;
+    var j = 0;
+
+    var aglft = me.noinstrument["aglft"].getValue();
+    var selector = me.itself["root"].getChild("selector").getValue();
+
+    selector = selector + 1;
+
+    for( var i = 0; i < constantaero.NBGEARS; i = i+1 ) {
+         j = i + 1;
+
+         if( aglft >= me.AGLM[i] and aglft <= me.AGLM[j] and me.AGLM[selector] >= me.AGLM[j] ) {
+             light = constant.TRUE;
+         }
+
+         else {
+             light = constant.FALSE;
+         }
+
+         me.itself["light"][i].setValue( light );
+    }
+}
+
+
 # =============
 # SPEED UP TIME
 # =============

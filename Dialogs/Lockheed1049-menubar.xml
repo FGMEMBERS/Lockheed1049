@@ -34,6 +34,7 @@
         <dialog-name>Lockheed1049-fuel</dialog-name>
        </binding>
       </item>
+      <!--
       <item>
        <label>Select Livery</label>
        <binding>
@@ -41,11 +42,19 @@
         <script>aircraft.livery.dialog.toggle()</script>
        </binding>
       </item>
+      -->
       <item>
        <label>Procedures</label>
        <binding>
         <command>dialog-show</command>
         <dialog-name>Lockheed1049-procedures</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Pushback</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>pushback</dialog-name>
        </binding>
       </item>
       <item>

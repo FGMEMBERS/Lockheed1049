@@ -3,6 +3,7 @@
 <PropertyList>
   <name>Lockheed1049-crew</name>
   <layout>vbox</layout>
+  <width>550</width>
 
   <text>
     <label>Constellation crew</label>
@@ -60,45 +61,127 @@
     </text>
 
     <text>
-      <label>Views</label>
+      <label>Night lighting</label>
       <halign>center</halign>
     </text>
 
     <group>
-      <layout>hbox</layout>
+     <layout>hbox</layout>
 
-      <group>
-        <layout>vbox</layout>
+     <group>
+      <layout>vbox</layout>
+      <halign>left</halign>
 
-        <checkbox>
-          <halign>left</halign>
-          <label>Gear well (floating)</label>
-          <property>/systems/seat/gear-well</property>
-          <binding>
-           <command>nasal</command>
-           <script>globals.Lockheed1049.seatsystem.viewexport("gear-well");</script>
-          </binding>
-          <binding>
-           <command>dialog-update</command>
-          </binding>
-        </checkbox>
-      </group>
+      <text>
+       <label>Instruments</label>
+      </text>
 
-      <group>
-        <layout>vbox</layout>
+      <slider>
+        <label>offset (not real)  ~</label>
+        <row>0</row>
+        <col>2</col>
+        <min>0</min>
+        <max>2</max>
+        <property>/controls/human/lighting/instrument</property>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+     </group>
 
-        <checkbox>
-          <halign>left</halign>
-          <label>Recover position of last session  ~</label>
-          <property>/controls/seat/recover</property>
-          <binding>
-           <command>nasal</command>
-           <script>globals.Lockheed1049.seatsystem.recoverexport();</script>
-          </binding>
-        </checkbox>
-      </group>
+     <group>
+      <layout>vbox</layout>
+      <halign>left</halign>
 
+      <text>
+       <label>Panels</label>
+      </text>
+
+      <slider>
+        <label>pilot  ~</label>
+        <row>0</row>
+        <col>2</col>
+        <min>0</min>
+        <max>1</max>
+        <property>/controls/human/lighting/pilot</property>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.engineercrew.pilotlightingexport();</script>
+        </binding>
+      </slider>
+
+      <slider>
+        <label>copilot  ~</label>
+        <row>0</row>
+        <col>2</col>
+        <min>0</min>
+        <max>1</max>
+        <property>/controls/human/lighting/copilot</property>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.copilotcrew.lightingexport();</script>
+        </binding>
+      </slider>
+
+      <slider>
+        <label>engineer  ~</label>
+        <row>0</row>
+        <col>2</col>
+        <min>0</min>
+        <max>1</max>
+        <property>/controls/human/lighting/engineer</property>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.engineercrew.lightingexport();</script>
+        </binding>
+      </slider>
+     </group>
     </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Views</label>
+      <halign>center</halign>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Gear well (floating)</label>
+      <property>/systems/seat/gear-well</property>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Lockheed1049.seatsystem.viewexport("gear-well");</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+      </binding>
+    </checkbox>
+
+    <text>
+      <label></label>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Recover position of last session  ~</label>
+      <property>/controls/seat/recover</property>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Lockheed1049.seatsystem.recoverexport();</script>
+      </binding>
+    </checkbox>
 
 <!--
     <text>
@@ -183,6 +266,9 @@
       <default>true</default>
       <key>Esc</key>
       <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
         <command>dialog-close</command>
       </binding>
     </button>
@@ -193,6 +279,9 @@
       <binding>
        <command>dialog-show</command>
        <dialog-name>Lockheed1049-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
       </binding>
       <binding>
         <command>dialog-close</command>

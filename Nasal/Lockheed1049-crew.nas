@@ -225,6 +225,24 @@ Nightlighting.init = func {
     me.inherit_system("/systems/human");
 }
 
+Nightlighting.pilotexport = func {
+    var value = me.itself["lighting"].getChild("pilot").getValue();
+
+    me.dependency["lighting-pilot"].getChild("panel").setValue( value );
+}
+
+Nightlighting.copilotexport = func {
+    var value = me.itself["lighting"].getChild("copilot").getValue();
+
+    me.dependency["lighting-copilot"].getChild("panel").setValue( value );
+}
+
+Nightlighting.engineerexport = func {
+    var value = me.itself["lighting"].getChild("engineer").getValue();
+
+    me.dependency["lighting-engineer"].getChild("flood").setValue( value );
+}
+
 Nightlighting.copilot = func( task ) {
    # optional
    if( me.dependency["crew"].getChild("night-lighting").getValue() ) {

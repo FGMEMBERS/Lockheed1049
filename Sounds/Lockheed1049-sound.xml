@@ -661,6 +661,11 @@
      <property>/gear/gear[2]/wow</property>
     </or>
    </condition>
+   <position>
+    <x>4.5</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <property>/velocities/speed-down-fps</property>
     <factor>0.05</factor>
@@ -686,6 +691,11 @@
    <mode>in-transit</mode>
    <path>Aircraft/Lockheed1049/Sounds/flap_move.wav</path>
    <property>/surface-positions/flap-pos-norm</property>
+   <position>
+    <x>2.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <factor>0.2</factor>
    </volume>
@@ -697,7 +707,15 @@
    <name>wind</name>
    <mode>looped</mode>
    <path>Sounds/wind.wav</path>
+   <condition>
+    <property>/sim/current-view/internal</property>
+   </condition>
    <property>/velocities/airspeed-kt</property>
+   <position>
+    <x>2.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <property>/position/altitude-ft</property>
     <factor>-0.000015</factor>
@@ -726,6 +744,8 @@
    <path>Sounds/rumble.wav</path>
    <condition>
     <and>
+     <!-- ground vibrations transmitted to the fuselage -->
+     <property>/sim/current-view/internal</property>
      <less-than> <!-- BUG : wow not reset, when starting in flight -->
       <property>/position/altitude-agl-ft</property>
       <value>50</value>
@@ -741,6 +761,11 @@
      </or>
     </and>
    </condition>
+   <position>
+    <x>2.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <property>/velocities/airspeed-kt</property>
     <type>log</type>
@@ -774,6 +799,11 @@
      </less-than>
     </and>
    </condition>
+   <position>
+    <x>18.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <pitch>
     <internal>dt_play</internal>
     <offset>1.0</offset>
@@ -792,6 +822,11 @@
     <property>/velocities/airspeed-kt</property>
     <min>30.0</min>
    </volume>
+   <position>
+    <x>2.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <reference-dist>10.0</reference-dist>
    <max-dist>20.0</max-dist>
   </stall>
@@ -801,10 +836,34 @@
    <path>Sounds/door_close.wav</path>
    <condition>
     <equals>
-     <property>/instrumentation/doors/crew/position-norm</property>
+     <property>/controls/doors/crew/position-norm</property>
      <value>0.0</value>
     </equals>
    </condition>
+   <position>
+    <x>3.6</x>
+    <y>1.3</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
+
+  <door>
+   <name>Flight station door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/flight-station/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <position>
+    <x>3.9</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <factor>0.2</factor>
    </volume>
@@ -815,10 +874,15 @@
    <path>Sounds/door_close.wav</path>
    <condition>
     <equals>
-     <property>/instrumentation/doors/passenger/position-norm</property>
+     <property>/controls/doors/passenger/position-norm</property>
      <value>0.0</value>
     </equals>
    </condition>
+   <position>
+    <x>4.5</x>
+    <y>-1.5</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <factor>0.2</factor>
    </volume>
@@ -828,10 +892,15 @@
 
   <click>
    <name>click on</name>
-   <path>Aircraft/Lockheed1049/Sounds/click.wav</path>
+   <path>Sounds/click.wav</path>
    <condition>
     <property>/instrumentation/generic/click</property>
    </condition>
+   <position>
+    <x>2.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <max>0.2</max>
    </volume>
@@ -839,12 +908,17 @@
 
   <click>
    <name>click off</name>
-   <path>Aircraft/Lockheed1049/Sounds/click.wav</path>
+   <path>Sounds/click.wav</path>
    <condition>
     <not>
      <property>/instrumentation/generic/click</property>
     </not>
    </condition>
+   <position>
+    <x>2.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <max>0.2</max>
    </volume>

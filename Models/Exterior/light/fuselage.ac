@@ -1,0 +1,31 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "white_light_on" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 0 0 0 shi 32 trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "Fuselage"
+data 8
+Mesh.015
+texture "L1049-lights.rgb"
+texrep 1 1
+crease 30.000000
+numvert 4
+-0.394699 0.394724 0.001245
+0.394698 0.394723 0.001245
+0.394698 -0.394677 -0.001246
+-0.394699 -0.394677 -0.001246
+numsurf 2
+SURF 0x00
+mat 1
+refs 3
+0 0.64453125 0.3203125
+3 0.64453125 0.05078125
+2 0.90625 0.05078125
+SURF 0x00
+mat 1
+refs 3
+0 0.64453125 0.3203125
+2 0.90625 0.05078125
+1 0.90625 0.3203125
+kids 0

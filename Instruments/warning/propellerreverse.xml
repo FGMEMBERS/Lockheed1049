@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>propellerreverse.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse1</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>controls/engines/engine[0]/reverser</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient> 
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse2</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>controls/engines/engine[1]/reverser</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient> 
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse3</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>controls/engines/engine[2]/reverser</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient> 
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>PropellerReverse4</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>0.2</blue>
+   <factor-prop>controls/engines/engine[3]/reverser</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient> 
+ </animation> 
+
+</PropertyList>
+

@@ -31,7 +31,7 @@
      <!-- x/y/z == right/up/back -->
      <x-offset-m archive="y">-0.45</x-offset-m>
      <y-offset-m archive="y">1.08</y-offset-m>
-     <z-offset-m archive="y">2.23</z-offset-m>  <!-- with VSI -->
+     <z-offset-m archive="y">2.29</z-offset-m>  <!-- with VSI -->
      <pitch-offset-deg>-17</pitch-offset-deg>   <!-- towards instruments -->
    </config>
   </view>
@@ -144,7 +144,7 @@
      <!-- x/y/z == right/up/back -->
      <x-offset-m archive="y">0.45</x-offset-m> <!-- symmetry with captain -->
      <y-offset-m archive="y">1.08</y-offset-m>
-     <z-offset-m archive="y">2.23</z-offset-m>
+     <z-offset-m archive="y">2.29</z-offset-m>
      <pitch-offset-deg>3</pitch-offset-deg>
      <heading-offset-deg type="double">291</heading-offset-deg> <!-- inside its window -->
     </config>

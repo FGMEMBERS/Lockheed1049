@@ -39,17 +39,10 @@ The following proportions are respected (1 Blender unit = 1 m) :
 
 The door animation controls the 3D cockpit fitting.
 
-Inspired by N6937C (H) :
-- navigator station.
 
-
-Transparency
-------------
-Propeller discs must be the last of the file :
-- all other objects belong to a fuselage or cockpit group at the export.
-- for windows transparency, cockpit is the parent of fuselage.
-- for selection during design, cockpit and fuselage are in separate layers
-  (one cannot use a group to isolate the cockpit).
+Cockpit
+-------
+Navigator station is inspired by N6937C (H).
 
 
 VRP
@@ -82,7 +75,8 @@ Wings :
 The cockpit texture without alpha makes the 2D instruments visible on a panel;
 the other texture with alpha is for clipping.
 
-The black rotative switches are visible only if the cockpit black is lighter.
+The black rotative switches are visible only if the cockpit black is lighter
+(hence the colour of the plates).
 
 Cockpit objects have a Blender material, to improve the solid view :
 swap back to the default white, when a clear texture is lost.
@@ -142,11 +136,12 @@ References
 Credits
 -------
 Metapost template by M. Franz.
+Light texture from bo105 (M. Franz).
 
 http://www.usflag.org/ : the 49 stars flag (1957 livery).
 
 
-Made with Blender 2.48a.
+Made with Blender 2.49a.
 
 
-31 January 2009.
+4 January 2010.

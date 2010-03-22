@@ -2,7 +2,7 @@
 
 <!-- Lockheed 1049 online help :
 
-     WARNING : real data are duplicated from Readme.
+     Real data is duplicated from Readme.
 -->
 
 <PropertyList>
@@ -46,8 +46,8 @@
     <desc>speed-up</desc>
    </key>
    <key>
-     <name>f</name>
-     <desc>full cockpit</desc>
+     <name>f/F</name>
+     <desc>full cockpit/aircraft</desc>
    </key>
    <key>
     <name>q</name>
@@ -102,6 +102,10 @@
     <desc>autothrottle (virtual copilot)</desc>
    </key>
    <key>
+    <name>shift-ctrl-V</name>
+    <desc>restore view pitch</desc>
+   </key>
+   <key>
     <name>shift-ctrl-X</name>
     <desc>restore floating view</desc>
    </key>
@@ -127,7 +131,8 @@
             then reduce mixture to the highest RPM (and torque).
             decrease mixture (highest EGT) with altitude, otherwise engine stops.
  Cruise :
-            220 kt at 20000 ft, 197 kt at 25000 ft.
+            220 kt at 20000 ft, 197 kt at 25000 ft (9 kt / 2000 ft).
+            at 2300 RPM, economic fuel flow is below 150 gallons/h.
  Descent :
             max pitch (i.e. lowest thrust of propeller curve).
  Approach :

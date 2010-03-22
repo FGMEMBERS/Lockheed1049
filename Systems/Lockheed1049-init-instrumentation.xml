@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
-<!-- Initialize instrumentation.
--->
+<!-- Initialize instruments. -->
+
 
 <PropertyList>
 
@@ -10,12 +10,6 @@
   <adf n="1">
    <mode>adf</mode>
    <serviceable type="bool">true</serviceable>
-  </adf>
-
-<!-- Navigator ADF is larger -->
-
-  <adf n="2">
-   <scale type="double">1.2</scale>
   </adf>
 
   <clock>
@@ -28,14 +22,39 @@
    </relations>
   </clock>
 
+  <deviation-indicator n="0">
+   <frequency type="bool">true</frequency>                                 <!-- NAV 0 -->
+  </deviation-indicator>
+
+  <deviation-indicator n="1">
+   <frequency type="bool">false</frequency>                                <!-- NAV 1 -->
+  </deviation-indicator>
+
   <generic>
    <factor type="double">1.0</factor>                                      <!-- otherwise material doesn't work with OSG -->
   </generic>
 
-<!-- specific -->
-
   <terrain-warning>
-   <selector-ft>2000.0</selector-ft>
+   <light>
+    <on n="0" type="bool">false</on>
+    <on n="1" type="bool">false</on>
+    <on n="2" type="bool">false</on>
+   </light>
+
+   <relations>
+    <itself>
+     <light>
+      <component>/instrumentation/terrain-warning/light</component>
+      <subcomponent>on</subcomponent>
+     </light>
+    </itself>
+
+    <noinstrument>
+     <aglft>/position/altitude-agl-ft</aglft>
+    </noinstrument>
+   </relations>
+
+   <selector type="int">2</selector>                                       <!-- 2000 m -->
   </terrain-warning>
 
 <!-- the kind of needle is not yet decided -->
@@ -47,5 +66,10 @@
   <onmi-bearing-selector n="1">
    <needles-pivot type="bool">false</needles-pivot>
   </onmi-bearing-selector>
+
+  <radio-magnetic-indicator>
+   <vor n="0" type="bool">true</vor>
+   <vor n="1" type="bool">true</vor>
+  </radio-magnetic-indicator>
 
 </PropertyList>

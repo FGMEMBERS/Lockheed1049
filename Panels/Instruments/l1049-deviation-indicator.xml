@@ -2,7 +2,8 @@
 
 <!-- Lockheed 1049 deviation indicator :
 
-     for ILS or VOR.
+     - with VOR, horizontal position is adjusted by omni bearing selector.
+     - with ILS, vertical position is also available.
 -->
 
 <PropertyList>
@@ -33,11 +34,7 @@
    <name>VOR 1 needle</name>
    <condition>
     <and>
-     <not-equals>
-      <property>/instrumentation/deviation-indicator/frequency</property>
-      <value>2</value>
-     </not-equals>
-     <property>/instrumentation/nav[0]/nav-loc</property>
+     <property>/instrumentation/deviation-indicator/frequency</property>
      <property>/instrumentation/nav[0]/in-range</property>
     </and>
    </condition>
@@ -75,10 +72,7 @@
    <name>GS 1 needle</name>
    <condition>
     <and>
-     <not-equals>
-      <property>/instrumentation/deviation-indicator/frequency</property>
-      <value>2</value>
-     </not-equals>
+     <property>/instrumentation/deviation-indicator/frequency</property>
      <property>/instrumentation/nav[0]/has-gs</property>
      <property>/instrumentation/nav[0]/in-range</property>
     </and>
@@ -122,11 +116,9 @@
    <name>VOR 2 needle</name>
    <condition>
     <and>
-     <equals>
+     <not>
       <property>/instrumentation/deviation-indicator/frequency</property>
-      <value>2</value>
-     </equals>
-     <property>/instrumentation/nav[1]/nav-loc</property>
+     </not>
      <property>/instrumentation/nav[1]/in-range</property>
     </and>
    </condition>
@@ -166,7 +158,7 @@
     <and>
      <equals>
       <property>/instrumentation/deviation-indicator/frequency</property>
-      <value>2</value>
+      <value>1</value>
      </equals>
      <property>/instrumentation/nav[1]/has-gs</property>
      <property>/instrumentation/nav[1]/in-range</property>
@@ -252,10 +244,7 @@
    <condition>
     <or>
      <and>
-      <not-equals>
-       <property>/instrumentation/deviation-indicator/frequency</property>
-       <value>2</value>
-      </not-equals>
+      <property>/instrumentation/deviation-indicator/frequency</property>
       <or>
        <not>
         <property>/instrumentation/nav[0]/nav-loc</property>
@@ -269,10 +258,9 @@
       </or>
      </and>
      <and>
-      <equals>
+      <not>
        <property>/instrumentation/deviation-indicator/frequency</property>
-       <value>2</value>
-      </equals>
+      </not>
       <or>
        <not>
         <property>/instrumentation/nav[1]/nav-loc</property>

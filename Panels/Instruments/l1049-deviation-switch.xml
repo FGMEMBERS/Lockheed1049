@@ -9,10 +9,6 @@
  <w-base>156</w-base>
  <h-base>52</h-base>
 
- <params>
-  <frequency-select>/instrumentation/deviation-indicator/frequency</frequency-select>
- </params>
-
 
  <layers>
 
@@ -22,10 +18,7 @@
 
    <layer>
     <condition>
-     <not-equals>
-      <property alias="../../../../../../params/frequency-select"/>
-      <value>2</value>
-     </not-equals>
+     <property>/instrumentation/deviation-indicator/frequency</property>
     </condition>
     <name>on</name>
     <texture>
@@ -74,55 +67,127 @@
   </layer>
 
   <layer>
-   <name>Title left</name>
-   <type>text</type>
-   <point-size>20</point-size>
-   <color>
-    <red>1.0</red>
-    <green>1.0</green>
-    <blue>1.0</blue>
-   </color>
-   <chunks>
-    <chunk>
-     <type>literal</type>
-     <text>1</text>
-    </chunk>
-   </chunks>
+   <name>VOR 1</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <property>/instrumentation/nav[0]/in-range</property>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens orange</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.25</y1>
+      <x2>0.5</x2>
+      <y2>0.5</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens orange</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.25</y1>
+      <x2>0.5</x2>
+      <y2>0.5</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
    <transformations>
     <transformation>
      <type>x-shift</type>
-     <offset>-62</offset>
+     <offset>-57</offset>
     </transformation>
     <transformation>
      <type>y-shift</type>
-     <offset>-5</offset>
+     <offset>0</offset>
     </transformation>
    </transformations>
   </layer>
 
   <layer>
-   <name>Title right</name>
-   <type>text</type>
-   <point-size>20</point-size>
-   <color>
-    <red>1.0</red>
-    <green>1.0</green>
-    <blue>1.0</blue>
-   </color>
-   <chunks>
-    <chunk>
-     <type>literal</type>
-     <text>2</text>
-    </chunk>
-   </chunks>
+   <name>VOR 2</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <property>/instrumentation/nav[1]/in-range</property>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens orange</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.25</y1>
+      <x2>0.5</x2>
+      <y2>0.5</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens orange</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.25</y1>
+      <x2>0.5</x2>
+      <y2>0.5</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
    <transformations>
     <transformation>
      <type>x-shift</type>
-     <offset>42</offset>
+     <offset>47</offset>
     </transformation>
     <transformation>
      <type>y-shift</type>
-     <offset>-5</offset>
+     <offset>0</offset>
     </transformation>
    </transformations>
   </layer>
@@ -132,46 +197,15 @@
  <actions>
 
   <action>
-   <name>Frequency 1</name>
+   <name>Toggle</name>
    <button>0</button>
-   <condition>
-    <equals>
-     <property alias="../../../../../params/frequency-select"/>
-     <value>2</value>
-    </equals>
-   </condition>
    <x>-25</x>
    <y>-23</y>
    <w>44</w>
    <h>44</h>
-   <binding>
-    <command>property-assign</command>
-    <property alias="../../../../params/frequency-select"/>
-    <value>1</value>
-   </binding>
    <binding>
     <command>property-toggle</command>
-    <property>/instrumentation/generic/click</property>
-   </binding>
-  </action>
-
-  <action>
-   <name>Frequency 2</name>
-   <button>0</button>
-   <condition>
-    <not-equals>
-     <property alias="../../../../../params/frequency-select"/>
-     <value>2</value>
-    </not-equals>
-   </condition>
-   <x>-25</x>
-   <y>-23</y>
-   <w>44</w>
-   <h>44</h>
-   <binding>
-    <command>property-assign</command>
-    <property alias="../../../../params/frequency-select"/>
-    <value>2</value>
+    <property>/instrumentation/deviation-indicator/frequency</property>
    </binding>
    <binding>
     <command>property-toggle</command>

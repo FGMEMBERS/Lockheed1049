@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<!--
+     TO DO : the real instrument.
+
+
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>compass_mdi_with_hdg.ac</path>
+
+<animation>
+  <name>unused</name>
+  <object-name>MDI.HdgBug</object-name>
+  <object-name>MDI.Knob</object-name>
+  <object-name>MDI.KnobHdg</object-name>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>unused</object-name>
+  <condition>
+   <equals><value>1</value><value>0</value></equals>
+  </condition>
+</animation>
+
+<animation>
+  <type>material</type>
+  <object-name>MDI.Card</object-name>
+  <object-name>MDI.Face</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/pilot/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.Card</object-name>
+  <property>orientation/heading-magnetic-deg</property>
+  <factor>-1</factor>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>
+

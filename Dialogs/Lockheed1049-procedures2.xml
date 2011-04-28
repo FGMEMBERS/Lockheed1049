@@ -87,7 +87,73 @@
          <property>/controls/crew/captain-busy</property>
         </binding>
       </checkbox>
-     </group>
+
+      <text>
+        <label></label>
+      </text>
+
+      <text>
+        <label>Night lighting</label>
+        <halign>center</halign>
+      </text>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <text>
+        <label>Panels</label>
+       </text>
+
+       <slider>
+         <label>pilot  ~</label>
+         <row>0</row>
+         <col>2</col>
+         <min>0</min>
+         <max>1</max>
+         <property>/controls/human/lighting/pilot</property>
+         <binding>
+           <command>dialog-apply</command>
+         </binding>
+         <binding>
+          <command>nasal</command>
+          <script>globals.Lockheed1049.engineercrew.pilotlightingexport();</script>
+         </binding>
+       </slider>
+
+       <slider>
+         <label>copilot  ~</label>
+         <row>0</row>
+         <col>2</col>
+         <min>0</min>
+         <max>1</max>
+         <property>/controls/human/lighting/copilot</property>
+         <binding>
+           <command>dialog-apply</command>
+         </binding>
+         <binding>
+          <command>nasal</command>
+          <script>globals.Lockheed1049.copilotcrew.lightingexport();</script>
+         </binding>
+       </slider>
+
+       <slider>
+         <label>engineer  ~</label>
+         <row>0</row>
+         <col>2</col>
+         <min>0</min>
+         <max>1</max>
+         <property>/controls/human/lighting/engineer</property>
+         <binding>
+           <command>dialog-apply</command>
+         </binding>
+         <binding>
+          <command>nasal</command>
+          <script>globals.Lockheed1049.engineercrew.lightingexport();</script>
+         </binding>
+       </slider>
+      </group>
+    </group>
 
   </group>
 

@@ -12,7 +12,7 @@
     <red>0.81</red>
     <green>0.40</green>
     <blue>0.20</blue>
-    <factor-prop>systems/lighting/internal/panel-light</factor-prop>
+    <factor-prop>systems/lighting/internal/panel/panel-light</factor-prop>
   </emission>
   <ambient>
     <red>1.0</red>

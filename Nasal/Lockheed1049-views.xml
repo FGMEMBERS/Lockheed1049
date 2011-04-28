@@ -63,6 +63,12 @@
    </config>
   </view>
 
+  <view n="7">
+   <config>
+     <target-z-offset-m archive="y">17.3</target-z-offset-m>
+   </config>
+  </view>
+
   <view n="100">                                          <!-- MANDATORY view number -->
     <name>Engineer View</name>
     <enabled type="bool">false</enabled>
@@ -241,7 +247,7 @@
     <name>Gear Well View</name>
     <enabled type="bool">false</enabled>
     <type>lookfrom</type>
-    <internal type="bool">true</internal>
+    <internal type="bool">false</internal>
     <config>
      <from-model type="bool">true</from-model>
      <from-model-idx type="int">0</from-model-idx>

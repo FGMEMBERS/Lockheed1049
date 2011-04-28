@@ -492,6 +492,7 @@ Menu.new = func {
                crew : nil,
                fuel : nil,
                ground : nil,
+               immat : nil,
                procedures : {},
                radios : nil,
                menu : nil
@@ -513,6 +514,8 @@ Menu.init = func {
                             "Aircraft/Lockheed1049/Dialogs/Lockheed1049-fuel.xml");
    me.ground = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/ground/dialog",
                               "Aircraft/Lockheed1049/Dialogs/Lockheed1049-ground.xml");
+   me.immat = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/immat/dialog",
+                             "Aircraft/Lockheed1049/Dialogs/Lockheed1049-immat.xml");
 
    me.array( me.procedures, 2, "procedures" );
 
@@ -777,6 +780,14 @@ Crewbox.sendtext = func( index, green, white, text ) {
     }
 }
 
+Crewbox.sendclear = func( index, text ) {
+    var box = me.textbox[index];
+
+    me.lasttext[index] = text;
+
+    box.write( text, 0, 0, 0 );
+}
+
 Crewbox.sendpause = func( index, red, text ) {
     var box = me.textbox[index];
 
@@ -793,19 +804,21 @@ Crewbox.sendpause = func( index, red, text ) {
 }
 
 Crewbox.clearcrew = func {
+    var standbytext = "";
+
     for( var i = 1; i < me.nblines; i = i+1 ) {
-         if( me.lasttext[i] != "" ) {
-             me.lasttext[i] = "";
-             me.textbox[i].write( me.lasttext[i], 0, 0, 0 );
+         if( me.lasttext[i] != standbytext ) {
+             me.sendclear( i, standbytext );
          }
     }
 }
 
 Crewbox.clear = func {
+    var standbytext = "";
+
     for( var i = 0; i < me.nblines; i = i+1 ) {
-         if( me.lasttext[i] != "" ) {
-             me.lasttext[i] = "";
-             me.textbox[i].write( me.lasttext[i], 0, 0, 0 );
+         if( me.lasttext[i] != standbytext ) {
+             me.sendclear( i, standbytext );
          }
     }
 }

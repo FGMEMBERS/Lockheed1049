@@ -1,62 +1,29 @@
 <?xml version="1.0"?>
 
 <!--
-     Panels :
-     all panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
+     Known problems :
+     ==============
+     - engineer round instruments are not at the same scale.
 -->
 
 <PropertyList>
 
- <!-- ======================================= -->
- <!-- Panel models (X/Y/Z depth/width/height) -->
- <!-- ======================================= -->
-
- <!-- PILOT -->
-
-  <panel>
-   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-pilot.xml</path>
-   <bottom-left>
-    <x-m>-15.550</x-m>
-    <y-m>-0.600</y-m>
-    <z-m> 0.40</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-15.550</x-m>
-    <y-m> 0.580</y-m>
-    <z-m> 0.40</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-15.700</x-m>
-    <y-m>-0.600</y-m>
-    <z-m> 0.99</z-m> <!-- oval altimeter -->
-   </top-left>
-  </panel>
-
- <!-- ENGINEER -->
-
-  <panel>
-   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-engineer-lower.xml</path>
-   <bottom-left>
-    <x-m>-14.50</x-m>
-    <y-m> 1.008</y-m>
-    <z-m> 0.88</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-13.90</x-m>
-    <y-m> 1.008</y-m>
-    <z-m> 0.88</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-14.50</x-m>
-    <y-m> 1.008</y-m>
-    <z-m> 1.18</z-m>
-   </top-left>
-  </panel>
-
-
 <!-- =========== -->
 <!-- Instruments -->
 <!-- =========== -->
+
+  <model>
+   <name>Captain chart</name>
+   <path>Aircraft/Lockheed1049/Instruments/crew/chart.xml</path>
+   <offsets>
+    <x-m>-15.570</x-m>
+    <y-m>-0.600</y-m>
+    <z-m>0.890</z-m>
+    <heading-deg>90</heading-deg>
+    <pitch-deg>-32</pitch-deg>
+    <roll-deg>-15</roll-deg>
+   </offsets>
+  </model>
 
 <!-- PILOT SIDE -->
 
@@ -127,6 +94,16 @@
   </model>
 
 <!-- PILOT -->
+
+  <model>
+   <name>Emergency light</name>
+   <path>Aircraft/Lockheed1049/Instruments/light/emergency.xml</path>
+   <offsets>
+    <x-m>-15.623</x-m>
+    <y-m>-0.648</y-m>
+    <z-m>0.783</z-m>
+   </offsets>
+  </model>
 
 <!-- 1st column -->
 
@@ -433,7 +410,7 @@
 <!-- 2nd line -->
 
   <model>
-   <name>Direction gyro</name>
+   <name>Directional gyro</name>
    <path>Aircraft/Lockheed1049/Instruments/round/directional_gyro.xml</path>
    <offsets>
     <x-m>-15.623</x-m>
@@ -727,12 +704,60 @@
 <!-- OVERHEAD -->
 
   <model>
-   <name>Standby Compass</name>
-   <path>Aircraft/Instruments-3d/comp/comp.xml</path>
+   <name>Standby Compass box</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/compass_box.xml</path>
    <offsets>
-    <x-m>-15.41</x-m>
+    <x-m>-15.355</x-m>
     <y-m>0.00</y-m>
-    <z-m>1.345</z-m>
+    <z-m>1.300</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Standby Compass</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/compass_magnetic.xml</path>
+   <offsets>
+    <x-m>-15.350</x-m>
+    <y-m>0.00</y-m>
+    <z-m>1.300</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Spot</name>
+   <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
+   <offsets>
+    <x-m>-14.910</x-m>
+    <y-m>-0.286</y-m>
+    <z-m>1.475</z-m>
+    <pitch-deg>5.0</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Spot copilot</name>
+   <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
+   <offsets>
+    <x-m>-15.111</x-m>
+    <y-m>0.286</y-m>
+    <z-m>1.431</z-m>
+    <pitch-deg>-19.0</pitch-deg>
+   </offsets>
+   <overlay>
+    <params>
+     <light>systems/lighting/internal/copilot/chart-light</light>
+     <red>controls/lighting/internal/copilot/chart-red</red>
+    </params>
+   </overlay>
+  </model>
+
+  <model>
+   <name>Fuel Cylinder</name>
+   <path>Aircraft/Lockheed1049/Instruments/overhead/fuel.xml</path>
+   <offsets>
+    <x-m>-14.783</x-m>
+    <y-m>0.00</y-m>
+    <z-m>1.518</z-m>
    </offsets>
   </model>
 
@@ -787,6 +812,50 @@
 <!-- PEDESTAL -->
 
   <model>
+   <name>Cylinder</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/cylinder.xml</path>
+   <offsets>
+    <x-m>-15.348</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.573</z-m>
+   </offsets>
+  </model>
+
+<!-- top -->
+
+  <model>
+   <name>Overhead light switch</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/overhead.xml</path>
+   <offsets>
+    <x-m>-15.223</x-m>
+    <y-m>-0.063</y-m>
+    <z-m>0.601</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Overhead light</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/light.xml</path>
+   <offsets>
+    <x-m>-15.220</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.600</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Altitude switch</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/altitude.xml</path>
+   <offsets>
+    <x-m>-15.185</x-m>
+    <y-m>0.084</y-m>
+    <z-m>0.578</z-m>
+   </offsets>
+  </model>
+
+<!-- front -->
+
+  <model>
    <name>Gyro beacon light</name>
    <path>Aircraft/Lockheed1049/Instruments/warning/gyrobeacon.xml</path>
    <offsets>
@@ -803,6 +872,58 @@
     <x-m>-14.986</x-m>
     <y-m>0.0845</y-m>
     <z-m>0.482</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Autopilot plate</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/autopilot.xml</path>
+   <offsets>
+    <x-m>-14.989</x-m>
+    <y-m>0.070</y-m>
+    <z-m>0.433</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Servo plate</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/servo.xml</path>
+   <offsets>
+    <x-m>-14.990</x-m>
+    <y-m>-0.074</y-m>
+    <z-m>0.255</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Brake cylinder</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/brake.xml</path>
+   <offsets>
+    <x-m>-15.034</x-m>
+    <y-m>0.007</y-m>
+    <z-m>0.251</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Gear cylinder</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/gear.xml</path>
+   <offsets>
+    <x-m>-15.034</x-m>
+    <y-m>0.060</y-m>
+    <z-m>0.251</z-m>
+   </offsets>
+  </model>
+
+<!-- AUXILLIARY CYLINDER -->
+
+  <model>
+   <name>Auxilliary cylinder</name>
+   <path>Aircraft/Lockheed1049/Instruments/auxilliary/cylinder.xml</path>
+   <offsets>
+    <x-m>-14.803</x-m>
+    <y-m>1.094</y-m>
+    <z-m>0.182</z-m>
    </offsets>
   </model>
 
@@ -862,10 +983,21 @@
    <path>Aircraft/Lockheed1049/Instruments/round/alt_engineer.xml</path>
    <offsets>
     <x-m>-14.471</x-m>
-    <y-m>0.858</y-m>
-    <z-m>1.205</z-m>
+    <y-m>0.864</y-m>
+    <z-m>1.202</z-m>
     <heading-deg>-90.0</heading-deg>
     <pitch-deg>62.0</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Carburetor air temperature indicator left</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/carbtemp.xml</path>
+   <offsets>
+    <x-m>-14.471</x-m>
+    <y-m>0.931</y-m>
+    <z-m>1.165</z-m>
+    <roll-deg>62.0</roll-deg>
    </offsets>
   </model>
 
@@ -888,12 +1020,31 @@
    <path>Aircraft/Lockheed1049/Instruments/round/asi_engineer.xml</path>
    <offsets>
     <x-m>-14.388</x-m>
-    <y-m>0.858</y-m>
-    <z-m>1.205</z-m>
+    <y-m>0.864</y-m>
+    <z-m>1.202</z-m>
     <heading-deg>-90.0</heading-deg>
     <pitch-deg>62.0</pitch-deg>
    </offsets>
   </model>
+
+  <model>
+   <name>Carburetor air temperature indicator right</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/carbtemp.xml</path>
+   <overlay>
+    <params>
+     <carburetor-left>/engines/engine[2]/egt-degf</carburetor-left>
+     <carburetor-right>/engines/engine[3]/egt-degf</carburetor-right>
+    </params>
+   </overlay>
+   <offsets>
+    <x-m>-14.388</x-m>
+    <y-m>0.931</y-m>
+    <z-m>1.165</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
+<!-- 3rd column -->
 
   <model>
    <name>Hydraulic pump low pressure warning lights</name>
@@ -906,13 +1057,101 @@
    </offsets>
   </model>
 
+<!-- 4th column -->
+
+  <model>
+   <name>Oil inlet temperature indicator left</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/oiltemp.xml</path>
+   <offsets>
+    <x-m>-14.243</x-m>
+    <y-m>0.797</y-m>
+    <z-m>1.238</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Oil outlet temperature indicator left</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/oiltemp_outlet.xml</path>
+   <offsets>
+    <x-m>-14.243</x-m>
+    <y-m>0.864</y-m>
+    <z-m>1.202</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Oil cooler flaps position indicator left</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/oil_coolerflaps.xml</path>
+   <offsets>
+    <x-m>-14.243</x-m>
+    <y-m>0.931</y-m>
+    <z-m>1.165</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
+<!-- 5th column -->
+
+  <model>
+   <name>Oil inlet temperature indicator right</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/oiltemp.xml</path>
+   <overlay>
+    <params>
+     <oil-left>/engines/engine[2]/oil-temperature-degf</oil-left>
+     <oil-right>/engines/engine[3]/oil-temperature-degf</oil-right>
+    </params>
+   </overlay>
+   <offsets>
+    <x-m>-14.173</x-m>
+    <y-m>0.797</y-m>
+    <z-m>1.238</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Oil outlet temperature indicator right</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/oiltemp_outlet.xml</path>
+   <overlay>
+    <params>
+     <oil-left>/engines/engine[2]/oil-temperature-degf</oil-left>
+     <oil-right>/engines/engine[3]/oil-temperature-degf</oil-right>
+    </params>
+   </overlay>
+   <offsets>
+    <x-m>-14.173</x-m>
+    <y-m>0.864</y-m>
+    <z-m>1.202</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Oil cooler flaps position indicator right</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/oil_coolerflaps.xml</path>
+   <overlay>
+    <params>
+     <cowl-flaps-left>/controls/engines/engine[2]/cowl-flaps-norm</cowl-flaps-left>
+     <cowl-flaps-right>/controls/engines/engine[3]/cowl-flaps-norm</cowl-flaps-right>
+    </params>
+   </overlay>
+   <offsets>
+    <x-m>-14.173</x-m>
+    <y-m>0.931</y-m>
+    <z-m>1.165</z-m>
+    <roll-deg>62.0</roll-deg>
+   </offsets>
+  </model>
+
 <!-- 6th column -->
 
   <model>
    <name>Center tank</name>
    <path>Aircraft/Lockheed1049/Instruments/round/fuel_C.xml</path>
    <offsets>
-    <x-m>-14.120</x-m>
+    <x-m>-14.100</x-m>
     <y-m>0.797</y-m>
     <z-m>1.239</z-m>
     <roll-deg>5.0</roll-deg>
@@ -923,9 +1162,9 @@
    <name>Inboard tanks</name>
    <path>Aircraft/Lockheed1049/Instruments/round/fuel_inboard.xml</path>
    <offsets>
-    <x-m>-14.120</x-m>
-    <y-m>0.858</y-m>
-    <z-m>1.205</z-m>
+    <x-m>-14.100</x-m>
+    <y-m>0.864</y-m>
+    <z-m>1.202</z-m>
     <roll-deg>5.0</roll-deg>
    </offsets>
   </model>
@@ -936,7 +1175,7 @@
    <name>Outboard tanks</name>
    <path>Aircraft/Lockheed1049/Instruments/round/fuel_outboard.xml</path>
    <offsets>
-    <x-m>-14.047</x-m>
+    <x-m>-14.030</x-m>
     <y-m>0.797</y-m>
     <z-m>1.239</z-m>
     <roll-deg>5.0</roll-deg>
@@ -947,9 +1186,9 @@
    <name>Middle tanks</name>
    <path>Aircraft/Lockheed1049/Instruments/round/fuel_middle.xml</path>
    <offsets>
-    <x-m>-14.047</x-m>
-    <y-m>0.858</y-m>
-    <z-m>1.205</z-m>
+    <x-m>-14.030</x-m>
+    <y-m>0.864</y-m>
+    <z-m>1.202</z-m>
     <roll-deg>5.0</roll-deg>
    </offsets>
   </model>
@@ -990,7 +1229,7 @@
 
   <model>
    <name>Cylinder head temperature indicator left</name>
-   <path>Aircraft/Lockheed1049/Instruments/round/chtemp_L.xml</path>
+   <path>Aircraft/Lockheed1049/Instruments/round/cyltemp.xml</path>
    <offsets>
     <x-m>-14.466</x-m>
     <y-m>1.010</y-m>
@@ -1000,11 +1239,43 @@
 
   <model>
    <name>Cylinder head temperature indicator right</name>
-   <path>Aircraft/Lockheed1049/Instruments/round/chtemp_R.xml</path>
+   <path>Aircraft/Lockheed1049/Instruments/round/cyltemp.xml</path>
+   <overlay>
+    <params>
+     <cylinder-left>/engines/engine[2]/cht-degf</cylinder-left>
+     <cylinder-right>/engines/engine[3]/cht-degf</cylinder-right>
+    </params>
+   </overlay>
    <offsets>
     <x-m>-14.396</x-m>
     <y-m>1.010</y-m>
     <z-m>0.951</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Cowl flaps position indicator left</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/cowlflaps.xml</path>
+   <offsets>
+    <x-m>-14.466</x-m>
+    <y-m>1.010</y-m>
+    <z-m>0.881</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Cowl flaps position indicator right</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/cowlflaps.xml</path>
+   <overlay>
+    <params>
+     <cowl-flaps-left>/controls/engines/engine[2]/cowl-flaps-norm</cowl-flaps-left>
+     <cowl-flaps-right>/controls/engines/engine[3]/cowl-flaps-norm</cowl-flaps-right>
+    </params>
+   </overlay>
+   <offsets>
+    <x-m>-14.396</x-m>
+    <y-m>1.010</y-m>
+    <z-m>0.881</z-m>
    </offsets>
   </model>
 
@@ -1125,7 +1396,7 @@
    <offsets>
     <x-m>-14.100</x-m>
     <y-m>1.010</y-m>
-    <z-m>0.991</z-m>
+    <z-m>1.005</z-m>
    </offsets>
   </model>
 
@@ -1135,7 +1406,7 @@
    <offsets>
     <x-m>-14.030</x-m>
     <y-m>1.010</y-m>
-    <z-m>0.991</z-m>
+    <z-m>1.005</z-m>
    </offsets>
   </model>
 
@@ -1145,7 +1416,27 @@
    <offsets>
     <x-m>-14.065</x-m>
     <y-m>1.010</y-m>
-    <z-m>0.946</z-m>
+    <z-m>0.957</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Fuel pressure indicator left</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/fuel_pressure_L.xml</path>
+   <offsets>
+    <x-m>-14.100</x-m>
+    <y-m>1.010</y-m>
+    <z-m>0.908</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Fuel pressure indicator right</name>
+   <path>Aircraft/Lockheed1049/Instruments/round/fuel_pressure_R.xml</path>
+   <offsets>
+    <x-m>-14.030</x-m>
+    <y-m>1.010</y-m>
+    <z-m>0.908</z-m>
    </offsets>
   </model>
 
@@ -1156,6 +1447,28 @@
     <x-m>-14.065</x-m>
     <y-m>1.010</y-m>
     <z-m>0.860</z-m>
+   </offsets>
+  </model>
+
+<!-- ENGINEER TABLE -->
+
+  <model>
+   <name>Control quadrant</name>
+   <path>Aircraft/Lockheed1049/Instruments/table/cylinder.xml</path>
+   <offsets>
+    <x-m>-14.254</x-m>
+    <y-m>1.157</y-m>
+    <z-m>0.638</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Engineer glass</name>
+   <path>Aircraft/Lockheed1049/Instruments/crew/glass.xml</path>
+   <offsets>
+    <x-m>-14.00</x-m>
+    <y-m>1.27</y-m>
+    <z-m>0.701</z-m>
    </offsets>
   </model>
 
@@ -1235,141 +1548,6 @@
   </model>
 
 
-<!-- ======== -->
-<!-- Exterior  -->
-<!-- ======== -->
-
-<!-- LIGHTS -->
-
-<!-- fuselage -->
-
-  <model>
-   <name>Fuselage top</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagetop.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Fuselage bottom</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagebottom.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Fuselage tail</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagetail.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-<!-- navigation -->
-
-  <model>
-   <name>Navigation left</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationleft.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Navigation right</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationright.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Navigation tail</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationtail.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-<!-- landing -->
-
-  <model>
-   <name>Landing left</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingleft.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Landing right</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingright.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Landing cone left</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingconeleft.xml</path>
-   <offsets>
-    <x-m>-1.663</x-m>
-    <y-m>-14.685</y-m>
-    <z-m> 0.478</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Landing cone right</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingconeright.xml</path>
-   <offsets>
-    <x-m>-1.663</x-m>
-    <y-m> 14.685</y-m>
-    <z-m> 0.478</z-m>
-   </offsets>
-  </model>
-
-<!-- taxi / passing -->
-
-  <model>
-   <name>Taxi light</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/taxi.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Passing light</name>
-   <path>Aircraft/Lockheed1049/Models/Exterior/light/passing.xml</path>
-   <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
-   </offsets>
-  </model>
-
-
 <!-- ============ -->
 <!-- Optimization -->
 <!-- ============ -->
@@ -1385,6 +1563,7 @@
   <animation>
    <name>Captain Location</name>
    <object-name>Steering wheel</object-name>
+   <object-name>Captain chart</object-name>
    <object-name>Captain pedal</object-name>
    <object-name>Captain yoke</object-name>
    <object-name>Captain seat</object-name>
@@ -1392,6 +1571,7 @@
 
   <animation>
    <name>Captain Panel</name>
+   <object-name>Emergency light</object-name>
    <object-name>Terrain warning</object-name>
    <object-name>Terrain warning test</object-name>
    <object-name>Altimeter</object-name>
@@ -1420,11 +1600,15 @@
 
   <animation>
    <name>Overhead Instruments</name>
+   <object-name>Standby Compass box</object-name>
    <object-name>Standby Compass</object-name>
    <object-name>ADF 1 2</object-name>
    <object-name>Radio 1</object-name>
    <object-name>Radio 2</object-name>
    <object-name>Ignition panel</object-name>
+   <object-name>Spot</object-name>
+   <object-name>Spot copilot</object-name>
+   <object-name>Fuel Cylinder</object-name>
   </animation>
 
   <animation>
@@ -1453,8 +1637,16 @@
 
   <animation>
    <name>Pedestal Instruments</name>
+   <object-name>Cylinder</object-name>
+   <object-name>Overhead light switch</object-name>
+   <object-name>Overhead light</object-name>
+   <object-name>Altitude switch</object-name>
    <object-name>Gyro beacon light</object-name>
    <object-name>Flux gate caged indicator light</object-name>
+   <object-name>Autopilot plate</object-name>
+   <object-name>Servo plate</object-name>
+   <object-name>Brake cylinder</object-name>
+   <object-name>Gear cylinder</object-name>
   </animation>
 
 <!-- COPILOT -->
@@ -1463,6 +1655,7 @@
    <name>Copilot Side</name>
    <object-name>Copilot top</object-name>
    <object-name>Copilot middle</object-name>
+   <object-name>Auxilliary cylinder</object-name>
   </animation>
 
   <animation>
@@ -1512,7 +1705,15 @@
    <object-name>Engineer Outside air temperature</object-name>
    <object-name>Engineer Altimeter</object-name>
    <object-name>Engineer Airspeed indicator</object-name>
+   <object-name>Carburetor air temperature indicator left</object-name>
+   <object-name>Carburetor air temperature indicator right</object-name>
    <object-name>Hydraulic pump low pressure warning lights</object-name>
+   <object-name>Oil inlet temperature indicator left</object-name>
+   <object-name>Oil inlet temperature indicator right</object-name>
+   <object-name>Oil outlet temperature indicator left</object-name>
+   <object-name>Oil outlet temperature indicator right</object-name>
+   <object-name>Oil cooler flaps position indicator left</object-name>
+   <object-name>Oil cooler flaps position indicator right</object-name>
    <object-name>Center tank</object-name>
    <object-name>Inboard tanks</object-name>
    <object-name>Middle tanks</object-name>
@@ -1526,6 +1727,8 @@
    <object-name>Fuel flow indicator right</object-name>
    <object-name>Cylinder head temperature indicator left</object-name>
    <object-name>Cylinder head temperature indicator right</object-name>
+   <object-name>Cowl flaps position indicator left</object-name>
+   <object-name>Cowl flaps position indicator right</object-name>
    <object-name>Engineer Clock</object-name>
    <object-name>Engineer Tachometers left</object-name>
    <object-name>Engineer Tachometers right</object-name>
@@ -1539,7 +1742,15 @@
    <object-name>Oil pressure indicator left</object-name>
    <object-name>Oil pressure indicator right</object-name>
    <object-name>Oil low pressure warning lights</object-name>
+   <object-name>Fuel pressure indicator left</object-name>
+   <object-name>Fuel pressure indicator right</object-name>
    <object-name>Fuel low pressure warning lights</object-name>
+  </animation>
+
+  <animation>
+   <name>Engineer Table</name>
+   <object-name>Control quadrant</object-name>
+   <object-name>Engineer glass</object-name>
   </animation>
 
   <animation>
@@ -1547,6 +1758,7 @@
    <object-name>Engineer Upper Panel</object-name>
    <object-name>Engineer Center Panel</object-name>
    <object-name>Engineer Lower Panel</object-name>
+   <object-name>Engineer Table</object-name>
    <object-name>Engineer seat</object-name>
   </animation>
 

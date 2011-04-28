@@ -71,6 +71,7 @@ LockheedMain.savedata = func {
                        "/controls/human/lighting/instrument",
                        "/controls/human/lighting/pilot",
                        "/controls/seat/recover",
+                       "/sim/model/immat",
                        "/systems/fuel/presets",
                        "/systems/seat/position/gear-well/x-m",
                        "/systems/seat/position/gear-well/y-m",
@@ -112,7 +113,9 @@ LockheedMain.instantiate = func {
 }
 
 LockheedMain.init = func {
-   aircraft.livery.init("Aircraft/Lockheed1049/Models/Liveries", "sim/model/livery/name", "sim/model/livery/index");
+   aircraft.livery.init("Aircraft/Lockheed1049/Models/Liveries",
+                        "sim/model/livery/name",
+                        "sim/model/livery/index");
 
    me.instantiate();
    me.putinrelation();

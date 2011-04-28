@@ -126,13 +126,13 @@
             retract flaps below 184 kt.
  Climb :
             always above 180 kt (drag).
-            below 48.0 inhg and 2600 RPM (engine temperature).
-            reduce pitch to the lowest RPM (if not enough, reduce throttle),
-            then reduce mixture to the highest RPM (and torque).
-            decrease mixture (highest EGT) with altitude, otherwise engine stops.
+            reduce throttle to 48 inhg, then reduce pitch to 2600 RPM (engine temperature).
+            decrease mixture (highest Torque / EGT) with altitude, otherwise engine stops.
  Cruise :
             220 kt at 20000 ft, 197 kt at 25000 ft (9 kt / 2000 ft).
-            at 2300 RPM, economic fuel flow is below 150 gallons/h.
+            at 2300 RPM, economic fuel flow is below 150 gallons/h :
+            reduce pitch to the lowest RPM (if not enough, reduce throttle),
+            then reduce mixture to the highest RPM (and torque).
  Descent :
             max pitch (i.e. lowest thrust of propeller curve).
  Approach :

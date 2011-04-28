@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>fuel_pressure.ac</path>
+
+<animation>
+ <name>unused</name>
+ <object-name>FuelPres.Needle3</object-name>
+ <object-name>FuelPres.Needle4</object-name>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>unused</object-name>
+  <condition>
+    <equals><value>1</value><value>0</value></equals>
+  </condition>
+</animation>
+
+<animation>
+  <type>material</type>
+  <object-name>FuelPres.Face</object-name>
+  <object-name>FuelPres.Needle1</object-name>
+  <object-name>FuelPres.Needle2</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>FuelPres.Needle1</object-name>
+  <property>/systems/engines/engine[0]/fuel-pressure</property>
+  <interpolation>
+    <entry><ind> 0</ind><dep>  0</dep></entry>
+    <entry><ind> 0.50</ind><dep>315</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>FuelPres.Needle2</object-name>
+  <property>/systems/engines/engine[1]/fuel-pressure</property>
+  <interpolation>
+    <entry><ind> 0</ind><dep>  0</dep></entry>
+    <entry><ind> 0.50</ind><dep>315</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>
+

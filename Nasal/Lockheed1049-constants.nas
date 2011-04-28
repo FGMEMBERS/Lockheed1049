@@ -15,7 +15,14 @@ ConstantAero.new = func {
    var obj = { parents : [ConstantAero],
 
                NBINSTRUMENTS : 2,                       # and any system in double
-               NBGEARS : 3                              # and any system in triple
+               NBGEARS : 3,                             # and any system in triple
+               NBENGINES : 4,                           # and any system in quadruple
+               NBTANKS : 7,
+
+               ENGINE1 : 0,
+               ENGINE2 : 1,
+               ENGINE3 : 2,
+               ENGINE4 : 3
          };
 
    obj.init();
@@ -24,6 +31,26 @@ ConstantAero.new = func {
 }
 
 ConstantAero.init = func {
+}
+
+ConstantAero.isInboardEngine = func( index ) {
+   var result = 0.0;
+
+   if( index == me.ENGINE2 or index == me.ENGINE3 ) {
+       result = 1.0;
+   }
+
+   return result;
+}
+
+ConstantAero.outboardTank = func( index ) {
+   var result = index;
+
+   if( me.isInboardEngine( index ) ) {
+       result = index + me.NBENGINES;
+   }
+
+   return result;
 }
 
 
@@ -69,17 +96,17 @@ System = {};
 System.new = func {
    var obj = { parents : [System],
 
-           SYSSEC : 0.0,                               # to be defined !
+               SYSSEC : 0.0,                               # to be defined !
 
-           ready : constant.FALSE,                     # waits for end of initialization
+               ready : constant.FALSE,                     # waits for end of initialization
 
-           RELOCATIONFT : 0.0,                         # max descent speed around 6000 feet/minute.
+               RELOCATIONFT : 0.0,                         # max descent speed around 6000 feet/minute.
 
-           altseaft : 0.0,
-
-           dependency : {},
-           itself : {},
-           noinstrument : {}
+               altseaft : 0.0,
+  
+               dependency : {},
+               itself : {},
+               noinstrument : {}
          };
 
    return obj;

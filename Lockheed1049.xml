@@ -6,8 +6,8 @@
 
     <fileheader>
         <author> </author>
-        <filecreationdate> 14 March 2010 </filecreationdate>
-        <version> 1.04 </version>
+        <filecreationdate> 1st August 2010 </filecreationdate>
+        <version> 1.05 </version>
         <description> Lockheed1049-54 </description>
 
         <note>Super Constellation 1049-54 (first version).</note>
@@ -283,6 +283,7 @@
                     |   |   |   |   |   |
           Tanks     2A  1   2   3   4   3A     
         </documentation>
+
         <engine file="WrightCyclone-975C18CB1">
             <location unit="IN">
                 <x> 681.6 </x>
@@ -393,12 +394,14 @@
                 </orient>
             </thruster>
         </engine>
+
         <documentation>
            full load at 30 % MAC, empty load at 30 % MAC (in range 21-32 %).
         </documentation>
+
         <tank type="FUEL">    <!-- Tank number 0 --> 
             <documentation>
-               1 : middle tank between the engines.
+               1 and 4 : middle tank between the engines.
             </documentation>
             <location unit="IN">
                 <x> 681.6 </x>
@@ -407,6 +410,8 @@
             </location>
             <capacity unit="LBS"> 9330 </capacity>
             <contents unit="LBS"> 9330 </contents>
+            <standpipe unit="LBS"> 816 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 1 --> 
             <documentation>
@@ -419,6 +424,8 @@
             </location>
             <capacity unit="LBS"> 4740 </capacity>
             <contents unit="LBS"> 4740 </contents>
+            <standpipe unit="LBS"> 174 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 2 --> 
             <location unit="IN">
@@ -428,6 +435,8 @@
             </location>
             <capacity unit="LBS"> 4740 </capacity>
             <contents unit="LBS"> 4740 </contents>
+            <standpipe unit="LBS"> 174 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 3 --> 
             <documentation>
@@ -440,6 +449,8 @@
             </location>
             <capacity unit="LBS"> 9330 </capacity>
             <contents unit="LBS"> 9330 </contents>
+            <standpipe unit="LBS"> 816 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 4 --> 
             <documentation>
@@ -452,10 +463,12 @@
             </location>
             <capacity unit="LBS"> 4380 </capacity>
             <contents unit="LBS"> 4380 </contents>
+            <standpipe unit="LBS"> 4380 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 5 --> 
             <documentation>
-               2a and 3a : outboard tanks, at wing tip.
+               2A and 3A : outboard tanks, at wing tip.
             </documentation>
             <location unit="IN">
                 <x> 681.6 </x>
@@ -464,6 +477,8 @@
             </location>
             <capacity unit="LBS"> 3390 </capacity>
             <contents unit="LBS"> 3390 </contents>
+            <standpipe unit="LBS"> 894 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 6 --> 
             <location unit="IN">
@@ -473,13 +488,17 @@
             </location>
             <capacity unit="LBS"> 3390 </capacity>
             <contents unit="LBS"> 3390 </contents>
+            <standpipe unit="LBS"> 894 </standpipe>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
+
+        <documentation>
+          emulates cross feed of engine supplies :
+          - position like the main engine tank.
+          - can feed 1200 gal/h per engine : 1200 x ( 2 / 3600 ) = 0.67 US gal content, if supplied every 2 s from other tanks.
+        </documentation>
+
         <tank type="FUEL">    <!-- Tank number 7 --> 
-            <documentation>
-              emulates cross feed of engine supplies :
-              - position like the main engine tank.
-              - can feed 1200 gal/h per engine : 1200 x ( 2 / 3600 ) = 0.67 US gal content, if supplied every 2 s from other tanks.
-            </documentation>
             <location unit="IN">
                 <x> 681.6 </x>
                 <y> -280 </y>
@@ -487,6 +506,7 @@
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
             <contents unit="LBS"> 0 </contents>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 8 --> 
             <location unit="IN">
@@ -496,6 +516,7 @@
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
             <contents unit="LBS"> 0 </contents>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 9 --> 
             <location unit="IN">
@@ -505,6 +526,7 @@
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
             <contents unit="LBS"> 0 </contents>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 10 --> 
             <location unit="IN">
@@ -514,7 +536,14 @@
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
             <contents unit="LBS"> 0 </contents>
+            <density unit="LBS/GAL"> 6 </density>
         </tank>
+
+        <documentation>
+          fuel dump in about 10 minutes.
+        </documentation>
+
+        <dump-rate unit="LBS/MIN"> 3600 </dump-rate>
     </propulsion>
 
     <system name="NWS">

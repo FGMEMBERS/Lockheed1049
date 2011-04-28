@@ -119,21 +119,29 @@
   <engines>
    <engine n="0">
     <engine-num>1</engine-num>
+    <fuel-pressure alias="/consumables/fuel/tank[7]/level-gal_us"/>
+    <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
    <engine n="1">
     <engine-num>2</engine-num>
+    <fuel-pressure alias="/consumables/fuel/tank[8]/level-gal_us"/>
+    <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
    <engine n="2">
     <engine-num>3</engine-num>
+    <fuel-pressure alias="/consumables/fuel/tank[9]/level-gal_us"/>
+    <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
    <engine n="3">
     <engine-num>4</engine-num>
+    <fuel-pressure alias="/consumables/fuel/tank[10]/level-gal_us"/>
+    <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
    </engine>
@@ -166,24 +174,31 @@
    <tanks>
     <tank n="0">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[0]/priority"/>
     </tank>
     <tank n="1">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[1]/priority"/>
     </tank>
     <tank n="2">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[2]/priority"/>
     </tank>
     <tank n="3">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[3]/priority"/>
     </tank>
     <tank n="4">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[4]/priority"/>
     </tank>
     <tank n="5">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[5]/priority"/>
     </tank>
     <tank n="6">
      <cross type="bool">false</cross>
+     <valve alias="/fdm/jsbsim/propulsion/tank[6]/priority"/>
     </tank>
 
 <!-- virtual cross feed tanks -->
@@ -289,7 +304,9 @@
    <internal>
     <ambient-light>1.0</ambient-light>                                                 <!-- day light -->
     <copilot>
-     <chart-light>0.0</chart-light>
+     <chart-blue>0.1</chart-blue>                                                      <!-- default is reddish -->
+     <chart-green>0.1</chart-green>
+     <chart-light alias="/controls/lighting/internal/copilot/chart-on"/>
      <instrument-light>0.0</instrument-light>
      <panel-light>0.0</panel-light>
      <side-light>0.0</side-light>
@@ -298,9 +315,20 @@
      <flood-light>0.0</flood-light>
      <instrument-light>0.0</instrument-light>
     </engineer>
-    <panel-light>0.0</panel-light>
+    <overhead>
+     <blue>0.1</blue>                                                                  <!-- default is reddish -->
+     <green>0.1</green>
+     <light alias="/controls/lighting/internal/overhead/panel"/>
+    </overhead>
+    <panel>
+     <panel-blue>0.1</panel-blue>                                                      <!-- default is reddish -->
+     <panel-green>0.1</panel-green>
+     <panel-light alias="/controls/lighting/internal/pilot/panel"/>
+    </panel>
     <pilot>
-     <chart-light>0.0</chart-light>
+     <chart-blue>0.1</chart-blue>                                                      <!-- default is reddish -->
+     <chart-green>0.1</chart-green>
+     <chart-light alias="/controls/lighting/internal/pilot/chart-on"/>
      <instrument-light>0.0</instrument-light>
      <panel-light>0.0</panel-light>
      <side-light>0.0</side-light>

@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+
+<!-- Instrument display degC, so these conversions are used:
+
+    -100       -148
+       0	32
+      50	122
+     125	257
+     600	1112
+
+
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+
+     TO DO :
+     =====
+     - Carburetor temperature is guessed by EGT.
+-->
+
+
+<PropertyList>
+
+<params>
+ <carburetor-left>/engines/engine[0]/egt-degf</carburetor-left>
+ <carburetor-right>/engines/engine[1]/egt-degf</carburetor-right>
+</params>
+
+
+<path>egt.ac</path>
+
+<animation>
+  <name>Face</name>
+  <object-name>EGTTemp.Face</object-name>
+  <object-name>EGTTemp.Needle1</object-name>
+  <object-name>EGTTemp.Needle2</object-name>
+</animation>
+
+<animation>
+  <type>material</type>
+  <object-name>Face</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>EGTTemp.Needle1</object-name>
+  <property alias="../../params/carburetor-left"/>
+  <interpolation>
+    <entry><ind>-148</ind><dep> 52.5</dep></entry>
+    <entry><ind>1112</ind><dep>-52.5</dep></entry>
+  </interpolation>
+  <center>
+    <x-m>-0.0251</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>EGTTemp.Needle2</object-name>
+  <property alias="../../params/carburetor-right"/>
+  <interpolation>
+    <entry><ind>-148</ind><dep> 52.5</dep></entry>
+    <entry><ind>1112</ind><dep>-52.5</dep></entry>
+  </interpolation>
+  <center>
+    <x-m>0.0251</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>

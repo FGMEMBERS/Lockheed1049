@@ -146,6 +146,10 @@ LightLevel = {};
 LightLevel.new = func {
    var obj = { parents : [LightLevel,System],
 
+               redseat : { "pilot" : constant.FALSE, "copilot" : constant.FALSE },
+
+               WHITELIGHT : 1.0,
+               REDDISH : 0.1,
                NOLIGHT : 0.0
          };
 
@@ -156,17 +160,21 @@ LightLevel.new = func {
 
 LightLevel.init = func {
    me.inherit_system("/systems/lighting");
+
+   me.redseat["pilot"] = me.itself["internal-ctrl"].getNode("pilot").getChild("chart-red").getValue();
+   me.redseat["copilot"] = me.itself["internal-ctrl"].getNode("copilot").getChild("chart-red").getValue();
 }
 
 LightLevel.schedule = func {
    me.pilot();
 
-   me.side( "pilot", "side" );
-   me.side( "pilot", "chart" );
+   me.side( "pilot" );
+   me.chart( "pilot" );
 
-   me.side( "copilot", "side" );
-   me.side( "copilot", "chart" );
+   me.side( "copilot" );
+   me.chart( "copilot" );
 
+   me.overhead();
    me.engineer();
 }
 
@@ -175,10 +183,17 @@ LightLevel.pilot = func {
    var result = me.NOLIGHT;
    var pilotlight = me.NOLIGHT;
    var copilotlight = me.NOLIGHT;
+   var greenblue = me.NOLIGHT;
+   var light = 0;
+   var path = "";
+   var child = me.itself["internal"].getNode("panel").getChild("panel-light");
+   var currentpath = child.getAliasTarget().getPath();
+
 
    # cannot add pilot and copilot red lights
    value = me.itself["internal-ctrl"].getNode("pilot").getChild("panel").getValue();
    if( value > result ) {
+       light = 1;
        result = value;
    }
    if( value > me.NOLIGHT ) {
@@ -187,27 +202,125 @@ LightLevel.pilot = func {
 
    value = me.itself["internal-ctrl"].getNode("copilot").getChild("panel").getValue();
    if( value > result ) {
+       light = 2;
        result = value;
    }
    if( value > me.NOLIGHT ) {
        copilotlight = value + me.dependency["instrument"].getValue();
    }
 
-   me.itself["internal"].getChild("panel-light").setValue( result );
+   # cannot mix red with white emergency
+   value = me.itself["internal-ctrl"].getNode("pilot").getChild("emergency").getValue();
+   if( value > result ) {
+       light = 3;
+       result = value;
+   }
 
-   # user customization of instrument lighting
+
+   if( light > 0 ) {
+       if( light == 1 ) {
+           path = me.itself["internal-ctrl"].getNode("pilot").getChild("panel").getPath();
+           greenblue = me.REDDISH;
+       }
+       elsif( light == 2 ) {
+           path = me.itself["internal-ctrl"].getNode("copilot").getChild("panel").getPath();
+           greenblue = me.REDDISH;
+       }
+       else {
+           path = me.itself["internal-ctrl"].getNode("pilot").getChild("emergency").getPath();
+           greenblue = me.WHITELIGHT;
+       }
+
+       if( currentpath != path ) {
+           child.unalias();
+           child.alias( path );
+
+           me.itself["internal"].getNode("panel").getChild("panel-green").setValue( greenblue );
+           me.itself["internal"].getNode("panel").getChild("panel-blue").setValue( greenblue );
+       }
+   }
+
+
+   # USER customization of instrument lighting (not real)
    me.itself["internal"].getNode("pilot").getChild("instrument-light").setValue( pilotlight );
    me.itself["internal"].getNode("copilot").getChild("instrument-light").setValue( copilotlight );
 }
 
-LightLevel.side = func( seat, panel ) {
+LightLevel.side = func( seat ) {
    var result = me.NOLIGHT;
 
-   if( me.itself["internal-ctrl"].getNode(seat).getChild(panel ~ "-on").getValue() ) {
-       result = me.itself["internal-ctrl"].getNode(seat).getChild(panel).getValue();
+   if( me.itself["internal-ctrl"].getNode(seat).getChild("side-on").getValue() ) {
+       result = me.itself["internal-ctrl"].getNode(seat).getChild("side").getValue();
    }
 
-   me.itself["internal"].getNode(seat).getChild(panel ~ "-light").setValue( result );
+   me.itself["internal"].getNode(seat).getChild("side-light").setValue( result );
+}
+
+LightLevel.chart = func( seat ) {
+   var path = "";
+   var filter = constant.FALSE;
+   var child = me.itself["internal"].getNode(seat).getChild("chart-light");
+   var currentpath = child.getAliasTarget().getPath();
+
+   if( me.itself["internal-ctrl"].getNode(seat).getChild("chart-on").getValue() ) {
+       path = me.itself["internal-ctrl"].getNode(seat).getChild("chart").getPath();
+       if( currentpath != path ) {
+           child.unalias();
+           child.alias( path );
+       }
+   }
+
+   else {
+       path = me.itself["internal-ctrl"].getNode(seat).getChild("chart-on").getPath();
+       if( currentpath != path ) {
+           child.unalias();
+           child.alias( path );
+       }
+   }
+
+   filter = me.itself["internal-ctrl"].getNode(seat).getChild("chart-red").getValue();
+   if( filter != me.redseat[seat] ) {
+       if( filter ) {
+           me.itself["internal"].getNode(seat).getChild("chart-green").setValue( me.REDDISH );
+           me.itself["internal"].getNode(seat).getChild("chart-blue").setValue( me.REDDISH );
+       }
+       else
+       {
+           me.itself["internal"].getNode(seat).getChild("chart-green").setValue( me.WHITELIGHT );
+           me.itself["internal"].getNode(seat).getChild("chart-blue").setValue( me.WHITELIGHT );
+       }
+
+       me.redseat[seat] = filter;
+   }
+}
+
+LightLevel.overhead = func {
+   var path = "";
+   var child = me.itself["internal"].getNode("overhead").getChild("light");
+   var currentpath = child.getAliasTarget().getPath();
+
+   # white has priority over reddish
+   if( me.itself["internal-ctrl"].getNode("overhead").getChild("on").getValue() ) {
+       path = me.itself["internal-ctrl"].getNode("overhead").getChild("on").getPath();
+       if( currentpath != path ) {
+           child.unalias();
+           child.alias( path );
+
+           me.itself["internal"].getNode("overhead").getChild("green").setValue( me.WHITELIGHT );
+           me.itself["internal"].getNode("overhead").getChild("blue").setValue( me.WHITELIGHT );
+       }
+   }
+
+   else {
+       path = me.itself["internal-ctrl"].getNode("overhead").getChild("panel").getPath();
+       if( currentpath != path ) {
+           child.unalias();
+           child.alias( path );
+
+           me.itself["internal"].getNode("overhead").getChild("green").setValue( me.REDDISH );
+           me.itself["internal"].getNode("overhead").getChild("blue").setValue( me.REDDISH );
+       }
+   }
 }
 
 LightLevel.engineer = func {

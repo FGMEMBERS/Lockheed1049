@@ -523,9 +523,9 @@
   <object-name>Plate</object-name>
   <emission>
    <red>1.0</red>
-   <green>0.1</green>
-   <blue>0.1</blue>
-   <factor-prop>controls/lighting/internal/overhead/panel</factor-prop>
+   <green-prop>systems/lighting/internal/overhead/green</green-prop>
+   <blue-prop>systems/lighting/internal/overhead/blue</blue-prop>
+   <factor-prop>systems/lighting/internal/overhead/light</factor-prop>
   </emission> 
  </animation>
 

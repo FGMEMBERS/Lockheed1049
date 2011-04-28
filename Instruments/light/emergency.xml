@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>emergency.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>EmergencyLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/pilot/emergency</factor-prop>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>EmergencyTube</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/emergency</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/pilot/emergency</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

@@ -34,7 +34,13 @@
         <dialog-name>Lockheed1049-fuel</dialog-name>
        </binding>
       </item>
-      <!--
+      <item>
+       <label>Immatriculation</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-immat</dialog-name>
+       </binding>
+      </item>
       <item>
        <label>Select Livery</label>
        <binding>
@@ -42,7 +48,6 @@
         <script>aircraft.livery.dialog.toggle()</script>
        </binding>
       </item>
-      -->
       <item>
        <label>Procedures</label>
        <binding>

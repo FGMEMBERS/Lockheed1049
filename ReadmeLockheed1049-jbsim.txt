@@ -202,6 +202,7 @@ JSBSim
 TO DO
 =====
 - 3D instruments.
+- scale instruments on engineer panel.
 
 TO DO FDM
 ---------
@@ -214,10 +215,10 @@ Known problems
 Known problems autopilot
 ------------------------
 - toggle INS mode, only AFTER activation of route, or use "ctrl-I a".
-- heading modes may be unable to damp rolling, once turbulences are off.
 
-Known problems 2.0.0 autopilot
-------------------------------
+Known problems GIT autopilot
+----------------------------
+- on engagement, magnetic and true heading modes bank into the opposite direction.
 - the first waypoint is always ignored : insert a double waypoint.
 - to update waypoints, once route is activated, clear completely the route.
 - during descent, route manager may update the target altitude (press F11).
@@ -236,7 +237,7 @@ Secondary problems
 Secondary problems FDM
 ----------------------
 - negativ oil pressure.
-- cylinder head temperature too high (replaced by EGT).
+- cylinder head temperature too high.
 
 
 References
@@ -260,4 +261,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-20 March 2010.
+2nd October 2010.

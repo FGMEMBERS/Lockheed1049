@@ -9,8 +9,8 @@
   <object-name>Seat</object-name>
   <emission>
    <red>1.0</red>
-   <green>0.1</green>
-   <blue>0.1</blue>
+   <green-prop>systems/lighting/internal/pilot/chart-green</green-prop>
+   <blue-prop>systems/lighting/internal/pilot/chart-blue</blue-prop>
    <factor-prop>systems/lighting/internal/pilot/chart-light</factor-prop>
   </emission> 
  </animation>
@@ -25,6 +25,19 @@
    <y>0.0</y>
    <z>0.0</z>
   </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Seat</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.doorsystem.seatexport("captain");</script>
+   </binding>
+  </action>
  </animation>
 
 </PropertyList>

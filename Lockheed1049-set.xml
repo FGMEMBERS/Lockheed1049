@@ -19,6 +19,12 @@
      1.4               March 2010                 Conversion of 2D instruments to 3D
                                                   (most borrowed to G. Neely's GPL 1049-H).
 						  Pushback.
+     1.5               April 2011                 Immatriculation support.
+                                                  Conversion of 2D virtual crew clues to 3D.
+                                                  Additional 3D engineer instruments
+                                                  (borrowed to G. Neely's GPL 1049-H).
+                                                  Internal white lighting (pilots only),
+                                                  fuel system.
      ==========================================================================================
 -->
 
@@ -29,7 +35,7 @@
 
   <description>Lockheed 1049 Super Constellation</description>
   <status>early-production</status>
-  <aircraft-version>1.4</aircraft-version>
+  <aircraft-version>1.5</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
@@ -69,6 +75,7 @@
 
   <model>
    <path>Aircraft/Lockheed1049/Models/Lockheed1049_twa.xml</path>
+   <immat>N6905C</immat>
    <pushback>
     <enabled type="bool">false</enabled>
     <kp type="double">1500</kp>

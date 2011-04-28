@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>autopilot.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>AutopilotPlate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/pedestal/on</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>AutopilotClutch</object-name>
+  <property>controls/autoflight/autopilot[0]/engaged</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>0.0</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>-0.01</dep>
+    </entry>
+  </interpolation>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AutopilotClutch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/autoflight/autopilot[0]/engaged</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

@@ -23,11 +23,12 @@ Fuel.new = func {
                crosstanks : nil,
                crossengines : nil,
                engines : nil,
+               sysengines : nil,
+               tanks : nil,
 
                SPEEDUPSEC : 2,             # refresh rate
 
-               NB_ENGINES : 4,
-               NB_TANKS : 7
+               PRESSURELOW : 0.5,
          };
 
    obj.init();
@@ -39,45 +40,89 @@ Fuel.init = func {
    me.crosstanks = props.globals.getNode("/systems/fuel-pump/tanks").getChildren("tank");
    me.crossengines = props.globals.getNode("/systems/fuel-pump/engines").getChildren("engine");
    me.engines = props.globals.getNode("/controls/fuel").getChildren("engine");
+   me.sysengines = props.globals.getNode("/systems/engines").getChildren("engine");
+   me.tanks = props.globals.getNode("/controls/fuel").getChildren("tank");
 
    me.tanksystem.presetfuel();
-}
-
-Fuel.schedule = func {
-   me.crossfeed();
 }
 
 Fuel.menuexport = func {
    me.tanksystem.menu();
 }
 
-# cross feed emulation
+Fuel.schedule = func {
+   # fuel pressure emulation
+   me.fuelpressure();
+
+   # cross feed emulation
+   me.crossfeed();
+
+   me.red_fuel();
+}
+
+Fuel.fuelpressure = func {
+   var nbtanks = 0;
+   var inboard = 0;
+   var icross = 0;
+   var itank = 0;
+
+   # record level of cross feed tanks
+   me.crosslevel();
+
+   # emulation of fuel pressure
+   for( var i=0; i < constantaero.NBENGINES ; i=i+1 ) {
+        if( !me.engines[i].getChild("firewall").getValue() ) {
+            # supplies the virtual cross feed tank by its engine tank
+            icross = constantaero.NBTANKS + i;
+
+            nbtanks = 1;
+
+            # inboard tank
+            if( constantaero.isInboardEngine( i ) ) {
+                nbtanks = 2;
+            }
+
+            for( var j=0; j < nbtanks; j=j+1 ) {
+                 # outboard tank
+                 if( j > 0 ) {
+                     itank = constantaero.outboardTank( i );
+                 }
+
+                 # engine tank
+                 else {
+                     itank = i;
+                 }
+
+                 me.crosstransfer( icross, nbtanks, itank )
+            }
+        }
+   }
+}
+
 Fuel.crossfeed = func {
    var nbtanks = 0;
    var inboard = 0;
    var icross = 0;
-   var levellb = 0.0;
-   var contentlb = 0.0;
-   var offsetlb = 0.0;
-   var pumplb = 0.0;
    var crossengine = constant.FALSE;
    var cross = constant.FALSE;
 
-   for( var i=0; i < me.NB_ENGINES; i=i+1 ) {
+   for( var i=0; i < constantaero.NBENGINES; i=i+1 ) {
         if( me.engines[i].getChild("cross-feed").getValue() ) {
             crossengine = constant.TRUE;
+
             # engine tank
-            if( !me.tanksystem.empty(i) ) {
+            if( !me.tanksystem.empty( i ) ) {
                 nbtanks = nbtanks + 1;
                 cross = constant.TRUE;
             } else {
                 cross = constant.FALSE;
             }
             me.crosstanks[i].getChild("cross").setValue(cross);
+
             # inboard tank
-            if( i == 1 or i == 2 ) {
-                inboard = me.NB_ENGINES + i;
-                if( !me.tanksystem.empty(inboard) ) {
+            if( constantaero.isInboardEngine( i ) ) {
+                inboard = constantaero.outboardTank( i );
+                if( !me.tanksystem.empty( inboard ) ) {
                     nbtanks = nbtanks + 1;
                     cross = constant.TRUE;
                 } else {
@@ -89,32 +134,63 @@ Fuel.crossfeed = func {
         else {
             crossengine = constant.FALSE;
         }
+
         me.crossengines[i].getChild("cross").setValue(crossengine);
    }
 
    # supplies the virtual cross feed tank of each connected engine
    if( nbtanks > 0 ) {
        # record level of cross feed tanks
-       for( var i=0; i < me.NB_ENGINES; i=i+1 ) {
-            icross = me.NB_TANKS + i;
-            levellb = me.tanksystem.getlevellb( icross );
-            me.crosstanks[icross].getChild("level-lb").setValue(levellb);
-       }
+       me.crosslevel();
 
        # completes the cross feed tanks
-       for( var i=0; i < me.NB_TANKS ; i=i+1 ) {
+       for( var i=0; i < constantaero.NBTANKS ; i=i+1 ) {
             if( me.crosstanks[i].getChild("cross").getValue() ) {
-                 for( var j=0; j < me.NB_ENGINES; j=j+1 ) {
-                     if( me.crossengines[j].getChild("cross").getValue() ) {
-                         icross = me.NB_TANKS + j;
-                         contentlb = me.tanksystem.getcontentlb( icross );
-                         offsetlb = contentlb - me.crosstanks[icross].getChild("level-lb").getValue();
-                         pumplb = offsetlb / nbtanks;
-                         me.tanksystem.transfertanks( icross, i, pumplb );
+                for( var j=0; j < constantaero.NBENGINES; j=j+1 ) {
+                     if( me.crossengines[j].getChild("cross").getValue() and
+                         !me.engines[j].getChild("firewall").getValue() ) {
+                         icross = constantaero.NBTANKS + j;
+                         me.crosstransfer( icross, nbtanks, i )
                      }
                 }
             }
        }
+   }
+}
+
+Fuel.red_fuel = func {
+   var value = constant.FALSE;
+
+   for( var i = 0; i < constantaero.NBENGINES; i = i+1 ) {
+        if( me.sysengines[i].getChild("fuel-pressure").getValue() < me.PRESSURELOW ) {
+            value = constant.TRUE;
+        }
+        else {
+            value = constant.FALSE;
+        }
+
+        me.sysengines[i].getChild("fuel-pressure-low").setValue( value );
+   }
+}
+
+Fuel.crosslevel = func {
+   var icross = 0;
+   var levellb = 0.0;
+
+   for( var i=0; i < constantaero.NBENGINES; i=i+1 ) {
+        icross = constantaero.NBTANKS + i;
+        levellb = me.tanksystem.getlevellb( icross );
+        me.crosstanks[icross].getChild("level-lb").setValue(levellb);
+   }
+}
+
+Fuel.crosstransfer = func( icross, nbtanks, itank ) {
+   if( me.tanks[itank].getChild("shut-off").getValue() == 1 ) {
+       var contentlb = me.tanksystem.getcontentlb( icross );
+       var offsetlb = contentlb - me.crosstanks[icross].getChild("level-lb").getValue();
+       var pumplb = offsetlb / nbtanks;
+
+       me.tanksystem.transfertanks( icross, itank, pumplb );
    }
 }
 

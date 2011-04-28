@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>fuel.ac</path>
+
+<!-- lighting from pedestal -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Fuel</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/overhead/on</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- firewall -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ShutoffValve1</object-name>
+  <property>controls/fuel/engine[0]/firewall</property>
+  <factor>-120</factor>
+  <offset-deg>40</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ShutoffValve2</object-name>
+  <property>controls/fuel/engine[1]/firewall</property>
+  <factor>-120</factor>
+  <offset-deg>40</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ShutoffValve3</object-name>
+  <property>controls/fuel/engine[2]/firewall</property>
+  <factor>-120</factor>
+  <offset-deg>40</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ShutoffValve4</object-name>
+  <property>controls/fuel/engine[3]/firewall</property>
+  <factor>-120</factor>
+  <offset-deg>40</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- fuel dump -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelDump1</object-name>
+  <property>controls/fuel/dump/valve[0]</property>
+  <factor>120</factor>
+  <offset-deg>-80</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelDump2</object-name>
+  <property>controls/fuel/dump/valve[1]</property>
+  <factor>120</factor>
+  <offset-deg>-80</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FuelDump1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/dump/valve[0]</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FuelDump2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/dump/valve[1]</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

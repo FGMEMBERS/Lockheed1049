@@ -62,21 +62,47 @@
   </flight>
 
   <fuel>
-   <center>
-    <shut-off>0.0</shut-off>
-   </center>
+   <dump>
+    <valve n="0" alias="/fdm/jsbsim/propulsion/fuel_dump"/>
+    <valve n="1" alias="/fdm/jsbsim/propulsion/fuel_dump"/>
+   </dump>
    <engine n="0">
     <cross-feed>0.0</cross-feed>
+    <firewall type="bool">false</firewall>
    </engine>
    <engine n="1">
     <cross-feed>0.0</cross-feed>
+    <firewall type="bool">false</firewall>
    </engine>
    <engine n="2">
     <cross-feed>0.0</cross-feed>
+    <firewall type="bool">false</firewall>
    </engine>
    <engine n="3">
     <cross-feed>0.0</cross-feed>
+    <firewall type="bool">false</firewall>
    </engine>
+   <tank n="0">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[0]/priority"/>
+   </tank>
+   <tank n="1">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[1]/priority"/>
+   </tank>
+   <tank n="2">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[2]/priority"/>
+   </tank>
+   <tank n="3">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[3]/priority"/>
+   </tank>
+   <tank n="4">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[4]/priority"/>            <!-- center shut-off valve -->
+   </tank>
+   <tank n="5">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[5]/priority"/>            <!-- 2A shut-off valve -->
+   </tank>
+   <tank n="6">
+    <shut-off alias="/fdm/jsbsim/propulsion/tank[6]/priority"/>            <!-- 3A shut-off valve -->
+   </tank>
   </fuel>
 
   <gear>
@@ -97,7 +123,8 @@
     <copilot>
      <chart>0.4</chart>
      <chart-on type="bool">false</chart-on>
-     <compass alias="/sim/model/material/instruments/factor"/>
+     <chart-red type="bool">true</chart-red>
+     <compass>0.0</compass>
      <panel>0.0</panel>
      <side>0.4</side>
      <side-on type="bool">false</side-on>
@@ -106,8 +133,8 @@
      <flood>0.0</flood>
     </engineer>
     <overhead>
-     <on type="bool">false</on>
-     <panel>0.0</panel>
+     <on type="bool">false</on>                                    <!-- white light -->
+     <panel>0.0</panel>                                            <!-- reddish light -->
     </overhead>
     <pedestal>
      <on type="bool">false</on>
@@ -115,6 +142,8 @@
     <pilot>
      <chart>0.4</chart>
      <chart-on type="bool">false</chart-on>
+     <chart-red type="bool">true</chart-red>
+     <emergency>0.0</emergency>
      <panel>0.0</panel>
      <side>0.4</side>
      <side-on type="bool">false</side-on>

@@ -42,6 +42,10 @@
      <desc>floating view up/down</desc>
    </key>
    <key>
+    <name>F12</name>
+    <desc>radio frequencies</desc>
+   </key>
+   <key>
     <name>a/A</name>
     <desc>speed-up</desc>
    </key>

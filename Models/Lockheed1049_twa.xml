@@ -115,6 +115,11 @@
   </model>
 
   <model>
+   <name>Effects</name>
+   <path>Aircraft/Lockheed1049/Models/Lockheed1049_effects.xml</path>
+  </model>
+
+  <model>
    <name>Pushback</name>
    <path>Models\Airport\Pushback\Military.xml</path>
    <offsets>   

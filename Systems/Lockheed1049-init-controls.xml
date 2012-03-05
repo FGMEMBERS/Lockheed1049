@@ -55,6 +55,10 @@
    </engine>
   </engines>
 
+  <environment>
+   <smoke type="bool">true</smoke>
+  </environment>
+
   <flight>
    <aileron-boost alias="/fdm/jsbsim/fcs/aileron-boost"/>
    <elevator-boost alias="/fdm/jsbsim/fcs/elevator-boost"/>
@@ -63,45 +67,54 @@
 
   <fuel>
    <dump>
-    <valve n="0" alias="/fdm/jsbsim/propulsion/fuel_dump"/>
-    <valve n="1" alias="/fdm/jsbsim/propulsion/fuel_dump"/>
+    <valve n="0" type="bool">false</valve>                                 <!-- 1 and 2 dump valve> -->
+    <valve n="1" type="bool">false</valve>                                 <!-- 3 and 4 dump valve> -->
+    <valve n="2" type="bool">false</valve>                                 <!-- 2A and 3A dump valve -->
    </dump>
    <engine n="0">
-    <cross-feed>0.0</cross-feed>
-    <firewall type="bool">false</firewall>
+    <cross-feed type="bool">false</cross-feed>
+    <firewall type="bool">true</firewall>                                  <!-- firewall shut-off valve -->
    </engine>
    <engine n="1">
-    <cross-feed>0.0</cross-feed>
-    <firewall type="bool">false</firewall>
+    <cross-feed type="bool">false</cross-feed>
+    <firewall type="bool">true</firewall>
    </engine>
    <engine n="2">
-    <cross-feed>0.0</cross-feed>
-    <firewall type="bool">false</firewall>
+    <cross-feed type="bool">false</cross-feed>
+    <firewall type="bool">true</firewall>
    </engine>
    <engine n="3">
-    <cross-feed>0.0</cross-feed>
-    <firewall type="bool">false</firewall>
+    <cross-feed type="bool">false</cross-feed>
+    <firewall type="bool">true</firewall>
    </engine>
+   <reinit type="bool">true</reinit>                                       <!-- restore fuel on reinit -->
    <tank n="0">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[0]/priority"/>
+    <pump type="bool">true</pump>
+    <shut-off type="bool">true</shut-off>                                  <!-- 1 shut-off valve -->
    </tank>
    <tank n="1">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[1]/priority"/>
+    <pump type="bool">true</pump>
+    <shut-off type="bool">true</shut-off>                                  <!-- 2 shut-off valve -->
    </tank>
    <tank n="2">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[2]/priority"/>
+    <pump type="bool">true</pump>
+    <shut-off type="bool">true</shut-off>                                  <!-- 3 shut-off valve -->
    </tank>
    <tank n="3">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[3]/priority"/>
+    <pump type="bool">true</pump>
+    <shut-off type="bool">true</shut-off>                                  <!-- 4 shut-off valve -->
    </tank>
    <tank n="4">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[4]/priority"/>            <!-- center shut-off valve -->
+    <pump type="bool">true</pump>
+    <shut-off type="bool">true</shut-off>                                  <!-- center shut-off valve -->
    </tank>
    <tank n="5">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[5]/priority"/>            <!-- 2A shut-off valve -->
+    <pump type="bool">true</pump>
+    <shut-off type="bool">false</shut-off>                                 <!-- 2A shut-off valve -->
    </tank>
    <tank n="6">
-    <shut-off alias="/fdm/jsbsim/propulsion/tank[6]/priority"/>            <!-- 3A shut-off valve -->
+    <pump type="bool">true</pump>
+    <shut-off type="bool">false</shut-off>                                 <!-- 3A shut-off valve -->
    </tank>
   </fuel>
 
@@ -182,6 +195,10 @@
    <all-outside type="bool">false</all-outside>
    <observer type="bool">false</observer>
    <observer2 type="bool">false</observer2>
+   <offset>
+    <captain type="double">0.0</captain>
+    <engineer type="double">0.0</engineer>
+   </offset>
    <recover type="bool">false</recover>
   </seat>
 

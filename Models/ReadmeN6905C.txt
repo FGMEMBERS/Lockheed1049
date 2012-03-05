@@ -86,7 +86,7 @@ TO DO
 =====
 - gear compression.
 - smoke at engine start.
-- radio and navigator seats.
+- navigator seat.
 - release the metapost files (panel textures).
 
 
@@ -144,4 +144,4 @@ http://www.usflag.org/ : the 49 stars flag (1957 livery).
 Made with Blender 2.49a.
 
 
-4 January 2010.
+3 October 2011.

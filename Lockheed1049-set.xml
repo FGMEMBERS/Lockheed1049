@@ -24,7 +24,9 @@
                                                   Additional 3D engineer instruments
                                                   (borrowed to G. Neely's GPL 1049-H).
                                                   Internal white lighting (pilots only),
-                                                  fuel system.
+                                                  fuel system (JSBSim).
+     1.6               March 2012                 Tyre and engine smoke effect.
+                                                  Fuel system (XML).
      ==========================================================================================
 -->
 
@@ -35,7 +37,7 @@
 
   <description>Lockheed 1049 Super Constellation</description>
   <status>early-production</status>
-  <aircraft-version>1.5</aircraft-version>
+  <aircraft-version>1.6</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
@@ -118,6 +120,7 @@
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-hydraulic.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engine.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-instrument.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-fuelXML.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-fuel.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-autopilot.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-interface.nas</file>
@@ -126,6 +129,7 @@
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engineer.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-human.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-effects.nas</file>
   </Lockheed1049>
  </nasal>
 
@@ -177,6 +181,8 @@
     <propeller-pitch>0.0</propeller-pitch>
    </engine>
   </engines>
+
+<!-- lighting for flight -->
 
   <lighting>
    <external>

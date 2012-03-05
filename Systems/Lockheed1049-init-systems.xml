@@ -161,7 +161,35 @@
   </engines>
 
   <fuel>
+   <serviceable type="bool" archive="y">true</serviceable>
+
+   <internal>
+    <config include="Lockheed1049-fuel.xml"/>
+    <iterations type="int">0</iterations>
+   </internal>
+
    <presets type="int">0</presets>                                                     <!-- max landing load -->
+
+   <relations>
+    <dependency>
+     <electric>/systems/electrical/power</electric>
+     <engine>
+      <component>/systems/engines</component>
+      <subcomponent>engine</subcomponent>
+     </engine>
+    </dependency>
+
+    <itself>
+     <jettison>
+      <component>/controls/fuel/dump</component>
+      <subcomponent>valve</subcomponent>
+     </jettison>
+    </itself>
+
+    <noinstrument>
+     <speed-up>/sim/speed-up</speed-up>
+    </noinstrument>
+   </relations>
 
    <tanks include="../Nasal/Lockheed1049-fuel.xml"/>
   </fuel>
@@ -289,6 +317,8 @@
     </dependency>
 
     <itself>
+     <captain>/systems/human/captain</captain>
+     <copilot>/systems/human/copilot</copilot>
      <lighting>/controls/human/lighting</lighting>
     </itself>
 
@@ -360,6 +390,10 @@
    <navigator type="bool">false</navigator>
    <observer type="bool">false</observer>
    <observer2 type="bool">false</observer2>
+   <offset>
+    <captain type="double">0.0</captain>
+    <engineer type="double">0.0</engineer>
+   </offset>
    <position>
     <gear-well>
      <x-m type="double">0.0</x-m>
@@ -378,6 +412,20 @@
     </observer2>
    </position>
    <radio type="bool">false</radio>
+
+   <relations>
+    <dependency>
+     <current-view>/sim/current-view</current-view>
+     <views>
+      <component>/sim</component>
+      <subcomponent>view</subcomponent>
+     </views>
+    </dependency>
+
+    <itself>
+     <position>/systems/seat/position</position>
+    </itself>
+   </relations>
   </seat>
 
   <voice>

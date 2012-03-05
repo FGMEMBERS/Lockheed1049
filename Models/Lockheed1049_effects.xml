@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+ <!-- ENGINE START -->
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/start-1.xml</path>
+  <name>Engine 1 start</name>
+  <offsets>
+   <x-m>-4.383</x-m>
+   <y-m>-10.468</y-m>
+   <z-m>-0.655</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/start-2.xml</path>
+  <name>Engine 2 start</name>
+  <offsets>
+   <x-m>-4.776</x-m>
+   <y-m>-5.440</y-m>
+   <z-m>-1.165</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/start-3.xml</path>
+  <name>Engine 3 start</name>
+  <offsets>
+   <x-m>-4.383</x-m>
+   <y-m> 10.468</y-m>
+   <z-m>-0.655</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/start-4.xml</path>
+  <name>Engine 4 start</name>
+  <offsets>
+   <x-m>-4.776</x-m>
+   <y-m> 5.440</y-m>
+   <z-m>-1.165</z-m>
+  </offsets>
+ </model>
+
+ <!-- ENGINE SMOKE -->
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/smoke-1.xml</path>
+  <name>Engine 1 smoke</name>
+  <offsets>
+   <x-m>-4.383</x-m>
+   <y-m>-10.468</y-m>
+   <z-m>-0.655</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/smoke-2.xml</path>
+  <name>Engine 2 smoke</name>
+  <offsets>
+   <x-m>-4.776</x-m>
+   <y-m>-5.440</y-m>
+   <z-m>-1.165</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/smoke-3.xml</path>
+  <name>Engine 3 smoke</name>
+  <offsets>
+   <x-m>-4.383</x-m>
+   <y-m> 10.468</y-m>
+   <z-m>-0.655</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Lockheed1049/Models/Effects/smoke/smoke-4.xml</path>
+  <name>Engine 4 smoke</name>
+  <offsets>
+   <x-m>-4.776</x-m>
+   <y-m> 5.440</y-m>
+   <z-m>-1.165</z-m>
+  </offsets>
+ </model>
+
+ <!-- TYRE SMOKE -->
+
+ <model>
+  <path>Aircraft/Generic/Effects/tyre-smoke-nose.xml</path>
+  <name>Tyre smoke nose</name>
+  <offsets>
+   <x-m>-15.453</x-m>
+   <y-m>0</y-m>
+   <z-m>-3.334</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
+  <name>Tyre smoke left</name>
+  <offsets>
+   <x-m>-0.900</x-m>
+   <y-m>-4.710</y-m>
+   <z-m>-3.336</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+  <name>Tyre smoke right</name>
+  <offsets>
+   <x-m>-0.900</x-m>
+   <y-m> 4.710</y-m>
+   <z-m>-3.336</z-m>
+  </offsets>
+ </model>
+
+</PropertyList>

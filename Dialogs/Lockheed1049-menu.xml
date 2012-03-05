@@ -13,7 +13,6 @@
 
   <group>
     <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
 
     <button>
       <legend>Autopilot</legend>
@@ -40,6 +39,18 @@
     </button>
 
     <button>
+      <legend>Environment</legend>
+      <key>e</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-environment</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
       <legend>Fuel</legend>
       <key>f</key>
       <binding>
@@ -50,6 +61,10 @@
         <command>dialog-close</command>
       </binding>
     </button>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
 
     <button>
       <legend>Ground</legend>
@@ -88,6 +103,18 @@
     </button>
 
     <button>
+      <legend>Seats</legend>
+      <key>s</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-seats</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
       <legend>Help</legend>
       <key>h</key>
       <binding>
@@ -98,8 +125,6 @@
         <command>dialog-close</command>
       </binding>
     </button>
-
-    <empty><stretch>true</stretch></empty>
   </group>
 
   <text>

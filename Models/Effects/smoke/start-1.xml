@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <params>
+    <cranking>engines/engine[0]/cranking</cranking>
+    <cht>engines/engine[0]/cht-degf</cht>
+    <running>engines/engine[0]/running</running>
+  </params>
+
+  <particlesystem include="start.xml"/>
+</PropertyList>

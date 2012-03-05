@@ -6,8 +6,8 @@
 
     <fileheader>
         <author> </author>
-        <filecreationdate> 1st August 2010 </filecreationdate>
-        <version> 1.05 </version>
+        <filecreationdate> 15 October 2011 </filecreationdate>
+        <version> 1.06 </version>
         <description> Lockheed1049-54 </description>
 
         <note>Super Constellation 1049-54 (first version).</note>
@@ -18,7 +18,6 @@
         <note>pushback.</note>
 
         <limitation>gear height determined by 3D model, supposed at scale.</limitation>
-        <limitation>emulation of fuel cross feed, tanks run out of fuel above X 3 speed-up.</limitation>
         <limitation>autopilot heading hold may lock to the right with roll.</limitation>
 
 <!--
@@ -296,7 +295,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>0</feed>
-            <feed>4</feed>
             <feed>7</feed>
             <thruster file="HamiltonStd43E60-6901A">
                 <location unit="IN">
@@ -323,8 +321,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>1</feed>
-            <feed>4</feed>
-            <feed>5</feed>
             <feed>8</feed>
             <thruster file="HamiltonStd43E60-6901A">
                 <location unit="IN">
@@ -351,8 +347,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>2</feed>
-            <feed>4</feed>
-            <feed>6</feed>
             <feed>9</feed>
             <thruster file="HamiltonStd43E60-6901A">
                 <location unit="IN">
@@ -379,7 +373,6 @@
                 <yaw> 0 </yaw>
             </orient>
             <feed>3</feed>
-            <feed>4</feed>
             <feed>10</feed>
             <thruster file="HamiltonStd43E60-6901A">
                 <location unit="IN">
@@ -496,6 +489,7 @@
           emulates cross feed of engine supplies :
           - position like the main engine tank.
           - can feed 1200 gal/h per engine : 1200 x ( 2 / 3600 ) = 0.67 US gal content, if supplied every 2 s from other tanks.
+          - not used in stand alone mode.
         </documentation>
 
         <tank type="FUEL">    <!-- Tank number 7 --> 
@@ -505,7 +499,7 @@
                 <z> -34.08 </z>
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
-            <contents unit="LBS"> 0 </contents>
+            <contents unit="LBS"> 4.4 </contents>
             <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 8 --> 
@@ -515,7 +509,7 @@
                 <z> -50 </z>
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
-            <contents unit="LBS"> 0 </contents>
+            <contents unit="LBS"> 4.4 </contents>
             <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 9 --> 
@@ -525,7 +519,7 @@
                 <z> -50 </z>
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
-            <contents unit="LBS"> 0 </contents>
+            <contents unit="LBS"> 4.4 </contents>
             <density unit="LBS/GAL"> 6 </density>
         </tank>
         <tank type="FUEL">    <!-- Tank number 10 --> 
@@ -535,7 +529,7 @@
                 <z> -34.08 </z>
             </location>
             <capacity unit="LBS"> 4.4 </capacity>
-            <contents unit="LBS"> 0 </contents>
+            <contents unit="LBS"> 4.4 </contents>
             <density unit="LBS/GAL"> 6 </density>
         </tank>
 

@@ -13,9 +13,9 @@ Generic = {};
 Generic.new = func {
    var obj = { parents : [Generic],
 
-           click : nil,
+               click : nil,
 
-           generic : aircraft.light.new("/instrumentation/generic",[ 1.5,0.2 ])
+               generic : aircraft.light.new("/instrumentation/generic",[ 1.5,0.2 ])
          };
 
    obj.init();

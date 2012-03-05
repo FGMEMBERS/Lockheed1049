@@ -30,6 +30,7 @@ LockheedMain.putinrelation = func {
 
 # 1 s cron
 LockheedMain.sec1cron = func {
+   fuelsystem.schedule();
    lightingsystem.schedule();
    enginesystem.schedule();
    terraininstrument.schedule();
@@ -41,7 +42,6 @@ LockheedMain.sec1cron = func {
 
 # 2 s cron
 LockheedMain.sec2cron = func {
-   fuelsystem.schedule();
    gearsystem.schedule();
    doorsystem.schedule();
    copilotcrew.fastschedule();
@@ -52,6 +52,7 @@ LockheedMain.sec2cron = func {
 
 # 3 s cron
 LockheedMain.sec3cron = func {
+   autopilotsystem.schedule();
    crewscreen.schedule();
 
    # schedule the next call
@@ -66,6 +67,8 @@ LockheedMain.savedata = func {
                        "/controls/crew/timeout",
                        "/controls/crew/timeout-s",
                        "/controls/doors/flight-station/opened",
+                       "/controls/environment/smoke",
+                       "/controls/fuel/reinit",
                        "/controls/human/lighting/copilot",
                        "/controls/human/lighting/engineer",
                        "/controls/human/lighting/instrument",
@@ -73,6 +76,8 @@ LockheedMain.savedata = func {
                        "/controls/seat/recover",
                        "/sim/model/immat",
                        "/systems/fuel/presets",
+                       "/systems/seat/offset/captain",
+                       "/systems/seat/offset/engineer",
                        "/systems/seat/position/gear-well/x-m",
                        "/systems/seat/position/gear-well/y-m",
                        "/systems/seat/position/gear-well/z-m",
@@ -128,9 +133,27 @@ LockheedMain.init = func {
    # fix JSBSim bug
    setprop( "controls/flight/elevator-boost", constant.TRUE );
 
+   # disable JSBSim stand alone mode
+   setprop( "fdm/jsbsim/propulsion/tank[0]/priority", 0 );
+   setprop( "fdm/jsbsim/propulsion/tank[1]/priority", 0 );
+   setprop( "fdm/jsbsim/propulsion/tank[2]/priority", 0 );
+   setprop( "fdm/jsbsim/propulsion/tank[3]/priority", 0 );
+
    # saved on exit, restored at launch
    me.savedata();
 }
 
+# state reset
+LockheedMain.reinit = func {
+   if( getprop("/controls/fuel/reinit") ) {
+       # default is JSBSim state, which loses fuel selection.
+       globals.Lockheed1049.fuelsystem.reinitexport();
+   }
+}
 
-L1049L = setlistener("/sim/signals/fdm-initialized", func { theconstellation = LockheedMain.new(); removelistener(L1049L); } );
+
+# object creation
+L1049L = setlistener("/sim/signals/fdm-initialized", func { globals.Lockheed1049.main = LockheedMain.new(); removelistener(L1049L); } );
+
+# state reset
+L1049L2 = setlistener("/sim/signals/reinit", func { globals.Lockheed1049.main.reinit(); });

@@ -21,6 +21,13 @@
        </binding>
       </item>
       <item>
+       <label>Environment</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-environment</dialog-name>
+       </binding>
+      </item>
+      <item>
        <label>Ground</label>
        <binding>
         <command>dialog-show</command>
@@ -67,6 +74,13 @@
        <binding>
         <command>dialog-show</command>
         <dialog-name>Lockheed1049-radios</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Seats</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-seats</dialog-name>
        </binding>
       </item>
       <item>

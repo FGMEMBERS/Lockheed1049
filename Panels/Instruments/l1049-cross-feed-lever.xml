@@ -79,72 +79,16 @@ properties' values.
 
  <actions>
 
-<!-- reheat -->
   <action>
-   <name>small decrease</name>
-   <button>0</button>
-   <x>-9</x>
-   <y>2</y>
-   <w>18</w>
-   <h>16</h>
-   <binding>
-    <command>property-adjust</command>
-    <property alias="../../../../params/cross-feed-select"/>
-    <step>-0.01</step>
-    <min>0</min>
-    <max>1.0</max>
-    <wrap>false</wrap>
-   </binding>
-  </action>
-
-  <action>
-   <name>small increase</name>
-   <button>0</button>
-   <x>-9</x>
-   <y>-18</y>
-   <w>18</w>
-   <h>16</h>
-   <binding>
-    <command>property-adjust</command>
-    <property alias="../../../../params/cross-feed-select"/>
-    <step>0.01</step>
-    <min>0</min>
-    <max>1.0</max>
-    <wrap>false</wrap>
-   </binding>
-  </action>
-
-  <action>
-   <name>big decrease</name>
-   <button>0</button>
-   <x>-9</x>
-   <y>22</y>
-   <w>18</w>
-   <h>16</h>
-   <binding>
-    <command>property-adjust</command>
-    <property alias="../../../../params/cross-feed-select"/>
-    <step>-0.1</step>
-    <min>0</min>
-    <max>1.0</max>
-    <wrap>false</wrap>
-   </binding>
-  </action>
-
-  <action>
-   <name>big increase</name>
+   <name>lever</name>
    <button>0</button>
    <x>-9</x>
    <y>-38</y>
    <w>18</w>
-   <h>16</h>
+   <h>76</h>
    <binding>
-    <command>property-adjust</command>
+    <command>property-toggle</command>
     <property alias="../../../../params/cross-feed-select"/>
-    <step>0.1</step>
-    <min>0</min>
-    <max>1.0</max>
-    <wrap>false</wrap>
    </binding>
   </action>
 

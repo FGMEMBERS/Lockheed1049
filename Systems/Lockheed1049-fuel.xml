@@ -1,0 +1,324 @@
+<!-- Lockheed 1049 fuel system :
+
+     - the suppliers (a tank or jettison) must be the first in the list.
+     - a circuit transmits the tank index.
+     - a connect connects 2 tanks by pumping.
+     - an inter-connect connects 2 tanks by gravity.
+
+
+     WARNING : the tanks depend of /consumables/fuel/tank[i]/capacity-gal_us and
+     /consumables/fuel/tank[i]/density-ppg to be defined in the -set file of the aircraft (automatic if Yasim).
+
+     As pumping happens in lb, it is theorically possible to have tanks with different density
+     (and mix them in proportion).
+-->
+
+<PropertyList>
+
+<!-- ========= -->
+<!-- SUPPLIERS -->
+<!-- ========= -->
+
+ <supplier>
+  <name>Dump chute</name>
+  <kind>jettison</kind>
+ </supplier>
+
+<!-- Tanks -->
+
+ <supplier>
+  <name>Main 1</name>
+  <kind>tank</kind>
+  <index>1</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[0]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+ <supplier>
+  <name>Main 2</name>
+  <kind>tank</kind>
+  <index>2</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[1]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+ <supplier>
+  <name>Main 3</name>
+  <kind>tank</kind>
+  <index>3</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[2]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+ <supplier>
+  <name>Main 4</name>
+  <kind>tank</kind>
+  <index>4</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[3]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+ <supplier>
+  <name>Center</name>
+  <kind>tank</kind>
+  <index>5</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[4]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+ <supplier>
+  <name>Main 2A</name>
+  <kind>tank</kind>
+  <index>2A</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[5]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+ <supplier>
+  <name>Main 3A</name>
+  <kind>tank</kind>
+  <index>3A</index>
+  <pump n="0">
+   <switch>/controls/fuel/tank[6]/pump</switch>
+   <energy>/systems/electrical/power/specific</energy>
+  </pump>
+ </supplier>
+
+<!-- Carburetors -->
+
+ <supplier>
+  <name>Carburetor 1</name>
+  <kind>tank</kind>
+  <index>C1</index>
+ </supplier>
+
+ <supplier>
+  <name>Carburetor 2</name>
+  <kind>tank</kind>
+  <index>C2</index>
+ </supplier>
+
+ <supplier>
+  <name>Carburetor 3</name>
+  <kind>tank</kind>
+  <index>C3</index>
+ </supplier>
+
+ <supplier>
+  <name>Carburetor 4</name>
+  <kind>tank</kind>
+  <index>C4</index>
+ </supplier>
+
+
+<!-- ======== -->
+<!-- CIRCUITS -->
+<!-- ======== -->
+
+ <circuit>
+  <name>Engine 1</name>
+ </circuit>
+
+ <circuit>
+  <name>Engine 2</name>
+ </circuit>
+
+ <circuit>
+  <name>Engine 3</name>
+ </circuit>
+
+ <circuit>
+  <name>Engine 4</name>
+ </circuit>
+
+ <circuit>
+  <name>Cross-feed</name>
+ </circuit>
+
+
+<!-- ============= -->
+<!-- INTER CONNECT -->
+<!-- ============= -->
+
+ <connect>
+  <input>Engine 1</input>
+  <output>Cross-feed</output>
+  <valve>/controls/fuel/engine[0]/cross-feed</valve>
+ </connect>
+
+ <connect>
+  <input>Engine 2</input>
+  <output>Cross-feed</output>
+  <valve>/controls/fuel/engine[1]/cross-feed</valve>
+ </connect>
+
+ <connect>
+  <input>Engine 3</input>
+  <output>Cross-feed</output>
+  <valve>/controls/fuel/engine[2]/cross-feed</valve>
+ </connect>
+
+ <connect>
+  <input>Engine 4</input>
+  <output>Cross-feed</output>
+  <valve>/controls/fuel/engine[3]/cross-feed</valve>
+ </connect>
+
+ <connect>
+  <input>Cross-feed</input>
+  <output>Carburetor 1</output>
+  <valve>/controls/fuel/engine[0]/firewall</valve>
+ </connect>
+
+ <connect>
+  <input>Cross-feed</input>
+  <output>Carburetor 2</output>
+  <valve>/controls/fuel/engine[1]/firewall</valve>
+ </connect>
+
+ <connect>
+  <input>Cross-feed</input>
+  <output>Carburetor 3</output>
+  <valve>/controls/fuel/engine[2]/firewall</valve>
+ </connect>
+
+ <connect>
+  <input>Cross-feed</input>
+  <output>Carburetor 4</output>
+  <valve>/controls/fuel/engine[3]/firewall</valve>
+ </connect>
+
+
+<!-- ======== -->
+<!-- JETTISON -->
+<!-- ======== -->
+
+ <transfer>
+  <input>Main 1</input>
+  <output>Dump chute</output>
+  <valve>/controls/fuel/dump/valve[0]</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 2</input>
+  <output>Dump chute</output>
+  <valve>/controls/fuel/dump/valve[0]</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 3</input>
+  <output>Dump chute</output>
+  <valve>/controls/fuel/dump/valve[1]</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 4</input>
+  <output>Dump chute</output>
+  <valve>/controls/fuel/dump/valve[1]</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 2A</input>
+  <output>Dump chute</output>
+  <valve>/controls/fuel/dump/valve[2]</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 3A</input>
+  <output>Dump chute</output>
+  <valve>/controls/fuel/dump/valve[2]</valve>
+ </transfer>
+
+
+<!-- ========= -->
+<!-- TRANSFERS -->
+<!-- ========= -->
+
+ <transfer>
+  <input>Main 1</input>
+  <output>Engine 1</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[0]/shut-off</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 2</input>
+  <output>Engine 2</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[1]/shut-off</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 3</input>
+  <output>Engine 3</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[2]/shut-off</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 4</input>
+  <output>Engine 4</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[3]/shut-off</valve>
+ </transfer>
+
+ <transfer>
+  <input>Center</input>
+  <output>Cross-feed</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[4]/shut-off</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 2A</input>
+  <output>Engine 2</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[5]/shut-off</valve>
+ </transfer>
+
+ <transfer>
+  <input>Main 3A</input>
+  <output>Engine 3</output>
+  <pump type="int">0</pump>
+  <valve>/controls/fuel/tank[6]/shut-off</valve>
+ </transfer>
+
+<!-- Carburetors -->
+
+ <connect>
+  <input>Engine 1</input>
+  <output>Carburetor 1</output>
+  <valve>/controls/fuel/engine[0]/firewall</valve>
+ </connect>
+
+ <connect>
+  <input>Engine 2</input>
+  <output>Carburetor 2</output>
+  <valve>/controls/fuel/engine[1]/firewall</valve>
+ </connect>
+
+ <connect>
+  <input>Engine 3</input>
+  <output>Carburetor 3</output>
+  <valve>/controls/fuel/engine[2]/firewall</valve>
+ </connect>
+
+ <connect>
+  <input>Engine 4</input>
+  <output>Carburetor 4</output>
+  <valve>/controls/fuel/engine[3]/firewall</valve>
+ </connect>
+
+</PropertyList>

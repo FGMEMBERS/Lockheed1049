@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <params>
+    <throttle>controls/engines/engine[3]/throttle</throttle>
+  </params>
+
+  <particlesystem include="smoke.xml"/>
+</PropertyList>

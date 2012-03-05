@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+
+<!-- Constellation engine smoke.
+
+
+     References :
+     ==========
+
+     - http://www.flightlevel350.com/Aircraft_Lockheed_C-121_Constellation-Airline_Untitled_Aviation_Video-1835.html :
+
+     N73544 at LSZB.
+
+-->
+
+
+<PropertyList>
+
+    <type>normal</type>
+    <name>smoke</name>
+    <texture>smoke.png</texture>
+    <emissive>false</emissive>
+    <lighting>true</lighting>
+
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </offsets>
+
+    <condition>
+     <and>
+      <property>controls/environment/smoke</property>
+      <greater-than>
+        <property alias="/params/throttle"/>
+        <value>0.95</value>                                     <!-- only full power -->
+      </greater-than>
+      <less-than>
+       <property>/position/altitude-agl-ft</property>
+       <value>2000</value>                                      <!-- not visible in flight (guess) -->
+      </less-than>
+     </and>
+    </condition>
+
+    <attach>world</attach>
+
+    <placer>
+      <type>sector</type>                                       <!-- exhaust surface -->
+      <radius-min-m>0.0</radius-min-m>
+      <radius-max-m>0.05</radius-max-m>
+    </placer>
+
+    <shooter>
+      <theta-min-deg>45</theta-min-deg>                         <!-- cone around exhaust -->
+      <theta-max-deg>85</theta-max-deg>
+      <phi-min-deg>60</phi-min-deg>
+      <phi-max-deg>60</phi-max-deg>
+      <speed-mps>
+        <value>50</value>
+        <spread>5</spread>
+      </speed-mps>
+      <rotation-speed>
+        <x-max-deg-sec>1</x-max-deg-sec>                        <!-- light rotation, in the wake turbulence -->
+        <x-min-deg-sec>-1</x-min-deg-sec>
+        <y-max-deg-sec>1</y-max-deg-sec>
+        <y-min-deg-sec>-1</y-min-deg-sec>
+        <z-max-deg-sec>1</z-max-deg-sec>
+        <z-min-deg-sec>-1</z-min-deg-sec>
+      </rotation-speed>
+    </shooter>
+
+    <counter>
+      <particles-per-sec>
+        <value>75</value>
+        <spread>25</spread>
+      </particles-per-sec>
+    </counter>
+
+    <align>billboard</align>
+
+    <particle>
+      <start>
+        <color>
+          <red>
+            <value>0.1</value>
+          </red>
+          <green>
+            <value>0.1</value>
+          </green>
+          <blue>
+            <value>0.1</value>
+          </blue>
+          <alpha>
+            <value>0.1</value>                                  <!-- light black smoke -->
+          </alpha>
+        </color>
+        <size>
+          <value>0.10</value>
+        </size>
+      </start>
+      <end>
+        <color>
+          <red>
+            <value>0.5</value>                                  <!-- grey dilution -->
+          </red>
+          <green>
+            <value>0.5</value>
+          </green>
+          <blue>
+            <value>0.5</value>
+          </blue>
+          <alpha>
+            <value>0.001</value>                                <!-- barely visible -->
+          </alpha>
+        </color>
+        <size>
+          <value>2</value>                                      <!-- cloud spreading -->
+        </size>
+      </end>
+      <life-sec>
+        <value>2</value>
+      </life-sec>
+      <mass-kg>0.0053</mass-kg>                                 <!-- lightly lighter than air -->
+      <radius-m>0.1</radius-m>
+    </particle>
+
+    <program>
+      <fluid>air</fluid>
+      <gravity>true</gravity>
+      <wind>true</wind>
+    </program>
+
+</PropertyList>

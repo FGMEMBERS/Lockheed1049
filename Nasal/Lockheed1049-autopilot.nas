@@ -115,6 +115,16 @@ Autopilot.pitchexport = func( coef ) {
     return result;
 }
 
+Autopilot.schedule = func {
+   # TEMPORARY work around for heading modes PID :
+   # heading modes banks into the direction, before engagement.
+   if( me.itself["autopilot"].getChild("heading").getValue() != "dg-heading-hold" ) {
+       # sets the value early.
+       var headingdeg = me.noinstrument["heading"].getValue();
+       me.itself["autopilot-set"].getChild("heading-bug-deg").setValue(headingdeg);
+   }
+}
+
 Autopilot.real = func {
    var mode = me.itself["autopilot"].getChild("altitude").getValue();
 

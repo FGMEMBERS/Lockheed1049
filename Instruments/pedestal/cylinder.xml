@@ -30,7 +30,7 @@
   <object-name>ElevatorTabLW</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/flight/elevator-trim</property>
@@ -42,7 +42,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/flight/elevator-trim</property>
@@ -287,7 +287,7 @@
   <object-name>MainThrottle1</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/throttle</property>
@@ -299,7 +299,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/throttle</property>
@@ -316,7 +316,7 @@
   <object-name>MainThrottle2</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/throttle</property>
@@ -328,7 +328,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/throttle</property>
@@ -345,7 +345,7 @@
   <object-name>MainThrottle3</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/throttle</property>
@@ -357,7 +357,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/throttle</property>
@@ -374,7 +374,7 @@
   <object-name>MainThrottle4</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/throttle</property>
@@ -386,7 +386,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/throttle</property>
@@ -430,7 +430,7 @@
   <object-name>MasterPropeller</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/propeller-pitch</property>
@@ -457,7 +457,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/propeller-pitch</property>
@@ -503,7 +503,7 @@
   <object-name>FlapLever</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/flight/flaps</property>
@@ -515,7 +515,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/flight/flaps</property>
@@ -546,7 +546,7 @@
   <object-name>ElevatorTabRW</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/flight/elevator-trim</property>
@@ -558,7 +558,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/flight/elevator-trim</property>

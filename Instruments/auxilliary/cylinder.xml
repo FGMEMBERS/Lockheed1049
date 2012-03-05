@@ -24,24 +24,8 @@
    <button>0</button>
    <repeatable>false</repeatable>
    <binding>
-    <command>property-adjust</command>
+    <command>property-toggle</command>
     <property>controls/fuel/tank[4]/shut-off</property>
-    <step>-1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/fuel/tank[4]/shut-off</property>
-    <step>1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
    </binding>
   </action>
  </animation>
@@ -103,29 +87,12 @@
  <animation>
   <type>pick</type>
   <object-name>CrossFeedLever1</object-name>
-  <property>controls/fuel/engine[0]/cross-feed</property>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
    <binding>
-    <command>property-adjust</command>
+    <command>property-toggle</command>
     <property>controls/fuel/engine[0]/cross-feed</property>
-    <step>0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/fuel/engine[0]/cross-feed</property>
-    <step>-0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
    </binding>
   </action>
  </animation>
@@ -137,24 +104,8 @@
    <button>0</button>
    <repeatable>false</repeatable>
    <binding>
-    <command>property-adjust</command>
+    <command>property-toggle</command>
     <property>controls/fuel/engine[1]/cross-feed</property>
-    <step>0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/fuel/engine[1]/cross-feed</property>
-    <step>-0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
    </binding>
   </action>
  </animation>
@@ -166,24 +117,8 @@
    <button>0</button>
    <repeatable>false</repeatable>
    <binding>
-    <command>property-adjust</command>
+    <command>property-toggle</command>
     <property>controls/fuel/engine[2]/cross-feed</property>
-    <step>0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/fuel/engine[2]/cross-feed</property>
-    <step>-0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
    </binding>
   </action>
  </animation>
@@ -195,24 +130,8 @@
    <button>0</button>
    <repeatable>false</repeatable>
    <binding>
-    <command>property-adjust</command>
+    <command>property-toggle</command>
     <property>controls/fuel/engine[3]/cross-feed</property>
-    <step>0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/fuel/engine[3]/cross-feed</property>
-    <step>-0.1</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
    </binding>
   </action>
  </animation>

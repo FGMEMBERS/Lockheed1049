@@ -83,7 +83,7 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-- 2.0.0 : minimum version.
+- 2.6.0 : minimum version.
 
 
 Keyboard
@@ -113,7 +113,7 @@ Unchanged behaviour
 
 Same behaviour
 --------------
-- "s"   : swaps between Captain and Engineer 2D panels.
+- "S"   : swaps between Captain and Engineer 2D panels.
 - "F12" : radio frequencies.
  
 Improved behaviour
@@ -211,17 +211,15 @@ TO DO FDM
 
 Known problems
 ==============
+- data are not saved on reinit.
 
 Known problems autopilot
 ------------------------
-- toggle INS mode, only AFTER activation of route, or use "ctrl-I a".
+- toggle waypoint following (virtual copilot), only AFTER activation of route, or use "ctrl-I a".
 
-Known problems GIT autopilot
-----------------------------
+Known problems 2.4.0 autopilot
+------------------------------
 - on engagement, magnetic and true heading modes bank into the opposite direction.
-- the first waypoint is always ignored : insert a double waypoint.
-- to update waypoints, once route is activated, clear completely the route.
-- during descent, route manager may update the target altitude (press F11).
 
 Known problems FDM
 ------------------
@@ -261,4 +259,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-2nd October 2010.
+4 March 2012.

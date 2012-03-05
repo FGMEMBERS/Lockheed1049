@@ -82,5 +82,24 @@
   <z-factor>1.3</z-factor>
  </animation>
 
+ <animation>
+  <type>dist-scale</type>
+  <object-name>LandingLight</object-name>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>20</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>1500</ind>
+    <dep>5</dep>
+   </entry>
+  </interpolation>
+ </animation>
+
 </PropertyList>
 

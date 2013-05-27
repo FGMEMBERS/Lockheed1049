@@ -109,6 +109,10 @@ Seats.offsetexport = func( name, update = 0 ) {
        }
    }
 
+   if( name != "captain" and name != "engineer" ) {
+       update = constant.FALSE;
+   }
+
    if( update ) {
        if( name != "engineer" ) {
            offsetname = "z-offset-m";
@@ -179,7 +183,7 @@ Seats.viewexport = func( name ) {
 
        # swap to view
        if( !me.itself["root"].getChild(name).getValue() ) {
-           setprop("/sim/current-view/view-number", index);
+           me.dependency["current-view"].getChild("view-number").setValue(index);
            me.itself["root"].getChild(name).setValue(constant.TRUE);
            me.itself["root"].getChild("captain").setValue(constant.FALSE);
 
@@ -188,7 +192,7 @@ Seats.viewexport = func( name ) {
 
        # return to captain view
        else {
-           setprop("/sim/current-view/view-number", 0);
+           me.dependency["current-view"].getChild("view-number").setValue(0);
            me.itself["root"].getChild(name).setValue(constant.FALSE);
            me.itself["root"].getChild("captain").setValue(constant.TRUE);
 
@@ -215,7 +219,7 @@ Seats.viewexport = func( name ) {
 
    # captain view
    else {
-       setprop("/sim/current-view/view-number",0);
+       me.dependency["current-view"].getChild("view-number").setValue(0);
        me.itself["root"].getChild("captain").setValue(constant.TRUE);
 
        # disable all other views
@@ -282,28 +286,28 @@ Seats.movelengthexport = func( step ) {
    var prop = "";
 
    if( me.move() ) {
-       headdeg = getprop("/sim/current-view/goal-heading-offset-deg");
+       headdeg = me.dependency["current-view"].getChild("goal-heading-offset-deg").getValue();
 
        if( headdeg <= 45 or headdeg >= 315 ) {
-           prop = "/sim/current-view/z-offset-m";
+           prop = "z-offset-m";
            sign = 1;
        }
        elsif( headdeg >= 135 and headdeg <= 225 ) {
-           prop = "/sim/current-view/z-offset-m";
+           prop = "z-offset-m";
            sign = -1;
        }
        elsif( headdeg > 225 and headdeg < 315 ) {
-           prop = "/sim/current-view/x-offset-m";
+           prop = "x-offset-m";
            sign = -1;
        }
        else {
-           prop = "/sim/current-view/x-offset-m";
+           prop = "x-offset-m";
            sign = 1;
        }
 
-       pos = getprop(prop);
+       pos = me.dependency["current-view"].getChild(prop).getValue();
        pos = pos + sign * step;
-       setprop(prop,pos);
+       me.dependency["current-view"].getChild(prop).setValue(pos);
 
        result = constant.TRUE;
    }
@@ -320,28 +324,28 @@ Seats.movewidthexport = func( step ) {
    var prop = "";
 
    if( me.move() ) {
-       headdeg = getprop("/sim/current-view/goal-heading-offset-deg");
+       headdeg = me.dependency["current-view"].getChild("goal-heading-offset-deg").getValue();
 
        if( headdeg <= 45 or headdeg >= 315 ) {
-           prop = "/sim/current-view/x-offset-m";
+           prop = "x-offset-m";
            sign = 1;
        }
        elsif( headdeg >= 135 and headdeg <= 225 ) {
-           prop = "/sim/current-view/x-offset-m";
+           prop = "x-offset-m";
            sign = -1;
        }
        elsif( headdeg > 225 and headdeg < 315 ) {
-           prop = "/sim/current-view/z-offset-m";
+           prop = "z-offset-m";
            sign = 1;
        }
        else {
-           prop = "/sim/current-view/z-offset-m";
+           prop = "z-offset-m";
            sign = -1;
        }
 
-       pos = getprop(prop);
+       pos = me.dependency["current-view"].getChild(prop).getValue();
        pos = pos + sign * step;
-       setprop(prop,pos);
+       me.dependency["current-view"].getChild(prop).setValue(pos);
 
        result = constant.TRUE;
    }
@@ -355,9 +359,9 @@ Seats.moveheightexport = func( step ) {
    var result = constant.FALSE;
 
    if( me.move() ) {
-       pos = getprop("/sim/current-view/y-offset-m");
+       pos = me.dependency["current-view"].getChild("y-offset-m").getValue();
        pos = pos + step;
-       setprop("/sim/current-view/y-offset-m",pos);
+       me.dependency["current-view"].getChild("y-offset-m").setValue(pos);
 
        result = constant.TRUE;
    }
@@ -388,7 +392,7 @@ Seats.save_lookup = func( name, viewname, index ) {
 
 Seats.restorefull = func {
    var found = constant.FALSE;
-   var index = getprop("/sim/current-view/view-number");
+   var index = me.dependency["current-view"].getChild("view-number").getValue();
 
    if( index == me.CAPTINDEX or index >= me.firstseatview ) {
        found = constant.TRUE;
@@ -425,9 +429,9 @@ Seats.initial_position = func( name ) {
    var posy = me.initial[name]["y"];
    var posz = me.initial[name]["z"];
 
-   setprop("/sim/current-view/x-offset-m",posx);
-   setprop("/sim/current-view/y-offset-m",posy);
-   setprop("/sim/current-view/z-offset-m",posz);
+   me.dependency["current-view"].getChild("x-offset-m").setValue(posx);
+   me.dependency["current-view"].getChild("y-offset-m").setValue(posy);
+   me.dependency["current-view"].getChild("z-offset-m").setValue(posz);
 
    position.getChild("x-m").setValue(posx);
    position.getChild("y-m").setValue(posy);
@@ -452,9 +456,9 @@ Seats.last_position = func( name ) {
            posy != me.initial[name]["y"] or
            posz != me.initial[name]["z"] ) {
 
-           setprop("/sim/current-view/x-offset-m",posx);
-           setprop("/sim/current-view/y-offset-m",posy);
-           setprop("/sim/current-view/z-offset-m",posz);
+           me.dependency["current-view"].getChild("x-offset-m").setValue(posx);
+           me.dependency["current-view"].getChild("y-offset-m").setValue(posy);
+           me.dependency["current-view"].getChild("z-offset-m").setValue(posz);
        }
 
        me.last_recover[ name ] = constant.TRUE;
@@ -476,9 +480,9 @@ Seats.recover = func {
 }
 
 Seats.move_position = func( name ) {
-   var posx = getprop("/sim/current-view/x-offset-m");
-   var posy = getprop("/sim/current-view/y-offset-m");
-   var posz = getprop("/sim/current-view/z-offset-m");
+   var posx = me.dependency["current-view"].getChild("x-offset-m").getValue();
+   var posy = me.dependency["current-view"].getChild("y-offset-m").getValue();
+   var posz = me.dependency["current-view"].getChild("z-offset-m").getValue();
 
    var position = me.itself["position"].getNode(name);
 
@@ -523,14 +527,14 @@ Seats.restoreexport = func {
 
 # restore view pitch
 Seats.restorepitchexport = func {
-   var index = getprop("/sim/current-view/view-number");
+   var index = me.dependency["current-view"].getChild("view-number").getValue();
 
    if( index == me.CAPTINDEX ) {
        var headingdeg = me.dependency["views"][index].getNode("config").getChild("heading-offset-deg").getValue();
        var pitchdeg = me.dependency["views"][index].getNode("config").getChild("pitch-offset-deg").getValue();
 
-       setprop("/sim/current-view/heading-offset-deg", headingdeg );
-       setprop("/sim/current-view/pitch-offset-deg", pitchdeg );
+       me.dependency["current-view"].getChild("heading-offset-deg").setValue(headingdeg);
+       me.dependency["current-view"].getChild("pitch-offset-deg").setValue(pitchdeg);
    }
 
    # only cockpit views
@@ -543,8 +547,8 @@ Seats.restorepitchexport = func {
                 var headingdeg = me.dependency["views"][index].getNode("config").getChild("heading-offset-deg").getValue();
                 var pitchdeg = me.dependency["views"][index].getNode("config").getChild("pitch-offset-deg").getValue();
 
-                setprop("/sim/current-view/heading-offset-deg", headingdeg );
-                setprop("/sim/current-view/pitch-offset-deg", pitchdeg );
+                me.dependency["current-view"].getChild("heading-offset-deg").setValue(headingdeg);
+                me.dependency["current-view"].getChild("pitch-offset-deg").setValue(pitchdeg);
                 break;
             }
         }

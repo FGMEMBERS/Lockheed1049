@@ -2,8 +2,8 @@
 <!-- 
   File:     WrightCyclone-975C18CB1.xml
   Author:   Aero-Matic v 0.7
-  Date:     20 March 2010
-  Version:  2.01
+  Date:     16 March 2013
+  Version:  2.02
 
   Inputs:
     name:           WrightCyclone-975C18CB1
@@ -79,15 +79,18 @@
      -  8 PSI for 46.0 inhg max at 2600 RPM, sea level (low blower).
      -  8 PSI for 46.0 inhg max at 2600 RPM, cruise (high blower).
      - should be adjusted manually by a lever (override).
+
+
+     minmp is adjusted to avoid shutdown with idle throttle.
 -->
 
-   <minmp unit="INHG">  6.0 </minmp>
+   <minmp unit="INHG"> 12.0 </minmp>
    <maxmp unit="INHG"> 54.5 </maxmp>                                         <!-- aeromatic 30.0 -->
    <displacement unit="IN3"> 3350.00 </displacement>
    <bore unit="IN">6.125</bore>
    <stroke unit="IN">6.312</stroke>
    <compression-ratio>6.70</compression-ratio>
-   <volumetric-efficiency>1.3</volumetric-efficiency>
+   <volumetric-efficiency>0.85</volumetric-efficiency>
    <maxhp>    2800.00 </maxhp>
    <cycles>      2.0 </cycles>
    <idlerpm>   700.0 </idlerpm>

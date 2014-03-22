@@ -180,7 +180,6 @@
    <name>captain</name>
    <object-name>PilotSidePanel</object-name>
    <object-name>ParkingBrakeTubeL</object-name>
-   <object-name>ElevatorBoosterTube</object-name>
    <object-name>Captain Instruments</object-name>
   </animation>
 
@@ -1771,8 +1770,14 @@
 <!-- DOORS -->
 
  <animation>
-  <type>translate</type>
+  <name>CrewDoorAll</name>
   <object-name>CrewDoor</object-name>
+  <object-name>CrewDoorWindows</object-name>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>CrewDoorAll</object-name>
   <property>controls/doors/crew/position-norm</property>
   <interpolation>
     <entry>
@@ -1802,7 +1807,7 @@
 
  <animation>
   <type>rotate</type>
-  <object-name>CrewDoor</object-name>
+  <object-name>CrewDoorAll</object-name>
   <property>controls/doors/crew/position-norm</property>
   <interpolation>
     <entry>
@@ -1832,7 +1837,7 @@
 
  <animation>
   <type>pick</type>
-  <object-name>CrewDoor</object-name>
+  <object-name>CrewDoorAll</object-name>
   <action>
    <button>0</button>
    <binding>
@@ -2001,42 +2006,6 @@
   </action>
  </animation>
 
-<!-- booster -->
-
- <animation>
-  <type>translate</type>
-  <object-name>ElevatorBooster</object-name>
-  <property>controls/flight/elevator-boost</property>
-  <interpolation>
-    <entry>
-     <ind>0.0</ind>
-     <dep>0</dep>
-    </entry>
-    <entry>
-     <ind>1.0</ind>
-     <dep>-0.10</dep>
-    </entry>
-  </interpolation>
-  <axis>
-   <x>0.44</x>
-   <y>0.0</y>
-   <z>1.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>ElevatorBooster</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/flight/elevator-boost</property>
-   </binding>
-  </action>
- </animation>
-
 <!-- overhead light -->
 
  <animation>
@@ -2048,100 +2017,6 @@
    <blue>1.0</blue>
    <factor-prop>controls/lighting/internal/overhead/on</factor-prop>
   </emission> 
- </animation>
-
-<!-- tabs -->
-
- <animation>
-  <type>rotate</type>
-  <object-name>RudderTab</object-name>
-  <property>controls/flight/rudder-trim</property>
-  <factor>-4680</factor>
-  <center>
-   <x-m>-15.0</x-m>
-   <y-m>-0.05</y-m>
-   <z-m>0.0</z-m>
-  </center>
-  <axis>
-   <x>0.0</x>
-   <y>0.0</y>
-   <z>1.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>RudderTab</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/flight/rudder-trim</property>
-    <step>0.003</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/flight/rudder-trim</property>
-    <step>-0.003</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>AileronTab</object-name>
-  <property>controls/flight/aileron-trim</property>
-  <factor>-4680</factor>
-  <center>
-   <x-m>0.0</x-m>
-   <y-m>-0.05</y-m>
-   <z-m>0.45</z-m>
-  </center>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>AileronTab</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/flight/aileron-trim</property>
-    <step>0.003</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>controls/flight/aileron-trim</property>
-    <step>-0.003</step>
-    <min>0</min>
-    <max>1</max>
-    <wrap>0</wrap>
-   </binding>
-  </action>
  </animation>
 
 <!-- ENGINEER CENTER PANEL -->

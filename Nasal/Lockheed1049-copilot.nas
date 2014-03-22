@@ -229,7 +229,7 @@ VirtualCopilot.lockwaypointroll = func {
              rolldeg =  me.noinstrument["roll"].getValue();
              if( distancenm > lastnm or rolldeg < - me.ROLLDEG or rolldeg > me.ROLLDEG ) {
                  if( me.headingmode == "true-heading-hold" ) {
-                     setprop("/autopilot/route-manager/input","@pop");
+                     setprop(me.dependency["route-manager"].getChild("input").getPath(),"@pop");
                  }
              }
          }

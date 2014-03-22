@@ -75,7 +75,7 @@ A mouse with 3rd (middle) button, or its emulation (left + right button), is req
 Fuel load
 ---------
 - default is maximum landing weight, 98500 lb.
-- for alternate load, press "ctrl-I f" (saved on exit in aircraft-data).
+- for alternate load, press "= f" (saved on exit in aircraft-data).
 
 Sounds
 ------
@@ -83,7 +83,7 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-- 2.6.0 : minimum version.
+- 3.0.0 : minimum version.
 
 
 Keyboard
@@ -95,17 +95,17 @@ Keyboard
 Views
 -----
 - "ctrl-E" : "E"ngineer view.
-- "ctrl-J" : Copilot view.
 - "ctrl-K" : Observer view (floating).
 - "ctrl-L" : Observer 2 view (floating).
 - "ctrl-N" : "N"avigator view.
 - "ctrl-O" : radi"O" view.
+- "ctrl-Y" : Copilot view.
 - "shift-ctrl-V" : restore view pitch.
 - "shift-ctrl-X" : restore floating view.
 
 Virtual crew
 ------------
-- "ctrl-Z" : virtual crew.
+- "ctrl-Q" : virtual crew.
 
 Unchanged behaviour
 -------------------
@@ -130,8 +130,8 @@ Improved behaviour
 
 Alternate behaviour
 -------------------
+- "=" : menu.
 - "ctrl-B" : propeller reverse (not yet implemented by FDM).
-- "ctrl-I" : menu.
 - "up / down"  : move floating view in length.
 - "home / end" : move floating view in length (fast).
 - "left / right" : move floating view in width.
@@ -215,7 +215,7 @@ Known problems
 
 Known problems autopilot
 ------------------------
-- toggle waypoint following (virtual copilot), only AFTER activation of route, or use "ctrl-I a".
+- toggle waypoint following (virtual copilot), only AFTER activation of route, or use "= a".
 
 Known problems 2.4.0 autopilot
 ------------------------------
@@ -224,9 +224,6 @@ Known problems 2.4.0 autopilot
 Known problems FDM
 ------------------
 - cross feed emulation until speed-up X 3, when empty tank.
-- at rest, idle engine (700 RPM) may yet stop by very low pressure (altimeter 29.49 inhg).
-- at rest, idle engine (700 RPM) may stop by normal pressure (altimeter 29.89 inhg),
-  when the RPM goes strongly below 700 RPM, by a curt throttle : visible by RPM oscillating around 700 RPM.
 
 
 Secondary problems
@@ -259,4 +256,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-4 March 2012.
+22 March 2014.

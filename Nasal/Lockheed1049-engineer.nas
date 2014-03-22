@@ -122,7 +122,7 @@ VirtualEngineer.blower = func {
    for( var i = 0; i < 4; i = i+1 ) {
         if( me.dependency["engine"][i].getChild("blower").getValue() != target ) {
             times = me.speed_ratesec( me.BLOWERSEC );
-            interpolate( "/controls/engines/engine[" ~ i ~ "]/blower", target, times );
+            interpolate( me.dependency["engine"][i].getChild("blower").getPath(), target, times );
         }
    }
 }

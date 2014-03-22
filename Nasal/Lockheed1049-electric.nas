@@ -11,7 +11,7 @@
 Lighting = {};
 
 Lighting.new = func {
-   var obj = { parents : [Lighting],
+   var obj = { parents : [Lighting,System],
 
                landing : LandingLight.new(),
                internal : LightLevel.new()
@@ -23,9 +23,11 @@ Lighting.new = func {
 };
 
 Lighting.init = func {
-   var beacon_switch = props.globals.getNode("controls/lighting/beacon", constant.FALSE);
+   me.inherit_system("/systems/lighting");
 
-   aircraft.light.new("controls/lighting/flash", [ 0.10, 1.20 ], beacon_switch);
+   var beacon_switch = me.itself["root-ctrl"].getNode("beacon", constant.FALSE);
+
+   aircraft.light.new(me.itself["root-ctrl"].getChild("flash").getPath(), [ 0.10, 1.20 ], beacon_switch);
 }
 
 Lighting.schedule = func {
@@ -129,7 +131,7 @@ LandingLight.extendexport = func {
 
             result = me.itself["landing"][i].getChild("position").getValue();
             if( result != value ) {
-                light = "/controls/lighting/external/landing[" ~ i ~ "]/position";
+                light = me.itself["landing"][i].getChild("position").getPath();
                 me.landingmotor( light, result, value );
             }
        }

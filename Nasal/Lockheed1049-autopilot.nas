@@ -25,7 +25,7 @@ Autopilot.init = func {
    me.inherit_system("/systems/autopilot");
 
    # glows 35 to 45 times per minute
-   aircraft.light.new("/systems/autopilot/gyro-beacon", [0.03, 1.30 + rand()*0.38]);
+   aircraft.light.new(me.itself["root"].getChild("gyro-beacon").getPath(), [0.03, 1.30 + rand()*0.38]);
 }
 
 # autopilot hold

@@ -723,44 +723,6 @@
    </offsets>
   </model>
 
-  <model>
-   <name>Spot</name>
-   <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
-   <offsets>
-    <x-m>-14.910</x-m>
-    <y-m>-0.286</y-m>
-    <z-m>1.475</z-m>
-    <pitch-deg>5.0</pitch-deg>
-   </offsets>
-  </model>
-
-  <model>
-   <name>Spot copilot</name>
-   <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
-   <offsets>
-    <x-m>-15.111</x-m>
-    <y-m>0.286</y-m>
-    <z-m>1.431</z-m>
-    <pitch-deg>-19.0</pitch-deg>
-   </offsets>
-   <overlay>
-    <params>
-     <light>systems/lighting/internal/copilot/chart-light</light>
-     <red>controls/lighting/internal/copilot/chart-red</red>
-    </params>
-   </overlay>
-  </model>
-
-  <model>
-   <name>Fuel Cylinder</name>
-   <path>Aircraft/Lockheed1049/Instruments/overhead/fuel.xml</path>
-   <offsets>
-    <x-m>-14.783</x-m>
-    <y-m>0.00</y-m>
-    <z-m>1.518</z-m>
-   </offsets>
-  </model>
-
 <!-- bottom -->
 
   <model>
@@ -796,6 +758,23 @@
    </offsets>
   </model>
 
+  <model>
+   <name>Spot copilot</name>
+   <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
+   <offsets>
+    <x-m>-15.111</x-m>
+    <y-m>0.286</y-m>
+    <z-m>1.431</z-m>
+    <pitch-deg>-19.0</pitch-deg>
+   </offsets>
+   <overlay>
+    <params>
+     <light>systems/lighting/internal/copilot/chart-light</light>
+     <red>controls/lighting/internal/copilot/chart-red</red>
+    </params>
+   </overlay>
+  </model>
+
 <!-- middle -->
 
   <model>
@@ -809,6 +788,29 @@
    </offsets>
   </model>
 
+  <model>
+   <name>Spot</name>
+   <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
+   <offsets>
+    <x-m>-14.910</x-m>
+    <y-m>-0.286</y-m>
+    <z-m>1.475</z-m>
+    <pitch-deg>5.0</pitch-deg>
+   </offsets>
+  </model>
+
+<!-- aft -->
+
+  <model>
+   <name>Fuel Cylinder</name>
+   <path>Aircraft/Lockheed1049/Instruments/overhead/fuel.xml</path>
+   <offsets>
+    <x-m>-14.783</x-m>
+    <y-m>0.00</y-m>
+    <z-m>1.518</z-m>
+   </offsets>
+  </model>
+
 <!-- PEDESTAL -->
 
   <model>
@@ -818,6 +820,39 @@
     <x-m>-15.348</x-m>
     <y-m>0.0</y-m>
     <z-m>0.573</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Rudder tab</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/rudder_tab.xml</path>
+   <offsets>
+    <x-m>-15.00086</x-m>
+    <y-m>-0.05480</y-m>
+    <z-m> 0.48753</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Aileron tab</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/aileron_tab.xml</path>
+   <offsets>
+    <x-m>-14.98449</x-m>
+    <y-m>-0.05510</y-m>
+    <z-m> 0.45263</z-m>
+   </offsets>
+  </model>
+
+<!-- side -->
+
+  <model>
+   <name>Elevator booster</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/elevator_booster.xml</path>
+   <offsets>
+    <x-m>-15.083</x-m>
+    <y-m>-0.16221</y-m>
+    <z-m> 0.451</z-m>
+    <pitch-deg>23.5</pitch-deg>
    </offsets>
   </model>
 
@@ -1641,6 +1676,7 @@
    <object-name>Overhead light switch</object-name>
    <object-name>Overhead light</object-name>
    <object-name>Altitude switch</object-name>
+   <object-name>Rudder tab</object-name>
    <object-name>Gyro beacon light</object-name>
    <object-name>Flux gate caged indicator light</object-name>
    <object-name>Autopilot plate</object-name>

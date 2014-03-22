@@ -22,6 +22,14 @@
    </relations>
   </clock>
 
+  <comm n="0">
+   <power-btn type="string">1</power-btn>                                  <!-- display on -->
+  </comm>
+
+  <comm n="1">
+   <power-btn type="string">1</power-btn>                                  <!-- display on -->
+  </comm>
+
   <deviation-indicator n="0">
    <frequency type="bool">true</frequency>                                 <!-- NAV 0 -->
   </deviation-indicator>

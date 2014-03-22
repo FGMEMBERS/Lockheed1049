@@ -15,9 +15,9 @@ Doors.new = func {
 
                seat : SeatRail.new(),
 
-               crew : aircraft.door.new("controls/doors/crew", 10.0),
-               flightstation : aircraft.door.new("controls/doors/flight-station", 7.0),
-               passenger : aircraft.door.new("controls/doors/passenger", 10.0)
+               crew : nil,
+               flightstation : nil,
+               passenger : nil
          };
 
    obj.init();
@@ -27,6 +27,10 @@ Doors.new = func {
 
 Doors.init = func {
    me.inherit_system( "/systems/doors" );
+
+   me.crew = aircraft.door.new(me.itself["root-ctrl"].getNode("crew").getPath(), 10.0);
+   me.flightstation = aircraft.door.new(me.itself["root-ctrl"].getNode("flight-station").getPath(), 7.0);
+   me.passenger = aircraft.door.new(me.itself["root-ctrl"].getNode("passenger").getPath(), 10.0);
 
    # user customization
    if( me.itself["root-ctrl"].getNode("flight-station").getChild("opened").getValue() ) {
@@ -95,7 +99,7 @@ Gear.new = func {
 Gear.init = func {
    me.inherit_system( "/systems/gear" );
 
-   aircraft.steering.init("/controls/gear/brake-steering");
+   aircraft.steering.init(me.itself["root-ctrl"].getChild("brake-steering").getPath());
 }
 
 Gear.steeringexport = func {

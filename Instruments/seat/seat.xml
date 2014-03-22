@@ -16,8 +16,14 @@
  </animation>
  
  <animation>
-  <type>translate</type>
+  <name>MovingSeat</name>
   <object-name>Seat</object-name>
+  <object-name>Legs</object-name>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>MovingSeat</object-name>
   <property>systems/human/captain/stowe-norm</property>
   <factor>0.25</factor>
   <axis>

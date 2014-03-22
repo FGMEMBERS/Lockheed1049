@@ -72,20 +72,15 @@ Wings :
 - reverse scale to the left wing (inversed normals), and map "TWA" above it.
 - map "TWA" below the right wing.
 
-The cockpit texture without alpha makes the 2D instruments visible on a panel;
-the other texture with alpha is for clipping.
-
 The black rotative switches are visible only if the cockpit black is lighter
 (hence the colour of the plates).
 
-Cockpit objects have a Blender material, to improve the solid view :
-swap back to the default white, when a clear texture is lost.
+Windows (hull, doors, cockpit) are extracted into a separated object.
 
 
 TO DO
 =====
 - gear compression.
-- smoke at engine start.
 - navigator seat.
 - release the metapost files (panel textures).
 
@@ -141,7 +136,10 @@ Light texture from bo105 (M. Franz).
 http://www.usflag.org/ : the 49 stars flag (1957 livery).
 
 
-Made with Blender 2.49a.
+Made with Blender 2.67a.
+AC3D export :
+- auto smooth is enabled (default is 30 degrees). Except seats, tables, levers, small warning lights and switches.
+- AC3D groups are removed, to help import/export.
 
 
-3 October 2011.
+22 March 2014.

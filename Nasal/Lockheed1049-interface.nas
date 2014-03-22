@@ -630,18 +630,11 @@ Menu.array = func( table, max, name ) {
 Crewbox = {};
 
 Crewbox.new = func {
-   var obj = { parents : [Crewbox],
+   var obj = { parents : [Crewbox,System],
 
                MENUSEC : 3.0,
 
                timers : 0.0,
-
-               copilot : nil,
-               copilotcontrol : nil,
-               crew : nil,
-               crewcontrols : nil,
-               engineercontrol : nil,
-               voice : nil,
 
 # left bottom, 1 line, 10 seconds.
                BOXX : 10,
@@ -661,25 +654,18 @@ Crewbox.new = func {
 };
 
 Crewbox.init = func {
-    me.copilot = props.globals.getNode("/systems/copilot");
-    me.copilotcontrol = props.globals.getNode("/controls/copilot");
-    me.crew = props.globals.getNode("/systems/crew");
-    me.crewcontrols = props.globals.getNode("/controls/crew");
-    me.engineer = props.globals.getNode("/systems/engineer");
-    me.engineercontrol = props.globals.getNode("/controls/engineer");
-    me.voice = props.globals.getNode("/systems/voice");
- 
+    me.inherit_system("/systems/crew"); 
 
     me.resize();
 
-    setlistener("/sim/startup/ysize", crewboxresizecron);
-    setlistener("/sim/speed-up", crewboxcron);
-    setlistener("/sim/freeze/master", crewboxcron);
+    setlistener(me.noinstrument["startup"].getPath(), crewboxresizecron);
+    setlistener(me.noinstrument["speed-up"].getPath(), crewboxcron);
+    setlistener(me.noinstrument["freeze"].getPath(), crewboxcron);
 }
 
 Crewbox.resize = func {
     var y = 0;
-    var ysize = - getprop("/sim/startup/ysize");
+    var ysize = - me.noinstrument["startup"].getValue();
 
     if( ysize == nil ) {
         ysize = me.BOTTOMY;
@@ -712,11 +698,11 @@ Crewbox.pausetext = func {
     var red = constant.FALSE;
     var text = "";
 
-    if( getprop("/sim/freeze/master") ) {
+    if( me.noinstrument["freeze"].getValue() ) {
         text = "pause";
     }
     else {
-        speedup = getprop("/sim/speed-up");
+        speedup = me.noinstrument["speed-up"].getValue();
         if( speedup > 1 ) {
             text = sprintf( speedup, "3f.0" ) ~ "  t";
         }
@@ -735,17 +721,17 @@ crewboxcron = func {
 }
 
 Crewbox.minimizeexport = func {
-    var value = me.crew.getChild("minimized").getValue();
+    var value = me.itself["root"].getChild("minimized").getValue();
 
-    me.crew.getChild("minimized").setValue(!value);
+    me.itself["root"].getChild("minimized").setValue(!value);
 
     me.resettimer();
 }
 
 Crewbox.toggleexport = func {
     # 2D feedback
-    if( !getprop("/systems/human/serviceable") ) {
-        me.crew.getChild("minimized").setValue(constant.FALSE);
+    if( !me.dependency["human"].getChild("serviceable").getValue() ) {
+        me.itself["root"].getChild("minimized").setValue(constant.FALSE);
         me.resettimer();
     }
 
@@ -755,10 +741,10 @@ Crewbox.toggleexport = func {
 
 Crewbox.schedule = func {
     # timeout on text box
-    if( me.crewcontrols.getChild("timeout").getValue() ) {
+    if( me.itself["root-ctrl"].getChild("timeout").getValue() ) {
         me.timers = me.timers + me.MENUSEC;
         if( me.timers >= me.timeoutsec() ) {
-            me.crew.getChild("minimized").setValue(constant.TRUE);
+            me.itself["root"].getChild("minimized").setValue(constant.TRUE);
         }
     }
 
@@ -766,7 +752,7 @@ Crewbox.schedule = func {
 }
 
 Crewbox.timeoutsec = func {
-    var result = me.crewcontrols.getChild("timeout-s").getValue();
+    var result = me.itself["root-ctrl"].getChild("timeout-s").getValue();
 
     if( result < me.MENUSEC ) {
         result = me.MENUSEC;
@@ -782,8 +768,8 @@ Crewbox.resettimer = func {
 }
 
 Crewbox.crewtext = func {
-    if( !me.crew.getChild("minimized").getValue() or
-        !me.crewcontrols.getChild("timeout").getValue() ) {
+    if( !me.itself["root"].getChild("minimized").getValue() or
+        !me.itself["root-ctrl"].getChild("timeout").getValue() ) {
         me.checklisttext();
         me.copilottext();
         me.engineertext();
@@ -795,15 +781,15 @@ Crewbox.crewtext = func {
 
 Crewbox.checklisttext = func {
     var white = constant.FALSE;
-    var text = me.voice.getChild("callout").getValue();
-    var text2 = me.voice.getChild("checklist").getValue();
+    var text = me.dependency["voice"].getChild("callout").getValue();
+    var text2 = me.dependency["voice"].getChild("checklist").getValue();
     var text = "";
     var text2 = "";
     var index = me.lineindex["checklist"];
 
     if( text2 != "" ) {
         text = text2 ~ " " ~ text;
-        white = me.voice.getChild("real").getValue();
+        white = me.dependency["voice"].getChild("real").getValue();
     }
 
     # real checklist is white
@@ -812,16 +798,16 @@ Crewbox.checklisttext = func {
 
 Crewbox.copilottext = func {
     var green = constant.FALSE;
-    var text = me.copilot.getChild("state").getValue();
+    var text = me.dependency["copilot"].getChild("state").getValue();
     var index = me.lineindex["copilot"];
 
     if( text == "" ) {
-        if( me.copilotcontrol.getChild("activ").getValue() ) {
+        if( me.dependency["copilot-ctrl"].getChild("activ").getValue() ) {
             text = "copilot";
         }
     }
 
-    if( me.copilot.getChild("activ").getValue() ) {
+    if( me.dependency["copilot"].getChild("activ").getValue() ) {
         green = constant.TRUE;
     }
 
@@ -829,12 +815,12 @@ Crewbox.copilottext = func {
 }
 
 Crewbox.engineertext = func {
-    var green = me.engineer.getChild("activ").getValue();
-    var text = me.engineer.getChild("state").getValue();
+    var green = me.dependency["engineer"].getChild("activ").getValue();
+    var text = me.dependency["engineer"].getChild("state").getValue();
     var index = me.lineindex["engineer"];
 
     if( text == "" ) {
-        if( me.engineercontrol.getChild("activ").getValue() ) {
+        if( me.dependency["engineer-ctrl"].getChild("activ").getValue() ) {
             text = "engineer";
         }
     }

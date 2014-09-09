@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>hydraulicpump.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>HydraulicPump1</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>HydraulicPump2</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>HydraulicPump3</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>HydraulicPump4</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+</PropertyList>
+

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 double torque pressure instrument :
+
+     At sea level, for 2900 RPM :
+     - power is 2800 hp : BMEP should be 228 = 2800 x 236 / 2900.
+     - as indicated torque is -23178, conversion factor should be 220 / -23178 = -0.009837.
+
+
+     Reference :
+     =========
+     http://aviatechno.free.fr/constellation/moteurs.php :
+
+     HP = RPM x BMEP / 236, where 236 is the constant for 3350 in. cube displacement.
+-->
+
+<PropertyList>
+ <name>Double Torque Pressure</name>
+ <w-base>128</w-base>
+ <h-base>128</h-base>
+
+ <params>
+  <torque-select>/engines/engine[0]/thruster/torque</torque-select>
+  <torque2-select>/engines/engine[1]/thruster/torque</torque2-select>
+ </params>
+
+ <layers>
+  <layer>
+   <name>background</name>
+   <w>110</w>
+   <h>110</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-torque-pressure.rgb</path>
+    <x1>0</x1>
+    <y1>0</y1>
+    <x2>1</x2>
+    <y2>1</y2>
+   </texture>
+  </layer>
+
+  <layer>
+   <name>needle 1</name>
+   <w>6</w>
+   <h>48</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/misc-1.rgb</path>
+    <x1>0.8</x1>
+    <y1>0.78125</y1>
+    <x2>0.8375</x2>
+    <y2>1.0</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property alias="../../../../../params/torque-select"/>
+      <scale>-0.009837</scale>
+      <offset>180</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>20.0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>needle 2</name>
+   <w>6</w>
+   <h>48</h>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/misc-1.rgb</path>
+    <x1>0.8</x1>
+    <y1>0.78125</y1>
+    <x2>0.8375</x2>
+    <y2>1.0</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property alias="../../../../../params/torque2-select"/>
+      <scale>-0.009837</scale>
+      <offset>180</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>20.0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>glare shield</name>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/bezel1.rgb</path>
+    <x1>0.5</x1>
+    <y1>0.0</y1>
+    <x2>1.0</x2>
+    <y2>0.5</y2>
+   </texture>
+   <w>128</w>
+   <h>128</h>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>3</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-3</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+</PropertyList>

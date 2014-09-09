@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+
+<!-- enable quick adjustments according to screen resolution -->
+
+<PropertyList>
+  <name>Lockheed1049-seats</name>
+  <layout>vbox</layout>
+  <width>400</width>
+
+  <text>
+    <label>Constellation seats</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    
+    <text>
+      <label>Captain  ~</label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <dial>
+       <wrap>false</wrap>
+       <min>-0.1</min>
+       <max>0.1</max>
+       <live>true</live>
+       <property>/controls/seat/offset/captain</property>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.seatsystem.offsetexport("captain");</script>
+       </binding>
+      </dial>
+
+      <text>
+       <label>-100.00</label>
+       <format>%-0.2f m aft</format>
+       <live>true</live>
+       <property>/systems/seat/offset/captain</property>
+      </text>
+
+      <button>
+        <legend>Reset</legend>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/seat/offset/captain</property>
+         <value>0</value>
+        </binding>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.seatsystem.offsetexport("captain");</script>
+        </binding>
+      </button>
+    </group>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>vbox</layout>
+    
+    <text>
+      <label>Engineer  ~</label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <dial>
+       <wrap>false</wrap>
+       <min>-0.1</min>
+       <max>0.1</max>
+       <live>true</live>
+       <property>/controls/seat/offset/engineer</property>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.seatsystem.offsetexport("engineer");</script>
+       </binding>
+      </dial>
+
+      <text>
+       <label>-100.00</label>
+       <format>%-0.2f m right</format>
+       <live>true</live>
+       <property>/systems/seat/offset/engineer</property>
+      </text>
+
+      <button>
+        <legend>Reset</legend>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/seat/offset/engineer</property>
+         <value>0</value>
+        </binding>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Lockheed1049.seatsystem.offsetexport("engineer");</script>
+        </binding>
+      </button>
+    </group>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>adjusts only current view</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>offset to Nasal/Lockheed1049-views.xml</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+</PropertyList>

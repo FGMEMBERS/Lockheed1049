@@ -1,0 +1,609 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>middle.ac</path>
+
+<!-- ignition -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition1</object-name>
+  <property>controls/engines/engine[0]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m>-0.094</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition1</object-name>
+  <property>controls/engines/engine[0]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m>-0.094</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition2</object-name>
+  <property>controls/engines/engine[1]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m>-0.031</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition2</object-name>
+  <property>controls/engines/engine[1]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m>-0.031</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition3</object-name>
+  <property>controls/engines/engine[2]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m> 0.031</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition3</object-name>
+  <property>controls/engines/engine[2]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m> 0.031</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition4</object-name>
+  <property>controls/engines/engine[3]/magnetos</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m> 0.096</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ignition4</object-name>
+  <property>controls/engines/engine[3]/starter</property>
+  <factor>45</factor>   
+  <center>
+   <x-m> 0.029</x-m>
+   <y-m> 0.096</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition1</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[0]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition1</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition2</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[1]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition2</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition3</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[2]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[2]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition3</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition4</object-name>
+  <condition>
+   <equals>
+    <property>controls/engines/engine[3]/magnetos</property>
+    <value>3</value>
+   </equals>
+  </condition>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[3]/starter</property>
+    <value type="bool">true</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Ignition4</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/magnetos</property>
+    <step>1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/magnetos</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>3</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- landing lights -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingExtendLeft</object-name>
+  <property>controls/lighting/external/landing[0]/extend</property>
+  <factor>60</factor>   
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-0.039</x-m>
+   <y-m>-0.188</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingExtendRight</object-name>
+  <property>controls/lighting/external/landing[1]/extend</property>
+  <factor>60</factor>   
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-0.039</x-m>
+   <y-m>-0.168</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingLampLeft</object-name>
+  <property>controls/lighting/external/landing[0]/on</property>
+  <factor>60</factor>   
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-0.039</x-m>
+   <y-m>-0.130</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LandingLampRight</object-name>
+  <property>controls/lighting/external/landing[1]/on</property>
+  <factor>60</factor>   
+  <offset-deg>-30</offset-deg>
+  <center>
+   <x-m>-0.039</x-m>
+   <y-m>-0.109</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingExtendLeft</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[0]/extend</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingExtendRight</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[1]/extend</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingLampLeft</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[0]/on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LandingLampRight</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/external/landing[1]/on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Plate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green-prop>systems/lighting/internal/overhead/green</green-prop>
+   <blue-prop>systems/lighting/internal/overhead/blue</blue-prop>
+   <factor-prop>systems/lighting/internal/overhead/light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PanelSwitch</object-name>
+  <property>controls/lighting/internal/overhead/panel</property>
+  <factor>270</factor>   
+  <center>
+   <x-m> 0.026</x-m>
+   <y-m> 0.214</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>-0.004</x>
+   <y> 0.0</y>
+   <z> 0.020</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PanelSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/overhead/panel</property>
+    <step>0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/lighting/internal/overhead/panel</property>
+    <step>-0.2</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- boosters light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>ElevatorBoosterLight</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>RudderBoosterLight</object-name>
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+</PropertyList>
+

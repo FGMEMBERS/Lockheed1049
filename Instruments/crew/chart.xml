@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<!-- Aeronautical chart on a pad :
+
+     - 5 1/2 x 8 1/2 (140 x 216 mm).
+     - 3D indicator of virtual crew.
+    
+    
+     Reference :
+     =========
+     http://en.wikipedia.org/wiki/Paper_size
+ 
+-->
+
+<PropertyList>
+
+<path>chart.ac</path>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>Chart</object-name>
+  <condition>
+   <or>
+    <property>/controls/copilot/activ</property>
+    <property>/controls/engineer/activ</property>
+   </or>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>Chart</object-name>
+  <offset-deg>180</offset-deg>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Chart</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.crewscreen.minimizeexport();</script>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

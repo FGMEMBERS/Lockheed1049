@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049, Captain and center panel.
+
+
+_______________________________________________________________________
+
+This is a panel configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the panel's background texture and
+the location (and optionally, size) of the instruments that will
+appear on the panel.
+
+Each instrument is, itself, defined in an XML-encoded property list
+in a separate file.
+
+Co-ordinates are relative to the *bottom* left corner of the screen
+(as in OpenGL).  The total FlightGear window is always considered to
+be 1024x768, whatever its actual display size on the screen.  All
+paths are relative to $FG_ROOT.
+
+Note that the name of the element defining each instrument must be
+different, or else instrument definitions will be overwritten:
+that's not particularly XML-ish, but that's how property lists
+work in FlightGear right now.
+
+Each instrument has its own preferred width and height, but you can
+override those by providing <w>..</w> and <h>..</h> properties with the
+<x>...</x> and <y>...</y> properties.
+
+-->
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+ <name>Lockheed 1049 Captain Panel</name>
+ <background>Aircraft/Lockheed1049/Panels/Textures/Lockheed1049-panel-bg.rgb</background>
+ <w>1424</w>
+ <h>468</h>
+ <y-offset>0</y-offset>
+ <view-height>440</view-height>
+
+ <instruments>
+
+<!-- Captain -->
+
+  <instrument include="Instruments/l1049-speed-up.xml">
+   <name>Speed up</name>
+   <x>40</x>
+   <y>300</y>
+   <w>70</w>
+   <h>70</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-terrain-warning.xml">
+   <name>Terrain warning</name>
+   <x>20</x>
+   <y>192</y>
+   <w>25</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-terrain-selector.xml">
+   <name>Terrain selector</name>
+   <x>47</x>
+   <y>70</y>
+   <w>80</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-radio-pointer.xml">
+   <name>RMI pointer 1 switch</name>
+   <params>
+    <pointer-select>/instrumentation/radio-magnetic-indicator/vor[0]</pointer-select>
+   </params>
+   <x>230</x>
+   <y>440</y>
+   <w>120</w>
+   <h>40</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-radio-pointer.xml">
+   <name>RMI pointer 2 switch</name>
+   <params>
+    <pointer-select>/instrumentation/radio-magnetic-indicator/vor[1]</pointer-select>
+   </params>
+   <x>320</x>
+   <y>440</y>
+   <w>120</w>
+   <h>40</h>
+  </instrument>
+
+  <instrument include="../../Instruments/markerbeacon.xml">
+   <name>Marker beacon lights</name>
+   <x>450</x>
+   <y>440</y>
+   <w>120</w>
+   <h>44</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-clock.xml">
+   <name>Clock</name>
+   <x>560</x>
+   <y>405</y>
+   <w>90</w>
+   <h>90</h>
+  </instrument>
+
+  <instrument include="../../Instruments/altimeter.xml">
+   <name>Altimeter</name>
+   <x>140</x>
+   <y>325</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-radio-magnetic.xml">
+   <name>Radio Magnetic Indicator</name>
+   <x>280</x>
+   <y>330</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/attitude-indicator-hi.xml">
+   <name>Attitude Indicator</name>
+   <x>420</x>
+   <y>335</y>
+   <w>140</w>
+   <h>140</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-omni-bearing.xml">
+   <name>Omni Bearing Selector</name>
+   <params>
+    <nav-to-flag>/instrumentation/nav[0]/to-flag</nav-to-flag>
+    <nav-from-flag>/instrumentation/nav[0]/from-flag</nav-from-flag>
+    <has-gs>/instrumentation/nav[0]/has-gs</has-gs>
+    <nav-radial-selected>/instrumentation/nav[0]/radials/selected-deg</nav-radial-selected>
+    <nav-heading-needle-deflection>/instrumentation/nav[0]/heading-needle-deflection</nav-heading-needle-deflection>
+    <nav-needles-pivot>/instrumentation/omni-bearing-selector[0]/needles-pivot</nav-needles-pivot>
+   </params>
+   <x>580</x>
+   <y>280</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/asi-590-knot-a4c.xml">
+   <name>Indicated air speed</name>
+   <x>140</x>
+   <y>195</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-deviation-indicator.xml">
+   <name>Deviation Indicator</name>
+   <x>280</x>
+   <y>200</y>
+   <w>140</w>
+   <h>140</h>
+  </instrument>
+
+  <instrument include="../../Instruments/vsi.xml">
+   <name>Vertical speed</name>
+   <x>420</x>
+   <y>205</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/gyro.xml">
+   <name>Master Direction Indicator</name>
+   <x>140</x>
+   <y>65</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-deviation-switch.xml">
+   <name>Deviation Indicator switch</name>
+   <x>285</x>
+   <y>75</y>
+   <w>120</w>
+   <h>40</h>
+  </instrument>
+
+  <instrument include="../../Instruments/turn.xml">
+   <name>Turn Coordinator</name>
+   <x>425</x>
+   <y>75</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+<!-- Center -->
+
+  <instrument include="../../Instruments/magcompass.xml">
+   <name>Magnetic Compass</name>
+   <x>668</x>
+   <y>480</y>
+  </instrument>
+
+  <instrument include="Instruments/l1049-propeller-reverse.xml">
+   <name>Propeller reverse 1</name>
+   <params>
+    <reverse-select>/controls/engines/engine[0]/reverser</reverse-select>
+   </params>
+   <x>765</x>
+   <y>456</y>
+   <w>20</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-propeller-reverse.xml">
+   <name>Propeller reverse 2</name>
+   <params>
+    <reverse-select>/controls/engines/engine[1]/reverser</reverse-select>
+   </params>
+   <x>800</x>
+   <y>456</y>
+   <w>20</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-propeller-reverse.xml">
+   <name>Propeller reverse 3</name>
+   <params>
+    <reverse-select>/controls/engines/engine[2]/reverser</reverse-select>
+   </params>
+   <x>835</x>
+   <y>456</y>
+   <w>20</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-propeller-reverse.xml">
+   <name>Propeller reverse 4</name>
+   <params>
+    <reverse-select>/controls/engines/engine[3]/reverser</reverse-select>
+   </params>
+   <x>870</x>
+   <y>456</y>
+   <w>20</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-manifold-pressure.xml">
+   <name>Manifold pressure 1 and 2</name>
+   <params>
+    <mp-select>/engines/engine[0]/mp-osi</mp-select>
+    <mp2-select>/engines/engine[1]/mp-osi</mp2-select>
+   </params>
+   <x>670</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-manifold-pressure.xml">
+   <name>Manifold pressure 3 and 4</name>
+   <params>
+    <mp-select>/engines/engine[2]/mp-osi</mp-select>
+    <mp2-select>/engines/engine[3]/mp-osi</mp2-select>
+   </params>
+   <x>770</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-tachometer.xml">
+   <name>Tachometer 1 and 2</name>
+   <params>
+    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+    <rpm2-select>/engines/engine[1]/rpm</rpm2-select>
+   </params>
+   <x>870</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-tachometer.xml">
+   <name>Tachometer 3 and 4</name>
+   <params>
+    <rpm-select>/engines/engine[2]/rpm</rpm-select>
+    <rpm2-select>/engines/engine[3]/rpm</rpm2-select>
+   </params>
+   <x>970</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/oat.xml">
+   <name>Outside Air Temperature</name>
+   <x>760</x>
+   <y>280</y>
+   <w>70</w>
+   <h>22</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-flaps.xml">
+   <name>Flaps</name>
+   <params>
+    <flaps-select>/controls/flight/flaps</flaps-select>
+   </params>
+   <x>860</x>
+   <y>240</y>
+   <w>40</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="../../Instruments/controls.xml">
+   <name>Control Position Indicators</name>
+   <x>960</x>
+   <y>260</y>
+   <w>90</w>
+   <h>90</h>
+  </instrument>
+
+  <instrument include="../../Instruments/brakes.xml">
+   <name>Brake Indicator Light</name>
+   <x>650</x>
+   <y>170</y>
+   <w>40</w>
+   <h>17</h>
+  </instrument>
+
+  <instrument include="../../Instruments/gear.xml">
+   <name>Landing Gear Lever</name>
+   <x>930</x>
+   <y>160</y>
+   <w>40</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-gear-unsafe.xml">
+   <name>Gear Unsafe Warning Light</name>
+   <x>980</x>
+   <y>150</y>
+   <w>22</w>
+   <h>22</h>
+  </instrument>
+
+<!-- Copilot -->
+
+  <instrument include="Instruments/l1049-omni-bearing.xml">
+   <name>Omni Bearing Selector (copilot)</name>
+   <params>
+    <nav-to-flag>/instrumentation/nav[1]/to-flag</nav-to-flag>
+    <nav-from-flag>/instrumentation/nav[1]/from-flag</nav-from-flag>
+    <has-gs>/instrumentation/nav[1]/has-gs</has-gs>
+    <nav-radial-selected>/instrumentation/nav[1]/radials/selected-deg</nav-radial-selected>
+    <nav-heading-needle-deflection>/instrumentation/nav[1]/heading-needle-deflection</nav-heading-needle-deflection>
+    <nav-needles-pivot>/instrumentation/omni-bearing-selector[1]/needles-pivot</nav-needles-pivot>
+   </params>
+   <x>590</x>
+   <y>60</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+<!-- Pedestal -->
+
+  <instrument include="Instruments/l1049-ap-altitude.xml">
+   <name>Autopilot altitude</name>
+   <x>720</x>
+   <y>90</y>
+   <w>65</w>
+   <h>65</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-ap-clutch.xml">
+   <name>Autopilot clutch</name>
+   <x>720</x>
+   <y>20</y>
+   <w>65</w>
+   <h>65</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-throttle-lever.xml">
+   <name>Engine 1 throttle</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[0]/throttle</engine-throttle-select>
+   </params>
+   <x>820</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-throttle-lever.xml">
+   <name>Engine 2 throttle</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[1]/throttle</engine-throttle-select>
+   </params>
+   <x>840</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-throttle-lever.xml">
+   <name>Engine 3 throttle</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[2]/throttle</engine-throttle-select>
+   </params>
+   <x>860</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-throttle-lever.xml">
+   <name>Engine 4 throttle</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[3]/throttle</engine-throttle-select>
+   </params>
+   <x>880</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-propeller-lever.xml">
+   <name>Engines pitch</name>
+   <x>930</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/l1049-mixture-all.xml">
+   <name>Engines mixture</name>
+   <x>980</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>

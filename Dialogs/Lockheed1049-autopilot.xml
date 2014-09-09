@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Lockheed1049-autopilot</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Constellation autopilot</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Throttle</label>
+    </text>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <input>
+       <label>Throttle (kt)</label>
+       <halign>left</halign>
+       <property>/autopilot/settings/target-speed-kt</property>
+       <live>true</live>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+     </input>
+
+     <checkbox>
+       <halign>left</halign>
+       <label>Virtual copilot is holding throttle</label>
+       <property>/systems/copilot/throttle</property>
+        <live>true</live>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.copilotcrew.throttleexport();</script>
+       </binding>
+     </checkbox>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Waypoints</label>
+    </text>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <checkbox>
+       <halign>left</halign>
+       <label>Route activation toggles virtual crew  ~</label>
+       <property>/controls/copilot/fg-waypoint</property>
+       <binding>
+        <command>property-toggle</command>
+        <property>/controls/copilot/fg-waypoint</property>
+       </binding>
+     </checkbox>
+
+     <checkbox>
+       <halign>left</halign>
+       <label>Virtual copilot follows waypoints</label>
+       <property>/controls/copilot/waypoint</property>
+       <binding>
+        <command>property-toggle</command>
+        <property>/controls/copilot/waypoint</property>
+       </binding>
+     </checkbox>
+    </group>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Menu</legend>
+    <key>m</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+  </group>
+</PropertyList>

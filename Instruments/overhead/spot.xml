@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>spot.ac</path>
+
+ <params>
+  <light>systems/lighting/internal/pilot/chart-light</light>
+  <red>controls/lighting/internal/pilot/chart-red</red>
+ </params>
+
+
+ <animation>
+  <name>Spot</name>
+  <object-name>Tube</object-name>
+  <object-name>WhiteLamp</object-name>
+  <object-name>RedCover</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>WhiteLight</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop alias="../../../params/light"/>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>RedCover</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop alias="../../../params/light"/>
+  </emission> 
+  <ambient>
+   <red>0.5</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+   <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>RedCover</object-name>
+  <condition>
+   <property alias="../../../params/red"/>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Spot</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/red"/>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

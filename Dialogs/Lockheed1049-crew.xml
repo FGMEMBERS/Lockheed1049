@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Lockheed1049-crew</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Constellation crew</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <text>
+      <label>Status</label>
+    </text>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <group>
+      <layout>hbox</layout>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <checkbox>
+         <halign>left</halign>
+         <label>Timeout of display  ~</label>
+         <property>/controls/crew/timeout</property>
+         <binding>
+          <command>property-toggle</command>
+          <property>/controls/crew/timeout</property>
+         </binding>
+       </checkbox>
+      </group>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <input>
+         <halign>left</halign>
+         <property>/controls/crew/timeout-s</property>
+         <label>seconds  ~</label>
+         <binding>
+          <command>dialog-apply</command>
+         </binding>
+       </input>
+      </group>
+     </group>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Instrument lighting</label>
+      <halign>center</halign>
+    </text>
+
+    <slider>
+      <halign>left</halign>
+      <label>offset (not real)  ~</label>
+      <row>0</row>
+      <col>2</col>
+      <min>0</min>
+      <max>2</max>
+      <property>/controls/human/lighting/instrument</property>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+    </slider>
+    
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Views</label>
+      <halign>center</halign>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <checkbox>
+       <halign>left</halign>
+       <label>Gear well (floating)</label>
+       <property>/systems/seat/gear-well</property>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.seatsystem.viewexport("gear-well");</script>
+       </binding>
+       <binding>
+        <command>dialog-update</command>
+       </binding>
+     </checkbox>
+
+     <checkbox>
+       <label>Recover position of last session  ~</label>
+       <property>/controls/seat/recover</property>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.seatsystem.recoverexport();</script>
+       </binding>
+     </checkbox>
+    </group>
+
+<!--
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Propeller (test)</label>
+      <halign>center</halign>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Feathering</label>
+      <property>controls/engines/engine[0]/propeller-feather</property>
+      <binding n= "0">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[0]/propeller-feather</property>
+      </binding>
+      <binding n= "1">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[1]/propeller-feather</property>
+      </binding>
+      <binding n= "2">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[2]/propeller-feather</property>
+      </binding>
+      <binding n= "3">
+       <command>property-toggle</command>
+       <property>controls/engines/engine[3]/propeller-feather</property>
+      </binding>
+      <binding>
+       <command>property-toggle</command>
+       <property>/instrumentation/generic/click</property>
+      </binding>
+    </checkbox>
+-->
+
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+</PropertyList>

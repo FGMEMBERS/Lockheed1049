@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>pedal.ac</path>
+
+ <animation>
+  <type>translate</type>
+  <object-name>PedalLeft</object-name>
+  <condition>
+   <or>
+    <property>controls/gear/brake-steering</property>
+    <not>
+     <property>controls/crew/steering/wheel</property>
+    </not>
+   </or>
+  </condition>
+  <property>controls/flight/rudder</property>
+  <factor>0.08</factor>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>PedalRight</object-name>
+  <condition>
+   <or>
+    <property>controls/gear/brake-steering</property>
+    <not>
+     <property>controls/crew/steering/wheel</property>
+    </not>
+   </or>
+  </condition>
+  <property>controls/flight/rudder</property>
+  <factor>-0.08</factor>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+</PropertyList>
+

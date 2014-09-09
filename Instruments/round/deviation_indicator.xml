@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+
+<!--
+     Lockheed 1049 deviation indicator :
+
+     - with VOR, horizontal position is adjusted by omni bearing selector.
+     - with ILS, vertical position is also available.
+
+
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>zero_reader.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>ZR.Ball</object-name>
+  <object-name>ZR.Alt</object-name>
+  <object-name>ZR.Azi</object-name>
+  <object-name>ZR.Alt2</object-name>
+  <object-name>ZR.Azi2</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/pilot/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>ZR.Alt</object-name>
+  <condition>
+    <and>
+      <property>instrumentation/deviation-indicator/frequency</property>
+      <property>/instrumentation/nav[0]/has-gs</property>
+      <property>/instrumentation/nav[0]/in-range</property>
+    </and>
+  </condition>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>ZR.Alt</object-name>
+  <property>instrumentation/nav[0]/gs-needle-deflection</property>
+  <interpolation>
+    <entry><ind>-400</ind><dep>-30</dep></entry>
+    <entry><ind> -10</ind><dep>-30</dep></entry>
+    <entry><ind>   0</ind><dep>  0</dep></entry>
+    <entry><ind>  10</ind><dep> 30</dep></entry>
+    <entry><ind> 400</ind><dep> 30</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+  <center>
+    <x-m>-0.036</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>ZR.Azi</object-name>
+  <condition>
+    <and>
+      <property>instrumentation/deviation-indicator/frequency</property>
+      <property>instrumentation/nav[0]/in-range</property>
+    </and>
+  </condition>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>ZR.Azi</object-name>
+  <property>instrumentation/nav[0]/heading-needle-deflection</property>
+  <interpolation>
+    <entry><ind>-10</ind><dep>-30</dep></entry>
+    <entry><ind>  0</ind><dep>  0</dep></entry>
+    <entry><ind> 10</ind><dep> 30</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y></y>
+    <z>1</z>
+  </axis>
+  <center>
+    <x-m>-0.036</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+</animation>
+
+
+<animation>
+  <type>select</type>
+  <object-name>ZR.Alt2</object-name>
+  <condition>
+    <and>
+      <not>
+       <property>/instrumentation/deviation-indicator/frequency</property>
+      </not>
+      <property>instrumentation/nav[1]/has-gs</property>
+      <property>instrumentation/nav[1]/in-range</property>
+    </and>
+  </condition>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>ZR.Alt2</object-name>
+  <property>instrumentation/nav[1]/gs-needle-deflection</property>
+  <interpolation>
+    <entry><ind>-400</ind><dep>-30</dep></entry>
+    <entry><ind> -10</ind><dep>-30</dep></entry>
+    <entry><ind>   0</ind><dep>  0</dep></entry>
+    <entry><ind>  10</ind><dep> 30</dep></entry>
+    <entry><ind> 400</ind><dep> 30</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+  <center>
+    <x-m>-0.036</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>ZR.Azi2</object-name>
+  <condition>
+    <and>
+      <not>
+       <property>/instrumentation/deviation-indicator/frequency</property>
+      </not>
+      <property>instrumentation/nav[1]/in-range</property>
+    </and>
+  </condition>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>ZR.Azi2</object-name>
+  <property>instrumentation/nav[1]/heading-needle-deflection</property>
+  <interpolation>
+    <entry><ind>-10</ind><dep>-30</dep></entry>
+    <entry><ind>  0</ind><dep>  0</dep></entry>
+    <entry><ind> 10</ind><dep> 30</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y></y>
+    <z>1</z>
+  </axis>
+  <center>
+    <x-m>-0.036</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+</animation>
+
+</PropertyList>

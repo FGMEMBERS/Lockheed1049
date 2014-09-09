@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Lockheed1049-ground</name>
+  <layout>vbox</layout>
+  <width>300</width>
+
+  <text>
+    <label>Constellation ground</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <checkbox>
+      <label>Brake steering</label>
+      <halign>left</halign>
+      <property>/controls/gear/brake-steering</property>
+      <binding>
+       <command>property-toggle</command>
+       <property>/controls/gear/brake-steering</property>
+      </binding>
+    </checkbox>
+
+    <text>
+      <label></label>
+    </text>
+
+    <checkbox>
+      <label>Test rudder pedal</label>
+      <halign>left</halign>
+      <property>/controls/crew/steering/pedal</property>
+      <binding>
+       <command>property-toggle</command>
+       <property>/controls/crew/steering/pedal</property>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Lockheed1049.gearsystem.steeringexport();</script>
+      </binding>
+    </checkbox>
+
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+</PropertyList>

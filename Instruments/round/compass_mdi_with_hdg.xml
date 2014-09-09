@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<!--
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>compass_mdi_with_hdg.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>MDI.Card</object-name>
+  <object-name>MDI.Face</object-name>
+  <object-name>MDI.HdgBug</object-name>
+  <object-name>MDI.Needle</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/pilot/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.Card</object-name>
+  <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+  <factor>-1</factor>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.Knob</object-name>
+  <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+  <factor>5</factor>
+  <center>
+    <x-m>0</x-m>
+    <y-m>-0.03</y-m>
+    <z-m>-0.03</z-m>
+  </center>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.KnobHdg</object-name>
+  <property>autopilot/settings/heading-bug-deg</property>
+  <factor>5</factor>
+  <center>
+    <x-m>0</x-m>
+    <y-m>0.03</y-m>
+    <z-m>-0.03</z-m>
+  </center>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.HdgBug</object-name>
+  <property>/autopilot/settings/heading-bug-deg</property>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.HdgBug</object-name>
+  <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+  <factor>-1</factor>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>MDI.Knob</object-name>
+ <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/heading-indicator/offset-deg</property>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+   <command>property-adjust</command>
+   <property>/instrumentation/heading-indicator/offset-deg</property>
+   <step>-1</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap>true</wrap>
+  </binding>
+ </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>MDI.KnobHdg</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>/autopilot/settings/heading-bug-deg</property>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>/autopilot/settings/heading-bug-deg</property>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+</animation>
+
+</PropertyList>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>elevator_booster.ac</path>
+
+ <animation>
+  <name>ElevatorBooster</name>
+  <object-name>Lever</object-name>
+  <object-name>Tube</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>ElevatorBooster</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/pedestal/on</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>Lever</object-name>
+  <property>controls/flight/elevator-boost</property>
+  <interpolation>
+    <entry>
+     <ind>0.0</ind>
+     <dep>0</dep>
+    </entry>
+    <entry>
+     <ind>1.0</ind>
+     <dep>-0.10</dep>
+    </entry>
+  </interpolation>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Lever</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/flight/elevator-boost</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>top_copilot.ac</path>
+
+<!-- panel light -->
+
+ <animation>
+  <type>material</type>
+  <object-name>Plate</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/copilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PanelSwitch</object-name>
+  <property>controls/lighting/internal/copilot/side-on</property>
+  <factor>-60</factor>
+  <offset-deg>30</offset-deg>
+  <center>
+   <x-m>-0.107</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.003</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PanelSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/copilot/side-on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- chart light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ChartSwitch</object-name>
+  <property>controls/lighting/internal/copilot/chart-on</property>
+  <factor>-60</factor>
+  <offset-deg>30</offset-deg>
+  <center>
+   <x-m>-0.094</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.003</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ChartSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/copilot/chart-on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- pedestal light -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PedestalLightSwitch</object-name>
+  <property>controls/lighting/internal/pedestal/on</property>
+  <factor>-60</factor>
+  <offset-deg>30</offset-deg>
+  <center>
+   <x-m>-0.047</x-m>
+   <y-m> 0.0</y-m>
+   <z-m>-0.003</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PedestalLightSwitch</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/lighting/internal/pedestal/on</property>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/generic/click</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

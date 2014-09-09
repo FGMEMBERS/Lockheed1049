@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>cylinder.ac</path>
+
+<animation>
+  <type>rotate</type>
+  <object-name>CenterTankLever</object-name>
+  <property>controls/fuel/tank[4]/shut-off</property>
+  <factor>70</factor>
+  <offset-deg>-35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CenterTankLever</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/tank[4]/shut-off</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- cross-feed valves -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CrossFeedLever1</object-name>
+  <property>controls/fuel/engine[0]/cross-feed</property>
+  <factor>70</factor>
+  <offset-deg>-35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CrossFeedLever2</object-name>
+  <property>controls/fuel/engine[1]/cross-feed</property>
+  <factor>70</factor>
+  <offset-deg>-35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CrossFeedLever3</object-name>
+  <property>controls/fuel/engine[2]/cross-feed</property>
+  <factor>70</factor>
+  <offset-deg>-35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CrossFeedLever4</object-name>
+  <property>controls/fuel/engine[3]/cross-feed</property>
+  <factor>70</factor>
+  <offset-deg>-35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CrossFeedLever1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/engine[0]/cross-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CrossFeedLever2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/engine[1]/cross-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CrossFeedLever3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/engine[2]/cross-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CrossFeedLever4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/engine[3]/cross-feed</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

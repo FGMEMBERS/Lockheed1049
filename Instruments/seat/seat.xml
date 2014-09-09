@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>seat.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>Seat</object-name>
+  <emission>
+   <red>1.0</red>
+   <green-prop>systems/lighting/internal/pilot/chart-green</green-prop>
+   <blue-prop>systems/lighting/internal/pilot/chart-blue</blue-prop>
+   <factor-prop>systems/lighting/internal/pilot/chart-light</factor-prop>
+  </emission> 
+ </animation>
+ 
+ <animation>
+  <name>MovingSeat</name>
+  <object-name>Seat</object-name>
+  <object-name>Legs</object-name>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>MovingSeat</object-name>
+  <property>systems/human/captain/stowe-norm</property>
+  <factor>0.25</factor>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Seat</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Lockheed1049.doorsystem.seatexport("captain");</script>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

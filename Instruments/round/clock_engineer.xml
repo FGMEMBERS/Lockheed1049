@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+
+<!--
+     Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>clock_adjustable.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>Clock.Face</object-name>
+  <object-name>Clock.Hour</object-name>
+  <object-name>Clock.Minute</object-name>
+  <object-name>Clock.Second</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Clock.Hour</object-name>
+  <property>instrumentation/clock/indicated-sec</property>
+  <factor>0.00833333333333333</factor>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Clock.Minute</object-name>
+  <property>instrumentation/clock/indicated-sec</property>
+  <factor>0.1</factor>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Clock.Second</object-name>
+  <property>instrumentation/clock/indicated-sec</property>
+  <factor>6</factor>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Clock.Knob</object-name>
+  <property>instrumentation/clock/offset-sec</property>
+  <interpolation>
+    <entry><ind>-43200</ind><dep>-180</dep></entry>
+    <entry><ind>     0</ind><dep>   0</dep></entry>
+    <entry><ind> 43200</ind><dep> 180</dep></entry>
+  </interpolation>
+  <center>
+    <x-m>0</x-m>
+    <y-m>-0.0225</y-m>
+    <z-m>-0.0225</z-m>
+  </center>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>Clock.Knob</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>instrumentation/clock/offset-sec</property>
+    <step>3600</step>
+    <min>-43200</min>
+    <max>43200</max>
+    <wrap>false</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <binding>
+    <command>property-adjust</command>
+    <property>instrumentation/clock/offset-sec</property>
+    <step>-3600</step>
+    <min>-43200</min>
+    <max>43200</max>
+    <wrap>false</wrap>
+   </binding>
+  </action>
+</animation>
+
+</PropertyList>
+

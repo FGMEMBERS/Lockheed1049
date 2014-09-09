@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!-- Sim initialization.
+-->
+
+<PropertyList include="Lockheed1049-views.xml">
+
+<!-- 4 notches :
+     - 60 % takeoff.
+     - 66 % approach.
+     - 80 %.
+     - 100 % landing.
+-->
+
+  <flaps>
+   <setting>0.0</setting>
+   <setting>0.25</setting>
+   <setting>0.5</setting>
+   <setting>0.75</setting>
+   <setting>1.0</setting>
+  </flaps>
+
+</PropertyList>

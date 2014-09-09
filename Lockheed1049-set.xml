@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <sim include="Nasal/Lockheed1049-sim.xml">
+
+  <description>Lockheed 1049 Super Constellation</description>
+  <status>early-production</status>
+  <aircraft-version>1.6</aircraft-version>
+
+  <startup>
+   <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
+  </startup>
+
+  <flight-model>jsb</flight-model>
+  <aero>Lockheed1049</aero>
+
+  <systems>
+   <autopilot>
+    <path>Aircraft/Lockheed1049/Systems/Lockheed1049-autopilot.xml</path>
+   </autopilot>
+   <electrical>
+    <path>Aircraft/Generic/generic-electrical.xml</path>
+   </electrical>
+  </systems> 
+
+  <instrumentation>
+   <path>Aircraft/Lockheed1049/Systems/Lockheed1049-instrumentation.xml</path>
+  </instrumentation>
+
+  <sound>
+   <audible>true</audible>
+   <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-sound.xml</path>
+<!-- select one of the sound files
+   <path>Aircraft/Lockheed1049/Sounds/Lockheed1049-mats-sound.xml</path>
+-->
+  </sound>
+
+  <panel>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-2D-captain.xml</path>
+   <visibility>false</visibility>
+  </panel>
+  <panel_2>
+   <path>Aircraft/Lockheed1049/Panels/Lockheed1049-2D-engineer.xml</path>
+  </panel_2>
+
+  <model>
+   <path>Aircraft/Lockheed1049/Models/Lockheed1049_twa.xml</path>
+   <immat>N6905C</immat>
+   <pushback>
+    <enabled type="bool">false</enabled>
+    <kp type="double">1500</kp>
+    <ki type="double">50</ki>
+    <kd type="double">0</kd>
+    <position-norm type="double">0</position-norm>
+    <target-speed-fps type="double">0</target-speed-fps>
+   </pushback>
+  </model> 
+
+<!-- compensates the shift of VRP at nose -->
+
+  <airport>
+   <runways>
+    <start-offset-m>17.3</start-offset-m>
+   </runways>
+  </airport>
+
+  <chase-distance-m type="double" archive="y">-48.0</chase-distance-m>
+
+  <menubar include="Dialogs/Lockheed1049-menubar.xml"/>
+
+  <help include="help.xml"/>
+
+<!-- Burbank: runways 33/15 and 08/26. -->
+
+ </sim>
+
+ <consumables>
+  <fuel include="Systems/Lockheed1049-init-fuel.xml"/>                  <!-- required by nasal -->
+ </consumables>
+ 
+ <limits include="Nasal/Lockheed1049-limits.xml"/>
+
+ <nasal>
+  <Lockheed1049>
+   <file>Aircraft/Generic/limits.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-constants.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-electric.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-hydraulic.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engine.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-instrument.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-fuelXML.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-fuel.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-autopilot.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-interface.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-crew.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-copilot.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engineer.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-human.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-effects.nas</file>
+  </Lockheed1049>
+ </nasal>
+
+ <input>
+  <keyboard include="Nasal/Lockheed1049-keyboard.xml">
+  </keyboard>
+ </input>
+
+
+<!-- ============= -->
+<!-- customization -->
+<!-- ============= -->
+
+ <systems include="Systems/Lockheed1049-init-systems.xml">
+ </systems>
+
+ <instrumentation include="Systems/Lockheed1049-init-instrumentation.xml">
+
+<!-- ADF 2 (not available by GUI) -->
+
+  <adf n="1">
+   <frequencies>
+    <selected-khz>370</selected-khz>                          <!-- Pacoima near KBUR -->
+    <standby-khz>373</standby-khz>                            <!-- Conda near KJFK -->
+   </frequencies>
+  </adf>
+
+ </instrumentation>
+
+ <controls include="Systems/Lockheed1049-init-controls.xml">
+
+<!-- engines on, low pitch (parking) -->
+
+  <engines>
+   <engine n="0">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+   <engine n="1">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+   <engine n="2">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+   <engine n="3">
+    <magnetos archive="y">3</magnetos>
+    <propeller-pitch>0.0</propeller-pitch>
+   </engine>
+  </engines>
+
+<!-- lighting for flight -->
+
+  <lighting>
+   <external>
+    <navigation>
+     <flash type="bool">true</flash>
+     <fuselage-lights type="bool">true</fuselage-lights>
+     <ground-loading type="bool">false</ground-loading>
+     <on type="bool">true</on>
+    </navigation>
+   </external>
+  </lighting>
+
+<!-- all 3D instruments -->
+
+  <seat>
+   <all type="bool">true</all>
+  </seat>
+ </controls>
+
+<!-- above 700 RPM avoids the stop --> 
+ 
+ <engines>
+  <engine n="0">
+   <rpm archive="y">1000</rpm>
+  </engine>
+  <engine n="1">
+   <rpm archive="y">1000</rpm>
+  </engine>
+  <engine n="2">
+   <rpm archive="y">1000</rpm>
+  </engine>
+  <engine n="3">
+   <rpm archive="y">1000</rpm>
+  </engine>
+ </engines>
+
+<!-- autopilot -->
+
+ <autopilot>
+  <settings>
+   <target-speed-kt>220</target-speed-kt>
+  </settings>
+ </autopilot>
+
+</PropertyList>

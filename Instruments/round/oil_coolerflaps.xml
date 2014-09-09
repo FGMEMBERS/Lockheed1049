@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<!-- Credits :
+     =======
+     - adapted from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<params>
+ <cowl-flaps-left>/controls/engines/engine[0]/cowl-flaps-norm</cowl-flaps-left>
+ <cowl-flaps-right>/controls/engines/engine[1]/cowl-flaps-norm</cowl-flaps-right>
+</params>
+
+
+<path>cowlflaps.ac</path>
+
+<animation>
+  <name>lighting</name>
+  <object-name>Face</object-name>
+  <object-name>Needle1</object-name>
+  <object-name>Needle2</object-name>
+</animation>
+
+<animation>
+  <type>material</type>
+  <object-name>lighting</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Needle1</object-name>
+  <property alias="../../params/cowl-flaps-left"/>
+  <interpolation>
+    <entry><ind>0</ind><dep>  0</dep></entry>
+    <entry><ind>1</ind><dep>-85</dep></entry>
+  </interpolation>
+  <center>
+    <x-m>-0.025</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Needle2</object-name>
+  <property alias="../../params/cowl-flaps-right"/>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>85</dep></entry>
+  </interpolation>
+  <center>
+    <x-m>0.025</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>

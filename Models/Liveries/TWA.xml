@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+     <livery>
+      <name type="string">TWA immat</name>
+      <index type="int">1</index>
+      <texture>L1049TWA-fuselage.rgb</texture>
+      <texture-fin>Liveries/TWA-fin.png</texture-fin>
+      <texture-gear>Liveries/TWA-gear.png</texture-gear>
+     </livery>
+    </model>
+  </sim>
+</PropertyList>

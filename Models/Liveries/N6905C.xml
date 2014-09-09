@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+     <livery>
+      <name type="string">N6905C</name>
+      <index type="int">0</index>
+      <texture>L1049TWA-fuselage.rgb</texture>
+      <texture-fin>L1049TWA-fin.rgb</texture-fin>
+      <texture-gear>L1049TWA-gear.rgb</texture-gear>
+     </livery>
+    </model>
+  </sim>
+</PropertyList>

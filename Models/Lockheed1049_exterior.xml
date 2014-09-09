@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<!-- LIGHTS -->
+
+<!-- fuselage -->
+
+  <model>
+   <name>Fuselage top</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagetop.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Fuselage bottom</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagebottom.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Fuselage tail</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagetail.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+<!-- navigation -->
+
+  <model>
+   <name>Navigation left</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationleft.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Navigation right</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationright.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Navigation tail</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationtail.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+<!-- landing -->
+
+  <model>
+   <name>Landing left</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingleft.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Landing right</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingright.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Landing cone left</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingconeleft.xml</path>
+   <offsets>
+    <x-m>-1.663</x-m>
+    <y-m>-14.685</y-m>
+    <z-m> 0.478</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Landing cone right</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/landingconeright.xml</path>
+   <offsets>
+    <x-m>-1.663</x-m>
+    <y-m> 14.685</y-m>
+    <z-m> 0.478</z-m>
+   </offsets>
+  </model>
+
+<!-- taxi / passing -->
+
+  <model>
+   <name>Taxi light</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/taxi.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Passing light</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/passing.xml</path>
+   <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </offsets>
+  </model>
+
+<!-- REGISTRATION -->
+
+  <text>
+   <name>Registration fin right</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">0.5</character-size>
+   <character-aspect-ratio type="double">1.1</character-aspect-ratio>        <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 15.235</x-m>
+    <y-m> 6.340</y-m>
+    <z-m> 3.035</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>Registration fin left</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">0.5</character-size>
+   <character-aspect-ratio type="double">1.1</character-aspect-ratio>      <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 15.285</x-m>
+    <y-m>-6.330</y-m>
+    <z-m> 3.005</z-m>
+   </offsets>
+  </text>
+
+  <animation>
+   <name>TWA registration</name>
+   <object-name>Registration fin left</object-name>
+   <object-name>Registration fin right</object-name>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>TWA registration</object-name>
+   <emission>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+   </emission>
+   <ambient>
+    <red>1</red>
+    <green>0</green>
+    <blue>0</blue>
+   </ambient>
+   <diffuse>
+    <red>1</red>
+    <green>0</green>
+    <blue>0</blue>
+   </diffuse>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>TWA registration</object-name>
+   <condition>
+    <equals>
+     <property>sim/model/livery/index</property>
+     <value>1</value>
+    </equals>
+   </condition>
+  </animation>
+
+</PropertyList>

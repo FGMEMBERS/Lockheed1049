@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+
+<!--  Lockheed 1049 terrain warning.
+
+
+Adapted from John Check <j4strngs@usa.net>
+_____________________________________________________________________
+
+This is an instrument configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the instrument's layers and actions.
+ 
+Each instrument is composed of layers stacked on top of each other.
+A layer may be a texture (with transparent parts to show the layers
+underneath), text, or a special layer that switches between two
+others (say, to turn an indicator light on or off).  Each layer can
+move independently in proportion to a property value, and text
+can be generated from property values as well: all of the layer's
+movements are defined as transformations.
+ 
+Actions are hotspots on the instrument that will respond to a mouse
+click.  Actions always modify the values of properties, either by
+adjusting them, toggling them, or swapping them with other
+properties' values.
+
+-->
+
+<PropertyList>
+
+ <name>Terrain warning</name>
+ <w-base>30</w-base>
+ <h-base>120</h-base>
+
+ <layers>
+
+<!-- 500 ft Indicator -->
+
+  <layer>
+   <name>lamp 500</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <property>/instrumentation/terrain-warning/light/on[0]</property>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens red</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens red</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.25</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
+   <transformations>
+    <transformation>
+    <type>y-shift</type>
+     <offset>-46</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Bezel 500</name>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.75</y1>
+    <x2>0.25</x2>
+    <y2>1.0</y2>
+   </texture>
+   <w>30</w>
+   <h>30</h>
+   <transformations>
+    <transformation>
+    <type>y-shift</type>
+     <offset>-46</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+<!-- 1000 ft Indicator -->
+
+  <layer>
+   <name>lamp 1000</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <property>/instrumentation/terrain-warning/light/on[1]</property>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens yellow</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.5</x1>
+      <y1>0.0</y1>
+      <x2>0.75</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens yellow</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.5</x1>
+      <y1>0.0</y1>
+      <x2>0.75</x2>
+      <y2>0.25</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
+  </layer>
+ 
+  <layer>
+   <name>Bezel 1000</name>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.75</y1>
+    <x2>0.25</x2>
+    <y2>1.0</y2>
+   </texture>
+   <w>30</w>
+   <h>30</h>
+  </layer>
+
+<!-- 2000 ft Indicator -->
+
+  <layer>
+   <name>lamp 2000</name>
+   <type>switch</type>
+
+   <layer>
+    <name>on</name>
+    <type>group</type>
+    <condition>
+     <property>/instrumentation/terrain-warning/light/on[2]</property>
+    </condition>
+
+    <layer include="l1049-bulb-led-on.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens orange</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.25</y1>
+      <x2>0.5</x2>
+      <y2>0.5</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+     <emissive>true</emissive>
+    </layer>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <type>group</type>
+
+    <layer include="l1049-bulb-led-off.xml">
+     <w>30</w>
+     <h>30</h>
+    </layer>
+    <layer>
+     <name>Lens orange</name>
+     <texture>
+      <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+      <x1>0.25</x1>
+      <y1>0.25</y1>
+      <x2>0.5</x2>
+      <y2>0.5</y2>
+     </texture>
+     <w>30</w>
+     <h>30</h>
+    </layer>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>46</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Bezel 2000</name>
+   <texture>
+    <path>Aircraft/Lockheed1049/Panels/Instruments/Textures/l1049-led.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.75</y1>
+    <x2>0.25</x2>
+    <y2>1.0</y2>
+   </texture>
+   <w>30</w>
+   <h>30</h>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>46</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+</PropertyList>

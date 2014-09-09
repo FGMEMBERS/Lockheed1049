@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!--
+     Credits :
+     =======
+     - adapted (0.7 scale) from G. Neely's Lockheed 1049-H.
+-->
+
+
+<PropertyList>
+
+<path>flaps.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>FLAPS.Face</object-name>
+  <object-name>FLAPS.Needle</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/copilot/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>FLAPS.Needle</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <interpolation>
+    <entry><ind>   0</ind><dep>  0</dep></entry>
+    <entry><ind>0.25</ind><dep>166</dep></entry>
+    <entry><ind>0.50</ind><dep>186</dep></entry>
+    <entry><ind>0.75</ind><dep>214</dep></entry>
+    <entry><ind>   1</ind><dep>240</dep></entry>
+  </interpolation>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+</PropertyList>
+
+

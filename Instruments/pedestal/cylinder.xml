@@ -1,0 +1,574 @@
+<?xml version="1.0"?>
+
+<!-- rotation scope is adjusted so that :
+
+     - overhead light switch is always visible by Captain.
+     - landing gear lights are always visible by Captain.
+-->
+
+
+<PropertyList>
+
+<path>cylinder.ac</path>
+
+<!-- elevator -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ElevatorTabLW</object-name>
+  <property>controls/flight/elevator-trim</property>
+  <factor>-1080</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ElevatorTabLW</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>-0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+<!-- boosters -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AileronBooster</object-name>
+  <property>controls/flight/aileron-boost</property>
+  <factor>-80</factor>
+  <offset-deg>80</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AileronBooster</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/flight/aileron-boost</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RudderBooster</object-name>
+  <property>controls/flight/rudder-boost</property>
+  <factor>-80</factor>
+  <offset-deg>80</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>RudderBooster</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/flight/rudder-boost</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- throttle -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle1</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle2</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle3</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle4</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle1</object-name>
+  <property>controls/engines/engine[0]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>0.138</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.117</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle2</object-name>
+  <property>controls/engines/engine[1]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>0.138</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.117</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle3</object-name>
+  <property>controls/engines/engine[2]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>0.138</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.117</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseThrottle4</object-name>
+  <property>controls/engines/engine[3]/reverser</property>
+  <factor>92</factor>
+  <center>
+   <x-m>0.138</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.117</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle1</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle2</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle3</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainThrottle4</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>-40</factor>
+  <offset-deg>-10</offset-deg>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MainThrottle4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ReverseLock</object-name>
+  <property>controls/engines/engine[0]/reverser</property>
+  <factor>80</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- propeller -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MasterPropeller</object-name>
+  <property>controls/engines/engine[0]/propeller-pitch</property>
+  <factor>-75</factor>
+  <offset-deg>85</offset-deg>   
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MasterPropeller</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- flaps -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FlapLever</object-name>
+  <property>controls/flight/flaps</property>
+  <factor>75</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FlapLever</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/flaps</property>
+    <step>0.25</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/flaps</property>
+    <step>-0.25</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+<!-- elevator -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ElevatorTabRW</object-name>
+  <property>controls/flight/elevator-trim</property>
+  <factor>-1080</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ElevatorTabRW</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/elevator-trim</property>
+    <step>-0.003</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

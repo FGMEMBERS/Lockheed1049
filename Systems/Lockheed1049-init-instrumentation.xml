@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<!-- Initialize instruments. -->
+
+
+<PropertyList>
+
+<!-- specific ADF -->
+
+  <adf n="1">
+   <mode>adf</mode>
+   <serviceable type="bool">true</serviceable>
+  </adf>
+
+  <clock>
+   <relations>
+    <noinstrument>
+     <altitude>/position/altitude-ft</altitude>
+     <speed-up>/sim/speed-up</speed-up>
+     <warp>/sim/time/warp</warp>
+    </noinstrument>
+   </relations>
+  </clock>
+
+  <comm n="0">
+   <power-btn type="string">1</power-btn>                                  <!-- display on -->
+  </comm>
+
+  <comm n="1">
+   <power-btn type="string">1</power-btn>                                  <!-- display on -->
+  </comm>
+
+  <deviation-indicator n="0">
+   <frequency type="bool">true</frequency>                                 <!-- NAV 0 -->
+  </deviation-indicator>
+
+  <deviation-indicator n="1">
+   <frequency type="bool">false</frequency>                                <!-- NAV 1 -->
+  </deviation-indicator>
+
+  <generic>
+   <factor type="double">1.0</factor>                                      <!-- otherwise material doesn't work with OSG -->
+  </generic>
+
+  <terrain-warning>
+   <light>
+    <on n="0" type="bool">false</on>
+    <on n="1" type="bool">false</on>
+    <on n="2" type="bool">false</on>
+   </light>
+
+   <relations>
+    <itself>
+     <light>
+      <component>/instrumentation/terrain-warning/light</component>
+      <subcomponent>on</subcomponent>
+     </light>
+    </itself>
+
+    <noinstrument>
+     <aglft>/position/altitude-agl-ft</aglft>
+    </noinstrument>
+   </relations>
+
+   <selector type="int">2</selector>                                       <!-- 2000 m -->
+  </terrain-warning>
+
+<!-- the kind of needle is not yet decided -->
+
+  <onmi-bearing-selector n="0">
+   <needles-pivot type="bool">false</needles-pivot>
+  </onmi-bearing-selector>
+
+  <onmi-bearing-selector n="1">
+   <needles-pivot type="bool">false</needles-pivot>
+  </onmi-bearing-selector>
+
+  <radio-magnetic-indicator>
+   <vor n="0" type="bool">true</vor>
+   <vor n="1" type="bool">true</vor>
+  </radio-magnetic-indicator>
+
+</PropertyList>

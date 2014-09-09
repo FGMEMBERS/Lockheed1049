@@ -1,0 +1,113 @@
+<?xml version="1.0" ?> 
+<!-- 
+  File:     WrightCyclone-975C18CB1.xml
+  Author:   Aero-Matic v 0.7
+  Date:     16 March 2013
+  Version:  2.02
+
+  Inputs:
+    name:           WrightCyclone-975C18CB1
+    type:           piston
+    power:          2800 hp
+    augmented?      no
+    injected?       no
+
+
+  References :
+  ==========
+  - http://www.hars.com.au/fleet/constellation/facts.html :
+  (VH-EAG : 1049-F, C-121C).
+
+  445 l/h per engine : 24790 l, 3450 NM, 16.5 h maximum.
+
+  - http://www.superconstellation.org/ :
+  (N73544 : 1049F, C-121C).
+
+  450 l/h (120 US gal/h) per engine : 6550 US gal, 3500 NM, 14 h without reserve.
+
+  Note that 1 US gal = 3.75 l.
+
+  - http://www.airliners.net/discussions/general_aviation/read.main/1738757/4/ :
+
+  Max payload : 1049 1890 NM, 1049C 2510 NM.
+  Max fuel : 1049C : 4760 NM.
+
+  - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
+  (FAA certificate, 6a5 - 14 may 1952) :
+
+   Tanks 2 and 3 (inboard) : 790 gal each, 9480 lb.
+         1 and 4 (middle) : 1555 gal each, 18660 lb.
+         2a and 3a (outboard) : 565 gal each, 6780 lb.
+         5 (center section) : 730 gal, 4380 lb.
+
+   A total of 6550 US gal = 24563 l : note that is 1 US gal = 6 lb !
+   This content is the same from model 1049-54 to 1049D-55 : from 1049G-82, there are additional tanks at wing tip. 
+
+   - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
+   (FAA certificate, E-270 - 28 december 1983) :
+
+   Takeoff         : 2900 RPM, 54.0 inhg at sea level.
+   Max. continuous : 2600 RPM, 47.5 inhg at sea level.
+                   : 2600 RPM, 47.5 inhg at 10800 ft.
+
+   Displacement : 3350 cu. in.
+   Bore         : 6.125 in.
+   Stroke       : 6.312 in.
+   Compression  : 6.70.
+
+
+--> 
+<piston_engine name="Wright Cyclone 975C18CB1">
+
+<!-- Range is adjusted with volumetric efficiency :
+
+     - estimation of the 1049 range : 3580 NM = 4760 * 1890 / 2510.
+     Which matches VH-EAG and N73544 with both the same content in US gal.
+
+     - max speed is 220 kt at 20000 ft (cruise), 197 kt at 25000 ft (ceiling) : that is an average of 209 kt.
+     Let's take 319 kt as average ground speed (tail wind 20 kt) : range is 3580 NM / 319 kt = 11 hours.
+
+     For our model 1049-54, with 6550 US gallons, the consumption must be 6550 / 11 hours = 595 US gallons / hour,
+     or 149 US gallons / hour per engine.
+
+     For westerly front wind 10 kt (optimistic), average ground speed is 289 kt (optimistic), or 3580 / 289 = 12 h.
+     And it can cross the Atlantic from the east (KJFK-EHAM 3156 NM direct), only with refueling at Gander or Shannon.
+
+
+     Blower :
+     - 12 PSI for 54.5 inhg max at 2900 RPM, sea level (low blower) : takeoff, full throttle.
+     -  8 PSI for 46.0 inhg max at 2600 RPM, sea level (low blower).
+     -  8 PSI for 46.0 inhg max at 2600 RPM, cruise (high blower).
+     - should be adjusted manually by a lever (override).
+
+
+     minmp is adjusted to avoid shutdown with idle throttle.
+-->
+
+   <minmp unit="INHG"> 12.0 </minmp>
+   <maxmp unit="INHG"> 54.5 </maxmp>                                         <!-- aeromatic 30.0 -->
+   <displacement unit="IN3"> 3350.00 </displacement>
+   <bore unit="IN">6.125</bore>
+   <stroke unit="IN">6.312</stroke>
+   <compression-ratio>6.70</compression-ratio>
+   <volumetric-efficiency>0.85</volumetric-efficiency>
+   <maxhp>    2800.00 </maxhp>
+   <cycles>      2.0 </cycles>
+   <idlerpm>   700.0 </idlerpm>
+   <maxrpm>   2900.00 </maxrpm>
+   <maxthrottle> 1.0 </maxthrottle>
+   <minthrottle> 0.1 </minthrottle>
+   <sparkfaildrop>      0.0 </sparkfaildrop>
+   <numboostspeeds>     2 </numboostspeeds>
+   <boostoverride>      0 </boostoverride>
+   <takeoffboost>      12 </takeoffboost>
+   <ratedboost1>        8 </ratedboost1>
+   <ratedpower1>     2400 </ratedpower1>
+   <ratedrpm1>       2600 </ratedrpm1>
+   <ratedaltitude1 >    0 </ratedaltitude1>
+   <ratedboost2>        8 </ratedboost2>
+   <ratedpower2>     2000 </ratedpower2>
+   <ratedrpm2>       2600 </ratedrpm2>
+   <ratedaltitude2> 10800 </ratedaltitude2>
+
+</piston_engine> 

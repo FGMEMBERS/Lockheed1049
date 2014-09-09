@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!-- Lockheed 1049 center tank gauge.
+
+     Credits :
+     =======
+     - adapted (scale x 0.7) from G. Neely's Lockheed 1049-H.
+-->
+
+<PropertyList>
+
+<path>fuel50_engineer.ac</path>
+
+<animation>
+ <name>unused</name>
+ <object-name>Fuel50.Needle2</object-name>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>unused</object-name>
+  <condition>
+    <equals><value>1</value><value>0</value></equals>
+  </condition>
+</animation>
+
+<animation>
+  <type>material</type>
+  <object-name>Fuel50.Face</object-name>
+  <object-name>Fuel50.Needle</object-name>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/engineer/instrument-light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Fuel50.Needle</object-name>
+  <property>consumables/fuel/tank[4]/level-lbs</property>
+  <interpolation>
+    <entry><ind>   0</ind><dep>  0</dep></entry>
+    <entry><ind>5200</ind><dep>312</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>0.574</y>
+    <z>0.819</z>
+  </axis>
+</animation>
+
+</PropertyList>

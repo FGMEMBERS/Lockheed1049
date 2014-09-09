@@ -1,0 +1,661 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>cylinder.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>ControlQuadrant</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/engineer/flood-light</factor-prop>
+  </emission> 
+ </animation>
+
+<!-- propeller pitch -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PropellerEngineer</object-name>
+  <property>controls/engines/engine[0]/propeller-pitch</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>PropellerEngineer</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <property n="1">controls/engines/engine[0]/propeller-pitch</property>
+   </binding>
+  </action>
+ </animation>
+
+<!-- throttle -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer1</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer2</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer3</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ThrottleEngineer4</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>ThrottleEngineer4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+<!-- blower -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower1</object-name>
+  <property>controls/engines/engine[0]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower2</object-name>
+  <property>controls/engines/engine[1]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower3</object-name>
+  <property>controls/engines/engine[2]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>EngineBlower4</object-name>
+  <property>controls/engines/engine[3]/blower</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- mixture -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture1</object-name>
+  <property>controls/engines/engine[0]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture2</object-name>
+  <property>controls/engines/engine[1]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture3</object-name>
+  <property>controls/engines/engine[2]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Mixture4</object-name>
+  <property>controls/engines/engine[3]/mixture</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Mixture4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/mixture</property>
+    <step>0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/mixture</property>
+    <step>-0.1</step>
+    <min>0</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+<!-- Tank shut-off valve.
+
+     Fuel tank selectors 2 and 3 are three-way valves with tanks 2A and 3A.
+-->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelTankSelector1</object-name>
+  <property>controls/fuel/tank[0]/shut-off</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelTankSelector2</object-name>
+  <property>controls/fuel/tank[1]/shut-off</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelTankSelector2</object-name>
+  <property>controls/fuel/tank[5]/shut-off</property>
+  <factor>-35</factor>
+  <offset-deg>0</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelTankSelector3</object-name>
+  <property>controls/fuel/tank[2]/shut-off</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelTankSelector3</object-name>
+  <property>controls/fuel/tank[6]/shut-off</property>
+  <factor>-35</factor>
+  <offset-deg>0</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>FuelTankSelector4</object-name>
+  <property>controls/fuel/tank[3]/shut-off</property>
+  <factor>-70</factor>
+  <offset-deg>35</offset-deg>   
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FuelTankSelector1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/tank[0]/shut-off</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FuelTankSelector2</object-name>
+  <action>
+   <button>0</button>                                            <!-- toggle tank valve 2 -->
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/tank[1]/shut-off</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/fuel/tank[5]/shut-off</property>
+    <value type="bool">false</value>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>                                            <!-- open tank valve 2A -->
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/fuel/tank[1]/shut-off</property>
+    <value type="bool">false</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/fuel/tank[5]/shut-off</property>
+    <value type="bool">true</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FuelTankSelector3</object-name>
+  <action>
+   <button>0</button>                                            <!-- toggle tank valve 3 -->
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/tank[2]/shut-off</property>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/fuel/tank[6]/shut-off</property>
+    <value type="bool">false</value>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>                                            <!-- open tank valve 3A -->
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/fuel/tank[2]/shut-off</property>
+    <value type="bool">false</value>
+   </binding>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/fuel/tank[6]/shut-off</property>
+    <value type="bool">true</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>FuelTankSelector4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/fuel/tank[3]/shut-off</property>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

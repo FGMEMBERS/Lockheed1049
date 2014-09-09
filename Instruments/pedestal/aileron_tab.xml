@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>aileron_tab.ac</path>
+
+ <animation>
+  <name>AllAileronTab</name>
+  <object-name>AileronTab</object-name>
+  <object-name>AileronTabCursor</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>AllAileronTab</object-name>
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+   <factor-prop>controls/lighting/internal/pedestal/on</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AileronTab</object-name>
+  <property>controls/flight/aileron-trim</property>
+  <factor>-4680</factor>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AileronTab</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/aileron-trim</property>
+    <step>0.003</step>
+    <min>-1</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/flight/aileron-trim</property>
+    <step>-0.003</step>
+    <min>-1</min>
+    <max>1</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>
+

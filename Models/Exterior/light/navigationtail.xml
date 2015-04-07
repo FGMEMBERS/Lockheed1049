@@ -45,25 +45,15 @@
  </animation>
 
  <animation>
-  <type>translate</type>
-  <object-name>NavigationTail</object-name>
-  <offset-m>17.343</offset-m>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>NavigationTail</object-name>
-  <offset-m>2.201</offset-m>
-  <axis>
-   <x>0.0</x>
-   <y>0.0</y>
-   <z>1.0</z>
-  </axis>
+  <type>select</type>
+  <object-name>NavigationLeft</object-name>
+  <object-name>NavigationRight</object-name>
+  <condition>
+   <equals>
+    <value n="0">1</value>
+    <value n="1">0</value>
+   </equals>
+  </condition>
  </animation>
 
  <animation>

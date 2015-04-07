@@ -2,8 +2,8 @@
 <!-- 
   File:     WrightCyclone-975C18CB1.xml
   Author:   Aero-Matic v 0.7
-  Date:     16 March 2013
-  Version:  2.02
+  Date:     28 March 2015
+  Version:  2.03
 
   Inputs:
     name:           WrightCyclone-975C18CB1
@@ -75,10 +75,8 @@
 
 
      Blower :
-     - 12 PSI for 54.5 inhg max at 2900 RPM, sea level (low blower) : takeoff, full throttle.
-     -  8 PSI for 46.0 inhg max at 2600 RPM, sea level (low blower).
+     - 12 PSI for 54.5 inhg max at 2900 RPM, takeoff (low blower).
      -  8 PSI for 46.0 inhg max at 2600 RPM, cruise (high blower).
-     - should be adjusted manually by a lever (override).
 
 
      minmp is adjusted to avoid shutdown with idle throttle.
@@ -90,7 +88,7 @@
    <bore unit="IN">6.125</bore>
    <stroke unit="IN">6.312</stroke>
    <compression-ratio>6.70</compression-ratio>
-   <volumetric-efficiency>0.85</volumetric-efficiency>
+   <volumetric-efficiency>1.10</volumetric-efficiency>
    <maxhp>    2800.00 </maxhp>
    <cycles>      2.0 </cycles>
    <idlerpm>   700.0 </idlerpm>
@@ -98,16 +96,16 @@
    <maxthrottle> 1.0 </maxthrottle>
    <minthrottle> 0.1 </minthrottle>
    <sparkfaildrop>      0.0 </sparkfaildrop>
+   <boostmanual>        1 </boostmanual>
    <numboostspeeds>     2 </numboostspeeds>
    <boostoverride>      0 </boostoverride>
-   <takeoffboost>      12 </takeoffboost>
-   <ratedboost1>        8 </ratedboost1>
-   <ratedpower1>     2400 </ratedpower1>
-   <ratedrpm1>       2600 </ratedrpm1>
-   <ratedaltitude1 >    0 </ratedaltitude1>
+   <ratedboost1>       12 </ratedboost1>
+   <ratedpower1>     2800 </ratedpower1>
+   <ratedrpm1>       2900 </ratedrpm1>
+   <ratedaltitude1>  5300 </ratedaltitude1>
    <ratedboost2>        8 </ratedboost2>
    <ratedpower2>     2000 </ratedpower2>
    <ratedrpm2>       2600 </ratedrpm2>
-   <ratedaltitude2> 10800 </ratedaltitude2>
+   <ratedaltitude2> 16000 </ratedaltitude2>
 
 </piston_engine> 

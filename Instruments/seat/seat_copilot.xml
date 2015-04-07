@@ -7,6 +7,17 @@
  <animation>
   <type>material</type>
   <object-name>Seat</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/cockpit</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green-prop>systems/lighting/internal/copilot/chart-green</green-prop>

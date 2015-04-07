@@ -5,8 +5,41 @@
 <path>cylinder.ac</path>
 
  <animation>
-  <type>material</type>
+  <name>Cylinder</name>
   <object-name>ControlQuadrant</object-name>
+  <object-name>PropellerEngineer</object-name>
+  <object-name>ThrottleEngineer1</object-name>
+  <object-name>ThrottleEngineer2</object-name>
+  <object-name>ThrottleEngineer3</object-name>
+  <object-name>ThrottleEngineer4</object-name>
+  <object-name>EngineBlower1</object-name>
+  <object-name>EngineBlower2</object-name>
+  <object-name>EngineBlower3</object-name>
+  <object-name>EngineBlower4</object-name>
+  <object-name>Mixture1</object-name>
+  <object-name>Mixture2</object-name>
+  <object-name>Mixture3</object-name>
+  <object-name>Mixture4</object-name>
+  <object-name>FuelTankSelector1</object-name>
+  <object-name>FuelTankSelector2</object-name>
+  <object-name>FuelTankSelector3</object-name>
+  <object-name>FuelTankSelector4</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Cylinder</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>0.1</green>
@@ -264,7 +297,7 @@
  <animation>
   <type>rotate</type>
   <object-name>EngineBlower1</object-name>
-  <property>controls/engines/engine[0]/blower</property>
+  <property>controls/engines/engine[0]/blower-high</property>
   <factor>-70</factor>
   <offset-deg>35</offset-deg>
   <axis>
@@ -277,7 +310,7 @@
  <animation>
   <type>rotate</type>
   <object-name>EngineBlower2</object-name>
-  <property>controls/engines/engine[1]/blower</property>
+  <property>controls/engines/engine[1]/blower-high</property>
   <factor>-70</factor>
   <offset-deg>35</offset-deg>
   <axis>
@@ -290,7 +323,7 @@
  <animation>
   <type>rotate</type>
   <object-name>EngineBlower3</object-name>
-  <property>controls/engines/engine[2]/blower</property>
+  <property>controls/engines/engine[2]/blower-high</property>
   <factor>-70</factor>
   <offset-deg>35</offset-deg>
   <axis>
@@ -303,7 +336,7 @@
  <animation>
   <type>rotate</type>
   <object-name>EngineBlower4</object-name>
-  <property>controls/engines/engine[3]/blower</property>
+  <property>controls/engines/engine[3]/blower-high</property>
   <factor>-70</factor>
   <offset-deg>35</offset-deg>
   <axis>
@@ -311,6 +344,58 @@
    <y>0.0</y>
    <z>0.0</z>
   </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>EngineBlower1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+  <property>controls/engines/engine[0]/blower-high</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>EngineBlower2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+  <property>controls/engines/engine[1]/blower-high</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>EngineBlower3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+  <property>controls/engines/engine[2]/blower-high</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>EngineBlower4</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+  <property>controls/engines/engine[3]/blower-high</property>
+   </binding>
+  </action>
  </animation>
 
 <!-- mixture -->

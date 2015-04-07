@@ -43,8 +43,8 @@ Fuel.init = func {
    me.PUMPPMIN = me.PUMPPMIN0;
    me.PUMPLB = me.PUMPLB0;
 
-   me.tanksystem.initinstrument();
-   me.tanksystem.presetfuel();
+   me.parser.init_FuelXML("/systems/fuel");
+   me.tanksystem.init_TankXML();
 
    me.savestate();
 }
@@ -132,6 +132,6 @@ Tanks.new = func {
 }
 
 Tanks.init = func {
-    me.inherit_tankXML();
+    me.inherit_tankXML("/systems/fuel");
 }
 

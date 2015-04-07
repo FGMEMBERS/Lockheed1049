@@ -1,15 +1,16 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "white_light_on" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 0 0 0 shi 32 trans 0
+MATERIAL "white_light_on" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0 0 0 shi 64 trans 0
 OBJECT world
 kids 1
 OBJECT poly
-name "Fuselage"
-data 8
-Mesh.015
+name "FuselageLight"
+loc 0 0 -0
+data 13
+FuselageLight
 texture "L1049-lights.rgb"
-texrep 1 1
-crease 30.000000
+texrep 1.000000 1.000000
+crease 30.000001
 numvert 4
 -0.394699 0.394724 0.001245
 0.394698 0.394723 0.001245

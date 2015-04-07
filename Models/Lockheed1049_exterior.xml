@@ -10,9 +10,9 @@
    <name>Fuselage top</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagetop.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m>-8.307</x-m>
+    <y-m> 0.0</y-m>
+    <z-m> 2.330</z-m>
    </offsets>
   </model>
 
@@ -20,9 +20,9 @@
    <name>Fuselage bottom</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagebottom.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m>-8.307</x-m>
+    <y-m> 0.0</y-m>
+    <z-m>-1.135</z-m>
    </offsets>
   </model>
 
@@ -30,9 +30,9 @@
    <name>Fuselage tail</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/fuselagetail.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m> 17.343</x-m>
+    <y-m> 0.0</y-m>
+    <z-m> 2.201</z-m>
    </offsets>
   </model>
 
@@ -42,9 +42,9 @@
    <name>Navigation left</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationleft.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m> 0.0</x-m>
+    <y-m>-18.984</y-m>
+    <z-m> 1.280</z-m>
    </offsets>
   </model>
 
@@ -52,9 +52,9 @@
    <name>Navigation right</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationright.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m> 0.0</x-m>
+    <y-m> 18.984</y-m>
+    <z-m> 1.280</z-m>
    </offsets>
   </model>
 
@@ -62,9 +62,9 @@
    <name>Navigation tail</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationtail.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m> 17.343</x-m>
+    <y-m> 0.0</y-m>
+    <z-m> 2.201</z-m>
    </offsets>
   </model>
 
@@ -74,9 +74,23 @@
    <name>Landing left</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/landingleft.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m>-1.78</x-m>
+    <y-m>-14.685</y-m>
+    <z-m> 0.478</z-m>
+    <heading-deg>-4</heading-deg>
+    <pitch-deg>1</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Landing left on ground</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/lightsource/landinglight_left.xml</path>
+   <offsets>
+    <x-m>-1.78</x-m>
+    <y-m>-14.685</y-m>
+    <z-m> 0.478</z-m>
+    <heading-deg>-4</heading-deg>
+    <pitch-deg>1</pitch-deg>
    </offsets>
   </model>
 
@@ -84,9 +98,23 @@
    <name>Landing right</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/landingright.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m>-1.78</x-m>
+    <y-m> 14.685</y-m>
+    <z-m> 0.478</z-m>
+    <heading-deg>4</heading-deg>
+    <pitch-deg>1</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Landing right on ground</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/lightsource/landinglight_right.xml</path>
+   <offsets>
+    <x-m>-1.78</x-m>
+    <y-m> 14.685</y-m>
+    <z-m> 0.478</z-m>
+    <heading-deg>4</heading-deg>
+    <pitch-deg>1</pitch-deg>
    </offsets>
   </model>
 
@@ -97,6 +125,8 @@
     <x-m>-1.663</x-m>
     <y-m>-14.685</y-m>
     <z-m> 0.478</z-m>
+    <heading-deg>0</heading-deg>
+    <pitch-deg>1</pitch-deg>
    </offsets>
   </model>
 
@@ -107,6 +137,8 @@
     <x-m>-1.663</x-m>
     <y-m> 14.685</y-m>
     <z-m> 0.478</z-m>
+    <heading-deg>0</heading-deg>
+    <pitch-deg>1</pitch-deg>
    </offsets>
   </model>
 
@@ -116,9 +148,21 @@
    <name>Taxi light</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/taxi.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m>-17.070</x-m>
+    <y-m> 0.0</y-m>
+    <z-m>-0.510</z-m>
+    <pitch-deg>-45</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Taxi on ground</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/lightsource/taxilight.xml</path>
+   <offsets>
+    <x-m>-17.070</x-m>
+    <y-m> 0.0</y-m>
+    <z-m>-0.510</z-m>
+    <pitch-deg>1</pitch-deg>
    </offsets>
   </model>
 
@@ -126,11 +170,83 @@
    <name>Passing light</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/passing.xml</path>
    <offsets>
-    <x-m>0.0</x-m>
-    <y-m>0.0</y-m>
-    <z-m>0.0</z-m>
+    <x-m>-17.070</x-m>
+    <y-m> 0.0</y-m>
+    <z-m>-0.510</z-m>
+    <pitch-deg>-45</pitch-deg>
    </offsets>
   </model>
+
+<!-- gear -->
+
+  <model>
+   <name>Front gear dome light</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/frontgeardome.xml</path>
+   <offsets>
+    <x-m>-15.0724</x-m>
+    <y-m>-0.0011</y-m>
+    <z-m>-0.1194</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Front gear dome sphere</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/lightsource/geardome_front.xml</path>
+   <offsets>
+    <x-m>-11.6542</x-m>
+    <y-m> 0.0</y-m>
+    <z-m>-1.0762</z-m>
+    <pitch-deg>90</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Gear left dome light</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/landinggeardome.xml</path>
+   <offsets>
+    <x-m>-3.5236</x-m>
+    <y-m>-4.7169</y-m>
+    <z-m>-0.6292</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Gear left dome sphere</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/lightsource/geardome_left.xml</path>
+   <offsets>
+    <x-m>-3.5402</x-m>
+    <y-m>-4.7008</y-m>
+    <z-m>-1.2164</z-m>
+    <pitch-deg>-90</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Gear right dome light</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/light/landinggeardome.xml</path>
+   <offsets>
+    <x-m>-3.5236</x-m>
+    <y-m> 4.6924</y-m>
+    <z-m>-0.6292</z-m>
+   </offsets>
+   <overlay>
+    <params>
+     <gear>gear/gear[2]/position-norm</gear>
+    </params>
+   </overlay>
+  </model>
+
+  <model>
+   <name>Gear right dome sphere</name>
+   <path>Aircraft/Lockheed1049/Models/Exterior/lightsource/geardome_right.xml</path>
+   <offsets>
+    <x-m>-3.5402</x-m>
+    <y-m> 4.6775</y-m>
+    <z-m>-1.2164</z-m>
+    <pitch-deg>-90</pitch-deg>
+   </offsets>
+  </model>
+
 
 <!-- REGISTRATION -->
 

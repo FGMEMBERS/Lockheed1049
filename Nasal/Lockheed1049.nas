@@ -63,15 +63,25 @@ LockheedMain.savedata = func {
    var saved_props = [ "/controls/copilot/fg-autopilot",
                        "/controls/copilot/fg-waypoint",
                        "/controls/crew/captain-busy",
+                       "/controls/crew/landing-lights",
                        "/controls/crew/night-lighting",
+                       "/controls/crew/lighting/chart",
+                       "/controls/crew/lighting/overhead",
+                       "/controls/crew/lighting/pedestal",
+                       "/controls/crew/taxi-light",
                        "/controls/crew/timeout",
                        "/controls/crew/timeout-s",
                        "/controls/doors/flight-station/opened",
+                       "/controls/environment/rembrandt/cockpit",
+                       "/controls/environment/rembrandt/external",
+                       "/controls/environment/rembrandt/landing",
+                       "/controls/environment/rembrandt/panel",
                        "/controls/environment/smoke",
                        "/controls/fuel/reinit",
                        "/controls/human/lighting/copilot",
                        "/controls/human/lighting/engineer",
                        "/controls/human/lighting/instrument",
+                       "/controls/human/lighting/overhead",
                        "/controls/human/lighting/pilot",
                        "/controls/seat/recover",
                        "/sim/model/immat",
@@ -131,7 +141,7 @@ LockheedMain.init = func {
    settimer(func { me.sec3cron(); },0);
 
    # fix JSBSim bug
-   setprop( "controls/flight/elevator-boost", constant.TRUE );
+#   setprop( "controls/flight/elevator-boost", constant.TRUE );
 
    # disable JSBSim stand alone mode
    setprop( "fdm/jsbsim/propulsion/tank[0]/priority", 0 );

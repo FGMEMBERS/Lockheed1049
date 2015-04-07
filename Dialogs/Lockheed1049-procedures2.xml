@@ -3,9 +3,10 @@
 <PropertyList>
   <name>Lockheed1049-procedures2</name>
   <layout>vbox</layout>
+  <width>600</width>
 
   <text>
-    <label>Constellation procedures</label>
+    <label>Constellation procedures 2</label>
   </text>
 
   <hrule><dummy/></hrule>
@@ -79,6 +80,29 @@
       </text>
 
       <checkbox>
+        <label>extends landing lights  ~</label>
+        <halign>left</halign>
+        <property>/controls/crew/landing-lights</property>
+        <binding>
+         <command>property-toggle</command>
+         <property>/controls/crew/landing-lights</property>
+        </binding>
+      </checkbox>
+      <checkbox>
+        <label>turns on taxi light  ~</label>
+        <halign>left</halign>
+        <property>/controls/crew/taxi-light</property>
+        <binding>
+         <command>property-toggle</command>
+         <property>/controls/crew/taxi-light</property>
+        </binding>
+      </checkbox>
+
+      <text>
+       <label></label>
+      </text>
+
+      <checkbox>
         <label>performs Captain checks (not real)  ~</label>
         <halign>left</halign>
         <property>/controls/crew/captain-busy</property>
@@ -87,74 +111,7 @@
          <property>/controls/crew/captain-busy</property>
         </binding>
       </checkbox>
-
-      <text>
-        <label></label>
-      </text>
-
-      <text>
-        <label>Night lighting</label>
-        <halign>center</halign>
-      </text>
-
-      <group>
-       <layout>vbox</layout>
-       <halign>left</halign>
-
-       <text>
-        <label>Panels</label>
-       </text>
-
-       <slider>
-         <label>pilot  ~</label>
-         <row>0</row>
-         <col>2</col>
-         <min>0</min>
-         <max>1</max>
-         <property>/controls/human/lighting/pilot</property>
-         <binding>
-           <command>dialog-apply</command>
-         </binding>
-         <binding>
-          <command>nasal</command>
-          <script>globals.Lockheed1049.engineercrew.pilotlightingexport();</script>
-         </binding>
-       </slider>
-
-       <slider>
-         <label>copilot  ~</label>
-         <row>0</row>
-         <col>2</col>
-         <min>0</min>
-         <max>1</max>
-         <property>/controls/human/lighting/copilot</property>
-         <binding>
-           <command>dialog-apply</command>
-         </binding>
-         <binding>
-          <command>nasal</command>
-          <script>globals.Lockheed1049.copilotcrew.lightingexport();</script>
-         </binding>
-       </slider>
-
-       <slider>
-         <label>engineer  ~</label>
-         <row>0</row>
-         <col>2</col>
-         <min>0</min>
-         <max>1</max>
-         <property>/controls/human/lighting/engineer</property>
-         <binding>
-           <command>dialog-apply</command>
-         </binding>
-         <binding>
-          <command>nasal</command>
-          <script>globals.Lockheed1049.engineercrew.lightingexport();</script>
-         </binding>
-       </slider>
-      </group>
-    </group>
-
+     </group>
   </group>
 
   <text>
@@ -169,6 +126,18 @@
    <layout>hbox</layout>
 
    <button>
+    <legend>Back</legend>
+    <key>b</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-procedures</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
     <legend>Close</legend>
     <default>true</default>
     <key>Esc</key>
@@ -177,5 +146,16 @@
     </binding>
    </button>
 
+   <button>
+    <legend>Night lighting</legend>
+    <key>n</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-procedures3</dialog-name>
+    </binding>
+    <binding>
+     <command>dialog-close</command>
+     </binding>
+    </button>
   </group>
 </PropertyList>

@@ -24,7 +24,6 @@ Seats.new = func {
                firstseat : constant.FALSE,
                firstseatview : 0,               
                fullcokpit : constant.FALSE,   
-               fulloutside : constant.FALSE,
 
                floating : {},
                recoverfloating : constant.FALSE,
@@ -82,7 +81,6 @@ Seats.init = func {
    # default
    me.recoverfloating = me.itself["root-ctrl"].getChild("recover").getValue();
    me.fullcockpit = me.itself["root-ctrl"].getChild("all").getValue();
-   me.fulloutside = me.itself["root-ctrl"].getChild("all-outside").getValue();
 
    me.offsetexport( "captain", constant.TRUE );
 }
@@ -164,17 +162,6 @@ Seats.fullexport = func {
    me.itself["root-ctrl"].getChild("all").setValue( me.fullcockpit );
 }
 
-Seats.fulloutsideexport = func {
-   if( me.fulloutside ) {
-       me.fulloutside = constant.FALSE;
-   }
-   else {
-       me.fulloutside = constant.TRUE;
-   }
-
-   me.itself["root-ctrl"].getChild("all-outside").setValue( me.fulloutside );
-}
-
 Seats.viewexport = func( name ) {
    var index = 0;
 
@@ -232,7 +219,6 @@ Seats.viewexport = func( name ) {
    }
 
    me.itself["root-ctrl"].getChild("all").setValue( me.fullcockpit );
-   me.itself["root-ctrl"].getChild("all-outside").setValue( constant.FALSE );
 }
 
 Seats.scrollexport = func{
@@ -563,17 +549,18 @@ Seats.restorepitchexport = func {
 Menu = {};
 
 Menu.new = func {
-   var obj = { parents : [Menu],
+   var obj = { parents : [Menu,System],
 
                autopilot : nil,
                crew : nil,
-               environment : nil,
+               environment : {},
                fuel : nil,
                ground : nil,
                immat : nil,
                procedures : {},
                radios : nil,
                seats : nil,
+               views : nil,
                menu : nil
          };
 
@@ -583,43 +570,50 @@ Menu.new = func {
 };
 
 Menu.init = func {
-   me.menu = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/menu/dialog",
-                            "Aircraft/Lockheed1049/Dialogs/Lockheed1049-menu.xml");
-   me.autopilot = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/autopilot/dialog",
-                                 "Aircraft/Lockheed1049/Dialogs/Lockheed1049-autopilot.xml");
-   me.crew = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/crew/dialog",
-                            "Aircraft/Lockheed1049/Dialogs/Lockheed1049-crew.xml");
-   me.environment = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/environment/dialog",
-                                   "Aircraft/Lockheed1049/Dialogs/Lockheed1049-environment.xml");
-   me.fuel = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/fuel/dialog",
-                            "Aircraft/Lockheed1049/Dialogs/Lockheed1049-fuel.xml");
-   me.ground = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/ground/dialog",
-                              "Aircraft/Lockheed1049/Dialogs/Lockheed1049-ground.xml");
-   me.immat = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/immat/dialog",
-                             "Aircraft/Lockheed1049/Dialogs/Lockheed1049-immat.xml");
+   me.inherit_system("/systems/crew");
 
-   me.array( me.procedures, 2, "procedures" );
+   me.menu = me.dialog( "menu" );
+   me.autopilot = me.dialog( "autopilot" );
+   me.crew = me.dialog( "crew" );
 
-   me.radios = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/radios/dialog",
-                              "Aircraft/Lockheed1049/Dialogs/Lockheed1049-radios.xml");
-   me.seats = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/seats/dialog",
-                             "Aircraft/Lockheed1049/Dialogs/Lockheed1049-seats.xml");
+   me.array( me.environment, 2, "environment" );
+
+   me.fuel = me.dialog( "fuel" );
+   me.ground = me.dialog( "ground" );
+   me.immat = me.dialog( "immat" );
+
+   me.array( me.procedures, 3, "procedures" );
+
+   me.radios = me.dialog( "radios" );
+   me.seats = me.dialog( "seats" );
+   me.views = me.dialog( "views" );
+}
+
+Menu.resetexport = func {
+   me.itself["immat"].setValue("N6905C");
+}
+
+Menu.dialog = func( name ) {
+   var item = gui.Dialog.new(me.itself["dialogs"].getPath() ~ "/" ~ name ~ "/dialog",
+                             "Aircraft/Lockheed1049/Dialogs/Lockheed1049-" ~ name ~ ".xml");
+
+   return item;
 }
 
 Menu.array = func( table, max, name ) {
-    var j = 0;
+   var j = 0;
 
-    for( var i = 0; i < max; i=i+1 ) {
-       if( j == 0 ) {
-           j = "";
-       }
-       else {
-           j = i + 1;
-       }
+   for( var i = 0; i < max; i=i+1 ) {
+        if( j == 0 ) {
+            j = "";
+        }
+        else {
+            j = i + 1;
+        }
 
-       table[i] = gui.Dialog.new("/sim/gui/dialogs/Lockheed1049/" ~ name ~ "[" ~ i ~ "]/dialog",
+        table[i] = gui.Dialog.new(me.itself["dialogs"].getValue() ~ "/" ~ name ~ "[" ~ i ~ "]/dialog",
                                  "Aircraft/Lockheed1049/Dialogs/Lockheed1049-" ~ name ~ j ~ ".xml");
-    }
+   }
 }
 
 
@@ -728,6 +722,19 @@ Crewbox.minimizeexport = func {
     me.resettimer();
 }
 
+Crewbox.wakeupexport = func {
+    # display is minimized by timeout, or by picking 3D clue.
+    if( !me.itself["root-ctrl"].getChild("timeout").getValue() and
+        !me.dependency["human"].getChild("serviceable").getValue() ) {
+        # wake up display
+        if( me.itself["root"].getChild("minimized").getValue() ) {
+            me.itself["root"].getChild("minimized").setValue(constant.FALSE);
+
+            me.resettimer();
+        }
+    }
+}
+
 Crewbox.toggleexport = func {
     # 2D feedback
     if( !me.dependency["human"].getChild("serviceable").getValue() ) {
@@ -768,8 +775,7 @@ Crewbox.resettimer = func {
 }
 
 Crewbox.crewtext = func {
-    if( !me.itself["root"].getChild("minimized").getValue() or
-        !me.itself["root-ctrl"].getChild("timeout").getValue() ) {
+    if( !me.itself["root"].getChild("minimized").getValue() ) {
         me.checklisttext();
         me.copilottext();
         me.engineertext();

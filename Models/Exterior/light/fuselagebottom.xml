@@ -6,12 +6,12 @@
 
  <animation>
   <type>noshadow</type>
-  <object-name>Fuselage</object-name>
+  <object-name>FuselageLight</object-name>
  </animation>
 
  <animation>
   <type>material</type>
-  <object-name>Fuselage</object-name>
+  <object-name>FuselageLight</object-name>
   <emission>
    <red>1.0</red>
    <green>1.0</green>
@@ -22,7 +22,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>Fuselage</object-name>
+  <object-name>FuselageLight</object-name>
   <condition>
    <and>
     <property>controls/lighting/external/navigation/fuselage-lights</property>
@@ -43,35 +43,13 @@
  </animation>
 
  <animation>
-  <type>translate</type>
-  <object-name>Fuselage</object-name>
-  <offset-m>-8.307</offset-m>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>Fuselage</object-name>
-  <offset-m>-1.135</offset-m>
-  <axis>
-   <x>0.0</x>
-   <y>0.0</y>
-   <z>1.0</z>
-  </axis>
- </animation>
-
- <animation>
   <type>billboard</type>
-  <object-name>Fuselage</object-name>
+  <object-name>FuselageLight</object-name>
  </animation>
 
  <animation>
   <type>scale</type>
-  <object-name>Fuselage</object-name>
+  <object-name>FuselageLight</object-name>
   <property>sim/time/sun-angle-rad</property>
   <x-min>1</x-min>
   <y-min>1</y-min>
@@ -86,7 +64,13 @@
 
  <animation>
   <type>dist-scale</type>
-  <object-name>Fuselage</object-name>
+  <object-name>FuselageLight</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/time/sun-angle-rad</property>
+    <value>1.57</value>
+   </greater-than>
+  </condition>
   <interpolation>
    <entry>
     <ind>0</ind>

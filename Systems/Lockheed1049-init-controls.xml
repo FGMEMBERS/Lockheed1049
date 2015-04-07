@@ -21,11 +21,18 @@
 
   <crew>
    <captain-busy type="bool">true</captain-busy>                   <!-- crew performs Captain checks -->
+   <landing-lights type="bool">false</landing-lights>
+   <lighting>
+    <chart type="bool">false</chart>
+    <overhead type="bool">false</overhead>
+    <pedestal type="bool">false</pedestal>
+   </lighting>
    <night-lighting type="bool">true</night-lighting>
    <steering>
     <pedal type="bool">false</pedal>
     <wheel alias="/fdm/jsbsim/systems/NWS/engaged"/>
    </steering>
+   <taxi-light type="bool">false</taxi-light>
    <timeout type="bool">true</timeout>                             <!-- of 10 seconds -->
    <timeout-s type="double">10.0</timeout-s>
   </crew>
@@ -42,20 +49,27 @@
 
   <engines>
    <engine n="0">
-    <blower>0.0</blower>
+    <blower-high type="bool">false</blower-high>
    </engine>
    <engine n="1">
-    <blower>0.0</blower>
+    <blower-high type="bool">false</blower-high>
    </engine>
    <engine n="2">
-    <blower>0.0</blower>
+    <blower-high type="bool">false</blower-high>
    </engine>
    <engine n="3">
-    <blower>0.0</blower>
+    <blower-high type="bool">false</blower-high>
    </engine>
   </engines>
 
   <environment>
+   <rembrandt>                                                             <!-- light is allways visible -->
+    <cockpit type="int">0</cockpit>
+    <external type="int">0</external>
+    <gear-well type="int">0</gear-well>
+    <landing type="int">0</landing>
+    <panel type="int">0</panel>
+   </rembrandt>
    <smoke type="bool">true</smoke>
   </environment>
 
@@ -127,6 +141,7 @@
     <copilot type="double">0.4</copilot>
     <engineer type="double">0.4</engineer>
     <instrument type="double">0.0</instrument>                     <!-- not real -->
+    <overhead type="double">0.4</overhead>
     <pilot type="double">0.4</pilot>
    </lighting>
   </human>
@@ -192,7 +207,6 @@
 
   <seat>
    <all type="bool">false</all>
-   <all-outside type="bool">false</all-outside>
    <observer type="bool">false</observer>
    <observer2 type="bool">false</observer2>
    <offset>

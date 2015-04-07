@@ -136,10 +136,10 @@ Light texture from bo105 (M. Franz).
 http://www.usflag.org/ : the 49 stars flag (1957 livery).
 
 
-Made with Blender 2.67a.
+Made with Blender 2.68a.
 AC3D export :
-- auto smooth is enabled (default is 30 degrees). Except seats, tables, levers, small warning lights and switches.
+- auto smooth is enabled (default is 30 degrees). Except seats, tables, yokes, many levers, small warning lights and switches.
 - AC3D groups are removed, to help import/export.
 
 
-22 March 2014.
+23 March 2014.

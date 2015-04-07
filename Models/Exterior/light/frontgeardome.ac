@@ -1,0 +1,25 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "DefaultWhite.001" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.5 0.5 0.5 shi 64 trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "FrontGearDome"
+loc 2.224768 1.100669 0.447163
+data 13
+FrontGearDome
+crease 179.000000
+numvert 4
+1.184853 -1.100127 -1.251538
+1.184853 -1.100127 0.359414
+-2.224791 -1.100127 0.184752
+-2.224791 -1.100127 -1.076876
+numsurf 1
+SURF 0x30
+mat 1
+refs 4
+0 0.024148710072 0.053567767143
+1 0.024148710072 0.022727608681
+2 0.054988868535 0.022727608681
+3 0.054988868535 0.053567767143
+kids 0

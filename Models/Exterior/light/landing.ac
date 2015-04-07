@@ -1,20 +1,21 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "white_light_on" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 0 0 0 shi 32 trans 0
+MATERIAL "white_light_on" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0 0 0 shi 64 trans 0
 OBJECT world
 kids 1
 OBJECT poly
 name "LandingLight"
-data 8
-Mesh.018
+loc 0 0 -0
+data 12
+LandingLight
 texture "L1049-lights.rgb"
-texrep 1 1
-crease 30.000000
+texrep 1.000000 1.000000
+crease 30.000001
 numvert 4
--0.001886 0.493102 -0.492964
-6.5e-05 0.493037 0.492962
--0.000114 -0.492898 0.492962
--0.002066 -0.492833 -0.492964
+-0.001537 0.298623 -0.298499
+-0.000355 0.298584 0.298498
+-0.000464 -0.298419 0.298498
+-0.001646 -0.29838 -0.298499
 numsurf 2
 SURF 0x00
 mat 1

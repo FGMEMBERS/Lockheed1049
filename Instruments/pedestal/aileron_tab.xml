@@ -13,6 +13,17 @@
  <animation>
   <type>material</type>
   <object-name>AllAileronTab</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <value>0.0</value>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>1.0</green>

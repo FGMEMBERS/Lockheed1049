@@ -13,6 +13,9 @@ Engine = {};
 Engine.new = func {
    var obj = { parents : [Engine,System],
 
+               LOWBLOWER : 0,
+               HIGHBLOWER : 1,
+
                LOWPSI : 20.0,
 
                LOWRPM : 1350.0,
@@ -29,6 +32,7 @@ Engine.init = func {
 }
 
 Engine.schedule = func {
+   me.supercharger();
    me.red_oil();
    me.orange_pitch();
 }
@@ -36,7 +40,7 @@ Engine.schedule = func {
 Engine.red_oil = func {
    var value = constant.FALSE;
 
-   for( var i = 0; i < 4; i = i+1 ) {
+   for( var i = 0; i < constantaero.NBENGINES; i = i+1 ) {
         if( me.itself["engine"][i].getChild("oil-pressure-psi").getValue() < me.LOWPSI ) {
             value = constant.TRUE;
         }
@@ -52,7 +56,7 @@ Engine.orange_pitch = func {
    var value = constant.FALSE;
    var rpm = 0.0;
 
-   for( var i = 0; i < 4; i = i+1 ) {
+   for( var i = 0; i < constantaero.NBENGINES; i = i+1 ) {
         rpm = me.itself["engine"][i].getChild("rpm").getValue();
 
         if( rpm < me.LOWRPM or rpm >= me.HIGHRPM ) {
@@ -63,5 +67,22 @@ Engine.orange_pitch = func {
         }
 
         me.itself["engine-sys"][i].getChild("propeller-low-high").setValue( value );
+   }
+}
+
+Engine.supercharger = func {
+   var value = 0;
+
+   for( var i = 0; i < constantaero.NBENGINES; i = i+1 ) {
+        if( me.itself["engine-ctrl"][i].getChild("blower-high").getValue() ) {
+            value = me.HIGHBLOWER
+        }
+        else {
+            value = me.LOWBLOWER
+        }
+
+        if( me.itself["engine-sys"][i].getChild("supercharger-gear").getValue() != value ) {
+            me.itself["engine-sys"][i].getChild("supercharger-gear").setValue( value );
+        }
    }
 }

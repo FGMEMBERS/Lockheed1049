@@ -9,6 +9,17 @@
  <animation>
   <type>material</type>
   <object-name>Plate</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>0.1</green>

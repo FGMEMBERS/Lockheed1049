@@ -35,39 +35,6 @@
  </animation>
 
  <animation>
-  <type>translate</type>
-  <object-name>LandingLight</object-name>
-  <offset-m>-1.78</offset-m>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>LandingLight</object-name>
-  <offset-m>-14.685</offset-m>
-  <axis>
-   <x>0.0</x>
-   <y>1.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>LandingLight</object-name>
-  <offset-m>0.478</offset-m>
-  <axis>
-   <x>0.0</x>
-   <y>0.0</y>
-   <z>1.0</z>
-  </axis>
- </animation>
-
- <animation>
   <type>scale</type>
   <object-name>LandingLight</object-name>
   <property>sim/time/sun-angle-rad</property>
@@ -85,6 +52,12 @@
  <animation>
   <type>dist-scale</type>
   <object-name>LandingLight</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/time/sun-angle-rad</property>
+    <value>1.57</value>
+   </greater-than>
+  </condition>
   <interpolation>
    <entry>
     <ind>0</ind>

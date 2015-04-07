@@ -69,14 +69,12 @@
 <!-- Livery (1 texture per group) -->
 <!-- ============================ -->
 
-<!-- disabled, because transparent windows have a 2nd texture
   <animation>
    <type>material</type>
    <object-name>Fuselage</object-name>
    <property-base>sim/model/livery/</property-base>
    <texture-prop>texture</texture-prop>
   </animation>
--->
   
   <animation>
    <type>material</type>
@@ -135,43 +133,15 @@
 <!-- ============ -->
 
   <animation>
+   <name>flightdeck</name>
+   <object-name>Cockpit</object-name>
+  </animation>
+
+  <animation>
    <type>range</type>
    <object-name>Cockpit</object-name>
    <min-m>0</min-m>
    <max-m>50</max-m>
-  </animation>
-
-  <animation>
-   <name>OutsideLOD</name>
-   <object-name>VorLocAntenna</object-name>
-   <object-name>HFAntenna</object-name>
-   <object-name>VHFAntenna</object-name>
-   <object-name>ADFLoopAntenna</object-name>
-   <object-name>RadioAltAntenna</object-name>
-   <object-name>ADFSenseAntenna</object-name>
-   <object-name>LeftStabilizer</object-name>
-   <object-name>RightStabilizer</object-name>
-   <object-name>LeftElevator</object-name>
-   <object-name>RightElevator</object-name>
-   <object-name>LeftFin</object-name>
-   <object-name>Stabilizer</object-name>
-   <object-name>RightFin</object-name>
-   <object-name>LeftRudder</object-name>
-   <object-name>Rudder</object-name>
-   <object-name>RightRudder</object-name>
-  </animation>
-
-  <animation>
-   <type>select</type>
-   <object-name>OutsideLOD</object-name>
-   <condition>
-    <or>
-     <not>
-      <property>sim/current-view/internal</property>
-     </not>
-     <property>controls/seat/all-outside</property>
-    </or>
-   </condition>
   </animation>
 
 <!-- CAPTAIN -->
@@ -179,7 +149,6 @@
   <animation>
    <name>captain</name>
    <object-name>PilotSidePanel</object-name>
-   <object-name>ParkingBrakeTubeL</object-name>
    <object-name>Captain Instruments</object-name>
   </animation>
 
@@ -233,8 +202,6 @@
   <animation>
    <name>copilot</name>
    <object-name>CopilotSidePanel</object-name>
-   <object-name>ParkingBrakeTubeR</object-name>
-   <object-name>CopilotRail</object-name>
    <object-name>Copilot Instruments</object-name>
   </animation>
 
@@ -1701,67 +1668,6 @@
   </axis>
  </animation>
 
-<!-- GEAR WELL DOME LIGHTS -->
-
- <animation>
-  <name>GearWellLights</name>
-  <object-name>FrontGearLight</object-name>
-  <object-name>LeftGearLight</object-name>
-  <object-name>RightGearLight</object-name>
- </animation>
-
- <animation>
-  <type>material</type>
-  <object-name>GearWellLights</object-name>
-  <emission>
-   <red>0.6</red>
-   <green>0.6</green>
-   <blue>0.6</blue>
-   <factor-prop>instrumentation/generic/factor</factor-prop>
-  </emission> 
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>GearWellLights</object-name>
-  <condition>
-   <property>controls/lighting/external/navigation/on</property>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>FrontGearLight</object-name>
-  <condition>
-   <greater-than>
-    <property>gear/gear[0]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>LeftGearLight</object-name>
-  <condition>
-   <greater-than>
-    <property>gear/gear[1]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-  </condition>
- </animation>
-
- <animation>
-  <type>select</type>
-  <object-name>RightGearLight</object-name>
-  <condition>
-   <greater-than>
-    <property>gear/gear[2]/position-norm</property>
-    <value>0.0</value>
-   </greater-than>
-  </condition>
- </animation>
-
 
 <!-- ====== -->
 <!-- Inside -->
@@ -1906,15 +1812,39 @@
  </animation>
 
 
-<!-- =========== -->
-<!-- Instruments -->
-<!-- =========== -->
+<!-- EFFECTS -->
+
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <condition>
+   <property>sim/rendering/rembrandt/enabled</property>
+  </condition>
+  <object-name>Windows</object-name>
+  <object-name>CrewDoorWindows</object-name>
+  <object-name>MainDoorWindows</object-name>
+ </effect>
+
+
+<!-- ======== -->
+<!-- Lighting -->
+<!-- ======== -->
 
 <!-- PILOT PANEL -->
 
  <animation>
   <type>material</type>
   <object-name>Panel</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green-prop>systems/lighting/internal/panel/panel-green</green-prop>
@@ -1928,6 +1858,17 @@
  <animation>
   <type>material</type>
   <object-name>Pedestal</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/cockpit</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>1.0</green>
@@ -1936,81 +1877,22 @@
   </emission> 
  </animation>
 
-<!-- parking brakes -->
-
- <animation>
-  <type>translate</type>
-  <object-name>ParkingBrakeLeverL</object-name>
-  <property>controls/gear/brake-parking</property>
-  <interpolation>
-    <entry>
-     <ind>0.0</ind>
-     <dep>-0.08</dep>
-    </entry>
-    <entry>
-     <ind>1.0</ind>
-     <dep>0</dep>
-    </entry>
-  </interpolation>
-  <axis>
-   <x>1.0</x>
-   <y>-0.025</y>
-   <z>-0.025</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>ParkingBrakeLeverL</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/gear/brake-parking</property>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>ParkingBrakeLeverR</object-name>
-  <property>controls/gear/brake-parking</property>
-  <interpolation>
-    <entry>
-     <ind>0.0</ind>
-     <dep>-0.08</dep>
-    </entry>
-    <entry>
-     <ind>1.0</ind>
-     <dep>0</dep>
-    </entry>
-  </interpolation>
-  <axis>
-   <x>1.0</x>
-   <y>0.025</y>
-   <z>-0.025</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>ParkingBrakeLeverR</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-toggle</command>
-    <property>controls/gear/brake-parking</property>
-   </binding>
-  </action>
- </animation>
-
-<!-- overhead light -->
+<!-- OVERHEAD -->
 
  <animation>
   <type>material</type>
   <object-name>Overhead</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/cockpit</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>1.0</green>
@@ -2019,11 +1901,24 @@
   </emission> 
  </animation>
 
-<!-- ENGINEER CENTER PANEL -->
+<!-- ENGINEER -->
+
+<!-- center panel -->
 
  <animation>
   <type>material</type>
   <object-name>EngineerPanel</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>0.1</green>
@@ -2032,11 +1927,44 @@
   </emission> 
  </animation>
 
-<!-- ENGINEER SWITCH PANEL -->
+<!-- desk -->
 
  <animation>
   <type>material</type>
   <object-name>SwitchPanel</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/engineer/flood-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>EngineerDeck</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>0.1</green>

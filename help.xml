@@ -54,8 +54,8 @@
     <desc>speed-up</desc>
    </key>
    <key>
-     <name>f/F</name>
-     <desc>full cockpit/aircraft</desc>
+     <name>f</name>
+     <desc>full cockpit</desc>
    </key>
    <key>
     <name>q</name>
@@ -125,28 +125,31 @@
  ________________________Procedures_________________________
  Takeoff :
             flaps 1/4 2900 RPM,
-            rotation at 130 kt (full load), 120 kt (landing load);
+            rotation at 130 kt (full load), 120 kt (landing load).
             retract gear below 165 k,
             retract flaps below 184 kt.
  Climb :
             always above 180 kt (drag).
             reduce throttle to 48 inhg, then reduce pitch to 2600 RPM (engine temperature).
             decrease mixture (highest Torque / EGT) with altitude, otherwise engine stops.
+            above 12500 ft, high blower.
  Cruise :
             220 kt at 20000 ft, 197 kt at 25000 ft (9 kt / 2000 ft).
             at 2300 RPM, economic fuel flow is below 150 gallons/h :
             reduce pitch to the lowest RPM (if not enough, reduce throttle),
             then reduce mixture to the highest RPM (and torque).
  Descent :
-            max pitch (i.e. lowest thrust of propeller curve).
+            below 12500 ft, low blower.
  Approach :
-            10 NM at 1500 ft.
-            flaps 1/4 below 184 kt;
-            gear below 165 kt, flaps 1/2 below 161 kt,
-            flaps 3/4 below 154 kt, full flaps below 148 kt. 
+            10 NM at 1500 ft, 2600 RPM.
+            flaps 1/4 below 184 kt,
+            gear below 165 kt.
+            maintain 130 kt.
  Landing :
-            maintain 125 kt (landing load);
-            touch down 110 kt (landing load), 100 kt (empty load).
+            flaps 1/2 below 161,
+            flaps 3/4 below 154 kt, full flaps below 148 kt. 
+            maintain 115 kt (landing load), 110 kt (empty load).
+            touch down 110 kt (landing load), 105 kt (empty load).
 
 <!-- Real data -->
  ________________________Limitations________________________

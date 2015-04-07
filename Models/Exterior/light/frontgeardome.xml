@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>frontgeardome.ac</path>
+ 
+
+ <animation>
+  <type>material</type>
+  <object-name>FrontGearDome</object-name>
+  <emission>
+   <red>0.6</red>
+   <green>0.6</green>
+   <blue>0.6</blue>
+   <factor-prop>instrumentation/generic/factor</factor-prop>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>FrontGearDome</object-name>
+  <condition>
+   <and>
+    <property>controls/lighting/external/navigation/on</property>
+    <greater-than>
+     <property>gear/gear[0]/position-norm</property>
+     <value>0.0</value>
+    </greater-than>
+    <or>
+     <not>
+      <property>/sim/rendering/rembrandt/enabled</property>
+     </not>
+     <less-than-equals>
+      <property>/sim/rendering/shaders/lights</property>
+      <property n="1">controls/environment/rembrandt/external</property>
+     </less-than-equals>
+    </or>
+   </and>
+  </condition>
+ </animation>
+
+</PropertyList>
+

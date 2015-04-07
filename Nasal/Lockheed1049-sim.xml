@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Sim initialization.
--->
+<!-- sim initialization. -->
 
 <PropertyList include="Lockheed1049-views.xml">
 
@@ -19,5 +18,11 @@
    <setting>0.75</setting>
    <setting>1.0</setting>
   </flaps>
+
+  <gui>
+   <dialogs>
+    <Lockheed1049></Lockheed1049>             <!-- path creation for nasal -->
+   </dialogs>
+  </gui>
 
 </PropertyList>

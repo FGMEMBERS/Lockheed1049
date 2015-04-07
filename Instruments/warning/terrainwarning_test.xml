@@ -5,9 +5,25 @@
 <path>terrainwarning_test.ac</path>
 
  <animation>
-  <type>material</type>
+  <name>TerrainLighting</name>
   <object-name>TerrainTest</object-name>
   <object-name>TerrainAltitude</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>TerrainLighting</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
     <red>0.81</red>
     <green>0.40</green>

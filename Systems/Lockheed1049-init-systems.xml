@@ -3,7 +3,23 @@
 <!-- intialize systems :
 
      - avoids nil values for Nasal.
+     - avoid string numbers (comparison doesn't work in XML instrument) for Nasal.
+     - autopilot, engines and gear also to distinguish the specific additions.
      - cross feeed of engine feeding (not of tanks) is emulated.
+
+
+     Relations :
+
+     <another>
+     - <dependency> is a real dependency.
+     - <itself> is the system.
+       Reserved entries : me.itself["root"] is path /systems/another.
+                          me.itself["root-ctrl"] is path /controls/another.
+     - <noinstrument> is to built the system.
+       Or for fuzzy decision of virtual crew :
+       visual estimation of altitude over ground, if failure of radio altimeter;
+       speed implicitly known, during a subsonic cruise.
+     </another>
 
 
      Known problems :
@@ -44,6 +60,7 @@
      <autopilot>/autopilot/locks</autopilot>
      <crew>/systems/crew</crew>
      <crew-ctrl>/controls/crew</crew-ctrl>
+     <lighting>/controls/lighting/external</lighting>
      <route>/autopilot/route-manager/route</route>
      <route-manager>/autopilot/route-manager</route-manager>
      <waypoint>
@@ -61,6 +78,7 @@
     </itself>
 
     <noinstrument>
+     <airspeed>/velocities/airspeed-kt</airspeed>
      <roll>/orientation/roll-deg</roll>
      <speed-up>/sim/speed-up</speed-up>
      <time>/sim/time</time>
@@ -90,6 +108,11 @@
      <voice>/systems/voice</voice>
     </dependency>
 
+    <itself>
+     <dialogs>/sim/gui/dialogs/Lockheed1049</dialogs>
+     <immat>/sim/model/immat</immat>
+    </itself>
+
     <noinstrument>
      <freeze>/sim/freeze/master</freeze>
      <speed-up>/sim/speed-up</speed-up>
@@ -108,6 +131,11 @@
    <power>
     <specific type="bool">true</specific>                                              <!-- not implemented : always voltage -->
    </power>
+
+   <outputs>
+    <comm n="0" type="double">12.0</comm>                                              <!-- for KX165 -->
+    <comm n="1" type="double">12.0</comm>
+   </outputs>
   </electrical>
 
   <engineer>
@@ -142,6 +170,7 @@
     <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
+    <supercharger-gear alias="/fdm/jsbsim/propulsion/engine[0]/boost-speed"/>
    </engine>
    <engine n="1">
     <engine-num>2</engine-num>
@@ -149,6 +178,7 @@
     <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
+    <supercharger-gear alias="/fdm/jsbsim/propulsion/engine[1]/boost-speed"/>
    </engine>
    <engine n="2">
     <engine-num>3</engine-num>
@@ -156,6 +186,7 @@
     <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
+    <supercharger-gear alias="/fdm/jsbsim/propulsion/engine[2]/boost-speed"/>
    </engine>
    <engine n="3">
     <engine-num>4</engine-num>
@@ -163,6 +194,7 @@
     <fuel-pressure-low type="bool">false</fuel-pressure-low>
     <oil-low type="bool">false</oil-low>
     <propeller-low-high type="bool">false</propeller-low-high>
+    <supercharger-gear alias="/fdm/jsbsim/propulsion/engine[3]/boost-speed"/>
    </engine>
 
    <relations>
@@ -171,6 +203,10 @@
       <component>/engines</component>
       <subcomponent>engine</subcomponent>
      </engine>
+     <engine-ctrl>
+      <component>/controls/engines</component>
+      <subcomponent>engine</subcomponent>
+     </engine-ctrl>
      <engine-sys>
       <component>/systems/engines</component>
       <subcomponent>engine</subcomponent>
@@ -210,7 +246,9 @@
     </noinstrument>
    </relations>
 
-   <tanks include="../Nasal/Lockheed1049-fuel.xml"/>
+   <tanks include="../Nasal/Lockheed1049-fuel.xml">
+    <dialog></dialog>
+   </tanks>
   </fuel>
 
   <fuel-pump>
@@ -330,10 +368,12 @@
    <relations>
     <dependency>
      <crew>/controls/crew</crew>
+     <crew-lighting>/controls/crew/lighting</crew-lighting>
      <lighting>/controls/lighting/internal</lighting>
      <lighting-copilot>/controls/lighting/internal/copilot</lighting-copilot>
      <lighting-engineer>/controls/lighting/internal/engineer</lighting-engineer>
      <lighting-overhead>/controls/lighting/internal/overhead</lighting-overhead>
+     <lighting-pedestal>/controls/lighting/internal/pedestal</lighting-pedestal>
      <lighting-pilot>/controls/lighting/internal/pilot</lighting-pilot>
     </dependency>
 

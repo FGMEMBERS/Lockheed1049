@@ -27,7 +27,7 @@ Range (max payload) : 1049 : 1890 NM (E).
 
 Comparison with other 1049s
 ===========================
-Cruise  : 6000 m [19700 ft] (F).
+Cruise  : - 6000 m [19700 ft] (F).
 Ceiling : - 25000 ft (B)(C).
           - 23200 ft (D).
           - 8500 m [27900 ft] (F).
@@ -50,22 +50,21 @@ Lockheed 1049 ops
              - retract gear below 165 kt.
              - retract flaps below 184 kt.
 - climb    : - always above 180 kt (drag).
-             - below 48 inhg and 2600 RPM (engine temperature).
+             - reduce throttle to 48 inhg, then reduce pitch to 2600 RPM (engine temperature).
              - reduce pitch to the lowest RPM (if not enough, reduce throttle),
-               then reduce mixture to the highest RPM (and torque) (G).
-             - decrease mixture (highest EGT) with altitude, otherwise engine stops.
+             - decrease mixture (highest torque (G) and EGT) with altitude, otherwise engine stops.
+             - above 12500 ft, high blower.
 - cruise   : - 220 kt at 20000 ft, 197 kt at 25000 ft (2600 RPM).
              - min mixture, min pitch (with stable RPM).
-- descent  : - max pitch (i.e. lowest thrust of propeller curve).
-- approach : - max pitch, level to reduce speed.
-             - 10 NM at 1500 ft.
+- descent  : - below 12500 ft, low blower.
+- approach : - 10 NM at 1500 ft, 2600 RPM.
              - flaps 1/4 below 184 kt.
              - gear below 165 kt.
-             - flaps 1/2 below 161 kt.
-             - flaps 3/4 below 153 kt.
-             - full flaps below 148 kt.
-             - maintain 125 kt (landing load). 
-- landing  : - 110 kt (landing load), 100 kt (empty load).
+             - maintain 130 kt.
+- landing :  - flaps 1/2 below 161 kt.
+             - flaps 3/4 below 153 kt, full flaps below 148 kt.
+             - maintain 115 kt (landing load), 110 kt (empty load). 
+             - touch down 110 kt (landing load), 105 kt (empty load).
 
 
 Installation
@@ -83,7 +82,7 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-- 3.0.0 : minimum version.
+- 3.4.0 : minimum version.
 
 
 Keyboard
@@ -158,11 +157,16 @@ VOR
 When out of range, VOR needle is steady (use light of deviation indicator).
 
 
-Virtual copilot
-===============
-Virtual copilot :
+Virtual crew
+============
+Copilot
+-------
 - can hold throttle and follow waypoints.
 - is never the pilot in command.
+
+Engineer
+--------
+- swaps blower.
 
 
 Consumption
@@ -172,10 +176,6 @@ Cruise speed 2300 RPM (full throttle, min pitch, min mixture), for 1 engine :
 - empty load,197 kt 150 gallons/h at 25000 ft, 2450 RPM (J = 1.56).
 
 As the real fuel is 1 US gal = 6 lb (A), multiply by 6.6 / 6 to compare with the real consumption.
-
-All with lateral wind.
-Min mixture : before engine cutoff.
-Min pitch : before influence on RPM.
 
 Example
 -------
@@ -217,9 +217,9 @@ Known problems autopilot
 ------------------------
 - toggle waypoint following (virtual copilot), only AFTER activation of route, or use "= a".
 
-Known problems 2.4.0 autopilot
+Known problems 3.4.0 autopilot
 ------------------------------
-- on engagement, magnetic and true heading modes bank into the opposite direction.
+- on engagement, true heading mode banks into the opposite direction.
 
 Known problems FDM
 ------------------
@@ -231,7 +231,6 @@ Secondary problems
 
 Secondary problems FDM
 ----------------------
-- negativ oil pressure.
 - cylinder head temperature too high.
 
 
@@ -256,4 +255,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-22 March 2014.
+4 April 2015.

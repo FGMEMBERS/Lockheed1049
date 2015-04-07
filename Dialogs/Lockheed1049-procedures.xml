@@ -69,6 +69,18 @@
    <layout>hbox</layout>
 
    <button>
+    <legend>Back</legend>
+    <key>b</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
     <legend>Close</legend>
     <default>true</default>
     <key>Esc</key>
@@ -83,15 +95,6 @@
     <binding>
      <command>dialog-show</command>
      <dialog-name>Lockheed1049-procedures2</dialog-name>
-    </binding>
-   </button>
-
-   <button>
-    <legend>Menu</legend>
-    <key>m</key>
-    <binding>
-     <command>dialog-show</command>
-     <dialog-name>Lockheed1049-menu</dialog-name>
     </binding>
     <binding>
       <command>dialog-close</command>

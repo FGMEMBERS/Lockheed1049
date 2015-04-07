@@ -3,6 +3,7 @@
 <PropertyList>
   <name>Lockheed1049-crew</name>
   <layout>vbox</layout>
+  <width>450</width>
 
   <text>
     <label>Constellation crew</label>
@@ -15,6 +16,10 @@
 
     <text>
       <label>Status</label>
+    </text>
+    
+    <text>
+      <label></label>
     </text>
 
     <group>
@@ -36,6 +41,10 @@
           <command>property-toggle</command>
           <property>/controls/crew/timeout</property>
          </binding>
+         <binding>
+          <command>nasal</command>
+          <script>globals.Lockheed1049.crewscreen.wakeupexport();</script>
+         </binding>
        </checkbox>
       </group>
 
@@ -54,63 +63,31 @@
       </group>
      </group>
     </group>
-
-    <text>
-      <label></label>
-    </text>
-
-    <text>
-      <label>Instrument lighting</label>
-      <halign>center</halign>
-    </text>
-
-    <slider>
-      <halign>left</halign>
-      <label>offset (not real)  ~</label>
-      <row>0</row>
-      <col>2</col>
-      <min>0</min>
-      <max>2</max>
-      <property>/controls/human/lighting/instrument</property>
-      <binding>
-        <command>dialog-apply</command>
-      </binding>
-    </slider>
     
     <text>
       <label></label>
     </text>
-
+       
     <text>
-      <label>Views</label>
-      <halign>center</halign>
+     <label>Instrument lighting</label>
     </text>
-
-    <group>
-      <layout>hbox</layout>
-
-      <checkbox>
-       <halign>left</halign>
-       <label>Gear well (floating)</label>
-       <property>/systems/seat/gear-well</property>
-       <binding>
-        <command>nasal</command>
-        <script>globals.Lockheed1049.seatsystem.viewexport("gear-well");</script>
-       </binding>
-       <binding>
-        <command>dialog-update</command>
-       </binding>
-     </checkbox>
-
-     <checkbox>
-       <label>Recover position of last session  ~</label>
-       <property>/controls/seat/recover</property>
-       <binding>
-        <command>nasal</command>
-        <script>globals.Lockheed1049.seatsystem.recoverexport();</script>
-       </binding>
-     </checkbox>
-    </group>
+    
+    <text>
+      <label></label>
+    </text>
+      
+    <slider>
+     <halign>left</halign>
+     <label>offset (not real)  ~</label>
+     <row>0</row>
+     <col>2</col>
+     <min>0</min>
+     <max>2</max>
+     <property>/controls/human/lighting/instrument</property>
+     <binding>
+      <command>dialog-apply</command>
+     </binding>
+    </slider>
 
 <!--
     <text>
@@ -120,6 +97,10 @@
     <text>
       <label>Propeller (test)</label>
       <halign>center</halign>
+    </text>
+
+    <text>
+      <label></label>
     </text>
 
     <checkbox>
@@ -163,11 +144,14 @@
     <layout>hbox</layout>
 
     <button>
-      <legend>Close</legend>
-      <default>true</default>
-      <key>Esc</key>
+      <legend>Back</legend>
+      <key>b</key>
       <binding>
         <command>dialog-apply</command>
+      </binding>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Lockheed1049-menu</dialog-name>
       </binding>
       <binding>
         <command>dialog-close</command>
@@ -175,12 +159,9 @@
     </button>
 
     <button>
-      <legend>Menu</legend>
-      <key>m</key>
-      <binding>
-       <command>dialog-show</command>
-       <dialog-name>Lockheed1049-menu</dialog-name>
-      </binding>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
       <binding>
         <command>dialog-apply</command>
       </binding>

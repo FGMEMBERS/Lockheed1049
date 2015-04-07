@@ -1,5 +1,6 @@
-     Version           CVS date                   Milestone
+     Version           SVN/GIT date               Milestone
 ==============================================================================================
+     1.7               April 2015                 Rembrandt support (3D lighting).
      1.6               March 2012                 Tyre and engine smoke effect.
                                                   Fuel system (XML).
      1.5               April 2011                 Immatriculation support.

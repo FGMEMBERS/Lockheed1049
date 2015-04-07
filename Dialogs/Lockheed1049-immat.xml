@@ -57,5 +57,17 @@
       <command>dialog-close</command>
     </binding>
    </button>
+
+   <button>
+    <legend>Reset</legend>
+    <key>r</key>
+    <binding>
+      <command>nasal</command>
+      <script>globals.Lockheed1049.menuscreen.resetexport();</script>
+    </binding>
+    <binding>
+     <command>dialog-update</command>
+    </binding>
+   </button>
   </group>
 </PropertyList>

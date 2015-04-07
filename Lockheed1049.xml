@@ -6,8 +6,8 @@
 
     <fileheader>
         <author> </author>
-        <filecreationdate> 15 October 2011 </filecreationdate>
-        <version> 1.06 </version>
+        <filecreationdate> 28 March 2015 </filecreationdate>
+        <version> 1.07 </version>
         <description> Lockheed1049-54 </description>
 
         <note>Super Constellation 1049-54 (first version).</note>
@@ -80,12 +80,14 @@
           Drag CD0 (L-1049G) : 0.0211.
         </documentation>
         <documentation>
-          - http://naca.larc.nasa.gov/reports/1932/naca-tn-419/ :
-          Wind-tunnel tests of the Fowler variable-area wing,
+          - http://naca.larc.nasa.gov/ :
+
+          naca-tn-419, Wind-tunnel tests of the Fowler variable-area wing,
           Fred E. Weick and Robert C. Platt, May 1932.
         </documentation>
         <documentation>
           - http://www.eflightmanual.com/ :
+
           Lockheed flight manual.
         </documentation>
         <documentation>
@@ -1068,10 +1070,10 @@
                           <independentVar>fcs/flap-pos-deg</independentVar>
                           <tableData>
                               0.0000	0.0000	
-                              10.0000	0.4000	
-                              27.0000	0.4600	
-                              35.0000	0.5300	
-                              41.0000	0.6000	
+                              10.0000	0.6500	
+                              27.0000	0.7000	
+                              35.0000	0.8000	
+                              41.0000	0.7500	
                           </tableData>
                       </table>
                 </product>

@@ -1,20 +1,21 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "white_light_on" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 0 0 0 shi 32 trans 0
+MATERIAL "white_light_on" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0 0 0 shi 64 trans 0
 OBJECT world
 kids 1
 OBJECT poly
 name "TaxiLight"
-data 8
-Mesh.016
+loc 0 0 -0
+data 9
+TaxiLight
 texture "L1049-lights.rgb"
-texrep 1 1
-crease 30.000000
+texrep 1.000000 1.000000
+crease 30.000001
 numvert 4
--0.000939 0.427521 -0.427404
--0.00064 0.427465 0.4274
--0.000796 -0.427344 0.427399
--0.001095 -0.427288 -0.427404
+-0.000913 0.272876 -0.27277
+-0.000722 0.27284 0.272765
+-0.000822 -0.272699 0.272765
+-0.001012 -0.272663 -0.27277
 numsurf 2
 SURF 0x00
 mat 1

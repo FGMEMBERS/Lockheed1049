@@ -25,7 +25,20 @@
    </offsets>
   </model>
 
+
 <!-- PILOT SIDE -->
+
+  <model>
+   <name>Side red top edge light</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/sidered.xml</path>
+   <offsets>
+    <x-m>-15.006</x-m>
+    <y-m>-1.062</y-m>
+    <z-m>1.085</z-m>
+    <heading-deg>-18</heading-deg>
+    <roll-deg>29</roll-deg>
+   </offsets>
+  </model>
 
   <model>
    <name>Captain top</name>
@@ -40,6 +53,18 @@
   </model>
 
   <model>
+   <name>Side red middle edge light</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/sidered.xml</path>
+   <offsets>
+    <x-m>-14.992</x-m>
+    <y-m>-1.044</y-m>
+    <z-m>1.010</z-m>
+    <heading-deg>-17</heading-deg>
+    <roll-deg>26</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
    <name>Captain middle</name>
    <path>Aircraft/Lockheed1049/Instruments/side/middle.xml</path>
    <offsets>
@@ -50,6 +75,7 @@
     <roll-deg>26</roll-deg>
    </offsets>
   </model>
+
 
 <!-- PILOT SEAT -->
 
@@ -93,11 +119,23 @@
    </offsets>
   </model>
 
+
 <!-- PILOT -->
 
   <model>
    <name>Emergency light</name>
    <path>Aircraft/Lockheed1049/Instruments/light/emergency.xml</path>
+   <offsets>
+    <x-m>-15.623</x-m>
+    <y-m>-0.648</y-m>
+    <z-m>0.783</z-m>
+    <heading-deg>5.0</heading-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Emergency light cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/emergencylight.xml</path>
    <offsets>
     <x-m>-15.623</x-m>
     <y-m>-0.648</y-m>
@@ -280,6 +318,7 @@
    </offsets>
   </model>
 
+
 <!-- GLARE SHIELD -->
 
   <model>
@@ -293,8 +332,28 @@
   </model>
 
   <model>
+   <name>Instrument panel direct red light sphere</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/directred.xml</path>
+   <offsets>
+    <x-m>-15.600</x-m>
+    <y-m>-0.255</y-m>
+    <z-m>0.929</z-m>
+   </offsets>
+  </model>
+
+  <model>
    <name>Copilot Instrument panel direct red light</name>
    <path>Aircraft/Lockheed1049/Instruments/light/directred_copilot.xml</path>
+   <offsets>
+    <x-m>-15.600</x-m>
+    <y-m>0.255</y-m>
+    <z-m>0.929</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Copilot Instrument panel direct red light sphere</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/directred_copilot.xml</path>
    <offsets>
     <x-m>-15.600</x-m>
     <y-m>0.255</y-m>
@@ -347,6 +406,7 @@
     <pitch-deg>-12.0</pitch-deg>
    </offsets>
   </model>
+
 
 <!-- CENTER -->
 
@@ -465,6 +525,7 @@
     <pitch-deg>-12.0</pitch-deg>
    </offsets>
   </model>
+
 
 <!-- COPILOT -->
 
@@ -643,6 +704,7 @@
    </offsets>
   </model>
 
+
 <!-- COPILOT SEAT -->
 
   <model>
@@ -675,7 +737,20 @@
    </offsets>
   </model>
 
+
 <!-- COPILOT SIDE -->
+
+  <model>
+   <name>Side red copilot top edge light</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/sidered_copilot.xml</path>
+   <offsets>
+    <x-m>-15.006</x-m>
+    <y-m>1.073</y-m>
+    <z-m>1.085</z-m>
+    <heading-deg>18</heading-deg>
+    <roll-deg>-29</roll-deg>
+   </offsets>
+  </model>
 
   <model>
    <name>Copilot top</name>
@@ -690,6 +765,18 @@
   </model>
 
   <model>
+   <name>Side red copilot middle edge light</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/sidered_copilot.xml</path>
+   <offsets>
+    <x-m>-14.992</x-m>
+    <y-m>1.055</y-m>
+    <z-m>1.009</z-m>
+    <heading-deg>17</heading-deg>
+    <roll-deg>-25</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
    <name>Copilot middle</name>
    <path>Aircraft/Lockheed1049/Instruments/side/middle_copilot.xml</path>
    <offsets>
@@ -700,6 +787,7 @@
     <roll-deg>-25</roll-deg>
    </offsets>
   </model>
+
 
 <!-- OVERHEAD -->
 
@@ -723,7 +811,7 @@
    </offsets>
   </model>
 
-<!-- bottom -->
+<!-- front -->
 
   <model>
    <name>ADF 1 2</name>
@@ -733,6 +821,17 @@
     <y-m>0.0</y-m>
     <z-m>1.360</z-m>
     <pitch-deg>78.0</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Overhead front red edge light</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/overheadred.xml</path>
+   <offsets>
+    <x-m>-15.165</x-m>
+    <y-m>0.0</y-m>
+    <z-m>1.023</z-m>
+    <pitch-deg>-12.0</pitch-deg>
    </offsets>
   </model>
 
@@ -759,13 +858,24 @@
   </model>
 
   <model>
+   <name>Pedestal light cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/pedestallight.xml</path>
+   <offsets>
+    <x-m>-15.12</x-m>
+    <y-m>0.0</y-m>
+    <z-m>1.400</z-m>
+    <pitch-deg>-10.0</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
    <name>Spot copilot</name>
    <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
    <offsets>
     <x-m>-15.111</x-m>
     <y-m>0.286</y-m>
     <z-m>1.431</z-m>
-    <pitch-deg>-19.0</pitch-deg>
+    <pitch-deg>0</pitch-deg>
    </offsets>
    <overlay>
     <params>
@@ -773,6 +883,30 @@
      <red>controls/lighting/internal/copilot/chart-red</red>
     </params>
    </overlay>
+  </model>
+
+  <model>
+   <name>Spot copilot cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/spotlight_copilot.xml</path>
+   <offsets>
+    <x-m>-15.111</x-m>
+    <y-m>0.286</y-m>
+    <z-m>1.431</z-m>
+    <pitch-deg>0</pitch-deg>
+    <roll-deg>10.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Spot copilot red cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/spotlightred_copilot.xml</path>
+   <offsets>
+    <x-m>-15.111</x-m>
+    <y-m>0.286</y-m>
+    <z-m>1.431</z-m>
+    <pitch-deg>0</pitch-deg>
+    <roll-deg>10.0</roll-deg>
+   </offsets>
   </model>
 
 <!-- middle -->
@@ -789,13 +923,49 @@
   </model>
 
   <model>
+   <name>Overhead middle red edge light</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/overheadred.xml</path>
+   <offsets>
+    <x-m>-14.905</x-m>
+    <y-m>0.0</y-m>
+    <z-m>1.076</z-m>
+    <pitch-deg>-12.0</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
    <name>Spot</name>
    <path>Aircraft/Lockheed1049/Instruments/overhead/spot.xml</path>
    <offsets>
     <x-m>-14.910</x-m>
     <y-m>-0.286</y-m>
     <z-m>1.475</z-m>
-    <pitch-deg>5.0</pitch-deg>
+    <pitch-deg>10.0</pitch-deg>
+    <roll-deg>-10.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Spot cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/spotlight.xml</path>
+   <offsets>
+    <x-m>-14.910</x-m>
+    <y-m>-0.286</y-m>
+    <z-m>1.475</z-m>
+    <pitch-deg>10.0</pitch-deg>
+    <roll-deg>-10.0</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Spot red cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/spotlightred.xml</path>
+   <offsets>
+    <x-m>-14.910</x-m>
+    <y-m>-0.286</y-m>
+    <z-m>1.475</z-m>
+    <pitch-deg>10.0</pitch-deg>
+    <roll-deg>-10.0</roll-deg>
    </offsets>
   </model>
 
@@ -810,6 +980,7 @@
     <z-m>1.518</z-m>
    </offsets>
   </model>
+
 
 <!-- PEDESTAL -->
 
@@ -846,6 +1017,18 @@
 <!-- side -->
 
   <model>
+   <name>Parking brake left</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/parking_brake.xml</path>
+   <offsets>
+    <x-m>-15.3333</x-m>
+    <y-m>-0.1516</y-m>
+    <z-m> 0.3425</z-m>
+    <heading-deg>-1.5</heading-deg>
+    <pitch-deg>2.5</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
    <name>Elevator booster</name>
    <path>Aircraft/Lockheed1049/Instruments/pedestal/elevator_booster.xml</path>
    <offsets>
@@ -853,6 +1036,18 @@
     <y-m>-0.16221</y-m>
     <z-m> 0.451</z-m>
     <pitch-deg>23.5</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Parking brake right</name>
+   <path>Aircraft/Lockheed1049/Instruments/pedestal/parking_brake.xml</path>
+   <offsets>
+    <x-m>-15.3333</x-m>
+    <y-m>0.1516</y-m>
+    <z-m> 0.3425</z-m>
+    <heading-deg>1.5</heading-deg>
+    <pitch-deg>2.5</pitch-deg>
    </offsets>
   </model>
 
@@ -875,6 +1070,17 @@
     <x-m>-15.220</x-m>
     <y-m>0.0</y-m>
     <z-m>0.600</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Overhead light cone</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/overheadlight.xml</path>
+   <offsets>
+    <x-m>-15.220</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.600</z-m>
+    <pitch-deg>12.0</pitch-deg>
    </offsets>
   </model>
 
@@ -950,6 +1156,7 @@
    </offsets>
   </model>
 
+
 <!-- AUXILLIARY CYLINDER -->
 
   <model>
@@ -962,6 +1169,20 @@
    </offsets>
   </model>
 
+
+<!-- ELECTRIC -->
+
+  <model>
+   <name>Desk light rheostat</name>
+   <path>Aircraft/Lockheed1049/Instruments/light/desklightrheostat.xml</path>
+   <offsets>
+    <x-m>-14.623</x-m>
+    <y-m> 1.0136</y-m>
+    <z-m> 0.889</z-m>
+   </offsets>
+  </model>
+
+
 <!-- ENGINEER -->
 
   <model>
@@ -973,6 +1194,7 @@
     <z-m>0.0</z-m>
    </offsets>
   </model>
+
 
 <!-- ENGINEER UPPER -->
 
@@ -1008,6 +1230,7 @@
     <roll-deg>20.0</roll-deg>
    </offsets>
   </model>
+
 
 <!-- ENGINEER CENTER -->
 
@@ -1227,6 +1450,7 @@
     <roll-deg>5.0</roll-deg>
    </offsets>
   </model>
+
 
 <!-- ENGINEER LOWER -->
 
@@ -1488,6 +1712,37 @@
 <!-- ENGINEER TABLE -->
 
   <model>
+   <name>Engineer lower panel auxiliary light sphere</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/engineerauxiliary_lower.xml</path>
+   <offsets>
+    <x-m>-14.243</x-m>
+    <y-m>0.76</y-m>
+    <z-m>1.25</z-m>
+    <roll-deg>25</roll-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Engineer center panel auxiliary light sphere</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/engineerauxiliary.xml</path>
+   <offsets>
+    <x-m>-14.243</x-m>
+    <y-m>1.01</y-m>
+    <z-m>0.82</z-m>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Engineer desk light sphere</name>
+   <path>Aircraft/Lockheed1049/Instruments/lightsource/engineerdesk.xml</path>
+   <offsets>
+    <x-m>-14.243</x-m>
+    <y-m>1.06</y-m>
+    <z-m>0.82</z-m>
+   </offsets>
+  </model>
+
+  <model>
    <name>Control quadrant</name>
    <path>Aircraft/Lockheed1049/Instruments/table/cylinder.xml</path>
    <offsets>
@@ -1506,6 +1761,7 @@
     <z-m>0.701</z-m>
    </offsets>
   </model>
+
 
 <!-- NAVIGATOR -->
 
@@ -1672,11 +1928,15 @@
 
   <animation>
    <name>Pedestal Instruments</name>
+   <object-name>Elevator booster</object-name>
+   <object-name>Parking brake left</object-name>
+   <object-name>Parking brake right</object-name>
    <object-name>Cylinder</object-name>
    <object-name>Overhead light switch</object-name>
    <object-name>Overhead light</object-name>
    <object-name>Altitude switch</object-name>
    <object-name>Rudder tab</object-name>
+   <object-name>Aileron tab</object-name>
    <object-name>Gyro beacon light</object-name>
    <object-name>Flux gate caged indicator light</object-name>
    <object-name>Autopilot plate</object-name>

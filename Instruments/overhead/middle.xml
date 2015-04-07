@@ -521,12 +521,59 @@
  <animation>
   <type>material</type>
   <object-name>Plate</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green-prop>systems/lighting/internal/overhead/green</green-prop>
    <blue-prop>systems/lighting/internal/overhead/blue</blue-prop>
    <factor-prop>systems/lighting/internal/overhead/light</factor-prop>
   </emission> 
+ </animation>
+
+ <animation>
+  <name>MiddleLighting</name>
+  <object-name>LandingExtendLeft</object-name>
+  <object-name>LandingLampLeft</object-name>
+  <object-name>LandingExtendRight</object-name>
+  <object-name>LandingLampRight</object-name>
+ </animation>
+   
+ <animation>
+  <type>material</type>
+  <object-name>MiddleLighting</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
+  <emission>
+    <red>0.81</red>
+    <green>0.40</green>
+    <blue>0.20</blue>
+    <factor-prop>systems/lighting/internal/overhead/light</factor-prop>
+  </emission>
+  <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    <factor-prop>systems/lighting/internal/ambient-light</factor-prop>
+  </ambient>
  </animation>
 
  <animation>

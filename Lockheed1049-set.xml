@@ -6,10 +6,10 @@
 
   <description>Lockheed 1049 Super Constellation</description>
   <status>early-production</status>
-  <aircraft-version>1.6</aircraft-version>
+  <aircraft-version>1.7</aircraft-version>
 
   <startup>
-   <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>
+   <splash-texture>Aircraft/Lockheed1049/Lockheed1049-splash.rgb</splash-texture>       <!-- KBUR 26 -->
   </startup>
 
   <flight-model>jsb</flight-model>

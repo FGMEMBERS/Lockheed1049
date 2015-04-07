@@ -438,13 +438,14 @@
  <group>
 
   <button>
-   <x>105</x>
+   <x>75</x>
    <y>10</y>
-   <legend>OK</legend>
-   <default>true</default>
+   <legend>Back</legend>
    <equal>true</equal>
+   <key>b</key>
    <binding>
-    <command>dialog-apply</command>
+    <command>dialog-show</command>
+    <dialog-name>Lockheed1049-menu</dialog-name>
    </binding>
    <binding>
     <command>dialog-close</command>
@@ -452,33 +453,39 @@
   </button>
 
   <button>
-   <x>205</x>
+   <x>175</x>
    <y>10</y>
-   <legend>Apply</legend>
-   <equal>true</equal>
-   <binding>
-    <command>dialog-apply</command>
-   </binding>
-  </button>
-
-  <button>
-   <x>305</x>
-   <y>10</y>
-   <legend>Reset</legend>
-   <equal>true</equal>
-   <binding>
-    <command>dialog-update</command>
-   </binding>
-  </button>
-
-  <button>
-   <x>405</x>
-   <y>10</y>
-   <legend>Cancel</legend>
+   <legend>Close</legend>
+   <default>true</default>
    <equal>true</equal>
    <key>Esc</key>
    <binding>
+    <command>dialog-apply</command>
+   </binding>
+   <binding>
     <command>dialog-close</command>
+   </binding>
+  </button>
+
+  <button>
+   <x>375</x>
+   <y>10</y>
+   <legend>Apply</legend>
+   <equal>true</equal>
+   <key>a</key>
+   <binding>
+    <command>dialog-apply</command>
+   </binding>
+  </button>
+
+  <button>
+   <x>475</x>
+   <y>10</y>
+   <legend>Reset</legend>
+   <equal>true</equal>
+   <key>r</key>
+   <binding>
+    <command>dialog-update</command>
    </binding>
   </button>
 

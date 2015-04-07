@@ -9,6 +9,46 @@
  <animation>
   <type>material</type>
   <object-name>Plate</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
+  <emission>
+   <red>1.0</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+   <factor-prop>systems/lighting/internal/copilot/side-light</factor-prop>
+  </emission> 
+ </animation>
+
+ <animation>
+  <name>TopLighting</name>
+  <object-name>PanelSwitch</object-name>
+  <object-name>ChartSwitch</object-name>
+  <object-name>PedestalLightSwitch</object-name>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>TopLighting</object-name>
+  <condition>
+   <or>
+    <not>
+     <property>/sim/rendering/rembrandt/enabled</property>
+    </not>
+    <less-than-equals>
+     <property>/sim/rendering/shaders/lights</property>
+     <property n="1">controls/environment/rembrandt/panel</property>
+    </less-than-equals>
+   </or>
+  </condition>
   <emission>
    <red>1.0</red>
    <green>0.1</green>

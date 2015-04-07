@@ -3,7 +3,7 @@
 <PropertyList>
   <name>Lockheed1049-environment</name>
   <layout>vbox</layout>
-  <width>450</width>
+  <width>600</width>
 
   <text>
     <label>Lockheed 1049 environment</label>
@@ -23,19 +23,14 @@
       <label></label>
     </text>
 
-    <group>
-     <layout>hbox</layout>
-
-     <checkbox>
-      <halign>left</halign>
-      <label>smoke</label>
+    <checkbox>
+     <label>smoke</label>
+     <property>/controls/environment/smoke</property>
+     <binding>
+      <command>property-toggle</command>
       <property>/controls/environment/smoke</property>
-      <binding>
-       <command>property-toggle</command>
-       <property>/controls/environment/smoke</property>
-      </binding>
-     </checkbox>
-    </group>
+     </binding>
+    </checkbox>
   </group>
 
   <text>
@@ -50,6 +45,21 @@
    <layout>hbox</layout>
 
    <button>
+    <legend>Back</legend>
+    <key>b</key>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
     <legend>Close</legend>
     <default>true</default>
     <key>Esc</key>
@@ -62,17 +72,15 @@
    </button>
 
    <button>
-    <legend>Menu</legend>
-    <key>m</key>
+    <enabled alias="/sim/rendering/rembrandt/enabled"/>
+    <legend>Rembrandt</legend>
+     <key>r</key>
     <binding>
-     <command>dialog-show</command>
-     <dialog-name>Lockheed1049-menu</dialog-name>
+    <command>dialog-show</command>
+     <dialog-name>Lockheed1049-environment2</dialog-name>
     </binding>
     <binding>
-      <command>dialog-apply</command>
-    </binding>
-    <binding>
-      <command>dialog-close</command>
+     <command>dialog-close</command>
     </binding>
    </button>
 

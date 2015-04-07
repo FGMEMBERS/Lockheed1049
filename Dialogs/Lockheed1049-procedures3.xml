@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Lockheed1049-procedures3</name>
+  <layout>vbox</layout>
+  <width>500</width>
+
+  <text>
+    <label>Constellation procedures 3</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Night lighting</label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+     <layout>hbox</layout>
+
+     <group>
+      <layout>vbox</layout>
+      <halign>right</halign>
+
+      <text>
+       <label>Lights</label>
+      </text>
+
+      <text>
+       <label></label>
+      </text>
+
+      <checkbox>
+       <label>chart  ~</label>
+       <property>/controls/crew/lighting/chart</property>
+       <binding>
+        <command>property-toggle</command>
+        <property>/controls/crew/lighting/chart</property>
+       </binding>
+      </checkbox>
+
+      <checkbox>
+       <label>overhead  ~</label>
+       <property>/controls/crew/lighting/overhead</property>
+       <binding>
+        <command>property-toggle</command>
+        <property>/controls/crew/lighting/overhead</property>
+       </binding>
+      </checkbox>
+
+      <checkbox>
+       <label>pedestal  ~</label>
+       <property>/controls/crew/lighting/pedestal</property>
+       <binding>
+        <command>property-toggle</command>
+        <property>/controls/crew/lighting/pedestal</property>
+       </binding>
+      </checkbox>
+     </group>
+
+     <group>
+      <layout>vbox</layout>
+      <halign>left</halign>
+
+      <text>
+       <label>Panels</label>
+      </text>
+
+      <text>
+       <label>(only day/night transition)</label>
+       <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+       </color>
+      </text>
+
+      <text>
+       <label></label>
+      </text>
+
+      <slider>
+       <label>pilot  ~</label>
+       <row>0</row>
+       <col>2</col>
+       <min>0</min>
+       <max>1</max>
+       <property>/controls/human/lighting/pilot</property>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.engineercrew.pilotlightingexport();</script>
+       </binding>
+      </slider>
+
+      <slider>
+       <label>copilot  ~</label>
+       <row>0</row>
+       <col>2</col>
+       <min>0</min>
+       <max>1</max>
+       <property>/controls/human/lighting/copilot</property>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.copilotcrew.lightingexport();</script>
+       </binding>
+      </slider>
+
+      <slider>
+       <label>overhead  ~</label>
+       <row>0</row>
+       <col>2</col>
+       <min>0</min>
+       <max>1</max>
+       <property>/controls/human/lighting/overhead</property>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.copilotcrew.lightingexport();</script>
+       </binding>
+      </slider>
+
+      <slider>
+       <label>engineer  ~</label>
+       <row>0</row>
+       <col>2</col>
+       <min>0</min>
+       <max>1</max>
+       <property>/controls/human/lighting/engineer</property>
+       <binding>
+        <command>dialog-apply</command>
+       </binding>
+       <binding>
+        <command>nasal</command>
+        <script>globals.Lockheed1049.engineercrew.lightingexport();</script>
+       </binding>
+      </slider>
+     </group>
+
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Back</legend>
+    <key>b</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Lockheed1049-procedures2</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+  </group>
+</PropertyList>

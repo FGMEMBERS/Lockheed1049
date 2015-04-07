@@ -17,14 +17,10 @@ VirtualEngineer.new = func {
                nightlighting2 : Nightlighting.new(),
 
                ENGINEERSEC : 15.0,
-               BLOWERSEC : 4.0,
 
                rates : 0.0,
 
-               HIGHFT : 11000.0,
-
-               BLOWERHIGH : 1.0,
-               BLOWERLOW : 0.0
+               HIGHBLOWERFT : 12500.0
          };
 
    obj.init();
@@ -111,18 +107,39 @@ VirtualEngineer.supervisor = func {
 }
 
 VirtualEngineer.blower = func {
-   var times = me.BLOWERSEC;
-   var target = me.BLOWERLOW;
+   var pair = constant.FALSE;
+   var target = constant.FALSE;
 
-   # in fact, done automatically by FDM
-   if( me.noinstrument["altitude"].getValue() > me.HIGHFT ) {
-       target = me.BLOWERHIGH;
+   if( me.noinstrument["altitude"].getValue() > me.HIGHBLOWERFT ) {
+       target = constant.TRUE;
    }
 
-   for( var i = 0; i < 4; i = i+1 ) {
-        if( me.dependency["engine"][i].getChild("blower").getValue() != target ) {
-            times = me.speed_ratesec( me.BLOWERSEC );
-            interpolate( me.dependency["engine"][i].getChild("blower").getPath(), target, times );
+   for( var i = 0; i < constantaero.NBENGINES; i = i+1 ) {
+        if( me.dependency["engine"][i].getChild("blower-high").getValue() != target ) {
+            if( me.can() ) {
+                if( !pair ) {
+                    var j = 0;
+
+                    pair = constant.TRUE;
+
+                    if( i == constantaero.ENGINE1 ) {
+                        j = constantaero.ENGINE4;
+                    }
+                    else if( i == constantaero.ENGINE2 ) {
+                        j = constantaero.ENGINE3;
+                    }
+                    else if( i == constantaero.ENGINE3 ) {
+                        j = constantaero.ENGINE2;
+                    }
+                    else {
+                        j = constantaero.ENGINE1;
+                    }
+
+                    me.dependency["engine"][i].getChild("blower-high").setValue( target );
+                    me.dependency["engine"][j].getChild("blower-high").setValue( target );
+                    me.done("blower-" ~ i);
+                }
+            }
         }
    }
 }

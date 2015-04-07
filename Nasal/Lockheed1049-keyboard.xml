@@ -187,15 +187,6 @@
     </binding>
    </key>
 
-   <key n="70">
-    <name>F</name>
-    <desc>full model</desc>
-    <binding>
-     <command>nasal</command>
-     <script>globals.Lockheed1049.seatsystem.fulloutsideexport();</script>
-    </binding>
-   </key>
-
    <key n="86">
     <name>V</name>
     <desc>Scroll in reverse through views.</desc>

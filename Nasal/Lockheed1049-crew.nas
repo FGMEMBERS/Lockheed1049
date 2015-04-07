@@ -232,9 +232,13 @@ Nightlighting.pilotexport = func {
 }
 
 Nightlighting.copilotexport = func {
-    var value = me.itself["lighting"].getChild("copilot").getValue();
-
+    var value = 0.0;
+    
+    value = me.itself["lighting"].getChild("copilot").getValue();
     me.dependency["lighting-copilot"].getChild("panel").setValue( value );
+       
+    value = me.itself["lighting"].getChild("overhead").getValue();
+    me.dependency["lighting-overhead"].getChild("panel").setValue( value );
 }
 
 Nightlighting.engineerexport = func {
@@ -249,6 +253,8 @@ Nightlighting.copilot = func( task ) {
 
        # only once, can be customized by user
        if( me.has_task() ) {
+           var target = constant.FALSE;
+
            me.light( "copilot" );
 
            me.set_task();
@@ -285,15 +291,52 @@ Nightlighting.copilot = func( task ) {
            }
 
            # overhead
+           me.light( "overhead" );
            if( task.can() ) {
                if( me.dependency["lighting-overhead"].getChild("panel").getValue() != me.lightlevel ) {
                    me.dependency["lighting-overhead"].getChild("panel").setValue( me.lightlevel );
-                   task.toggleclick("overhead-light");
+                   task.toggleclick("overhead-level");
                }
            }
 
            if( task.can() ) {
                me.set_completed();
+           }
+       }
+
+       # pedestal
+       target = constant.FALSE;
+       if( me.dependency["crew-lighting"].getChild("pedestal").getValue() ) {
+           target = me.lightlow;
+       }
+       if( me.dependency["lighting-pedestal"].getChild("on").getValue() != target ) {
+           if( task.can() ) {
+               me.dependency["lighting-pedestal"].getChild("on").setValue( target );
+               task.toggleclick("pedestal-light");
+           }
+       }
+
+       # overhead
+       target = constant.FALSE;
+       if( me.dependency["crew-lighting"].getChild("overhead").getValue() ) {
+           target = me.lightlow;
+       }
+       if( me.dependency["lighting-overhead"].getChild("on").getValue() != target ) {
+           if( task.can() ) {
+               me.dependency["lighting-overhead"].getChild("on").setValue( target );
+               task.toggleclick("overhead-light");
+           }
+       }
+
+       # chart
+       target = constant.FALSE;
+       if( me.dependency["crew-lighting"].getChild("chart").getValue() ) {
+           target = me.lightlow;
+       }
+       if( me.dependency["lighting-copilot"].getChild("chart-on").getValue() != target ) {
+           if( task.can() ) {
+               me.dependency["lighting-copilot"].getChild("chart-on").setValue( target );
+               task.toggleclick("chart-light");
            }
        }
    }
@@ -305,6 +348,8 @@ Nightlighting.pilot = func( task ) {
 
        # only once, can be customized by user
        if( me.has_task() ) {
+           var target = constant.FALSE;
+
            me.light( "pilot" );
 
            me.set_task();
@@ -334,6 +379,18 @@ Nightlighting.pilot = func( task ) {
 
            if( task.can() ) {
                me.set_completed();
+           }
+       }
+
+       # chart
+       target = constant.FALSE;
+       if( me.dependency["crew-lighting"].getChild("chart").getValue() ) {
+           target = me.lightlow;
+       }
+       if( me.dependency["lighting-pilot"].getChild("chart-on").getValue() != target ) {
+           if( task.can() ) {
+               me.dependency["lighting-pilot"].getChild("chart-on").setValue( target );
+               task.toggleclick("chart-light");
            }
        }
    }

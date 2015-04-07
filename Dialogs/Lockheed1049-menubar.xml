@@ -28,17 +28,17 @@
        </binding>
       </item>
       <item>
-       <label>Ground</label>
-       <binding>
-        <command>dialog-show</command>
-        <dialog-name>Lockheed1049-ground</dialog-name>
-       </binding>
-      </item>
-      <item>
        <label>Fuel</label>
        <binding>
         <command>dialog-show</command>
         <dialog-name>Lockheed1049-fuel</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Ground</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-ground</dialog-name>
        </binding>
       </item>
       <item>
@@ -81,6 +81,13 @@
        <binding>
         <command>dialog-show</command>
         <dialog-name>Lockheed1049-seats</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Views</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Lockheed1049-views</dialog-name>
        </binding>
       </item>
       <item>

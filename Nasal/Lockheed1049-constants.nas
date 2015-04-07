@@ -14,6 +14,8 @@ ConstantAero = {};
 ConstantAero.new = func {
    var obj = { parents : [ConstantAero],
 
+               LANDINGLIGHTKT : 170,
+
                NBINSTRUMENTS : 2,                       # and any system in double
                NBGEARS : 3,                             # and any system in triple
                NBENGINES : 4,                           # and any system in quadruple
@@ -209,7 +211,7 @@ System.is_moving = func {
 
    # must exist in XML !
    var aglft = me.noinstrument["agl"].getValue();
-   var speedkt = me.noinstrument["airspeed"].getValue();
+   var speedkt = me.noinstrument["speed"].getValue();
 
    if( aglft >=  constantaero.AGLTOUCHFT or speedkt >= constantaero.TAXIKT ) {
        result = constant.TRUE;

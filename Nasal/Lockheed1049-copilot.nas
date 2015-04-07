@@ -172,12 +172,67 @@ VirtualCopilot.supervisor = func {
        me.set_activ();
 
        me.nightlighting.copilot( me );
+       
+       me.landinglights();
+       if( me.dependency["crew-ctrl"].getChild("captain-busy").getValue() ) {
+           me.taxilight();
+       }
 
        me.rates = me.randoms( me.rates );
        me.timestamp();
    }
 
    me.itself["root"].getChild("activ").setValue(me.is_activ());
+}
+
+VirtualCopilot.landinglights = func {
+   var targetstate = constant.FALSE;
+   var thelights = me.dependency["lighting"].getChildren("landing");
+               
+   for( var i = 0; i < 2; i = i+1 ) {
+        targetstate = me.dependency["crew-ctrl"].getChild("landing-lights").getValue();
+        
+        # retraction in flight
+        if( me.noinstrument["airspeed"].getValue() > constantaero.LANDINGLIGHTKT ) {
+            targetstate = constant.FALSE;
+        }
+        
+        if( thelights[i].getChild("extend").getValue() != targetstate ) {
+            if( me.can() ) {
+                thelights[i].getChild("extend").setValue( targetstate );
+                me.toggleclick("landing-extend-" ~ i);
+            }
+        }
+        if( thelights[i].getChild("on").getValue() != targetstate ) {
+            if( me.can() ) {
+                thelights[i].getChild("on").setValue( targetstate );
+                me.toggleclick("landing-on-" ~ i);
+            }
+        }
+   }
+}
+
+VirtualCopilot.taxilight = func {
+   var targetstate = me.dependency["crew-ctrl"].getChild("taxi-light").getValue();
+   var thelight = me.dependency["lighting"].getNode("taxi");
+
+   # off in flight
+   if( me.noinstrument["airspeed"].getValue() > constantaero.LANDINGLIGHTKT ) {
+       targetstate = constant.FALSE;
+   }
+   
+   if( targetstate and thelight.getChild("passing").getValue() ) {
+       if( me.can() ) {
+           thelight.getChild("passing").setValue( constant.FALSE );
+           me.toggleclick("taxi-passing");
+       }
+   }
+   if( thelight.getChild("on").getValue() != targetstate ) {
+       if( me.can() ) {
+           thelight.getChild("on").setValue( targetstate );
+           me.toggleclick("taxi-passing");
+       }
+   }
 }
 
 VirtualCopilot.followplan = func {
@@ -229,7 +284,7 @@ VirtualCopilot.lockwaypointroll = func {
              rolldeg =  me.noinstrument["roll"].getValue();
              if( distancenm > lastnm or rolldeg < - me.ROLLDEG or rolldeg > me.ROLLDEG ) {
                  if( me.headingmode == "true-heading-hold" ) {
-                     setprop(me.dependency["route-manager"].getChild("input").getPath(),"@pop");
+                     me.dependency["route-manager"].getChild("input").setValue("@DELETE0");
                  }
              }
          }

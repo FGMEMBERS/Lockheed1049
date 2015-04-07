@@ -33,44 +33,5 @@
   </condition>
  </animation>
 
- <animation>
-  <type>rotate</type>
-  <object-name>TaxiLight</object-name>
-  <factor>0.0</factor>
-  <offset-deg>-45.0</offset-deg>
-  <center>
-   <x-m>-17.07</x-m>
-   <y-m>0.0</y-m>
-   <z-m>-0.510</z-m>
-  </center>
-  <axis>
-   <x>0.0</x>
-   <y>1.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>TaxiLight</object-name>
-  <offset-m>-17.07</offset-m>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>translate</type>
-  <object-name>TaxiLight</object-name>
-  <offset-m>-0.510</offset-m>
-  <axis>
-   <x>0.0</x>
-   <y>0.0</y>
-   <z>1.0</z>
-  </axis>
- </animation>
-
 </PropertyList>
 

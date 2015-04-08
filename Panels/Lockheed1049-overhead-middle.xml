@@ -45,7 +45,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Overhead -->
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 1</name>
    <condition>
     <or>
@@ -69,7 +69,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>35</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 2</name>
    <condition>
     <or>
@@ -93,7 +93,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>35</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 3</name>
    <condition>
     <or>
@@ -117,7 +117,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>35</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 4</name>
    <condition>
     <or>

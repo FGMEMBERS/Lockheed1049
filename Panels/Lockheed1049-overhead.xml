@@ -45,7 +45,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- RADIO STACK -->
 
-  <instrument include="../../Instruments/navcom-kx155.xml">
+  <instrument include="Aircraft/Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>
    <condition>
     <or>
@@ -65,7 +65,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/navcom-kx155.xml">
+  <instrument include="Aircraft/Instruments/navcom-kx155.xml">
    <name>NavCom 2 Radio</name>
    <condition>
     <or>
@@ -93,7 +93,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/adf-radio.xml">
+  <instrument include="Aircraft/Instruments/adf-radio.xml">
    <name>ADF Radio</name>
    <condition>
     <or>

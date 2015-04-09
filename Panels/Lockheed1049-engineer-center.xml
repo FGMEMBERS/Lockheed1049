@@ -48,7 +48,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Engineer panel top left -->
 
-  <instrument include="../../Instruments/altimeter.xml">
+  <instrument include="Aircraft/Instruments/altimeter.xml">
    <name>Altimeter</name>
    <condition>
     <or>
@@ -65,7 +65,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/asi-590-knot-a4c.xml">
+  <instrument include="Aircraft/Instruments/asi-590-knot-a4c.xml">
    <name>Indicated air speed</name>
    <condition>
     <or>
@@ -82,7 +82,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/oat.xml">
+  <instrument include="Aircraft/Instruments/oat.xml">
    <name>Outside Air Temperature</name>
    <condition>
     <or>

@@ -45,7 +45,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Overhead -->
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 1</name>
    <params>
     <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
@@ -57,7 +57,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 2</name>
    <params>
     <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
@@ -69,7 +69,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 3</name>
    <params>
     <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
@@ -81,7 +81,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 4</name>
    <params>
     <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
@@ -95,7 +95,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Engineer panel top left -->
 
-  <instrument include="../../Instruments/altimeter.xml">
+  <instrument include="Aircraft/Instruments/altimeter.xml">
    <name>Altimeter</name>
    <x>50</x>
    <y>435</y>
@@ -103,7 +103,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/asi-590-knot-a4c.xml">
+  <instrument include="Aircraft/Instruments/asi-590-knot-a4c.xml">
    <name>Indicated air speed</name>
    <x>160</x>
    <y>435</y>
@@ -119,7 +119,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/oat.xml">
+  <instrument include="Aircraft/Instruments/oat.xml">
    <name>Outside Air Temperature</name>
    <x>155</x>
    <y>550</y>
@@ -178,7 +178,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Engineer panel bottom left -->
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 1 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
@@ -190,7 +190,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 2 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
@@ -202,7 +202,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 3 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
@@ -214,7 +214,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 4 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
@@ -436,13 +436,13 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- RADIO STACK -->
 
-  <instrument include="../../Instruments/navcom-kx155.xml">
+  <instrument include="Aircraft/Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>
    <x>890</x>
    <y>491</y>
   </instrument>
 
-  <instrument include="../../Instruments/navcom-kx155.xml">
+  <instrument include="Aircraft/Instruments/navcom-kx155.xml">
    <name>NavCom 2 Radio</name>
    <params>
     <comm-freq-selected-prop>/instrumentation/comm[1]/frequencies/selected-mhz</comm-freq-selected-prop>
@@ -456,7 +456,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <y>405</y>
   </instrument>
 
-  <instrument include="../../Instruments/adf-radio.xml">
+  <instrument include="Aircraft/Instruments/adf-radio.xml">
    <name>ADF Radio</name>
    <params>
     <adf-freq-selected-prop>/instrumentation/adf[0]/frequencies/selected-khz</adf-freq-selected-prop>

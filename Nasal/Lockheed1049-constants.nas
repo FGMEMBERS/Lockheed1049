@@ -65,7 +65,11 @@ Constant = {};
 Constant.new = func {
    var obj = { parents : [Constant],
 
-               TRUE : 1.0,                             # no boolean
+# angles
+               DEG360 : 360,
+
+# nasal has no boolean
+               TRUE : 1.0,
                FALSE : 0.0,
 
 # time
@@ -84,6 +88,17 @@ Constant.new = func {
 
 Constant.init = func {
    me.LBTOGALUS = 1 / me.GALUSTOLB;
+}
+
+Constant.truncatenorth = func( offsetdeg ) {
+   if( offsetdeg > me.DEG360 ) {
+       offsetdeg = offsetdeg - me.DEG360;
+   }
+   elsif( offsetdeg < 0 ) {
+       offsetdeg = offsetdeg + me.DEG360;
+   }
+
+   return offsetdeg;
 }
 
 

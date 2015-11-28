@@ -1,8 +1,30 @@
 <?xml version="1.0"?>
 
+<!-- visiblility is backwards.
+
+     References :
+     ==========
+     http://en.wikipedia.org/wiki/Navigation_light
+-->
+
 <PropertyList>
 
 <path>navigation.ac</path>
+
+ <animation>
+  <type>scale</type>
+  <object-name>NavigationTail</object-name>
+  <property>sim/time/sun-angle-rad</property>
+  <x-min>1</x-min>
+  <y-min>1</y-min>
+  <z-min>1</z-min>
+  <x-offset>-1.4</x-offset>
+  <y-offset>-1.4</y-offset>
+  <z-offset>-1.4</z-offset>
+  <x-factor>2</x-factor>
+  <y-factor>2</y-factor>
+  <z-factor>2</z-factor>
+ </animation>
 
  <animation>
   <type>noshadow</type>
@@ -56,24 +78,38 @@
   </condition>
  </animation>
 
+<!-- rotation because of directional flash -->
+
  <animation>
-  <type>billboard</type>
+  <type>rotate</type>
   <object-name>NavigationTail</object-name>
+  <offset-deg>90</offset-deg>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
  </animation>
 
  <animation>
-  <type>scale</type>
+  <type>flash</type>
   <object-name>NavigationTail</object-name>
-  <property>sim/time/sun-angle-rad</property>
-  <x-min>1</x-min>
-  <y-min>1</y-min>
-  <z-min>1</z-min>
-  <x-offset>-1.4</x-offset>
-  <y-offset>-1.4</y-offset>
-  <z-offset>-1.4</z-offset>
-  <x-factor>2</x-factor>
-  <y-factor>2</y-factor>
-  <z-factor>2</z-factor>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+  <power>4</power>
+  <factor>1</factor>
+  <offset>0.4</offset>  <!-- 120 degrees -->
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
  </animation>
 
 </PropertyList>

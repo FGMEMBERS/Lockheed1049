@@ -82,59 +82,72 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-- 3.4.0 : minimum version.
+3.6.0 RC : minimum version.
 
 
 Keyboard
 ========
-- "ctrl-F" : surface control boost.
-- "f"      : "f"ull cockpit (all instruments).
-- "q"      : quit speed up.
 
 Views
 -----
-- "ctrl-E" : "E"ngineer view.
-- "ctrl-K" : Observer view (floating).
-- "ctrl-L" : Observer 2 view (floating).
-- "ctrl-N" : "N"avigator view.
-- "ctrl-O" : radi"O" view.
-- "ctrl-Y" : Copilot view.
+- "ctrl-E"       : "E"ngineer view.
+- "ctrl-K"       : Observer view (floating).
+- "ctrl-L"       : Observer 2 view (floating).
+- "ctrl-N"       : "N"avigator view.
+- "ctrl-O"       : radi"O" view.
 - "shift-ctrl-V" : restore view pitch.
 - "shift-ctrl-X" : restore floating view.
+- "ctrl-Y"       : Copilot view.
 
 Virtual crew
 ------------
-- "ctrl-Q" : virtual crew.
+- "ctrl-Q"       : virtual crew.
 
 Unchanged behaviour
 -------------------
-- "x / X"  : zooms in the small fonts; reset with "ctrl-X".
+- "x / X"        : zooms in the small fonts.
+                   Reset with "ctrl-X".
 
 Same behaviour
 --------------
-- "S"   : swaps between Captain and Engineer 2D panels.
-- "F12" : radio frequencies.
+- "S"            : "S"waps between Captain and Engineer 2D panels.
+- "F12"          : radio frequencies.
  
 Improved behaviour
 ------------------
-- "ctrl-A" : hold altitude.
-- "ctrl-H" : toggle autopilot (hold heading and pitch).
-- "ctrl-P" : toggle autopilot (hold heading and pitch).
-- "ctrl-S" : autothrottle (virtual copilot).
-- "up / down"  : increases / decreases (fast) pitch hold.
-- "home / end" : increases / decreases (slow) pitch hold.
-- "page up / page down" : increases / decreases copilot speed.
-- "a / A"  : speeds up BOTH speed and time. Until X 10.
-  Automatically resets to 1, when above 2000 ft/min.
+- "a / A"        : speeds up BOTH speed and time. Until X 10.
+                   Automatically resets to 1, when above 2000 ft/min.
+- "ctrl-A"       : hold "A"ltitude.
+- "ctrl-H"       : toggle autopilot (hold both "H"eading and pitch).
+- "ctrl-P"       : toggle autopilot (hold both heading and "P"itch).
+- "ctrl-S"       : autothrottle (virtual copilot).
+- "left /        : autopilot heading (knob).
+   right"
+- "up /          : increases / decreases pitch hold.
+   down"
+- "page up /     : increases / decreases copilot speed.
+   page down"
 
 Alternate behaviour
 -------------------
-- "=" : menu.
-- "ctrl-B" : propeller reverse (not yet implemented by FDM).
-- "up / down"  : move floating view in length.
-- "home / end" : move floating view in length (fast).
-- "left / right" : move floating view in width.
-- "page up / page down" : move floating view in height.
+- "ctrl-B"       : propeller reverse used as "B"rake (not yet implemented by FDM).
+- "="            : menu.
+- "left /        : move floating view in width.
+   right"
+- "up /          : move floating view in length.
+   down"
+- "page up /     : move floating view in height.
+   page down"
+
+Additional behaviour
+--------------------
+- "ctrl-F"       : surface control boost.
+- "f"            : "f"ull cockpit (all instruments).
+- "q"            : "q"uit speed up.
+- "ctrl up /     : increases / decreases pitch hold (slow).
+   ctrl down"
+- "ctrl up /     : move floating view in length (fast).
+   ctrl down"
 
 
 Mouse
@@ -255,4 +268,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-4 April 2015.
+1st November 2015.

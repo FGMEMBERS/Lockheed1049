@@ -16,7 +16,7 @@
     <halign>center</halign>
 
     <text>
-      <label>Night lighting</label>
+      <label>Night lighting ~</label>
     </text>
 
     <text>
@@ -43,7 +43,7 @@
       </text>
 
       <checkbox>
-       <label>chart  ~</label>
+       <label>chart</label>
        <property>/controls/crew/lighting/chart</property>
        <binding>
         <command>property-toggle</command>
@@ -52,7 +52,7 @@
       </checkbox>
 
       <checkbox>
-       <label>overhead  ~</label>
+       <label>overhead</label>
        <property>/controls/crew/lighting/overhead</property>
        <binding>
         <command>property-toggle</command>
@@ -61,7 +61,7 @@
       </checkbox>
 
       <checkbox>
-       <label>pedestal  ~</label>
+       <label>pedestal</label>
        <property>/controls/crew/lighting/pedestal</property>
        <binding>
         <command>property-toggle</command>
@@ -92,7 +92,7 @@
       </text>
 
       <slider>
-       <label>pilot  ~</label>
+       <label>pilot</label>
        <row>0</row>
        <col>2</col>
        <min>0</min>
@@ -108,7 +108,7 @@
       </slider>
 
       <slider>
-       <label>copilot  ~</label>
+       <label>copilot</label>
        <row>0</row>
        <col>2</col>
        <min>0</min>
@@ -124,7 +124,7 @@
       </slider>
 
       <slider>
-       <label>overhead  ~</label>
+       <label>overhead</label>
        <row>0</row>
        <col>2</col>
        <min>0</min>
@@ -140,7 +140,7 @@
       </slider>
 
       <slider>
-       <label>engineer  ~</label>
+       <label>engineer</label>
        <row>0</row>
        <col>2</col>
        <min>0</min>

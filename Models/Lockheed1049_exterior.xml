@@ -42,8 +42,8 @@
    <name>Navigation left</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationleft.xml</path>
    <offsets>
-    <x-m> 0.0</x-m>
-    <y-m>-18.984</y-m>
+    <x-m>-0.50</x-m>
+    <y-m>-18.914</y-m>
     <z-m> 1.280</z-m>
    </offsets>
   </model>
@@ -52,8 +52,8 @@
    <name>Navigation right</name>
    <path>Aircraft/Lockheed1049/Models/Exterior/light/navigationright.xml</path>
    <offsets>
-    <x-m> 0.0</x-m>
-    <y-m> 18.984</y-m>
+    <x-m>-0.50</x-m>
+    <y-m> 18.914</y-m>
     <z-m> 1.280</z-m>
    </offsets>
   </model>

@@ -9,6 +9,36 @@
 
 
 
+# =================
+# OVERRIDING JSBSIM
+# =================
+
+LockheedJSBsim = {};
+
+LockheedJSBsim.new = func {
+   var obj = { parents : [LockheedJSBsim]
+         };
+
+   obj.init();
+
+   return obj;
+}
+
+LockheedJSBsim.init = func {
+}
+
+LockheedJSBsim.specific = func {
+   # fix JSBSim bug
+#   setprop( "controls/flight/elevator-boost", constant.TRUE );
+
+   # disable JSBSim stand alone mode
+   setprop( "fdm/jsbsim/propulsion/tank[0]/priority", 0 );
+   setprop( "fdm/jsbsim/propulsion/tank[1]/priority", 0 );
+   setprop( "fdm/jsbsim/propulsion/tank[2]/priority", 0 );
+   setprop( "fdm/jsbsim/propulsion/tank[3]/priority", 0 );
+}
+
+
 # ==============
 # Initialization
 # ==============
@@ -135,19 +165,14 @@ LockheedMain.init = func {
    me.instantiate();
    me.putinrelation();
 
+   # JSBSim specific
+   var FDM = LockheedJSBsim.new();
+   FDM.specific();
+
    # schedule the 1st call
    settimer(func { me.sec1cron(); },0);
    settimer(func { me.sec2cron(); },0);
    settimer(func { me.sec3cron(); },0);
-
-   # fix JSBSim bug
-#   setprop( "controls/flight/elevator-boost", constant.TRUE );
-
-   # disable JSBSim stand alone mode
-   setprop( "fdm/jsbsim/propulsion/tank[0]/priority", 0 );
-   setprop( "fdm/jsbsim/propulsion/tank[1]/priority", 0 );
-   setprop( "fdm/jsbsim/propulsion/tank[2]/priority", 0 );
-   setprop( "fdm/jsbsim/propulsion/tank[3]/priority", 0 );
 
    # saved on exit, restored at launch
    me.savedata();

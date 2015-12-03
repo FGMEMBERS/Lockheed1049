@@ -98,6 +98,7 @@
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-engineer.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-human.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049.nas</file>
+   <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-override.nas</file>
    <file>Aircraft/Lockheed1049/Nasal/Lockheed1049-effects.nas</file>
   </Lockheed1049>
  </nasal>

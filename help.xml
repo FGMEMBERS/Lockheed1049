@@ -15,7 +15,7 @@
    </key>
    <key>
     <name>left/right</name>
-    <desc>autopilot heading</desc>
+    <desc>autopilot heading (knob)</desc>
    </key>
    <key>
     <name></name>
@@ -30,20 +30,20 @@
     <desc>floating view front/aft</desc>
    </key>
    <key>
-    <name>home/end</name>
-    <desc>increase/decrease autopilot pitch (slow)</desc>
+    <name>ctrl up/down</name>
+    <desc>autopilot pitch (slow)</desc>
    </key>
    <key>
     <name></name>
     <desc>floating view front/aft (fast)</desc>
    </key>
    <key>
-     <name>page up/down</name>
-     <desc>increase/decrease copilot speed</desc>
+    <name>page up/down</name>
+    <desc>increase/decrease copilot speed</desc>
    </key>
    <key>
-     <name></name>
-     <desc>floating view up/down</desc>
+    <name></name>
+    <desc>floating view up/down</desc>
    </key>
    <key>
     <name>F12</name>
@@ -66,43 +66,43 @@
     <desc>swaps 2D panel</desc>
    </key>
    <key>
-    <name>Ctrl-A</name>
+    <name>ctrl-A</name>
     <desc>toggle altitude hold</desc>
    </key>
    <key>
-    <name>Ctrl-E</name>
+    <name>ctrl-E</name>
     <desc>engineer view</desc>
    </key>
    <key>
-    <name>Ctrl-F</name>
+    <name>ctrl-F</name>
     <desc>toggle surface control boost</desc>
    </key>
    <key>
-    <name>Ctrl-H / Ctrl-P</name>
+    <name>ctrl-H / ctrl-P</name>
     <desc>toggle heading with pitch hold</desc>
    </key>
    <key>
-    <name>Ctrl-K</name>
+    <name>ctrl-K</name>
     <desc>observer (floating) view</desc>
    </key>
    <key>
-    <name>Ctrl-L</name>
+    <name>ctrl-L</name>
     <desc>observer 2 (floating) view</desc>
    </key>
    <key>
-    <name>Ctrl-N</name>
+    <name>ctrl-N</name>
     <desc>navigator view</desc>
    </key>
    <key>
-    <name>Ctrl-O</name>
+    <name>ctrl-O</name>
     <desc>radio view</desc>
    </key>
    <key>
-    <name>Ctrl-Q</name>
+    <name>ctrl-Q</name>
     <desc>virtual crew</desc>
    </key>
    <key>
-    <name>Ctrl-S</name>
+    <name>ctrl-S</name>
     <desc>autothrottle (virtual copilot)</desc>
    </key>
    <key>
@@ -114,16 +114,14 @@
     <desc>restore floating view</desc>
    </key>
    <key>
-    <name>Ctrl-Y</name>
+    <name>ctrl-Y</name>
     <desc>copilot view</desc>
    </key>
 
 
 <!-- FDM ops -->
 
-   <text>
- ________________________Procedures_________________________
- Takeoff :
+<text> Takeoff :
             flaps 1/4 2900 RPM,
             rotation at 130 kt (full load), 120 kt (landing load).
             retract gear below 165 k,
@@ -179,7 +177,6 @@
  maximum at 16000 ft : 46.0 inhg 2600 rpm
 
  max take-off : 120000 lb
- max landing : 98500 lb
-   </text>
+ max landing : 98500 lb</text>
 
 </PropertyList>

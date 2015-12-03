@@ -86,8 +86,26 @@ Autopilot.apaltitudeexport = func {
     }
 }
 
-# pitch autopilot :
-# - coefficient
+# manual setting of heading
+Autopilot.headingexport = func( coef ) {
+    var headingmode = me.itself["autopilot"].getChild("heading").getValue();
+    var result = constant.FALSE;
+
+    if( headingmode != nil and headingmode == "dg-heading-hold" ) {
+        var headingdeg = me.itself["autopilot-set"].getChild("heading-bug-deg").getValue();
+
+        headingdeg = headingdeg + 1.0 * coef;
+        headingdeg = constant.truncatenorth(headingdeg);
+        
+        me.itself["autopilot-set"].getChild("heading-bug-deg").setValue(headingdeg);
+
+        result = constant.TRUE;
+    }
+
+    return result;
+}
+
+# manual setting of pitch
 Autopilot.pitchexport = func( coef ) {
     var altitudemode = me.itself["autopilot"].getChild("altitude").getValue();
     var result = constant.FALSE;

@@ -1,6 +1,8 @@
 Lockheed 1049 real data
 =======================
-Weight : max takeoff 120000 lb, max landing 98500 lb, maximum without fuel 93500 lb (A).
+max takeoff                  : 120000 lb.
+max landing                  : 98500 lb.
+maximum without fuel         : 93500 lb (A).
 
 Vne (never exceed)           : 293 kt until 11000 ft; then - 11 kt / 2000 ft (A).
 Vno (normal operation)       : 260 kt until 11000 ft, then - 9 kt / 2000 ft (A).
@@ -12,32 +14,31 @@ Vf (approach flaps 66%)      : 161 kt (A).
 Vf (80%)                     : 153 kt (A).
 Vf (landing flaps 100%)      : 148 kt (A).
 
-Engine limits : - takeoff (2.75 minutes) : sea level,   54.5 inhg 2900 rpm;
-                                           at 4500 ft,  52.5 inhg 2900 rpm (A).
-                - maximum continuous :     sea level,   48.0 inhg 2600 rpm;
-                                           at 5300 ft,  46.0 inhg 2600 rpm;
-                                           at 10800 ft, 47.5 inhg 2600 rpm;
-                                           at 16000 ft, 46.0 inhg 2600 rpm (A).
-
+Engine limits
+-------------
+takeoff (2.75 minutes)       : sea level,   54.5 inhg 2900 rpm.
+                               at 4500 ft,  52.5 inhg 2900 rpm (A).
+maximum continuous           : sea level,   48.0 inhg 2600 rpm.
+                               at 5300 ft,  46.0 inhg 2600 rpm.
+                               at 10800 ft, 47.5 inhg 2600 rpm.
+                               at 16000 ft, 46.0 inhg 2600 rpm (A).
 
 Climb rate : 1125 ft/min (F).
 Ceiling : 25000 ft (A).
-Range (max payload) : 1049 : 1890 NM (E).
+Range (max payload) : 1890 NM (E), 1049.
 
 
 Comparison with other 1049s
 ===========================
-Cruise  : - 6000 m [19700 ft] (F).
-Ceiling : - 25000 ft (B)(C).
-          - 23200 ft (D).
-          - 8500 m [27900 ft] (F).
-Range (max payload) :
-          - 1049C : 2510 NM (E).
-Range (max fuel) :
-          - 1049C : 4160 NM (B).
-          - 3450 NM, 16.5 h maximum, 24790 l (C). 
-          - 3500 NM, 14 h without reserve, 6550 US gal (D).
-          - 1049C : 4760 NM (E).
+Cruise              : 6000 m [19700 ft] (F).
+Ceiling             : 23200 ft (D).
+                      25000 ft (B)(C).
+                      8500 m [27900 ft] (F).
+Range (max payload) : 2510 NM (E), 1049C.
+Range (max fuel)    : 4160 NM (B), 1049C.
+                      3450 NM, 16.5 h maximum, 24790 l (C). 
+                      3500 NM, 14 h without reserve, 6550 US gal (D).
+                      4760 NM (E), 1049C.
 
 The range of 1049 should be 3580 NM = 4760 x (1890 / 2510).
 
@@ -61,9 +62,11 @@ Lockheed 1049 ops
              - flaps 1/4 below 184 kt.
              - gear below 165 kt.
              - maintain 130 kt.
+             - trim to glide path.
 - landing :  - flaps 1/2 below 161 kt.
              - flaps 3/4 below 153 kt, full flaps below 148 kt.
              - maintain 115 kt (landing load), 110 kt (empty load). 
+             - trim to glide path.
              - touch down 110 kt (landing load), 105 kt (empty load).
 
 
@@ -82,12 +85,11 @@ See Sounds/Lockheed1049-mats-sound.xml to install Constellation sounds (recommen
 
 Known compatibility
 -------------------
-3.6.0 RC : minimum version.
+2016.1.1 : minimum version.
 
 
 Keyboard
 ========
-
 Views
 -----
 - "ctrl-E"       : "E"ngineer view.
@@ -152,7 +154,6 @@ Additional behaviour
 
 Mouse
 =====
-
 ADF
 ---
 To update the frequency of ADF 2 :
@@ -268,4 +269,4 @@ References
     Power is proportional to RPM and BMEP.
 
 
-1st November 2015.
+2nd April 2016.

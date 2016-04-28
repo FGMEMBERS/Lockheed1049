@@ -33,6 +33,7 @@
      <y-offset-m archive="y">1.08</y-offset-m>
      <z-offset-m archive="y">2.29</z-offset-m>  <!-- with VSI -->
      <pitch-offset-deg>-17</pitch-offset-deg>   <!-- towards instruments -->
+     <heading-offset-deg type="double">0</heading-offset-deg>
    </config>
   </view>
 
